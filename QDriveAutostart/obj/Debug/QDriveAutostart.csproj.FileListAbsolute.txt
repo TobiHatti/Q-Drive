@@ -1,0 +1,9 @@
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\QDriveAutostart.exe.config
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\QDriveAutostart.exe
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\QDriveAutostart.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.Properties.Resources.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.QDrive.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.GenerateResource.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.CoreCompileInputs.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.exe
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.pdb
