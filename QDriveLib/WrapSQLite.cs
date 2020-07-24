@@ -1,22 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
-using MySql.Data.MySqlClient;
+using System.Data.SQLite;
+using System.Text;
 
 namespace WrapSQL
 {
-    public class WrapMySQL : WrapSQL
+    public class WrapSQLite : WrapSQL
     {
         #region Fields and Properties
 
         private readonly string connectionString = string.Empty;
-        private readonly MySqlConnection connection = null;
-        private MySqlTransaction transaction = null;
-        
+        private readonly SQLiteConnection connection = null;
+        private SQLiteTransaction transaction = null;
 
         /// <summary>
         /// SQL-Connection object.
         /// </summary>
-        public MySqlConnection Connection
+        public SQLiteConnection Connection
         {
             get => connection;
         }
@@ -29,31 +30,29 @@ namespace WrapSQL
         /// Creates a new SQL-Wrapper object.
         /// </summary>
         /// <param name="connectionString">Connection-string for the database</param>
-        public WrapMySQL(string connectionString)
+        public WrapSQLite(string connectionString)
         {
             // Set connection-string
             this.connectionString = connectionString;
 
             // Create connection
-            connection = new MySqlConnection(this.connectionString);
+            connection = new SQLiteConnection(this.connectionString);
         }
+
 
         /// <summary>
         /// Creates a new SQL-Wrapper object.
         /// </summary>
-        /// <param name="server">Hostname or IP of the server</param>
-        /// <param name="database">Target database</param>
-        /// <param name="username">Login username</param>
-        /// <param name="password">Login password</param>
-        /// <param name="port">Server-port. Default: 3306</param>
-        /// <param name="sslMode">SSL encryption mode</param>
-        public WrapMySQL(string server, string database, string username, string password, int port = 3306, string sslMode = "none")
+        /// <param name="databaseFilePath">Path to the SQLite database file</param>
+        /// <param name="isFilePath">If false, the path gets interpreted as the connection-string</param>
+        public WrapSQLite(string databaseFilePath, bool isFilePath = true)
         {
-            // Assemble connection-string
-            this.connectionString = $"SERVER={server};Port={port};SslMode={sslMode};DATABASE={database};USER ID={username};PASSWORD={password}";
+            // Set connection-string
+            if (isFilePath) this.connectionString = $@"URI=file:{databaseFilePath}";
+            else this.connectionString = databaseFilePath;
 
             // Create connection
-            connection = new MySqlConnection(this.connectionString);
+            connection = new SQLiteConnection(this.connectionString);
         }
 
         /// <summary>
@@ -133,7 +132,7 @@ namespace WrapSQL
         {
             if (transactionActive && aCon) throw new Exception("AutoConnect-methods (ACon) are not allowed durring a transaction!");
 
-            using (MySqlCommand command = new MySqlCommand(sqlQuery, Connection))
+            using (SQLiteCommand command = new SQLiteCommand(sqlQuery, Connection))
             {
                 if (transactionActive) command.Transaction = transaction;
                 int result;
@@ -155,9 +154,9 @@ namespace WrapSQL
         /// <param name="sqlQuery">SQL-query</param>
         /// <param name="parameters">Query-parameters</param>
         /// <returns>DataReader fetching the query-results</returns>
-        public MySqlDataReader ExecuteQuery(string sqlQuery, params object[] parameters)
+        public SQLiteDataReader ExecuteQuery(string sqlQuery, params object[] parameters)
         {
-            MySqlCommand command = new MySqlCommand(sqlQuery, Connection);
+            SQLiteCommand command = new SQLiteCommand(sqlQuery, Connection);
             foreach (object parameter in parameters) command.Parameters.AddWithValue(string.Empty, parameter);
             return command.ExecuteReader();
         }
@@ -178,7 +177,7 @@ namespace WrapSQL
         {
             if (transactionActive && aCon) throw new Exception("AutoConnect-methods (ACon) are not allowed durring a transaction!");
 
-            using (MySqlCommand command = new MySqlCommand(sqlQuery, Connection))
+            using (SQLiteCommand command = new SQLiteCommand(sqlQuery, Connection))
             {
                 if (transactionActive) command.Transaction = transaction;
                 foreach (object parameter in parameters) command.Parameters.AddWithValue(string.Empty, parameter);
@@ -201,10 +200,10 @@ namespace WrapSQL
         /// <returns>Results of a query-statement</returns>
         public override DataTable FillDataTable(string sqlQuery, params object[] parameters)
         {
-            using (MySqlCommand command = new MySqlCommand(sqlQuery, Connection))
+            using (SQLiteCommand command = new SQLiteCommand(sqlQuery, Connection))
             {
                 foreach (object parameter in parameters) command.Parameters.AddWithValue(string.Empty, parameter);
-                using (MySqlDataAdapter da = new MySqlDataAdapter(command))
+                using (SQLiteDataAdapter da = new SQLiteDataAdapter(command))
                 {
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -219,12 +218,12 @@ namespace WrapSQL
         /// <param name="sqlQuery">SQL-query</param>
         /// <param name="parameters">Query-parameters</param>
         /// <returns>DataAdapter of the given query-statement</returns>
-        public MySqlDataAdapter GetDataAdapter(string sqlQuery, params object[] parameters)
+        public SQLiteDataAdapter GetDataAdapter(string sqlQuery, params object[] parameters)
         {
-            using (MySqlCommand command = new MySqlCommand(sqlQuery, Connection))
+            using (SQLiteCommand command = new SQLiteCommand(sqlQuery, Connection))
             {
                 foreach (object parameter in parameters) command.Parameters.AddWithValue(string.Empty, parameter);
-                return new MySqlDataAdapter(command);
+                return new SQLiteDataAdapter(command);
             }
         }
 

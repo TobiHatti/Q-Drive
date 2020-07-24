@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WrapSQL;
 
 namespace QDrive
 {
@@ -29,10 +30,9 @@ namespace QDrive
         private bool onlineAlreadyConfigured;
 
         private string onlineMasterPassword;
-        private bool configureAsNewDB;
-        private bool onlinePromptPassword;
+        private bool onlineConfigureAsNewDB;
 
-        #region Pagge Layout and Initial Loading
+        #region Page Layout and Initial Loading
 
         private List<Panel> panels = new List<Panel>();
         
@@ -50,7 +50,7 @@ namespace QDrive
             AlignPanels();
 
             // Predefined values
-            txbSA2ConfigLocation.Text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Q-Drive");
+            txbSA2ConfigLocation.Text = QDInfo.DefaultLocalDataPath;
         }
 
         private void AlignPanels()
@@ -143,7 +143,7 @@ namespace QDrive
                 }
             }
 
-            SaveConfig();
+            SaveLocalConfiguration();
 
             pnlS3Finish.BringToFront();
         }
@@ -245,7 +245,7 @@ namespace QDrive
                 else
                 {
                     onlineMasterPassword = txbSB2ExistingDBPassword.Text;
-                    configureAsNewDB = false;
+                    onlineConfigureAsNewDB = false;
                 }
             }
             else
@@ -283,9 +283,7 @@ namespace QDrive
                 }
             }
 
-            onlinePromptPassword = chbSB2PromptPassword.Checked;
-
-            SaveConfig();
+            SaveOnlineConfiguration();
 
             pnlS3Finish.BringToFront();
         }
@@ -321,14 +319,8 @@ namespace QDrive
                     sql.Open();
                     success = true;
                 }
-                catch
-                {
-                    success = false;
-                }
-                finally
-                {
-                    sql.Close();
-                }
+                catch { success = false; }
+                finally { sql.Close(); }
             }
 
             if (success) MessageBox.Show("Connection to the database established successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -349,14 +341,8 @@ namespace QDrive
                     if (sql.ExecuteScalar("SHOW TABLES LIKE 'qd_info'") != null) isConfigured = true;
                     else isConfigured = false;
                 }
-                catch
-                {
-                    isConfigured = false;
-                }
-                finally
-                {
-                    sql.Close();
-                }
+                catch { isConfigured = false; }
+                finally { sql.Close(); }
             }
 
             return isConfigured;
@@ -364,16 +350,46 @@ namespace QDrive
 
         private bool VerifyMasterPassword()
         {
+            // TODO
             return false;
         }
 
-        private void SaveConfig()
+
+        private void SaveLocalConfiguration()
         {
 
         }
 
-        #endregion
+        private void SaveOnlineConfiguration()
+        {
+            using (WrapMySQL sql = new WrapMySQL(onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
+            {
+                if(onlineConfigureAsNewDB)
+                {
+                    sql.Open();
+                    sql.TransactionBegin();
+                    try
+                    {
+                        // Delete old tables
+                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_info`");
+                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_data`");
 
-        
+                        // Create new tables
+                        sql.ExecuteNonQuery("CREATE TABLE `qd_info` ( `QDKey` VARCHAR(255) NOT NULL , `QDValue` VARCHAR(255) NOT NULL , PRIMARY KEY (`QDKey`))");
+
+
+                        sql.TransactionCommit();
+                    }
+                    catch
+                    {
+                        sql.TransactionRollback();
+                    }
+                    sql.Close();
+                }
+            }
+        }
+
+
+        #endregion
     }
 }

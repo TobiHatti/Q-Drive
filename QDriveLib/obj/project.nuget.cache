@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QFm6XuUs5qCgv9I8eJPar18W4EwU8doZXbb3vmyli1BNgt+6Zcu4XaED/5a+icYkEGEXFWbWZFkzR66L1pu+zQ==",
+  "dgSpecHash": "lYR7PFEeH1Tph/EPUIt6cV5rxNNLfOad+d38D/BsFX7VRNqAQSPUbc9rtqErMnruQs/5jyL+RcNbgtrY24aU7w==",
   "success": true,
   "projectFilePath": "U:\\(06) Code\\(01) C#\\(01) Projects [GIT]\\QDrive\\QDriveLib\\QDriveLib.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\Tobias\\.nuget\\packages\\system.collections\\4.0.11\\system.collections.4.0.11.nupkg.sha512",
     "C:\\Users\\Tobias\\.nuget\\packages\\system.collections.concurrent\\4.0.12\\system.collections.concurrent.4.0.12.nupkg.sha512",
     "C:\\Users\\Tobias\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.1\\system.configuration.configurationmanager.4.4.1.nupkg.sha512",
+    "C:\\Users\\Tobias\\.nuget\\packages\\system.data.sqlite.core\\1.0.113.1\\system.data.sqlite.core.1.0.113.1.nupkg.sha512",
     "C:\\Users\\Tobias\\.nuget\\packages\\system.diagnostics.debug\\4.0.11\\system.diagnostics.debug.4.0.11.nupkg.sha512",
     "C:\\Users\\Tobias\\.nuget\\packages\\system.diagnostics.tools\\4.0.1\\system.diagnostics.tools.4.0.1.nupkg.sha512",
     "C:\\Users\\Tobias\\.nuget\\packages\\system.diagnostics.tracesource\\4.0.0\\system.diagnostics.tracesource.4.0.0.nupkg.sha512",
