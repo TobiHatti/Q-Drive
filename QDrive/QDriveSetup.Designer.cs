@@ -30,123 +30,108 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDriveSetup));
             this.pnlS1ConnectionType = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.rbnConnectionTypeLocal = new System.Windows.Forms.RadioButton();
-            this.rbnConnectionTypeOnline = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnS1Next = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnNextS1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbnS1Online = new System.Windows.Forms.RadioButton();
+            this.rbnS1Local = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnS1Prev = new System.Windows.Forms.Button();
             this.pnlS2LocalConnection = new System.Windows.Forms.Panel();
-            this.btnPrevS2Local = new System.Windows.Forms.Button();
-            this.btnNextS2Local = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pnlS2OnlineConnection = new System.Windows.Forms.Panel();
-            this.btnPrevS2Online = new System.Windows.Forms.Button();
-            this.btnNextS2Online = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txbSA2ConfirmPassword = new System.Windows.Forms.TextBox();
+            this.txbSA2Password = new System.Windows.Forms.TextBox();
+            this.chbSA2PromptPassword = new System.Windows.Forms.CheckBox();
+            this.txbSA2ConfigLocation = new System.Windows.Forms.TextBox();
+            this.lblSA2ConfirmPassword = new System.Windows.Forms.Label();
+            this.lblSA2Password = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txbS2ConfigLocation = new System.Windows.Forms.TextBox();
-            this.btnBrowseS2Local = new System.Windows.Forms.Button();
-            this.fbdSelectLocalConfigFile = new System.Windows.Forms.FolderBrowserDialog();
-            this.chbS2LocalPassword = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txbS2OnlineHostname = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txbS2OnlineUsername = new System.Windows.Forms.TextBox();
-            this.txbS2OnlinePassword = new System.Windows.Forms.TextBox();
-            this.txbS2OnlineDatabase = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.btnSA2Prev = new System.Windows.Forms.Button();
+            this.btnSA2Browse = new System.Windows.Forms.Button();
+            this.btnSA2Next = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pnlS2OnlineConnectionA = new System.Windows.Forms.Panel();
+            this.txbSB2DBName = new System.Windows.Forms.TextBox();
+            this.txbSB2DBPassword = new System.Windows.Forms.TextBox();
+            this.txbSB2DBUsername = new System.Windows.Forms.TextBox();
+            this.txbSB2DBHostname = new System.Windows.Forms.TextBox();
+            this.btnSB2APrev = new System.Windows.Forms.Button();
+            this.btnSB2ANext = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnSB2TestConnection = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnTestConnectionS2Online = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.fbdS2ADataFileLocation = new System.Windows.Forms.FolderBrowserDialog();
+            this.pnlS2OnlineConnectionB = new System.Windows.Forms.Panel();
+            this.txbSB2NewDBConfirmPassword = new System.Windows.Forms.TextBox();
+            this.btnSB2BPrev = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.chbSB2PromptPassword = new System.Windows.Forms.CheckBox();
+            this.txbSB2ExistingDBPassword = new System.Windows.Forms.TextBox();
+            this.txbSB2NewDBPassword = new System.Windows.Forms.TextBox();
+            this.btnSB2BNext = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.rbnSB2NewDB = new System.Windows.Forms.RadioButton();
+            this.lblSB2BConfirmMasterPassword = new System.Windows.Forms.Label();
+            this.lblSB2AExistingMasterPW = new System.Windows.Forms.Label();
+            this.rbnSB2ExistingDB = new System.Windows.Forms.RadioButton();
+            this.lblSB2BMasterPassword = new System.Windows.Forms.Label();
+            this.pnlS3Finish = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.chbS3LaunchManager = new System.Windows.Forms.CheckBox();
+            this.btnS3Finish = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.pnlS0Welcome = new System.Windows.Forms.Panel();
+            this.btnS0Next = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.pnlS1ConnectionType.SuspendLayout();
             this.pnlS2LocalConnection.SuspendLayout();
-            this.pnlS2OnlineConnection.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlS2OnlineConnectionA.SuspendLayout();
+            this.pnlS2OnlineConnectionB.SuspendLayout();
+            this.pnlS3Finish.SuspendLayout();
+            this.pnlS0Welcome.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlS1ConnectionType
             // 
-            this.pnlS1ConnectionType.Controls.Add(this.btnNextS1);
+            this.pnlS1ConnectionType.Controls.Add(this.btnS1Next);
             this.pnlS1ConnectionType.Controls.Add(this.label3);
             this.pnlS1ConnectionType.Controls.Add(this.label2);
-            this.pnlS1ConnectionType.Controls.Add(this.rbnConnectionTypeOnline);
-            this.pnlS1ConnectionType.Controls.Add(this.rbnConnectionTypeLocal);
+            this.pnlS1ConnectionType.Controls.Add(this.rbnS1Online);
+            this.pnlS1ConnectionType.Controls.Add(this.rbnS1Local);
             this.pnlS1ConnectionType.Controls.Add(this.label1);
-            this.pnlS1ConnectionType.Controls.Add(this.button6);
+            this.pnlS1ConnectionType.Controls.Add(this.btnS1Prev);
             this.pnlS1ConnectionType.Location = new System.Drawing.Point(7, 467);
-            this.pnlS1ConnectionType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlS1ConnectionType.Margin = new System.Windows.Forms.Padding(4);
             this.pnlS1ConnectionType.Name = "pnlS1ConnectionType";
             this.pnlS1ConnectionType.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.pnlS1ConnectionType.Size = new System.Drawing.Size(658, 453);
             this.pnlS1ConnectionType.TabIndex = 0;
             // 
-            // label1
+            // btnS1Next
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 18F);
-            this.label1.Location = new System.Drawing.Point(17, 12);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(304, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Select your connection-type";
+            this.btnS1Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnS1Next.Location = new System.Drawing.Point(547, 402);
+            this.btnS1Next.Name = "btnS1Next";
+            this.btnS1Next.Size = new System.Drawing.Size(95, 36);
+            this.btnS1Next.TabIndex = 3;
+            this.btnS1Next.Text = "Next >";
+            this.btnS1Next.UseVisualStyleBackColor = true;
+            this.btnS1Next.Click += new System.EventHandler(this.btnS1Next_Click);
             // 
-            // rbnConnectionTypeLocal
+            // label3
             // 
-            this.rbnConnectionTypeLocal.AutoSize = true;
-            this.rbnConnectionTypeLocal.Checked = true;
-            this.rbnConnectionTypeLocal.Location = new System.Drawing.Point(17, 101);
-            this.rbnConnectionTypeLocal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.rbnConnectionTypeLocal.Name = "rbnConnectionTypeLocal";
-            this.rbnConnectionTypeLocal.Size = new System.Drawing.Size(199, 25);
-            this.rbnConnectionTypeLocal.TabIndex = 1;
-            this.rbnConnectionTypeLocal.TabStop = true;
-            this.rbnConnectionTypeLocal.Text = "Save mapped drives local";
-            this.rbnConnectionTypeLocal.UseVisualStyleBackColor = true;
-            // 
-            // rbnConnectionTypeOnline
-            // 
-            this.rbnConnectionTypeOnline.AutoSize = true;
-            this.rbnConnectionTypeOnline.Location = new System.Drawing.Point(17, 224);
-            this.rbnConnectionTypeOnline.Margin = new System.Windows.Forms.Padding(4);
-            this.rbnConnectionTypeOnline.Name = "rbnConnectionTypeOnline";
-            this.rbnConnectionTypeOnline.Size = new System.Drawing.Size(210, 25);
-            this.rbnConnectionTypeOnline.TabIndex = 1;
-            this.rbnConnectionTypeOnline.Text = "Save mapped drives online";
-            this.rbnConnectionTypeOnline.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
+            this.label3.Location = new System.Drawing.Point(16, 253);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(619, 126);
+            this.label3.TabIndex = 2;
+            this.label3.Text = resources.GetString("label3.Text");
             // 
             // label2
             // 
@@ -159,66 +144,170 @@
             this.label2.Text = "Use this option if you want to connect to a set of network-drives on only 1 devic" +
     "e. \r\nAll informations and login-credentials will be saved on this device";
             // 
-            // label3
+            // rbnS1Online
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(16, 253);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(619, 126);
-            this.label3.TabIndex = 2;
-            this.label3.Text = resources.GetString("label3.Text");
+            this.rbnS1Online.AutoSize = true;
+            this.rbnS1Online.Location = new System.Drawing.Point(17, 224);
+            this.rbnS1Online.Margin = new System.Windows.Forms.Padding(4);
+            this.rbnS1Online.Name = "rbnS1Online";
+            this.rbnS1Online.Size = new System.Drawing.Size(210, 25);
+            this.rbnS1Online.TabIndex = 2;
+            this.rbnS1Online.Text = "Save mapped drives online";
+            this.rbnS1Online.UseVisualStyleBackColor = true;
             // 
-            // btnNextS1
+            // rbnS1Local
             // 
-            this.btnNextS1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNextS1.Location = new System.Drawing.Point(547, 402);
-            this.btnNextS1.Name = "btnNextS1";
-            this.btnNextS1.Size = new System.Drawing.Size(95, 36);
-            this.btnNextS1.TabIndex = 3;
-            this.btnNextS1.Text = "Next >";
-            this.btnNextS1.UseVisualStyleBackColor = true;
-            this.btnNextS1.Click += new System.EventHandler(this.btnNextS1_Click);
+            this.rbnS1Local.AutoSize = true;
+            this.rbnS1Local.Checked = true;
+            this.rbnS1Local.Location = new System.Drawing.Point(17, 101);
+            this.rbnS1Local.Margin = new System.Windows.Forms.Padding(4);
+            this.rbnS1Local.Name = "rbnS1Local";
+            this.rbnS1Local.Size = new System.Drawing.Size(199, 25);
+            this.rbnS1Local.TabIndex = 1;
+            this.rbnS1Local.TabStop = true;
+            this.rbnS1Local.Text = "Save mapped drives local";
+            this.rbnS1Local.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 18F);
+            this.label1.Location = new System.Drawing.Point(17, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(304, 32);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Select your connection-type";
+            // 
+            // btnS1Prev
+            // 
+            this.btnS1Prev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnS1Prev.Location = new System.Drawing.Point(446, 402);
+            this.btnS1Prev.Name = "btnS1Prev";
+            this.btnS1Prev.Size = new System.Drawing.Size(95, 36);
+            this.btnS1Prev.TabIndex = 4;
+            this.btnS1Prev.Text = "< Previous";
+            this.btnS1Prev.UseVisualStyleBackColor = true;
+            this.btnS1Prev.Click += new System.EventHandler(this.btnS1Prev_Click);
             // 
             // pnlS2LocalConnection
             // 
-            this.pnlS2LocalConnection.Controls.Add(this.textBox2);
-            this.pnlS2LocalConnection.Controls.Add(this.textBox1);
-            this.pnlS2LocalConnection.Controls.Add(this.chbS2LocalPassword);
-            this.pnlS2LocalConnection.Controls.Add(this.txbS2ConfigLocation);
-            this.pnlS2LocalConnection.Controls.Add(this.label8);
-            this.pnlS2LocalConnection.Controls.Add(this.label7);
+            this.pnlS2LocalConnection.Controls.Add(this.txbSA2ConfirmPassword);
+            this.pnlS2LocalConnection.Controls.Add(this.txbSA2Password);
+            this.pnlS2LocalConnection.Controls.Add(this.chbSA2PromptPassword);
+            this.pnlS2LocalConnection.Controls.Add(this.txbSA2ConfigLocation);
+            this.pnlS2LocalConnection.Controls.Add(this.lblSA2ConfirmPassword);
+            this.pnlS2LocalConnection.Controls.Add(this.lblSA2Password);
             this.pnlS2LocalConnection.Controls.Add(this.label6);
-            this.pnlS2LocalConnection.Controls.Add(this.btnPrevS2Local);
-            this.pnlS2LocalConnection.Controls.Add(this.btnBrowseS2Local);
-            this.pnlS2LocalConnection.Controls.Add(this.btnNextS2Local);
+            this.pnlS2LocalConnection.Controls.Add(this.btnSA2Prev);
+            this.pnlS2LocalConnection.Controls.Add(this.btnSA2Browse);
+            this.pnlS2LocalConnection.Controls.Add(this.btnSA2Next);
             this.pnlS2LocalConnection.Controls.Add(this.label4);
             this.pnlS2LocalConnection.Location = new System.Drawing.Point(672, 8);
             this.pnlS2LocalConnection.Name = "pnlS2LocalConnection";
             this.pnlS2LocalConnection.Size = new System.Drawing.Size(658, 453);
             this.pnlS2LocalConnection.TabIndex = 1;
             // 
-            // btnPrevS2Local
+            // txbSA2ConfirmPassword
             // 
-            this.btnPrevS2Local.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrevS2Local.Location = new System.Drawing.Point(446, 402);
-            this.btnPrevS2Local.Name = "btnPrevS2Local";
-            this.btnPrevS2Local.Size = new System.Drawing.Size(95, 36);
-            this.btnPrevS2Local.TabIndex = 7;
-            this.btnPrevS2Local.Text = "< Previous";
-            this.btnPrevS2Local.UseVisualStyleBackColor = true;
-            this.btnPrevS2Local.Click += new System.EventHandler(this.btnPrevS2Local_Click);
+            this.txbSA2ConfirmPassword.Enabled = false;
+            this.txbSA2ConfirmPassword.Location = new System.Drawing.Point(46, 358);
+            this.txbSA2ConfirmPassword.Name = "txbSA2ConfirmPassword";
+            this.txbSA2ConfirmPassword.PasswordChar = '*';
+            this.txbSA2ConfirmPassword.Size = new System.Drawing.Size(357, 29);
+            this.txbSA2ConfirmPassword.TabIndex = 4;
             // 
-            // btnNextS2Local
+            // txbSA2Password
             // 
-            this.btnNextS2Local.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNextS2Local.Location = new System.Drawing.Point(547, 402);
-            this.btnNextS2Local.Name = "btnNextS2Local";
-            this.btnNextS2Local.Size = new System.Drawing.Size(95, 36);
-            this.btnNextS2Local.TabIndex = 8;
-            this.btnNextS2Local.Text = "Next >";
-            this.btnNextS2Local.UseVisualStyleBackColor = true;
-            this.btnNextS2Local.Click += new System.EventHandler(this.btnNextS2Local_Click);
+            this.txbSA2Password.Enabled = false;
+            this.txbSA2Password.Location = new System.Drawing.Point(46, 292);
+            this.txbSA2Password.Name = "txbSA2Password";
+            this.txbSA2Password.PasswordChar = '*';
+            this.txbSA2Password.Size = new System.Drawing.Size(357, 29);
+            this.txbSA2Password.TabIndex = 3;
+            // 
+            // chbSA2PromptPassword
+            // 
+            this.chbSA2PromptPassword.AutoSize = true;
+            this.chbSA2PromptPassword.Location = new System.Drawing.Point(23, 240);
+            this.chbSA2PromptPassword.Name = "chbSA2PromptPassword";
+            this.chbSA2PromptPassword.Size = new System.Drawing.Size(447, 25);
+            this.chbSA2PromptPassword.TabIndex = 2;
+            this.chbSA2PromptPassword.Text = "Require password to connect drives (promt after every restart)";
+            this.chbSA2PromptPassword.UseVisualStyleBackColor = true;
+            this.chbSA2PromptPassword.CheckedChanged += new System.EventHandler(this.chbSA2PromptPassword_CheckedChanged);
+            // 
+            // txbSA2ConfigLocation
+            // 
+            this.txbSA2ConfigLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbSA2ConfigLocation.Location = new System.Drawing.Point(23, 108);
+            this.txbSA2ConfigLocation.Name = "txbSA2ConfigLocation";
+            this.txbSA2ConfigLocation.ReadOnly = true;
+            this.txbSA2ConfigLocation.Size = new System.Drawing.Size(619, 29);
+            this.txbSA2ConfigLocation.TabIndex = 10;
+            // 
+            // lblSA2ConfirmPassword
+            // 
+            this.lblSA2ConfirmPassword.AutoSize = true;
+            this.lblSA2ConfirmPassword.Enabled = false;
+            this.lblSA2ConfirmPassword.Location = new System.Drawing.Point(42, 334);
+            this.lblSA2ConfirmPassword.Name = "lblSA2ConfirmPassword";
+            this.lblSA2ConfirmPassword.Size = new System.Drawing.Size(133, 21);
+            this.lblSA2ConfirmPassword.TabIndex = 9;
+            this.lblSA2ConfirmPassword.Text = "Confirm Password";
+            // 
+            // lblSA2Password
+            // 
+            this.lblSA2Password.AutoSize = true;
+            this.lblSA2Password.Enabled = false;
+            this.lblSA2Password.Location = new System.Drawing.Point(42, 268);
+            this.lblSA2Password.Name = "lblSA2Password";
+            this.lblSA2Password.Size = new System.Drawing.Size(74, 21);
+            this.lblSA2Password.TabIndex = 9;
+            this.lblSA2Password.Text = "Password";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(230, 21);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Location of the Q-Drive data-file";
+            // 
+            // btnSA2Prev
+            // 
+            this.btnSA2Prev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSA2Prev.Location = new System.Drawing.Point(446, 402);
+            this.btnSA2Prev.Name = "btnSA2Prev";
+            this.btnSA2Prev.Size = new System.Drawing.Size(95, 36);
+            this.btnSA2Prev.TabIndex = 6;
+            this.btnSA2Prev.Text = "< Previous";
+            this.btnSA2Prev.UseVisualStyleBackColor = true;
+            this.btnSA2Prev.Click += new System.EventHandler(this.btnSA2Prev_Click);
+            // 
+            // btnSA2Browse
+            // 
+            this.btnSA2Browse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSA2Browse.Location = new System.Drawing.Point(547, 143);
+            this.btnSA2Browse.Name = "btnSA2Browse";
+            this.btnSA2Browse.Size = new System.Drawing.Size(95, 36);
+            this.btnSA2Browse.TabIndex = 1;
+            this.btnSA2Browse.Text = "Browse";
+            this.btnSA2Browse.UseVisualStyleBackColor = true;
+            this.btnSA2Browse.Click += new System.EventHandler(this.btnSA2Browse_Click);
+            // 
+            // btnSA2Next
+            // 
+            this.btnSA2Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSA2Next.Location = new System.Drawing.Point(547, 402);
+            this.btnSA2Next.Name = "btnSA2Next";
+            this.btnSA2Next.Size = new System.Drawing.Size(95, 36);
+            this.btnSA2Next.TabIndex = 5;
+            this.btnSA2Next.Text = "Next >";
+            this.btnSA2Next.UseVisualStyleBackColor = true;
+            this.btnSA2Next.Click += new System.EventHandler(this.btnSA2Next_Click);
             // 
             // label4
             // 
@@ -231,47 +320,79 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Local connection";
             // 
-            // pnlS2OnlineConnection
+            // pnlS2OnlineConnectionA
             // 
-            this.pnlS2OnlineConnection.Controls.Add(this.txbS2OnlineDatabase);
-            this.pnlS2OnlineConnection.Controls.Add(this.txbS2OnlinePassword);
-            this.pnlS2OnlineConnection.Controls.Add(this.txbS2OnlineUsername);
-            this.pnlS2OnlineConnection.Controls.Add(this.txbS2OnlineHostname);
-            this.pnlS2OnlineConnection.Controls.Add(this.btnPrevS2Online);
-            this.pnlS2OnlineConnection.Controls.Add(this.btnNextS2Online);
-            this.pnlS2OnlineConnection.Controls.Add(this.label5);
-            this.pnlS2OnlineConnection.Controls.Add(this.btnTestConnectionS2Online);
-            this.pnlS2OnlineConnection.Controls.Add(this.label13);
-            this.pnlS2OnlineConnection.Controls.Add(this.label12);
-            this.pnlS2OnlineConnection.Controls.Add(this.label11);
-            this.pnlS2OnlineConnection.Controls.Add(this.label10);
-            this.pnlS2OnlineConnection.Controls.Add(this.label9);
-            this.pnlS2OnlineConnection.Location = new System.Drawing.Point(672, 467);
-            this.pnlS2OnlineConnection.Name = "pnlS2OnlineConnection";
-            this.pnlS2OnlineConnection.Size = new System.Drawing.Size(658, 453);
-            this.pnlS2OnlineConnection.TabIndex = 1;
+            this.pnlS2OnlineConnectionA.Controls.Add(this.txbSB2DBName);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.txbSB2DBPassword);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.txbSB2DBUsername);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.txbSB2DBHostname);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.btnSB2APrev);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.btnSB2ANext);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.label5);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.btnSB2TestConnection);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.label13);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.label12);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.label11);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.label10);
+            this.pnlS2OnlineConnectionA.Controls.Add(this.label9);
+            this.pnlS2OnlineConnectionA.Location = new System.Drawing.Point(672, 467);
+            this.pnlS2OnlineConnectionA.Name = "pnlS2OnlineConnectionA";
+            this.pnlS2OnlineConnectionA.Size = new System.Drawing.Size(658, 453);
+            this.pnlS2OnlineConnectionA.TabIndex = 1;
             // 
-            // btnPrevS2Online
+            // txbSB2DBName
             // 
-            this.btnPrevS2Online.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrevS2Online.Location = new System.Drawing.Point(446, 402);
-            this.btnPrevS2Online.Name = "btnPrevS2Online";
-            this.btnPrevS2Online.Size = new System.Drawing.Size(95, 36);
-            this.btnPrevS2Online.TabIndex = 7;
-            this.btnPrevS2Online.Text = "< Previous";
-            this.btnPrevS2Online.UseVisualStyleBackColor = true;
-            this.btnPrevS2Online.Click += new System.EventHandler(this.btnPrevS2Online_Click);
+            this.txbSB2DBName.Location = new System.Drawing.Point(168, 184);
+            this.txbSB2DBName.Name = "txbSB2DBName";
+            this.txbSB2DBName.Size = new System.Drawing.Size(361, 29);
+            this.txbSB2DBName.TabIndex = 4;
+            this.txbSB2DBName.Text = "qd-test";
             // 
-            // btnNextS2Online
+            // txbSB2DBPassword
             // 
-            this.btnNextS2Online.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNextS2Online.Location = new System.Drawing.Point(547, 402);
-            this.btnNextS2Online.Name = "btnNextS2Online";
-            this.btnNextS2Online.Size = new System.Drawing.Size(95, 36);
-            this.btnNextS2Online.TabIndex = 8;
-            this.btnNextS2Online.Text = "Next >";
-            this.btnNextS2Online.UseVisualStyleBackColor = true;
-            this.btnNextS2Online.Click += new System.EventHandler(this.btnNextS2Online_Click);
+            this.txbSB2DBPassword.Location = new System.Drawing.Point(168, 149);
+            this.txbSB2DBPassword.Name = "txbSB2DBPassword";
+            this.txbSB2DBPassword.PasswordChar = '*';
+            this.txbSB2DBPassword.Size = new System.Drawing.Size(361, 29);
+            this.txbSB2DBPassword.TabIndex = 3;
+            // 
+            // txbSB2DBUsername
+            // 
+            this.txbSB2DBUsername.Location = new System.Drawing.Point(168, 114);
+            this.txbSB2DBUsername.Name = "txbSB2DBUsername";
+            this.txbSB2DBUsername.Size = new System.Drawing.Size(361, 29);
+            this.txbSB2DBUsername.TabIndex = 2;
+            this.txbSB2DBUsername.Text = "root";
+            // 
+            // txbSB2DBHostname
+            // 
+            this.txbSB2DBHostname.Location = new System.Drawing.Point(168, 79);
+            this.txbSB2DBHostname.Name = "txbSB2DBHostname";
+            this.txbSB2DBHostname.Size = new System.Drawing.Size(361, 29);
+            this.txbSB2DBHostname.TabIndex = 1;
+            this.txbSB2DBHostname.Text = "localhost";
+            // 
+            // btnSB2APrev
+            // 
+            this.btnSB2APrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSB2APrev.Location = new System.Drawing.Point(446, 402);
+            this.btnSB2APrev.Name = "btnSB2APrev";
+            this.btnSB2APrev.Size = new System.Drawing.Size(95, 36);
+            this.btnSB2APrev.TabIndex = 7;
+            this.btnSB2APrev.Text = "< Previous";
+            this.btnSB2APrev.UseVisualStyleBackColor = true;
+            this.btnSB2APrev.Click += new System.EventHandler(this.btnSB2APrev_Click);
+            // 
+            // btnSB2ANext
+            // 
+            this.btnSB2ANext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSB2ANext.Location = new System.Drawing.Point(547, 402);
+            this.btnSB2ANext.Name = "btnSB2ANext";
+            this.btnSB2ANext.Size = new System.Drawing.Size(95, 36);
+            this.btnSB2ANext.TabIndex = 6;
+            this.btnSB2ANext.Text = "Next >";
+            this.btnSB2ANext.UseVisualStyleBackColor = true;
+            this.btnSB2ANext.Click += new System.EventHandler(this.btnSB2ANext_Click);
             // 
             // label5
             // 
@@ -284,132 +405,15 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Online connection";
             // 
-            // label6
+            // btnSB2TestConnection
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 84);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(230, 21);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Location of the Q-Drive data-file";
-            // 
-            // txbS2ConfigLocation
-            // 
-            this.txbS2ConfigLocation.Location = new System.Drawing.Point(23, 108);
-            this.txbS2ConfigLocation.Name = "txbS2ConfigLocation";
-            this.txbS2ConfigLocation.Size = new System.Drawing.Size(619, 29);
-            this.txbS2ConfigLocation.TabIndex = 10;
-            // 
-            // btnBrowseS2Local
-            // 
-            this.btnBrowseS2Local.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowseS2Local.Location = new System.Drawing.Point(547, 143);
-            this.btnBrowseS2Local.Name = "btnBrowseS2Local";
-            this.btnBrowseS2Local.Size = new System.Drawing.Size(95, 36);
-            this.btnBrowseS2Local.TabIndex = 8;
-            this.btnBrowseS2Local.Text = "Browse";
-            this.btnBrowseS2Local.UseVisualStyleBackColor = true;
-            this.btnBrowseS2Local.Click += new System.EventHandler(this.btnBrowseS2Local_Click);
-            // 
-            // chbS2LocalPassword
-            // 
-            this.chbS2LocalPassword.AutoSize = true;
-            this.chbS2LocalPassword.Location = new System.Drawing.Point(23, 240);
-            this.chbS2LocalPassword.Name = "chbS2LocalPassword";
-            this.chbS2LocalPassword.Size = new System.Drawing.Size(447, 25);
-            this.chbS2LocalPassword.TabIndex = 11;
-            this.chbS2LocalPassword.Text = "Require password to connect drives (promt after every restart)";
-            this.chbS2LocalPassword.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(46, 292);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(357, 29);
-            this.textBox1.TabIndex = 10;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(42, 268);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 21);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Password";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(42, 334);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(133, 21);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Confirm Password";
-            // 
-            // txbS2OnlineHostname
-            // 
-            this.txbS2OnlineHostname.Location = new System.Drawing.Point(168, 79);
-            this.txbS2OnlineHostname.Name = "txbS2OnlineHostname";
-            this.txbS2OnlineHostname.Size = new System.Drawing.Size(361, 29);
-            this.txbS2OnlineHostname.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(42, 55);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(132, 21);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "MySQL-Database:";
-            // 
-            // txbS2OnlineUsername
-            // 
-            this.txbS2OnlineUsername.Location = new System.Drawing.Point(168, 114);
-            this.txbS2OnlineUsername.Name = "txbS2OnlineUsername";
-            this.txbS2OnlineUsername.Size = new System.Drawing.Size(361, 29);
-            this.txbS2OnlineUsername.TabIndex = 10;
-            // 
-            // txbS2OnlinePassword
-            // 
-            this.txbS2OnlinePassword.Location = new System.Drawing.Point(168, 149);
-            this.txbS2OnlinePassword.Name = "txbS2OnlinePassword";
-            this.txbS2OnlinePassword.PasswordChar = '*';
-            this.txbS2OnlinePassword.Size = new System.Drawing.Size(361, 29);
-            this.txbS2OnlinePassword.TabIndex = 10;
-            // 
-            // txbS2OnlineDatabase
-            // 
-            this.txbS2OnlineDatabase.Location = new System.Drawing.Point(168, 184);
-            this.txbS2OnlineDatabase.Name = "txbS2OnlineDatabase";
-            this.txbS2OnlineDatabase.Size = new System.Drawing.Size(361, 29);
-            this.txbS2OnlineDatabase.TabIndex = 10;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(82, 82);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 21);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Hostname";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(83, 117);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 21);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Username";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(88, 152);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(74, 21);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "Password";
+            this.btnSB2TestConnection.Location = new System.Drawing.Point(391, 219);
+            this.btnSB2TestConnection.Name = "btnSB2TestConnection";
+            this.btnSB2TestConnection.Size = new System.Drawing.Size(138, 36);
+            this.btnSB2TestConnection.TabIndex = 5;
+            this.btnSB2TestConnection.Text = "Test Connection";
+            this.btnSB2TestConnection.UseVisualStyleBackColor = true;
+            this.btnSB2TestConnection.Click += new System.EventHandler(this.btnSB2TestConnection_Click);
             // 
             // label13
             // 
@@ -420,58 +424,131 @@
             this.label13.TabIndex = 9;
             this.label13.Text = "Database";
             // 
-            // btnTestConnectionS2Online
+            // label12
             // 
-            this.btnTestConnectionS2Online.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestConnectionS2Online.Location = new System.Drawing.Point(391, 219);
-            this.btnTestConnectionS2Online.Name = "btnTestConnectionS2Online";
-            this.btnTestConnectionS2Online.Size = new System.Drawing.Size(138, 36);
-            this.btnTestConnectionS2Online.TabIndex = 8;
-            this.btnTestConnectionS2Online.Text = "Test Connection";
-            this.btnTestConnectionS2Online.UseVisualStyleBackColor = true;
-            this.btnTestConnectionS2Online.Click += new System.EventHandler(this.btnBrowseS2Local_Click);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(88, 152);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(74, 21);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Password";
             // 
-            // panel1
+            // label11
             // 
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.label17);
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Location = new System.Drawing.Point(1336, 467);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(658, 453);
-            this.panel1.TabIndex = 1;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(83, 117);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(79, 21);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Username";
             // 
-            // button1
+            // label10
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(446, 402);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 36);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "< Previous";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnPrevS2Online_Click);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(82, 82);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 21);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Hostname";
             // 
-            // button2
+            // label9
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(547, 402);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 36);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Next >";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnNextS2Online_Click);
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(42, 55);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(132, 21);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "MySQL-Database:";
+            // 
+            // pnlS2OnlineConnectionB
+            // 
+            this.pnlS2OnlineConnectionB.Controls.Add(this.txbSB2NewDBConfirmPassword);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.btnSB2BPrev);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.label18);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.chbSB2PromptPassword);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.txbSB2ExistingDBPassword);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.txbSB2NewDBPassword);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.btnSB2BNext);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.label14);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.rbnSB2NewDB);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.lblSB2BConfirmMasterPassword);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.lblSB2AExistingMasterPW);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.rbnSB2ExistingDB);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.lblSB2BMasterPassword);
+            this.pnlS2OnlineConnectionB.Location = new System.Drawing.Point(1336, 467);
+            this.pnlS2OnlineConnectionB.Name = "pnlS2OnlineConnectionB";
+            this.pnlS2OnlineConnectionB.Size = new System.Drawing.Size(658, 453);
+            this.pnlS2OnlineConnectionB.TabIndex = 1;
+            // 
+            // txbSB2NewDBConfirmPassword
+            // 
+            this.txbSB2NewDBConfirmPassword.Enabled = false;
+            this.txbSB2NewDBConfirmPassword.Location = new System.Drawing.Point(43, 307);
+            this.txbSB2NewDBConfirmPassword.Name = "txbSB2NewDBConfirmPassword";
+            this.txbSB2NewDBConfirmPassword.PasswordChar = '*';
+            this.txbSB2NewDBConfirmPassword.Size = new System.Drawing.Size(357, 29);
+            this.txbSB2NewDBConfirmPassword.TabIndex = 5;
+            // 
+            // btnSB2BPrev
+            // 
+            this.btnSB2BPrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSB2BPrev.Location = new System.Drawing.Point(446, 402);
+            this.btnSB2BPrev.Name = "btnSB2BPrev";
+            this.btnSB2BPrev.Size = new System.Drawing.Size(95, 36);
+            this.btnSB2BPrev.TabIndex = 8;
+            this.btnSB2BPrev.Text = "< Previous";
+            this.btnSB2BPrev.UseVisualStyleBackColor = true;
+            this.btnSB2BPrev.Click += new System.EventHandler(this.btnSB2BPrev_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.DimGray;
+            this.label18.Location = new System.Drawing.Point(406, 34);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(549, 126);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Dev-Note:\r\nif existing: check if master password is correct with verification-key" +
+    " stored in DB\r\n\r\nif new and existing: prompt for current master password, then o" +
+    "verride\r\n\r\nif new, make it new.";
+            // 
+            // chbSB2PromptPassword
+            // 
+            this.chbSB2PromptPassword.AutoSize = true;
+            this.chbSB2PromptPassword.Location = new System.Drawing.Point(25, 374);
+            this.chbSB2PromptPassword.Name = "chbSB2PromptPassword";
+            this.chbSB2PromptPassword.Size = new System.Drawing.Size(270, 25);
+            this.chbSB2PromptPassword.TabIndex = 6;
+            this.chbSB2PromptPassword.Text = "Prompt password after every restart";
+            this.chbSB2PromptPassword.UseVisualStyleBackColor = true;
+            // 
+            // txbSB2ExistingDBPassword
+            // 
+            this.txbSB2ExistingDBPassword.Location = new System.Drawing.Point(43, 131);
+            this.txbSB2ExistingDBPassword.Name = "txbSB2ExistingDBPassword";
+            this.txbSB2ExistingDBPassword.PasswordChar = '*';
+            this.txbSB2ExistingDBPassword.Size = new System.Drawing.Size(357, 29);
+            this.txbSB2ExistingDBPassword.TabIndex = 3;
+            // 
+            // txbSB2NewDBPassword
+            // 
+            this.txbSB2NewDBPassword.Enabled = false;
+            this.txbSB2NewDBPassword.Location = new System.Drawing.Point(43, 241);
+            this.txbSB2NewDBPassword.Name = "txbSB2NewDBPassword";
+            this.txbSB2NewDBPassword.PasswordChar = '*';
+            this.txbSB2NewDBPassword.Size = new System.Drawing.Size(357, 29);
+            this.txbSB2NewDBPassword.TabIndex = 4;
+            // 
+            // btnSB2BNext
+            // 
+            this.btnSB2BNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSB2BNext.Location = new System.Drawing.Point(547, 402);
+            this.btnSB2BNext.Name = "btnSB2BNext";
+            this.btnSB2BNext.Size = new System.Drawing.Size(95, 36);
+            this.btnSB2BNext.TabIndex = 7;
+            this.btnSB2BNext.Text = "Next >";
+            this.btnSB2BNext.UseVisualStyleBackColor = true;
+            this.btnSB2BNext.Click += new System.EventHandler(this.btnSB2BNext_Click);
             // 
             // label14
             // 
@@ -484,141 +561,112 @@
             this.label14.TabIndex = 4;
             this.label14.Text = "Online connection";
             // 
-            // radioButton1
+            // rbnSB2NewDB
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(23, 78);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(297, 25);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Configure as existing Q-Drive Database";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbnSB2NewDB.AutoSize = true;
+            this.rbnSB2NewDB.Location = new System.Drawing.Point(23, 188);
+            this.rbnSB2NewDB.Margin = new System.Windows.Forms.Padding(4);
+            this.rbnSB2NewDB.Name = "rbnSB2NewDB";
+            this.rbnSB2NewDB.Size = new System.Drawing.Size(272, 25);
+            this.rbnSB2NewDB.TabIndex = 2;
+            this.rbnSB2NewDB.Text = "Configure as new Q-Drive Database";
+            this.rbnSB2NewDB.UseVisualStyleBackColor = true;
+            this.rbnSB2NewDB.CheckedChanged += new System.EventHandler(this.rbnSB2NewDB_CheckedChanged);
             // 
-            // radioButton2
+            // lblSB2BConfirmMasterPassword
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(23, 188);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(272, 25);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Configure as new Q-Drive Database";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.lblSB2BConfirmMasterPassword.AutoSize = true;
+            this.lblSB2BConfirmMasterPassword.Enabled = false;
+            this.lblSB2BConfirmMasterPassword.Location = new System.Drawing.Point(39, 283);
+            this.lblSB2BConfirmMasterPassword.Name = "lblSB2BConfirmMasterPassword";
+            this.lblSB2BConfirmMasterPassword.Size = new System.Drawing.Size(185, 21);
+            this.lblSB2BConfirmMasterPassword.TabIndex = 9;
+            this.lblSB2BConfirmMasterPassword.Text = "Confirm Master-Password";
             // 
-            // textBox2
+            // lblSB2AExistingMasterPW
             // 
-            this.textBox2.Location = new System.Drawing.Point(46, 358);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(357, 29);
-            this.textBox2.TabIndex = 10;
+            this.lblSB2AExistingMasterPW.AutoSize = true;
+            this.lblSB2AExistingMasterPW.Location = new System.Drawing.Point(39, 107);
+            this.lblSB2AExistingMasterPW.Name = "lblSB2AExistingMasterPW";
+            this.lblSB2AExistingMasterPW.Size = new System.Drawing.Size(126, 21);
+            this.lblSB2AExistingMasterPW.TabIndex = 9;
+            this.lblSB2AExistingMasterPW.Text = "Master-Password";
             // 
-            // label15
+            // rbnSB2ExistingDB
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(39, 217);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(126, 21);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Master-Password";
+            this.rbnSB2ExistingDB.AutoSize = true;
+            this.rbnSB2ExistingDB.Checked = true;
+            this.rbnSB2ExistingDB.Location = new System.Drawing.Point(23, 78);
+            this.rbnSB2ExistingDB.Margin = new System.Windows.Forms.Padding(4);
+            this.rbnSB2ExistingDB.Name = "rbnSB2ExistingDB";
+            this.rbnSB2ExistingDB.Size = new System.Drawing.Size(297, 25);
+            this.rbnSB2ExistingDB.TabIndex = 1;
+            this.rbnSB2ExistingDB.TabStop = true;
+            this.rbnSB2ExistingDB.Text = "Configure as existing Q-Drive Database";
+            this.rbnSB2ExistingDB.UseVisualStyleBackColor = true;
+            this.rbnSB2ExistingDB.CheckedChanged += new System.EventHandler(this.rbnSB2ExistingDB_CheckedChanged);
             // 
-            // label16
+            // lblSB2BMasterPassword
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(39, 283);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(185, 21);
-            this.label16.TabIndex = 9;
-            this.label16.Text = "Confirm Master-Password";
+            this.lblSB2BMasterPassword.AutoSize = true;
+            this.lblSB2BMasterPassword.Enabled = false;
+            this.lblSB2BMasterPassword.Location = new System.Drawing.Point(39, 217);
+            this.lblSB2BMasterPassword.Name = "lblSB2BMasterPassword";
+            this.lblSB2BMasterPassword.Size = new System.Drawing.Size(126, 21);
+            this.lblSB2BMasterPassword.TabIndex = 9;
+            this.lblSB2BMasterPassword.Text = "Master-Password";
             // 
-            // textBox3
+            // pnlS3Finish
             // 
-            this.textBox3.Location = new System.Drawing.Point(43, 241);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(357, 29);
-            this.textBox3.TabIndex = 10;
+            this.pnlS3Finish.Controls.Add(this.label23);
+            this.pnlS3Finish.Controls.Add(this.label20);
+            this.pnlS3Finish.Controls.Add(this.chbS3LaunchManager);
+            this.pnlS3Finish.Controls.Add(this.btnS3Finish);
+            this.pnlS3Finish.Controls.Add(this.label22);
+            this.pnlS3Finish.Location = new System.Drawing.Point(1336, 8);
+            this.pnlS3Finish.Name = "pnlS3Finish";
+            this.pnlS3Finish.Size = new System.Drawing.Size(658, 453);
+            this.pnlS3Finish.TabIndex = 1;
             // 
-            // textBox4
+            // label23
             // 
-            this.textBox4.Location = new System.Drawing.Point(43, 307);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(357, 29);
-            this.textBox4.TabIndex = 10;
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.DimGray;
+            this.label23.Location = new System.Drawing.Point(19, 84);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(357, 21);
+            this.label23.TabIndex = 2;
+            this.label23.Text = "The setup-wizard has been completed successfully.";
             // 
-            // label17
+            // label20
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(39, 107);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(126, 21);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Master-Password";
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.DimGray;
+            this.label20.Location = new System.Drawing.Point(19, 65);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(0, 21);
+            this.label20.TabIndex = 2;
             // 
-            // textBox5
+            // chbS3LaunchManager
             // 
-            this.textBox5.Location = new System.Drawing.Point(43, 131);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(357, 29);
-            this.textBox5.TabIndex = 10;
+            this.chbS3LaunchManager.AutoSize = true;
+            this.chbS3LaunchManager.Location = new System.Drawing.Point(23, 172);
+            this.chbS3LaunchManager.Name = "chbS3LaunchManager";
+            this.chbS3LaunchManager.Size = new System.Drawing.Size(368, 25);
+            this.chbS3LaunchManager.TabIndex = 1;
+            this.chbS3LaunchManager.Text = "Launch Q-Drive Manager after setup is completed";
+            this.chbS3LaunchManager.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // btnS3Finish
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(25, 374);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(270, 25);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Prompt password after every restart";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.DimGray;
-            this.label18.Location = new System.Drawing.Point(419, 21);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(549, 126);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "Dev-Note:\r\nif existing: check if master password is correct with verification-key" +
-    " stored in DB\r\n\r\nif new and existing: prompt for current master password, then o" +
-    "verride\r\n\r\nif new, make it new.";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.label23);
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.checkBox2);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.label22);
-            this.panel2.Location = new System.Drawing.Point(1336, 8);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(658, 453);
-            this.panel2.TabIndex = 1;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(446, 402);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 36);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "< Previous";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.btnPrevS2Local_Click);
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(547, 402);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(95, 36);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Finish";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.btnNextS2Local_Click);
+            this.btnS3Finish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnS3Finish.Location = new System.Drawing.Point(547, 402);
+            this.btnS3Finish.Name = "btnS3Finish";
+            this.btnS3Finish.Size = new System.Drawing.Size(95, 36);
+            this.btnS3Finish.TabIndex = 2;
+            this.btnS3Finish.Text = "Finish";
+            this.btnS3Finish.UseVisualStyleBackColor = true;
+            this.btnS3Finish.Click += new System.EventHandler(this.btnS3Finish_Click);
             // 
             // label22
             // 
@@ -631,28 +679,28 @@
             this.label22.TabIndex = 4;
             this.label22.Text = "Setup complete!";
             // 
-            // panel3
+            // pnlS0Welcome
             // 
-            this.panel3.Controls.Add(this.button4);
-            this.panel3.Controls.Add(this.label19);
-            this.panel3.Controls.Add(this.label21);
-            this.panel3.Location = new System.Drawing.Point(7, 8);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
-            this.panel3.Size = new System.Drawing.Size(658, 453);
-            this.panel3.TabIndex = 0;
+            this.pnlS0Welcome.Controls.Add(this.btnS0Next);
+            this.pnlS0Welcome.Controls.Add(this.label19);
+            this.pnlS0Welcome.Controls.Add(this.label21);
+            this.pnlS0Welcome.Location = new System.Drawing.Point(7, 8);
+            this.pnlS0Welcome.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlS0Welcome.Name = "pnlS0Welcome";
+            this.pnlS0Welcome.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.pnlS0Welcome.Size = new System.Drawing.Size(658, 453);
+            this.pnlS0Welcome.TabIndex = 0;
             // 
-            // button4
+            // btnS0Next
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(547, 402);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(95, 36);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Next >";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.btnNextS1_Click);
+            this.btnS0Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnS0Next.Location = new System.Drawing.Point(547, 402);
+            this.btnS0Next.Name = "btnS0Next";
+            this.btnS0Next.Size = new System.Drawing.Size(95, 36);
+            this.btnS0Next.TabIndex = 1;
+            this.btnS0Next.Text = "Next >";
+            this.btnS0Next.UseVisualStyleBackColor = true;
+            this.btnS0Next.Click += new System.EventHandler(this.btnS0Next_Click);
             // 
             // label19
             // 
@@ -676,60 +724,22 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Welcome to Q-Drive";
             // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(446, 402);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(95, 36);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "< Previous";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.btnPrevS2Local_Click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.DimGray;
-            this.label20.Location = new System.Drawing.Point(19, 65);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(0, 21);
-            this.label20.TabIndex = 2;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.ForeColor = System.Drawing.Color.DimGray;
-            this.label23.Location = new System.Drawing.Point(19, 84);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(357, 21);
-            this.label23.TabIndex = 2;
-            this.label23.Text = "The setup-wizard has been completed successfully.";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(23, 172);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(368, 25);
-            this.checkBox2.TabIndex = 11;
-            this.checkBox2.Text = "Launch Q-Drive Manager after setup is completed";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
             // QDriveSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1998, 927);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlS2OnlineConnection);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlS2OnlineConnectionB);
+            this.Controls.Add(this.pnlS2OnlineConnectionA);
+            this.Controls.Add(this.pnlS3Finish);
             this.Controls.Add(this.pnlS2LocalConnection);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pnlS0Welcome);
             this.Controls.Add(this.pnlS1ConnectionType);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "QDriveSetup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Style.InactiveShadowOpacity = ((byte)(20));
             this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
@@ -742,14 +752,14 @@
             this.pnlS1ConnectionType.PerformLayout();
             this.pnlS2LocalConnection.ResumeLayout(false);
             this.pnlS2LocalConnection.PerformLayout();
-            this.pnlS2OnlineConnection.ResumeLayout(false);
-            this.pnlS2OnlineConnection.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlS2OnlineConnectionA.ResumeLayout(false);
+            this.pnlS2OnlineConnectionA.PerformLayout();
+            this.pnlS2OnlineConnectionB.ResumeLayout(false);
+            this.pnlS2OnlineConnectionB.PerformLayout();
+            this.pnlS3Finish.ResumeLayout(false);
+            this.pnlS3Finish.PerformLayout();
+            this.pnlS0Welcome.ResumeLayout(false);
+            this.pnlS0Welcome.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -759,61 +769,60 @@
         private System.Windows.Forms.Panel pnlS1ConnectionType;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton rbnConnectionTypeOnline;
-        private System.Windows.Forms.RadioButton rbnConnectionTypeLocal;
+        private System.Windows.Forms.RadioButton rbnS1Online;
+        private System.Windows.Forms.RadioButton rbnS1Local;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnNextS1;
+        private System.Windows.Forms.Button btnS1Next;
         private System.Windows.Forms.Panel pnlS2LocalConnection;
-        private System.Windows.Forms.Button btnPrevS2Local;
-        private System.Windows.Forms.Button btnNextS2Local;
+        private System.Windows.Forms.Button btnSA2Prev;
+        private System.Windows.Forms.Button btnSA2Next;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel pnlS2OnlineConnection;
-        private System.Windows.Forms.Button btnPrevS2Online;
-        private System.Windows.Forms.Button btnNextS2Online;
+        private System.Windows.Forms.Panel pnlS2OnlineConnectionA;
+        private System.Windows.Forms.Button btnSB2APrev;
+        private System.Windows.Forms.Button btnSB2ANext;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txbS2ConfigLocation;
+        private System.Windows.Forms.TextBox txbSA2ConfigLocation;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnBrowseS2Local;
-        private System.Windows.Forms.FolderBrowserDialog fbdSelectLocalConfigFile;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox chbS2LocalPassword;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txbS2OnlineDatabase;
-        private System.Windows.Forms.TextBox txbS2OnlinePassword;
-        private System.Windows.Forms.TextBox txbS2OnlineUsername;
-        private System.Windows.Forms.TextBox txbS2OnlineHostname;
-        private System.Windows.Forms.Button btnTestConnectionS2Online;
+        private System.Windows.Forms.Button btnSA2Browse;
+        private System.Windows.Forms.FolderBrowserDialog fbdS2ADataFileLocation;
+        private System.Windows.Forms.TextBox txbSA2Password;
+        private System.Windows.Forms.CheckBox chbSA2PromptPassword;
+        private System.Windows.Forms.Label lblSA2ConfirmPassword;
+        private System.Windows.Forms.Label lblSA2Password;
+        private System.Windows.Forms.TextBox txbSB2DBName;
+        private System.Windows.Forms.TextBox txbSB2DBPassword;
+        private System.Windows.Forms.TextBox txbSB2DBUsername;
+        private System.Windows.Forms.TextBox txbSB2DBHostname;
+        private System.Windows.Forms.Button btnSB2TestConnection;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnS1Prev;
+        private System.Windows.Forms.TextBox txbSA2ConfirmPassword;
+        private System.Windows.Forms.Panel pnlS2OnlineConnectionB;
+        private System.Windows.Forms.TextBox txbSB2NewDBConfirmPassword;
+        private System.Windows.Forms.Button btnSB2BPrev;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox chbSB2PromptPassword;
+        private System.Windows.Forms.TextBox txbSB2ExistingDBPassword;
+        private System.Windows.Forms.TextBox txbSB2NewDBPassword;
+        private System.Windows.Forms.Button btnSB2BNext;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.RadioButton rbnSB2NewDB;
+        private System.Windows.Forms.Label lblSB2BConfirmMasterPassword;
+        private System.Windows.Forms.Label lblSB2AExistingMasterPW;
+        private System.Windows.Forms.RadioButton rbnSB2ExistingDB;
+        private System.Windows.Forms.Label lblSB2BMasterPassword;
+        private System.Windows.Forms.Panel pnlS3Finish;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.CheckBox chbS3LaunchManager;
+        private System.Windows.Forms.Button btnS3Finish;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel pnlS0Welcome;
+        private System.Windows.Forms.Button btnS0Next;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
     }

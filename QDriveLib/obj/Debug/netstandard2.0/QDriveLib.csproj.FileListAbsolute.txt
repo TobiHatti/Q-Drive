@@ -1,0 +1,9 @@
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\netstandard2.0\QDriveLib.deps.json
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\netstandard2.0\QDriveLib.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Debug\netstandard2.0\QDriveLib.csprojAssemblyReference.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Debug\netstandard2.0\QDriveLib.AssemblyInfoInputs.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Debug\netstandard2.0\QDriveLib.AssemblyInfo.cs
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\netstandard2.0\QDriveLib.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Debug\netstandard2.0\QDriveLib.csproj.CoreCompileInputs.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Debug\netstandard2.0\QDriveLib.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Debug\netstandard2.0\QDriveLib.pdb
