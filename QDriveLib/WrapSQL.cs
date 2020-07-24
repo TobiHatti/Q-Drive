@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace WrapSQL
+namespace QDriveLib
 {
     public abstract class WrapSQL : IDisposable
     {

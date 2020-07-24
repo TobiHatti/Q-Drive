@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Text;
 
-namespace WrapSQL
+namespace QDriveLib
 {
     public class WrapSQLite : WrapSQL
     {

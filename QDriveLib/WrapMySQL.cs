@@ -2,7 +2,7 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace WrapSQL
+namespace QDriveLib
 {
     public class WrapMySQL : WrapSQL
     {

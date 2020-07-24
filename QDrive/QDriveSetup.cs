@@ -10,7 +10,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using WrapSQL;
 
 namespace QDrive
 {
@@ -237,7 +236,7 @@ namespace QDrive
         {
             if(rbnSB2ExistingDB.Checked)
             {
-                if(!VerifyMasterPassword())
+                if(!VerifyMasterPassword(txbSB2ExistingDBPassword.Text))
                 {
                     MessageBox.Show("Master-Password is not valid. Please enter the corrent Master-Password, which has been set when the database was first initialised.", "Invalid Master-Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -245,7 +244,6 @@ namespace QDrive
                 else
                 {
                     onlineMasterPassword = txbSB2ExistingDBPassword.Text;
-                    onlineConfigureAsNewDB = false;
                 }
             }
             else
@@ -281,7 +279,11 @@ namespace QDrive
                     }
                     else return;
                 }
+
+                
             }
+
+            onlineConfigureAsNewDB = rbnSB2NewDB.Checked;
 
             SaveOnlineConfiguration();
 
@@ -348,23 +350,42 @@ namespace QDrive
             return isConfigured;
         }
 
-        private bool VerifyMasterPassword()
+        private bool VerifyMasterPassword(string pPassword)
         {
-            // TODO
-            return false;
+            bool masterPasswordValid = false;
+
+            using (WrapMySQL sql = new WrapMySQL(onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
+            {
+                string cipher = sql.ExecuteScalarACon<string>("SELECT QDValue FROM qd_info WHERE QDKey = 'VerificationKey'");
+
+                try
+                {
+                    string decrypt = Cipher.Decrypt(cipher, pPassword);
+                    if (decrypt == QDInfo.VerifyKey) masterPasswordValid = true;
+                }
+                catch { }
+            }
+
+            return masterPasswordValid;
         }
 
 
         private void SaveLocalConfiguration()
         {
-
+            CreateOfflineLocalDB();
         }
 
         private void SaveOnlineConfiguration()
         {
+            CreateOnlineDB();
+            CreateOnlineLocalDB(); 
+        }
+
+        private void CreateOnlineDB()
+        {
             using (WrapMySQL sql = new WrapMySQL(onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
             {
-                if(onlineConfigureAsNewDB)
+                if (onlineConfigureAsNewDB)
                 {
                     sql.Open();
                     sql.TransactionBegin();
@@ -372,11 +393,20 @@ namespace QDrive
                     {
                         // Delete old tables
                         sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_info`");
-                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_data`");
+                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_drives`");
+                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_users`");
+                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_assigns`");
 
                         // Create new tables
                         sql.ExecuteNonQuery("CREATE TABLE `qd_info` ( `QDKey` VARCHAR(255) NOT NULL , `QDValue` VARCHAR(255) NOT NULL , PRIMARY KEY (`QDKey`))");
+                        sql.ExecuteNonQuery("CREATE TABLE `qd_drives` ( `ID` VARCHAR(50) NOT NULL , `DefaultName` VARCHAR(50) NOT NULL , `DefaultDriveLetter` VARCHAR(1) NOT NULL , `LocalPath` VARCHAR(255) NOT NULL , `RemotePath` VARCHAR(255) NOT NULL , `IsPublic` BOOLEAN NOT NULL , `IsDeployable` BOOLEAN NOT NULL , PRIMARY KEY (`ID`))");
+                        sql.ExecuteNonQuery("CREATE TABLE `qd_users` ( `ID` VARCHAR(50) NOT NULL , `Name` VARCHAR(100) NOT NULL , PRIMARY KEY (`ID`))");
+                        sql.ExecuteNonQuery("CREATE TABLE `qd_assigns` ( `ID` VARCHAR(50) NOT NULL , `UserID` VARCHAR(50) NOT NULL , `DriveID` VARCHAR(50) NOT NULL , `CustomDriveName` VARCHAR(50) NOT NULL , `CustomDriveLetter` VARCHAR(1) NOT NULL , PRIMARY KEY (`ID`))");
 
+                        // Create pre-defined settings
+                        sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanAddPrivateDrive', '{false}')");
+                        sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanAddPublicDrive', '{true}')");
+                        sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('VerificationKey', '{Cipher.Encrypt(QDInfo.VerifyKey, onlineMasterPassword)}')");
 
                         sql.TransactionCommit();
                     }
@@ -389,6 +419,34 @@ namespace QDrive
             }
         }
 
+        private void CreateOnlineLocalDB()
+        {
+            using (WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile))
+            {
+                sql.Open();
+                sql.TransactionBegin();
+                try
+                {
+                    // Delete old tables
+                    sql.ExecuteNonQuery("DROP TABLE IF EXISTS qd_info");
+
+                    // Create new tables
+                    sql.ExecuteNonQuery("CREATE TABLE 'qd_info' ( 'QDKey' TEXT, 'QDValue' TEXT, PRIMARY KEY('QDKey'));");
+
+                    sql.TransactionCommit();
+                }
+                catch
+                {
+                    sql.TransactionRollback();
+                }
+                sql.Close();
+            }
+        }
+
+        private void CreateOfflineLocalDB()
+        {
+            
+        }
 
         #endregion
     }

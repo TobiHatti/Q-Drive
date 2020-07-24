@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>QDriveLib</RootNamespace>
+    <AssemblyName>QDriveLib</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
