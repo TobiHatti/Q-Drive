@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,21 +16,22 @@ namespace QDrive
 {
     public partial class QDriveSetup : SfForm
     {
-        private bool localConnection;
+        private bool localConnection = false;
 
-        private string localConfigFilePath;
-        private bool localPromptPassword;
-        private string localPassword;
+        private bool alwaysPromptPassword = false;
+        private string localPassword = string.Empty;
 
-        private string onlineDBHost;
-        private string onlineDBUsername;
-        private string onlineDBPassword;
-        private string onlineDBName;
+        private string onlineDBHost = string.Empty;
+        private string onlineDBUsername = string.Empty;
+        private string onlineDBPassword = string.Empty;
+        private string onlineDBName = string.Empty;
 
         private bool onlineAlreadyConfigured;
 
-        private string onlineMasterPassword;
+        private string onlineMasterPassword = string.Empty;
         private bool onlineConfigureAsNewDB;
+
+        private bool errorEncountered = false;
 
         #region Page Layout and Initial Loading
 
@@ -45,11 +47,9 @@ namespace QDrive
             panels.Add(pnlS2OnlineConnectionA);
             panels.Add(pnlS2OnlineConnectionB);
             panels.Add(pnlS3Finish);
+            panels.Add(pnlS3Error);
 
             AlignPanels();
-
-            // Predefined values
-            txbSA2ConfigLocation.Text = QDInfo.DefaultLocalDataPath;
         }
 
         private void AlignPanels()
@@ -92,12 +92,6 @@ namespace QDrive
 
         #region Step 2A: Local connection ============================================================================
         
-        private void btnSA2Browse_Click(object sender, EventArgs e)
-        {
-            if (fbdS2ADataFileLocation.ShowDialog() == DialogResult.OK)
-                txbSA2ConfigLocation.Text = fbdS2ADataFileLocation.SelectedPath;
-        }
-
         private void chbSA2PromptPassword_CheckedChanged(object sender, EventArgs e)
         {
             if(chbSA2PromptPassword.Checked)
@@ -120,11 +114,9 @@ namespace QDrive
 
         private void btnSA2Next_Click(object sender, EventArgs e)
         {
-            localConfigFilePath = txbSA2ConfigLocation.Text;
+            alwaysPromptPassword = chbSA2PromptPassword.Checked;
 
-            localPromptPassword = chbSA2PromptPassword.Checked;
-
-            if(localPromptPassword)
+            if(alwaysPromptPassword)
             {
                 if (txbSA2Password.Text != txbSA2ConfirmPassword.Text)
                 {
@@ -142,9 +134,10 @@ namespace QDrive
                 }
             }
 
-            SaveLocalConfiguration();
+            SaveConfiguration(localConnection);
 
-            pnlS3Finish.BringToFront();
+            if (!errorEncountered) pnlS3Finish.BringToFront();
+            else pnlS3Error.BringToFront();
         }
 
 
@@ -236,7 +229,7 @@ namespace QDrive
         {
             if(rbnSB2ExistingDB.Checked)
             {
-                if(!VerifyMasterPassword(txbSB2ExistingDBPassword.Text))
+                if(!QDLib.VerifyMasterPassword(txbSB2ExistingDBPassword.Text, onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
                 {
                     MessageBox.Show("Master-Password is not valid. Please enter the corrent Master-Password, which has been set when the database was first initialised.", "Invalid Master-Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -283,11 +276,14 @@ namespace QDrive
                 
             }
 
+            alwaysPromptPassword = chbS2B2PromptUserPassword.Checked;
+
             onlineConfigureAsNewDB = rbnSB2NewDB.Checked;
 
-            SaveOnlineConfiguration();
+            SaveConfiguration(localConnection);
 
-            pnlS3Finish.BringToFront();
+            if (!errorEncountered) pnlS3Finish.BringToFront();
+            else pnlS3Error.BringToFront();
         }
 
         private void btnSB2BPrev_Click(object sender, EventArgs e) => pnlS2OnlineConnectionA.BringToFront();
@@ -309,7 +305,14 @@ namespace QDrive
 
         #endregion
 
-        #region Methods ===========================================================================================
+        #region Step 3: Error ========================================================================================
+
+        private void lklSupportLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start(lklSupportLink.Text);
+        private void btnS3ErrorClose_Click(object sender, EventArgs e) => this.Close();
+
+        #endregion
+
+        #region Methods ==============================================================================================
         private bool TestConnection()
         {
             bool success = false;
@@ -350,103 +353,113 @@ namespace QDrive
             return isConfigured;
         }
 
-        private bool VerifyMasterPassword(string pPassword)
+        private void SaveConfiguration(bool IsOnline)
         {
-            bool masterPasswordValid = false;
-
-            using (WrapMySQL sql = new WrapMySQL(onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
-            {
-                string cipher = sql.ExecuteScalarACon<string>("SELECT QDValue FROM qd_info WHERE QDKey = 'VerificationKey'");
-
-                try
-                {
-                    string decrypt = Cipher.Decrypt(cipher, pPassword);
-                    if (decrypt == QDInfo.VerifyKey) masterPasswordValid = true;
-                }
-                catch { }
-            }
-
-            return masterPasswordValid;
-        }
-
-
-        private void SaveLocalConfiguration()
-        {
-            CreateOfflineLocalDB();
-        }
-
-        private void SaveOnlineConfiguration()
-        {
-            CreateOnlineDB();
-            CreateOnlineLocalDB(); 
+            if(IsOnline) CreateOnlineDB();
+            CreateLocalDB(IsOnline);
         }
 
         private void CreateOnlineDB()
         {
-            using (WrapMySQL sql = new WrapMySQL(onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
+            try
             {
-                if (onlineConfigureAsNewDB)
+                using (WrapMySQL sql = new WrapMySQL(onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
+                {
+                    if (onlineConfigureAsNewDB)
+                    {
+                        sql.Open();
+                        sql.TransactionBegin();
+                        try
+                        {
+                            // Delete old tables
+                            sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_info`");
+                            sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_drives`");
+                            sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_users`");
+                            sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_assigns`");
+
+                            // Create new tables
+                            sql.ExecuteNonQuery("CREATE TABLE `qd_info` ( `QDKey` VARCHAR(255) NOT NULL , `QDValue` VARCHAR(255) NOT NULL , PRIMARY KEY (`QDKey`))");
+                            sql.ExecuteNonQuery("CREATE TABLE `qd_drives` ( `ID` VARCHAR(50) NOT NULL , `DefaultName` VARCHAR(50) NOT NULL , `DefaultDriveLetter` VARCHAR(1) NOT NULL , `LocalPath` VARCHAR(255) NOT NULL , `RemotePath` VARCHAR(255) NOT NULL , `IsPublic` BOOLEAN NOT NULL , `IsDeployable` BOOLEAN NOT NULL , PRIMARY KEY (`ID`))");
+                            sql.ExecuteNonQuery("CREATE TABLE `qd_users` ( `ID` VARCHAR(50) NOT NULL , `Name` VARCHAR(100) NOT NULL , PRIMARY KEY (`ID`))");
+                            sql.ExecuteNonQuery("CREATE TABLE `qd_assigns` ( `ID` VARCHAR(50) NOT NULL , `UserID` VARCHAR(50) NOT NULL , `DriveID` VARCHAR(50) NOT NULL , `CustomDriveName` VARCHAR(50) NOT NULL , `CustomDriveLetter` VARCHAR(1) NOT NULL , PRIMARY KEY (`ID`))");
+
+                            // Create pre-defined settings
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanAddPrivateDrive', ?)", false);
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanAddPublicDrive', ?)", true);
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('VerificationKey', ?)", Cipher.Encrypt(QDInfo.VerifyKey, onlineMasterPassword));
+
+                            sql.TransactionCommit();
+                        }
+                        catch (Exception ex)
+                        {
+                            sql.TransactionRollback();
+                            MessageBox.Show("Could not create online database. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            errorEncountered = true;
+                            txbS3ErrorLog.Text = ex.Message + " " + ex.StackTrace;
+                        }
+                        sql.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not create online database. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorEncountered = true;
+                txbS3ErrorLog.Text = ex.Message + " " + ex.StackTrace;
+            }
+        }
+
+        private void CreateLocalDB(bool onlineLinked)
+        {
+            try
+            {
+                using (WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile, true))
                 {
                     sql.Open();
                     sql.TransactionBegin();
                     try
                     {
                         // Delete old tables
-                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_info`");
-                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_drives`");
-                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_users`");
-                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_assigns`");
+                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS qd_info");
+                        sql.ExecuteNonQuery("DROP TABLE IF EXISTS qd_drives");
 
                         // Create new tables
-                        sql.ExecuteNonQuery("CREATE TABLE `qd_info` ( `QDKey` VARCHAR(255) NOT NULL , `QDValue` VARCHAR(255) NOT NULL , PRIMARY KEY (`QDKey`))");
-                        sql.ExecuteNonQuery("CREATE TABLE `qd_drives` ( `ID` VARCHAR(50) NOT NULL , `DefaultName` VARCHAR(50) NOT NULL , `DefaultDriveLetter` VARCHAR(1) NOT NULL , `LocalPath` VARCHAR(255) NOT NULL , `RemotePath` VARCHAR(255) NOT NULL , `IsPublic` BOOLEAN NOT NULL , `IsDeployable` BOOLEAN NOT NULL , PRIMARY KEY (`ID`))");
-                        sql.ExecuteNonQuery("CREATE TABLE `qd_users` ( `ID` VARCHAR(50) NOT NULL , `Name` VARCHAR(100) NOT NULL , PRIMARY KEY (`ID`))");
-                        sql.ExecuteNonQuery("CREATE TABLE `qd_assigns` ( `ID` VARCHAR(50) NOT NULL , `UserID` VARCHAR(50) NOT NULL , `DriveID` VARCHAR(50) NOT NULL , `CustomDriveName` VARCHAR(50) NOT NULL , `CustomDriveLetter` VARCHAR(1) NOT NULL , PRIMARY KEY (`ID`))");
+                        sql.ExecuteNonQuery(@"CREATE TABLE ""qd_info"" ( ""QDKey"" TEXT, ""QDValue"" TEXT, PRIMARY KEY(""QDKey""));");
+                        sql.ExecuteNonQuery(@"CREATE TABLE ""qd_drives"" (""ID"" TEXT, ""RemoteID"" TEXT, ""Path"" TEXT, ""DriveLetter"" TEXT, ""DriveName"" TEXT, PRIMARY KEY(""ID""));");
 
                         // Create pre-defined settings
-                        sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanAddPrivateDrive', '{false}')");
-                        sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanAddPublicDrive', '{true}')");
-                        sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('VerificationKey', '{Cipher.Encrypt(QDInfo.VerifyKey, onlineMasterPassword)}')");
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""IsOnlineLinked"", ?)", onlineLinked);
+
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""AlwaysPromptPassword"", ?)", (!onlineLinked && alwaysPromptPassword));
+
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBHost"", ?)", onlineDBHost);
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBName"",?)", onlineDBName);
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBUsername"", ?)", onlineDBUsername);
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBPassword"", ?)", onlineDBPassword);
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DefaultUserID"", ?)", DBNull.Value);
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DefaultUsername"", ?)", DBNull.Value);
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DefaultPassword"", ?)", DBNull.Value);
 
                         sql.TransactionCommit();
                     }
-                    catch
+                    catch (Exception ex)
                     {
                         sql.TransactionRollback();
+                        MessageBox.Show("Could not create local database. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errorEncountered = true;
+                        txbS3ErrorLog.Text = ex.Message + " " + ex.StackTrace;
                     }
                     sql.Close();
                 }
             }
-        }
-
-        private void CreateOnlineLocalDB()
-        {
-            using (WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile))
+            catch (Exception ex)
             {
-                sql.Open();
-                sql.TransactionBegin();
-                try
-                {
-                    // Delete old tables
-                    sql.ExecuteNonQuery("DROP TABLE IF EXISTS qd_info");
-
-                    // Create new tables
-                    sql.ExecuteNonQuery("CREATE TABLE 'qd_info' ( 'QDKey' TEXT, 'QDValue' TEXT, PRIMARY KEY('QDKey'));");
-
-                    sql.TransactionCommit();
-                }
-                catch
-                {
-                    sql.TransactionRollback();
-                }
-                sql.Close();
+                MessageBox.Show("Could not create local database. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorEncountered = true;
+                txbS3ErrorLog.Text = ex.Message + " " + ex.StackTrace;
             }
         }
 
-        private void CreateOfflineLocalDB()
-        {
-            
-        }
 
         #endregion
     }

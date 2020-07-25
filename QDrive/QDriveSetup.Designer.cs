@@ -41,17 +41,15 @@
             this.txbSA2ConfirmPassword = new System.Windows.Forms.TextBox();
             this.txbSA2Password = new System.Windows.Forms.TextBox();
             this.chbSA2PromptPassword = new System.Windows.Forms.CheckBox();
-            this.txbSA2ConfigLocation = new System.Windows.Forms.TextBox();
             this.lblSA2ConfirmPassword = new System.Windows.Forms.Label();
             this.lblSA2Password = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnSA2Prev = new System.Windows.Forms.Button();
-            this.btnSA2Browse = new System.Windows.Forms.Button();
             this.btnSA2Next = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlS2OnlineConnectionA = new System.Windows.Forms.Panel();
             this.txbSB2DBName = new System.Windows.Forms.TextBox();
             this.txbSB2DBPassword = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txbSB2DBUsername = new System.Windows.Forms.TextBox();
             this.txbSB2DBHostname = new System.Windows.Forms.TextBox();
             this.btnSB2APrev = new System.Windows.Forms.Button();
@@ -63,10 +61,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.fbdS2ADataFileLocation = new System.Windows.Forms.FolderBrowserDialog();
             this.pnlS2OnlineConnectionB = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.txbSB2NewDBConfirmPassword = new System.Windows.Forms.TextBox();
             this.btnSB2BPrev = new System.Windows.Forms.Button();
+            this.chbS2B2PromptUserPassword = new System.Windows.Forms.CheckBox();
             this.txbSB2ExistingDBPassword = new System.Windows.Forms.TextBox();
             this.txbSB2NewDBPassword = new System.Windows.Forms.TextBox();
             this.btnSB2BNext = new System.Windows.Forms.Button();
@@ -86,13 +85,21 @@
             this.btnS0Next = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.pnlS3Error = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnS3ErrorClose = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lklSupportLink = new System.Windows.Forms.LinkLabel();
+            this.txbS3ErrorLog = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.pnlS1ConnectionType.SuspendLayout();
             this.pnlS2LocalConnection.SuspendLayout();
             this.pnlS2OnlineConnectionA.SuspendLayout();
             this.pnlS2OnlineConnectionB.SuspendLayout();
             this.pnlS3Finish.SuspendLayout();
             this.pnlS0Welcome.SuspendLayout();
+            this.pnlS3Error.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlS1ConnectionType
@@ -194,12 +201,9 @@
             this.pnlS2LocalConnection.Controls.Add(this.txbSA2ConfirmPassword);
             this.pnlS2LocalConnection.Controls.Add(this.txbSA2Password);
             this.pnlS2LocalConnection.Controls.Add(this.chbSA2PromptPassword);
-            this.pnlS2LocalConnection.Controls.Add(this.txbSA2ConfigLocation);
             this.pnlS2LocalConnection.Controls.Add(this.lblSA2ConfirmPassword);
             this.pnlS2LocalConnection.Controls.Add(this.lblSA2Password);
-            this.pnlS2LocalConnection.Controls.Add(this.label6);
             this.pnlS2LocalConnection.Controls.Add(this.btnSA2Prev);
-            this.pnlS2LocalConnection.Controls.Add(this.btnSA2Browse);
             this.pnlS2LocalConnection.Controls.Add(this.btnSA2Next);
             this.pnlS2LocalConnection.Controls.Add(this.label4);
             this.pnlS2LocalConnection.Location = new System.Drawing.Point(672, 8);
@@ -210,7 +214,7 @@
             // txbSA2ConfirmPassword
             // 
             this.txbSA2ConfirmPassword.Enabled = false;
-            this.txbSA2ConfirmPassword.Location = new System.Drawing.Point(46, 358);
+            this.txbSA2ConfirmPassword.Location = new System.Drawing.Point(46, 201);
             this.txbSA2ConfirmPassword.Name = "txbSA2ConfirmPassword";
             this.txbSA2ConfirmPassword.PasswordChar = '*';
             this.txbSA2ConfirmPassword.Size = new System.Drawing.Size(357, 29);
@@ -219,7 +223,7 @@
             // txbSA2Password
             // 
             this.txbSA2Password.Enabled = false;
-            this.txbSA2Password.Location = new System.Drawing.Point(46, 292);
+            this.txbSA2Password.Location = new System.Drawing.Point(46, 135);
             this.txbSA2Password.Name = "txbSA2Password";
             this.txbSA2Password.PasswordChar = '*';
             this.txbSA2Password.Size = new System.Drawing.Size(357, 29);
@@ -228,7 +232,7 @@
             // chbSA2PromptPassword
             // 
             this.chbSA2PromptPassword.AutoSize = true;
-            this.chbSA2PromptPassword.Location = new System.Drawing.Point(23, 240);
+            this.chbSA2PromptPassword.Location = new System.Drawing.Point(23, 83);
             this.chbSA2PromptPassword.Name = "chbSA2PromptPassword";
             this.chbSA2PromptPassword.Size = new System.Drawing.Size(447, 25);
             this.chbSA2PromptPassword.TabIndex = 2;
@@ -236,21 +240,11 @@
             this.chbSA2PromptPassword.UseVisualStyleBackColor = true;
             this.chbSA2PromptPassword.CheckedChanged += new System.EventHandler(this.chbSA2PromptPassword_CheckedChanged);
             // 
-            // txbSA2ConfigLocation
-            // 
-            this.txbSA2ConfigLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbSA2ConfigLocation.Location = new System.Drawing.Point(23, 108);
-            this.txbSA2ConfigLocation.Name = "txbSA2ConfigLocation";
-            this.txbSA2ConfigLocation.ReadOnly = true;
-            this.txbSA2ConfigLocation.Size = new System.Drawing.Size(619, 29);
-            this.txbSA2ConfigLocation.TabIndex = 10;
-            // 
             // lblSA2ConfirmPassword
             // 
             this.lblSA2ConfirmPassword.AutoSize = true;
             this.lblSA2ConfirmPassword.Enabled = false;
-            this.lblSA2ConfirmPassword.Location = new System.Drawing.Point(42, 334);
+            this.lblSA2ConfirmPassword.Location = new System.Drawing.Point(42, 177);
             this.lblSA2ConfirmPassword.Name = "lblSA2ConfirmPassword";
             this.lblSA2ConfirmPassword.Size = new System.Drawing.Size(133, 21);
             this.lblSA2ConfirmPassword.TabIndex = 9;
@@ -260,20 +254,11 @@
             // 
             this.lblSA2Password.AutoSize = true;
             this.lblSA2Password.Enabled = false;
-            this.lblSA2Password.Location = new System.Drawing.Point(42, 268);
+            this.lblSA2Password.Location = new System.Drawing.Point(42, 111);
             this.lblSA2Password.Name = "lblSA2Password";
             this.lblSA2Password.Size = new System.Drawing.Size(74, 21);
             this.lblSA2Password.TabIndex = 9;
             this.lblSA2Password.Text = "Password";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 84);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(230, 21);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Location of the Q-Drive data-file";
             // 
             // btnSA2Prev
             // 
@@ -285,17 +270,6 @@
             this.btnSA2Prev.Text = "< Previous";
             this.btnSA2Prev.UseVisualStyleBackColor = true;
             this.btnSA2Prev.Click += new System.EventHandler(this.btnSA2Prev_Click);
-            // 
-            // btnSA2Browse
-            // 
-            this.btnSA2Browse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSA2Browse.Location = new System.Drawing.Point(547, 143);
-            this.btnSA2Browse.Name = "btnSA2Browse";
-            this.btnSA2Browse.Size = new System.Drawing.Size(95, 36);
-            this.btnSA2Browse.TabIndex = 1;
-            this.btnSA2Browse.Text = "Browse";
-            this.btnSA2Browse.UseVisualStyleBackColor = true;
-            this.btnSA2Browse.Click += new System.EventHandler(this.btnSA2Browse_Click);
             // 
             // btnSA2Next
             // 
@@ -355,6 +329,16 @@
             this.txbSB2DBPassword.PasswordChar = '*';
             this.txbSB2DBPassword.Size = new System.Drawing.Size(361, 29);
             this.txbSB2DBPassword.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.DimGray;
+            this.label7.Location = new System.Drawing.Point(19, 61);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(529, 21);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Please enter the login-information for the MySQL-database you want to use.";
             // 
             // txbSB2DBUsername
             // 
@@ -462,8 +446,10 @@
             // 
             // pnlS2OnlineConnectionB
             // 
+            this.pnlS2OnlineConnectionB.Controls.Add(this.label6);
             this.pnlS2OnlineConnectionB.Controls.Add(this.txbSB2NewDBConfirmPassword);
             this.pnlS2OnlineConnectionB.Controls.Add(this.btnSB2BPrev);
+            this.pnlS2OnlineConnectionB.Controls.Add(this.chbS2B2PromptUserPassword);
             this.pnlS2OnlineConnectionB.Controls.Add(this.txbSB2ExistingDBPassword);
             this.pnlS2OnlineConnectionB.Controls.Add(this.txbSB2NewDBPassword);
             this.pnlS2OnlineConnectionB.Controls.Add(this.btnSB2BNext);
@@ -478,10 +464,21 @@
             this.pnlS2OnlineConnectionB.Size = new System.Drawing.Size(658, 453);
             this.pnlS2OnlineConnectionB.TabIndex = 1;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.DimGray;
+            this.label6.Location = new System.Drawing.Point(39, 355);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(546, 42);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Prompt the user to always enter the user-password (not the master-password!) \r\naf" +
+    "ter a system restart";
+            // 
             // txbSB2NewDBConfirmPassword
             // 
             this.txbSB2NewDBConfirmPassword.Enabled = false;
-            this.txbSB2NewDBConfirmPassword.Location = new System.Drawing.Point(43, 307);
+            this.txbSB2NewDBConfirmPassword.Location = new System.Drawing.Point(43, 266);
             this.txbSB2NewDBConfirmPassword.Name = "txbSB2NewDBConfirmPassword";
             this.txbSB2NewDBConfirmPassword.PasswordChar = '*';
             this.txbSB2NewDBConfirmPassword.Size = new System.Drawing.Size(357, 29);
@@ -498,9 +495,20 @@
             this.btnSB2BPrev.UseVisualStyleBackColor = true;
             this.btnSB2BPrev.Click += new System.EventHandler(this.btnSB2BPrev_Click);
             // 
+            // chbS2B2PromptUserPassword
+            // 
+            this.chbS2B2PromptUserPassword.AutoSize = true;
+            this.chbS2B2PromptUserPassword.Location = new System.Drawing.Point(23, 327);
+            this.chbS2B2PromptUserPassword.Name = "chbS2B2PromptUserPassword";
+            this.chbS2B2PromptUserPassword.Size = new System.Drawing.Size(444, 25);
+            this.chbS2B2PromptUserPassword.TabIndex = 2;
+            this.chbS2B2PromptUserPassword.Text = "Require user-password to connect to drives after every restart";
+            this.chbS2B2PromptUserPassword.UseVisualStyleBackColor = true;
+            this.chbS2B2PromptUserPassword.CheckedChanged += new System.EventHandler(this.chbSA2PromptPassword_CheckedChanged);
+            // 
             // txbSB2ExistingDBPassword
             // 
-            this.txbSB2ExistingDBPassword.Location = new System.Drawing.Point(43, 131);
+            this.txbSB2ExistingDBPassword.Location = new System.Drawing.Point(43, 110);
             this.txbSB2ExistingDBPassword.Name = "txbSB2ExistingDBPassword";
             this.txbSB2ExistingDBPassword.PasswordChar = '*';
             this.txbSB2ExistingDBPassword.Size = new System.Drawing.Size(357, 29);
@@ -509,7 +517,7 @@
             // txbSB2NewDBPassword
             // 
             this.txbSB2NewDBPassword.Enabled = false;
-            this.txbSB2NewDBPassword.Location = new System.Drawing.Point(43, 241);
+            this.txbSB2NewDBPassword.Location = new System.Drawing.Point(43, 200);
             this.txbSB2NewDBPassword.Name = "txbSB2NewDBPassword";
             this.txbSB2NewDBPassword.PasswordChar = '*';
             this.txbSB2NewDBPassword.Size = new System.Drawing.Size(357, 29);
@@ -540,7 +548,7 @@
             // rbnSB2NewDB
             // 
             this.rbnSB2NewDB.AutoSize = true;
-            this.rbnSB2NewDB.Location = new System.Drawing.Point(23, 188);
+            this.rbnSB2NewDB.Location = new System.Drawing.Point(23, 147);
             this.rbnSB2NewDB.Margin = new System.Windows.Forms.Padding(4);
             this.rbnSB2NewDB.Name = "rbnSB2NewDB";
             this.rbnSB2NewDB.Size = new System.Drawing.Size(272, 25);
@@ -553,7 +561,7 @@
             // 
             this.lblSB2BConfirmMasterPassword.AutoSize = true;
             this.lblSB2BConfirmMasterPassword.Enabled = false;
-            this.lblSB2BConfirmMasterPassword.Location = new System.Drawing.Point(39, 283);
+            this.lblSB2BConfirmMasterPassword.Location = new System.Drawing.Point(39, 242);
             this.lblSB2BConfirmMasterPassword.Name = "lblSB2BConfirmMasterPassword";
             this.lblSB2BConfirmMasterPassword.Size = new System.Drawing.Size(185, 21);
             this.lblSB2BConfirmMasterPassword.TabIndex = 9;
@@ -562,7 +570,7 @@
             // lblSB2AExistingMasterPW
             // 
             this.lblSB2AExistingMasterPW.AutoSize = true;
-            this.lblSB2AExistingMasterPW.Location = new System.Drawing.Point(39, 107);
+            this.lblSB2AExistingMasterPW.Location = new System.Drawing.Point(39, 86);
             this.lblSB2AExistingMasterPW.Name = "lblSB2AExistingMasterPW";
             this.lblSB2AExistingMasterPW.Size = new System.Drawing.Size(126, 21);
             this.lblSB2AExistingMasterPW.TabIndex = 9;
@@ -572,7 +580,7 @@
             // 
             this.rbnSB2ExistingDB.AutoSize = true;
             this.rbnSB2ExistingDB.Checked = true;
-            this.rbnSB2ExistingDB.Location = new System.Drawing.Point(23, 78);
+            this.rbnSB2ExistingDB.Location = new System.Drawing.Point(23, 57);
             this.rbnSB2ExistingDB.Margin = new System.Windows.Forms.Padding(4);
             this.rbnSB2ExistingDB.Name = "rbnSB2ExistingDB";
             this.rbnSB2ExistingDB.Size = new System.Drawing.Size(297, 25);
@@ -586,7 +594,7 @@
             // 
             this.lblSB2BMasterPassword.AutoSize = true;
             this.lblSB2BMasterPassword.Enabled = false;
-            this.lblSB2BMasterPassword.Location = new System.Drawing.Point(39, 217);
+            this.lblSB2BMasterPassword.Location = new System.Drawing.Point(39, 176);
             this.lblSB2BMasterPassword.Name = "lblSB2BMasterPassword";
             this.lblSB2BMasterPassword.Size = new System.Drawing.Size(126, 21);
             this.lblSB2BMasterPassword.TabIndex = 9;
@@ -627,6 +635,8 @@
             // chbS3LaunchManager
             // 
             this.chbS3LaunchManager.AutoSize = true;
+            this.chbS3LaunchManager.Checked = true;
+            this.chbS3LaunchManager.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbS3LaunchManager.Location = new System.Drawing.Point(23, 211);
             this.chbS3LaunchManager.Name = "chbS3LaunchManager";
             this.chbS3LaunchManager.Size = new System.Drawing.Size(368, 25);
@@ -701,15 +711,93 @@
             this.label21.TabIndex = 0;
             this.label21.Text = "Welcome to Q-Drive";
             // 
-            // label7
+            // pnlS3Error
             // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.DimGray;
-            this.label7.Location = new System.Drawing.Point(19, 61);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(529, 21);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Please enter the login-information for the MySQL-database you want to use.";
+            this.pnlS3Error.Controls.Add(this.txbS3ErrorLog);
+            this.pnlS3Error.Controls.Add(this.lklSupportLink);
+            this.pnlS3Error.Controls.Add(this.label8);
+            this.pnlS3Error.Controls.Add(this.label15);
+            this.pnlS3Error.Controls.Add(this.btnS3ErrorClose);
+            this.pnlS3Error.Controls.Add(this.label16);
+            this.pnlS3Error.Controls.Add(this.label17);
+            this.pnlS3Error.Location = new System.Drawing.Point(2000, 8);
+            this.pnlS3Error.Name = "pnlS3Error";
+            this.pnlS3Error.Size = new System.Drawing.Size(658, 453);
+            this.pnlS3Error.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.DimGray;
+            this.label8.Location = new System.Drawing.Point(19, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(374, 84);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "The setup-wizard could not finish initialising Q-Drive.\r\n\r\nPlease try again to ru" +
+    "n the Q-Drive Setup.\r\nIf this problem repeats, please contact the support at\r\n";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.DimGray;
+            this.label15.Location = new System.Drawing.Point(19, 65);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(0, 21);
+            this.label15.TabIndex = 2;
+            // 
+            // btnS3ErrorClose
+            // 
+            this.btnS3ErrorClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnS3ErrorClose.Location = new System.Drawing.Point(547, 402);
+            this.btnS3ErrorClose.Name = "btnS3ErrorClose";
+            this.btnS3ErrorClose.Size = new System.Drawing.Size(95, 36);
+            this.btnS3ErrorClose.TabIndex = 2;
+            this.btnS3ErrorClose.Text = "OK";
+            this.btnS3ErrorClose.UseVisualStyleBackColor = true;
+            this.btnS3ErrorClose.Click += new System.EventHandler(this.btnS3ErrorClose_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semilight", 18F);
+            this.label16.Location = new System.Drawing.Point(17, 12);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(143, 32);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "Setup failed!";
+            // 
+            // lklSupportLink
+            // 
+            this.lklSupportLink.AutoSize = true;
+            this.lklSupportLink.Location = new System.Drawing.Point(19, 177);
+            this.lklSupportLink.Name = "lklSupportLink";
+            this.lklSupportLink.Size = new System.Drawing.Size(185, 21);
+            this.lklSupportLink.TabIndex = 5;
+            this.lklSupportLink.TabStop = true;
+            this.lklSupportLink.Text = "https://endev.at/s/q-drive";
+            this.lklSupportLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklSupportLink_LinkClicked);
+            // 
+            // txbS3ErrorLog
+            // 
+            this.txbS3ErrorLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbS3ErrorLog.Location = new System.Drawing.Point(23, 247);
+            this.txbS3ErrorLog.Multiline = true;
+            this.txbS3ErrorLog.Name = "txbS3ErrorLog";
+            this.txbS3ErrorLog.ReadOnly = true;
+            this.txbS3ErrorLog.Size = new System.Drawing.Size(619, 149);
+            this.txbS3ErrorLog.TabIndex = 6;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(19, 223);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 21);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Error-log:";
             // 
             // QDriveSetup
             // 
@@ -718,6 +806,7 @@
             this.ClientSize = new System.Drawing.Size(3844, 1061);
             this.Controls.Add(this.pnlS2OnlineConnectionB);
             this.Controls.Add(this.pnlS2OnlineConnectionA);
+            this.Controls.Add(this.pnlS3Error);
             this.Controls.Add(this.pnlS3Finish);
             this.Controls.Add(this.pnlS2LocalConnection);
             this.Controls.Add(this.pnlS0Welcome);
@@ -726,7 +815,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "QDriveSetup";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Style.InactiveShadowOpacity = ((byte)(20));
             this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
@@ -747,6 +836,8 @@
             this.pnlS3Finish.PerformLayout();
             this.pnlS0Welcome.ResumeLayout(false);
             this.pnlS0Welcome.PerformLayout();
+            this.pnlS3Error.ResumeLayout(false);
+            this.pnlS3Error.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -768,10 +859,6 @@
         private System.Windows.Forms.Button btnSB2APrev;
         private System.Windows.Forms.Button btnSB2ANext;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txbSA2ConfigLocation;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnSA2Browse;
-        private System.Windows.Forms.FolderBrowserDialog fbdS2ADataFileLocation;
         private System.Windows.Forms.TextBox txbSA2Password;
         private System.Windows.Forms.CheckBox chbSA2PromptPassword;
         private System.Windows.Forms.Label lblSA2ConfirmPassword;
@@ -811,6 +898,16 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chbS2B2PromptUserPassword;
+        private System.Windows.Forms.Panel pnlS3Error;
+        private System.Windows.Forms.LinkLabel lklSupportLink;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnS3ErrorClose;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txbS3ErrorLog;
+        private System.Windows.Forms.Label label17;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using Syncfusion.WinForms.Controls;
+﻿using QDriveLib;
+using Syncfusion.WinForms.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,12 @@ namespace QDrive
 
         private void btnVerify_Click(object sender, EventArgs e)
         {
+            if(!QDLib.VerifyMasterPassword(txbMasterPassword.Text, DBHost, DBName, DBUser, DBPass)) 
+            {
+                MessageBox.Show("Master-Password is not valid. Please enter the corrent Master-Password, which has been set when the database was first initialised.", "Invalid Master-Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

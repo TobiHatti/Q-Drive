@@ -52,3 +52,6 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\System.Runtime.
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\QDriveLib.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\QDriveLib.pdb
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\obj\Debug\QDrive.VerifyMasterPW.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\System.Data.SQLite.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\System.Data.SQLite.xml
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\System.Data.SQLite.dll.config

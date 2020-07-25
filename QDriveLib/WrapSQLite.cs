@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using System.Text;
 
 namespace QDriveLib
@@ -48,8 +49,14 @@ namespace QDriveLib
         public WrapSQLite(string databaseFilePath, bool isFilePath = true)
         {
             // Set connection-string
-            if (isFilePath) this.connectionString = $@"URI=file:{databaseFilePath}";
+            if (isFilePath)
+            {
+                this.connectionString = $@"URI=file:{databaseFilePath}";
+                if (!Directory.Exists(Path.GetDirectoryName(databaseFilePath))) Directory.CreateDirectory(Path.GetDirectoryName(databaseFilePath));
+            }
             else this.connectionString = databaseFilePath;
+
+
 
             // Create connection
             connection = new SQLiteConnection(this.connectionString);
