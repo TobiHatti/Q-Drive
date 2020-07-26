@@ -386,8 +386,10 @@ namespace QDrive
                             sql.ExecuteNonQuery("CREATE TABLE `qd_assigns` ( `ID` VARCHAR(50) NOT NULL , `UserID` VARCHAR(50) NOT NULL , `DriveID` VARCHAR(50) NOT NULL , `CustomDriveName` VARCHAR(50) NOT NULL , `CustomDriveLetter` VARCHAR(1) NOT NULL , PRIMARY KEY (`ID`))");
 
                             // Create pre-defined settings
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanToggleKeepLoggedIn', ?)", false);
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanAddPrivateDrive', ?)", false);
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanAddPublicDrive', ?)", true);
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('UserCanSelfRegister', ?)", true);
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES ('VerificationKey', ?)", Cipher.Encrypt(QDInfo.VerifyKey, onlineMasterPassword));
 
                             sql.TransactionCommit();
@@ -432,6 +434,7 @@ namespace QDrive
                         // Create pre-defined settings
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""IsOnlineLinked"", ?)", onlineLinked);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""AlwaysPromptPassword"", ?)", (!onlineLinked && alwaysPromptPassword));
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""SetupSuccess"", ?)", true);
 
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBHost"", ?)", onlineDBHost);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBName"",?)", onlineDBName);
