@@ -55,3 +55,5 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\obj\Debug\QDrive.VerifyMa
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\System.Data.SQLite.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\System.Data.SQLite.xml
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\System.Data.SQLite.dll.config
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\QDriveManager.exe
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\QDriveManager.pdb

@@ -86,12 +86,12 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.pnlS3Error = new System.Windows.Forms.Panel();
+            this.txbS3ErrorLog = new System.Windows.Forms.TextBox();
+            this.lklSupportLink = new System.Windows.Forms.LinkLabel();
             this.label8 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.btnS3ErrorClose = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
-            this.lklSupportLink = new System.Windows.Forms.LinkLabel();
-            this.txbS3ErrorLog = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.pnlS1ConnectionType.SuspendLayout();
             this.pnlS2LocalConnection.SuspendLayout();
@@ -320,7 +320,6 @@
             this.txbSB2DBName.Name = "txbSB2DBName";
             this.txbSB2DBName.Size = new System.Drawing.Size(361, 29);
             this.txbSB2DBName.TabIndex = 4;
-            this.txbSB2DBName.Text = "qd-test";
             // 
             // txbSB2DBPassword
             // 
@@ -346,7 +345,6 @@
             this.txbSB2DBUsername.Name = "txbSB2DBUsername";
             this.txbSB2DBUsername.Size = new System.Drawing.Size(361, 29);
             this.txbSB2DBUsername.TabIndex = 2;
-            this.txbSB2DBUsername.Text = "root";
             // 
             // txbSB2DBHostname
             // 
@@ -354,7 +352,6 @@
             this.txbSB2DBHostname.Name = "txbSB2DBHostname";
             this.txbSB2DBHostname.Size = new System.Drawing.Size(361, 29);
             this.txbSB2DBHostname.TabIndex = 1;
-            this.txbSB2DBHostname.Text = "localhost";
             // 
             // btnSB2APrev
             // 
@@ -725,6 +722,29 @@
             this.pnlS3Error.Size = new System.Drawing.Size(658, 453);
             this.pnlS3Error.TabIndex = 1;
             // 
+            // txbS3ErrorLog
+            // 
+            this.txbS3ErrorLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbS3ErrorLog.Location = new System.Drawing.Point(23, 247);
+            this.txbS3ErrorLog.Multiline = true;
+            this.txbS3ErrorLog.Name = "txbS3ErrorLog";
+            this.txbS3ErrorLog.ReadOnly = true;
+            this.txbS3ErrorLog.Size = new System.Drawing.Size(619, 149);
+            this.txbS3ErrorLog.TabIndex = 6;
+            // 
+            // lklSupportLink
+            // 
+            this.lklSupportLink.AutoSize = true;
+            this.lklSupportLink.Location = new System.Drawing.Point(19, 177);
+            this.lklSupportLink.Name = "lklSupportLink";
+            this.lklSupportLink.Size = new System.Drawing.Size(185, 21);
+            this.lklSupportLink.TabIndex = 5;
+            this.lklSupportLink.TabStop = true;
+            this.lklSupportLink.Text = "https://endev.at/s/q-drive";
+            this.lklSupportLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklSupportLink_LinkClicked);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -766,29 +786,6 @@
             this.label16.Size = new System.Drawing.Size(143, 32);
             this.label16.TabIndex = 4;
             this.label16.Text = "Setup failed!";
-            // 
-            // lklSupportLink
-            // 
-            this.lklSupportLink.AutoSize = true;
-            this.lklSupportLink.Location = new System.Drawing.Point(19, 177);
-            this.lklSupportLink.Name = "lklSupportLink";
-            this.lklSupportLink.Size = new System.Drawing.Size(185, 21);
-            this.lklSupportLink.TabIndex = 5;
-            this.lklSupportLink.TabStop = true;
-            this.lklSupportLink.Text = "https://endev.at/s/q-drive";
-            this.lklSupportLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklSupportLink_LinkClicked);
-            // 
-            // txbS3ErrorLog
-            // 
-            this.txbS3ErrorLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbS3ErrorLog.Location = new System.Drawing.Point(23, 247);
-            this.txbS3ErrorLog.Multiline = true;
-            this.txbS3ErrorLog.Name = "txbS3ErrorLog";
-            this.txbS3ErrorLog.ReadOnly = true;
-            this.txbS3ErrorLog.Size = new System.Drawing.Size(619, 149);
-            this.txbS3ErrorLog.TabIndex = 6;
             // 
             // label17
             // 

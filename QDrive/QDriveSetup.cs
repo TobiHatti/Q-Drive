@@ -1,4 +1,5 @@
 ﻿using QDriveLib;
+using QDriveManager;
 using Syncfusion.Windows.Forms;
 using Syncfusion.WinForms.Controls;
 using System;
@@ -296,11 +297,12 @@ namespace QDrive
         {
             if (chbS3LaunchManager.Checked)
             {
-                // TODO:
-                // Launch Manager
-            }
+                this.Hide();
 
-            this.Close();
+                QDriveManager.QDriveManager manager = new QDriveManager.QDriveManager();
+                manager.Show();
+            }
+            else this.Close();   
         }
 
         #endregion
@@ -429,7 +431,6 @@ namespace QDrive
 
                         // Create pre-defined settings
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""IsOnlineLinked"", ?)", onlineLinked);
-
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""AlwaysPromptPassword"", ?)", (!onlineLinked && alwaysPromptPassword));
 
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBHost"", ?)", onlineDBHost);
