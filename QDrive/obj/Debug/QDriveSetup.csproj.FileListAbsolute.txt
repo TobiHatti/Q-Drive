@@ -57,3 +57,6 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\System.Data.SQL
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\System.Data.SQLite.dll.config
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\QDriveManager.exe
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\QDriveManager.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\Syncfusion.Data.WinForms.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\Syncfusion.Data.WinForms.xml
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDrive\bin\Debug\QDriveManager.exe.config

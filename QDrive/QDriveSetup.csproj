@@ -145,7 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QDriveLib\QDriveLib.csproj">
-      <Project>{5B039BE1-A4BD-47A3-AD97-9796BD58E08D}</Project>
+      <Project>{5b039be1-a4bd-47a3-ad97-9796bd58e08d}</Project>
       <Name>QDriveLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\QDriveManager\QDriveManager.csproj">

@@ -297,12 +297,11 @@ namespace QDrive
         {
             if (chbS3LaunchManager.Checked)
             {
-                this.Hide();
-
-                QDriveManager.QDriveManager manager = new QDriveManager.QDriveManager();
-                manager.Show();
+                string qdManager = "QDriveManager.exe";
+                if (File.Exists(qdManager)) Process.Start(qdManager);
             }
-            else this.Close();   
+            
+            this.Close();   
         }
 
         #endregion
@@ -355,10 +354,10 @@ namespace QDrive
             return isConfigured;
         }
 
-        private void SaveConfiguration(bool IsOnline)
+        private void SaveConfiguration(bool pIsLocal)
         {
-            if(IsOnline) CreateOnlineDB();
-            CreateLocalDB(IsOnline);
+            if(!pIsLocal) CreateOnlineDB();
+            CreateLocalDB(!pIsLocal);
         }
 
         private void CreateOnlineDB()
@@ -440,7 +439,7 @@ namespace QDrive
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBName"",?)", onlineDBName);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBUsername"", ?)", onlineDBUsername);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DBPassword"", ?)", onlineDBPassword);
-                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DefaultUserID"", ?)", DBNull.Value);
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""UserID"", ?)", DBNull.Value);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DefaultUsername"", ?)", DBNull.Value);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (""DefaultPassword"", ?)", DBNull.Value);
 
