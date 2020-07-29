@@ -58,3 +58,4 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\System.B
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\System.Memory.xml
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\System.Numerics.Vectors.xml
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\QDriveLib.dll.config

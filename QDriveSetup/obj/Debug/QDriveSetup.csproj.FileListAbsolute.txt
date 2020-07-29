@@ -122,3 +122,4 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Debug\QDriveSetu
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Debug\QDriveSetup.csproj.CopyComplete
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Debug\QDrive.exe
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Debug\QDrive.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\bin\Debug\QDriveLib.dll.config

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Text;
 
 namespace QDriveLib
@@ -8,6 +9,14 @@ namespace QDriveLib
     public static class QDInfo
     {
         public const string VerifyKey = "DebugKey";
+
+        public static string LocalCipherKey
+        {
+            get
+            {
+                return $"Endev{QDLib.GetMachineMac()}QDSystem";
+            }
+        }
 
         public static string ConfigFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Endev", "Q-Drive", "qd.db");
 

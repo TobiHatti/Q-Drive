@@ -118,6 +118,19 @@ namespace QDriveManager
                         lnkCreateNewAccount.Text = "If you do not have an account yet, contact your system administrator.";
                     }
 
+                    if(localConnection)
+                    {
+                        txbUsername.Text = "local";
+                        txbUsername.ReadOnly = true;
+                        lnkCreateNewAccount.Visible = false;
+                    }
+                    else
+                    {
+                        txbUsername.Text = string.Empty;
+                        txbUsername.ReadOnly = false;
+                        lnkCreateNewAccount.Visible = true;
+                    }
+
                     pnlLogin.BringToFront();
                 }
                 else
@@ -151,15 +164,53 @@ namespace QDriveManager
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (VerifyPassword(localConnection, txbUsername.Text, txbRegPassword.Text))
-            {
-
-            }
-            else
+            if (!VerifyPassword(localConnection, txbUsername.Text, txbPassword.Text))
             {
                 MessageBox.Show("Username or password are invalid!", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
+            
+            using(WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile, true))
+            {
+                sql.Open();
+                sql.TransactionBegin();
+                try
+                {
+                    if (chbKeepLoggedIn.Checked)
+                    {
+                        sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", false, QDInfo.DBL.AlwaysPromptPassword);
+                        
+                        if(!localConnection)
+                        {
+                            sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", txbUsername.Text, QDInfo.DBL.DefaultUsername);
+                            sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", Cipher.Encrypt(txbPassword.Text, QDInfo.LocalCipherKey), QDInfo.DBL.DefaultPassword);
+                        }
+                    }
+                    else
+                    {
+                        sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", true, QDInfo.DBL.AlwaysPromptPassword);
+
+                        if (!localConnection)
+                        {
+                            sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", string.Empty, QDInfo.DBL.DefaultUsername);
+                            sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", string.Empty, QDInfo.DBL.DefaultPassword);
+                        }
+                    }
+
+                    sql.TransactionCommit();
+                }
+                catch
+                {
+                    sql.TransactionRollback();
+                }
+
+                sql.Close();
+            }
+
+            txbPassword.Text = string.Empty;
+            
+            pnlManager.BringToFront();
         }
 
         #endregion
@@ -180,6 +231,8 @@ namespace QDriveManager
         #region Step D: Manager ======================================================================================
 
         #endregion
+
+        #region Methods ==============================================================================================
 
         private bool IsQDConfigured()
         {
@@ -278,14 +331,51 @@ namespace QDriveManager
 
             if(pIsLocalConnection)
             {
-                // Hash password and compare with online db
+                using (WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile, true))
+                {
+                    sql.Open();
+                    try
+                    {
+                        string dbUsername = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
+                        string dbCipher = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
+
+                        string pwDecrypt = Cipher.Decrypt(dbCipher, QDInfo.LocalCipherKey);
+                        if (dbUsername == pUsername && pwDecrypt == pPassword) passwordValid = true;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("An error occured whilst trying to authenticate the user.", "Authentication error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    sql.Close();
+                }
             }
             else
             {
-                // Cipher password and compare with local db
+                using (WrapMySQL sql = new WrapMySQL(dbHost, dbName, dbUser, dbPass))
+                {
+                    sql.Open();
+                    sql.TransactionBegin();
+                    try
+                    {
+
+                        string dbUsername = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
+                        string dbHash = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
+
+
+                        sql.TransactionCommit();
+                    }
+                    catch
+                    {
+                        sql.TransactionRollback();
+                    }
+
+                    sql.Close();
+                }
             }
 
             return passwordValid;
         }
+
+        #endregion
     }
 }
