@@ -24,8 +24,8 @@ namespace QDriveManager
         private bool localConnection = false;
         private bool promptPassword = false;
 
-        private string defaultUsername = "";
-        private string defaultPassword = "";
+        private string uUsername = "";
+        private string uPassword = "";
 
         // Online-specific properties
         private bool userCanToggleKeepLoggedIn = true;
@@ -98,7 +98,7 @@ namespace QDriveManager
                 // Check if user uses local connection and no password
                 try
                 {
-                    if (localConnection && Cipher.Decrypt(defaultPassword, QDInfo.LocalCipherKey) == string.Empty)
+                    if (localConnection && Cipher.Decrypt(uPassword, QDInfo.LocalCipherKey) == string.Empty)
                     {
                         localUserNoPassword = true;
                         txbUsername.ReadOnly = true;
@@ -111,7 +111,7 @@ namespace QDriveManager
                 catch { }
 
 
-                if (!localUserNoPassword && (promptPassword || string.IsNullOrEmpty(defaultUsername) || string.IsNullOrEmpty(defaultPassword)))
+                if (!localUserNoPassword && (promptPassword || string.IsNullOrEmpty(uUsername) || string.IsNullOrEmpty(uPassword)))
                 {
                     if(userCanToggleKeepLoggedIn)
                     {
@@ -234,6 +234,12 @@ namespace QDriveManager
             }
 
             txbPassword.Text = string.Empty;
+
+            uUsername = txbUsername.Text;
+            uPassword = txbPassword.Text;
+           
+            if (localConnection) QDLib.ConnectQDDrives("", "", dbHost, dbName, dbUser, dbPass, true);
+            else QDLib.ConnectQDDrives(userID, uPassword, dbHost, dbName, dbUser, dbPass, true);
             
             pnlManager.BringToFront();
         }
@@ -298,6 +304,12 @@ namespace QDriveManager
 
         #region Step D: Manager ======================================================================================
 
+        private void btnReconnect_Click(object sender, EventArgs e)
+        {
+            if (localConnection) QDLib.ConnectQDDrives("", "", dbHost, dbName, dbUser, dbPass, true);
+            else QDLib.ConnectQDDrives(userID, uPassword, dbHost, dbName, dbUser, dbPass, true);
+        }
+
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
             QDLib.DisconnectAllDrives();
@@ -339,8 +351,8 @@ namespace QDriveManager
                     localConnection = !Convert.ToBoolean(sql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked));
                     promptPassword = Convert.ToBoolean(sql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?",  QDInfo.DBL.AlwaysPromptPassword));
 
-                    defaultUsername = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
-                    defaultPassword = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
+                    uUsername = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
+                    uPassword = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
 
                     dbHost = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost);
                     dbUser = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername);
@@ -442,6 +454,7 @@ namespace QDriveManager
 
             return passwordValid;
         }
+
 
         #endregion
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
@@ -63,18 +64,66 @@ namespace QDriveLib
             }
         }
 
-        public static int ConnectQDDrives(string pUserID, bool pDisconnectFirst = true)
+        public static int ConnectQDDrives(string pUserID, string pUserPassword, string dbHost, string dbName, string dbUser, string dbPassword, bool pDisconnectFirst = true)
         {
+            // Disconnect all current drives
+            if (pDisconnectFirst) DisconnectAllDrives();
+
+            // Connect online-drives (online-synced)
+            if (!string.IsNullOrEmpty(pUserID))
+            {
+                try
+                {
+                    using(WrapMySQL sql = new WrapMySQL(dbHost, dbName, dbUser, dbPassword))
+                    {
+                        sql.Open();
+                        // Connect local network drives
+                        using (MySqlDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID INNER JOIN qd_users ON qd_assigns.UserID = qd_users.ID WHERE qd_assigns.UserID = ?", pUserID))
+                        {
+                            while(reader.Read())
+                            {
+                                try
+                                {
+                                    ConnectDrive(
+                                        Convert.ToChar(reader["CustomDriveLetter"]),
+                                        Convert.ToString(reader["LocalPath"]),
+                                        Cipher.Decrypt(Convert.ToString(reader["DUsername"]), pUserPassword),
+                                        Cipher.Decrypt(Convert.ToString(reader["DPassword"]), pUserPassword),
+                                        Convert.ToString(reader["CustomDriveName"]),
+                                        Cipher.Decrypt(Convert.ToString(reader["DDomain"]), pUserPassword)
+                                    );
+                                }
+                                catch
+                                {
+                                    return 5;
+                                }
+                            }
+                        }
+
+                        sql.Close();
+
+                        // Conenct remote network drives
+                        // TODO
+                    }
+                }
+                catch
+                {
+                    return 4;
+                }
+            }
+
+
+            // Connect Private drives (not online-synced)
             try
             {
                 if (!File.Exists(QDInfo.ConfigFile)) return 1;
 
-                using (WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile, true))
+                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
                 {
-                    using (SQLiteDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_drives WHERE LocalNetwork = 1 UserID = ?", pUserID))
+                    sqlite.Open();
+                    // Connect local network drives
+                    using (SQLiteDataReader reader = sqlite.ExecuteQuery("SELECT * FROM qd_drives WHERE LocalNetwork = 1"))
                     {
-                        if (pDisconnectFirst) DisconnectAllDrives();
-
                         while (reader.Read())
                         {
                             try
@@ -94,6 +143,10 @@ namespace QDriveLib
                             }
                         }
                     }
+                    sqlite.Close();
+
+                    // Conenct remote network drives
+                    // TODO
                 }
             }
             catch

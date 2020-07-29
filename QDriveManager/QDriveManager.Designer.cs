@@ -308,6 +308,7 @@
             this.btnReconnect.TabIndex = 6;
             this.btnReconnect.Text = "Update / Reconnect";
             this.btnReconnect.UseVisualStyleBackColor = true;
+            this.btnReconnect.Click += new System.EventHandler(this.btnReconnect_Click);
             // 
             // btnRemoveDrive
             // 
