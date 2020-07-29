@@ -20,14 +20,10 @@ namespace QDriveLib
             {
                 using (WrapMySQL sql = new WrapMySQL(pDBHost, pDBName, pDBUser, pDBPassword))
                 {
-                    string cipher = sql.ExecuteScalarACon<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.VerificationKey);
+                    string passwordHash = sql.ExecuteScalarACon<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.MasterPassword);
 
-                    try
-                    {
-                        string decrypt = Cipher.Decrypt(cipher, pPassword);
-                        if (decrypt == QDInfo.VerifyKey) masterPasswordValid = true;
-                    }
-                    catch { }
+                    if (passwordHash == HashPassword(pPassword)) masterPasswordValid = true;
+                    else masterPasswordValid = false;
                 }
             }
             catch

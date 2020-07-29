@@ -297,7 +297,11 @@ namespace QDriveManager
                 sql.Close();
             }
 
-            if (signupSuccess) pnlLogin.BringToFront();
+            if (signupSuccess)
+            {
+                txbUsername.Text = txbRegUsername.Text;
+                pnlLogin.BringToFront();
+            }
         }
 
         #endregion
@@ -354,11 +358,10 @@ namespace QDriveManager
                     uUsername = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
                     uPassword = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
 
-                    dbHost = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost);
-                    dbUser = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername);
-                    dbPass = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBPassword);
-                    dbName = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBName);
-                    userID = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.UserID);
+                    dbHost = Cipher.Decrypt(sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost), QDInfo.LocalCipherKey);
+                    dbUser = Cipher.Decrypt(sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername), QDInfo.LocalCipherKey);
+                    dbPass = Cipher.Decrypt(sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBPassword), QDInfo.LocalCipherKey);
+                    dbName = Cipher.Decrypt(sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBName), QDInfo.LocalCipherKey);
 
                     sql.TransactionCommit();
                 }

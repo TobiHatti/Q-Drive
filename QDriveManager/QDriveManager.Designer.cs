@@ -552,7 +552,7 @@
             this.txbRegName.Location = new System.Drawing.Point(243, 227);
             this.txbRegName.Name = "txbRegName";
             this.txbRegName.Size = new System.Drawing.Size(413, 38);
-            this.txbRegName.TabIndex = 4;
+            this.txbRegName.TabIndex = 1;
             this.txbRegName.TextChanged += new System.EventHandler(this.txbRegName_TextChanged);
             // 
             // txbRegUsername
@@ -561,7 +561,7 @@
             this.txbRegUsername.Location = new System.Drawing.Point(243, 271);
             this.txbRegUsername.Name = "txbRegUsername";
             this.txbRegUsername.Size = new System.Drawing.Size(413, 38);
-            this.txbRegUsername.TabIndex = 4;
+            this.txbRegUsername.TabIndex = 2;
             // 
             // txbRegConfirmPassword
             // 
@@ -579,7 +579,7 @@
             this.txbRegPassword.Name = "txbRegPassword";
             this.txbRegPassword.PasswordChar = '•';
             this.txbRegPassword.Size = new System.Drawing.Size(413, 38);
-            this.txbRegPassword.TabIndex = 4;
+            this.txbRegPassword.TabIndex = 3;
             // 
             // btnRegCancel
             // 
@@ -587,7 +587,7 @@
             this.btnRegCancel.Location = new System.Drawing.Point(340, 487);
             this.btnRegCancel.Name = "btnRegCancel";
             this.btnRegCancel.Size = new System.Drawing.Size(102, 29);
-            this.btnRegCancel.TabIndex = 0;
+            this.btnRegCancel.TabIndex = 6;
             this.btnRegCancel.Text = "Cancel";
             this.btnRegCancel.UseVisualStyleBackColor = true;
             this.btnRegCancel.Click += new System.EventHandler(this.btnRegCancel_Click);
@@ -598,7 +598,7 @@
             this.btnSignUp.Location = new System.Drawing.Point(293, 435);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(188, 42);
-            this.btnSignUp.TabIndex = 0;
+            this.btnSignUp.TabIndex = 5;
             this.btnSignUp.Text = "Sign Up";
             this.btnSignUp.UseVisualStyleBackColor = true;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
