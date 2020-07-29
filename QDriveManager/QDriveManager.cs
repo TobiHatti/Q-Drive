@@ -53,7 +53,9 @@ namespace QDriveManager
             panels.Add(pnlSignUp);
             panels.Add(pnlManager);
             panels.Add(pnlLoading);
-           
+
+            this.Style.Border = new Pen(Color.FromArgb(77, 216, 255), 2);
+
             AlignPanels();
         }
 
@@ -75,6 +77,23 @@ namespace QDriveManager
             else
             {
                 int loadStatusCode = LoadQDData();
+
+
+                if(localConnection)
+                {
+                    pbxLoginConnectionState.Image = Properties.Resources.QDriveLocalConnection;
+                    pbxSignUpConnectionState.Image = Properties.Resources.QDriveLocalConnection;
+                    pbxManagerConnectionState.Image = Properties.Resources.QDriveLocalConnection;
+                }
+                else
+                {
+                    pbxLoginConnectionState.Image = Properties.Resources.QDriveOnlineConnection;
+                    pbxSignUpConnectionState.Image = Properties.Resources.QDriveOnlineConnection;
+                    pbxManagerConnectionState.Image = Properties.Resources.QDriveOnlineConnection;
+                }
+
+                pbxLoginLogo.Image = Properties.Resources.QDriveProgramBanner;
+                pbxSignUpLogo.Image = Properties.Resources.QDriveProgramBanner;
 
                 switch(loadStatusCode)
                 {

@@ -8,8 +8,6 @@ namespace QDriveLib
 {
     public static class QDInfo
     {
-        public const string VerifyKey = "DebugKey";
-
         public static string LocalCipherKey
         {
             get
@@ -29,7 +27,7 @@ namespace QDriveLib
             public const string UserCanAddPrivateDrive = "UserCanAddPrivateDrive";
             public const string UserCanAddPublicDrive = "UserCanAddPublicDrive";
             public const string UserCanSelfRegister = "UserCanSelfRegister";
-            public const string VerificationKey = "VerificationKey";
+            public const string MasterPassword = "MasterPassword";
         }
 
         /// <summary>

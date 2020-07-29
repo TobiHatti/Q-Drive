@@ -127,7 +127,7 @@
             // 
             // btnRunSetup
             // 
-            this.btnRunSetup.Location = new System.Drawing.Point(279, 321);
+            this.btnRunSetup.Location = new System.Drawing.Point(295, 321);
             this.btnRunSetup.Name = "btnRunSetup";
             this.btnRunSetup.Size = new System.Drawing.Size(188, 42);
             this.btnRunSetup.TabIndex = 0;
@@ -156,7 +156,7 @@
             // lblKeepLoggedInInfo
             // 
             this.lblKeepLoggedInInfo.ForeColor = System.Drawing.Color.DimGray;
-            this.lblKeepLoggedInInfo.Location = new System.Drawing.Point(248, 435);
+            this.lblKeepLoggedInInfo.Location = new System.Drawing.Point(245, 435);
             this.lblKeepLoggedInInfo.Name = "lblKeepLoggedInInfo";
             this.lblKeepLoggedInInfo.Size = new System.Drawing.Size(288, 21);
             this.lblKeepLoggedInInfo.TabIndex = 14;
@@ -165,7 +165,8 @@
             // 
             // chbKeepLoggedIn
             // 
-            this.chbKeepLoggedIn.Location = new System.Drawing.Point(309, 411);
+            this.chbKeepLoggedIn.AutoSize = true;
+            this.chbKeepLoggedIn.Location = new System.Drawing.Point(310, 411);
             this.chbKeepLoggedIn.Name = "chbKeepLoggedIn";
             this.chbKeepLoggedIn.Size = new System.Drawing.Size(157, 25);
             this.chbKeepLoggedIn.TabIndex = 13;
@@ -175,9 +176,9 @@
             // 
             // lnkCreateNewAccount
             // 
-            this.lnkCreateNewAccount.Location = new System.Drawing.Point(134, 525);
+            this.lnkCreateNewAccount.Location = new System.Drawing.Point(160, 525);
             this.lnkCreateNewAccount.Name = "lnkCreateNewAccount";
-            this.lnkCreateNewAccount.Size = new System.Drawing.Size(510, 23);
+            this.lnkCreateNewAccount.Size = new System.Drawing.Size(458, 23);
             this.lnkCreateNewAccount.TabIndex = 12;
             this.lnkCreateNewAccount.TabStop = true;
             this.lnkCreateNewAccount.Text = "AccountCreationOption";
@@ -186,17 +187,19 @@
             // 
             // pbxLoginConnectionState
             // 
-            this.pbxLoginConnectionState.Location = new System.Drawing.Point(0, 427);
+            this.pbxLoginConnectionState.Location = new System.Drawing.Point(0, 395);
             this.pbxLoginConnectionState.Name = "pbxLoginConnectionState";
-            this.pbxLoginConnectionState.Size = new System.Drawing.Size(128, 128);
+            this.pbxLoginConnectionState.Size = new System.Drawing.Size(160, 160);
+            this.pbxLoginConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxLoginConnectionState.TabIndex = 11;
             this.pbxLoginConnectionState.TabStop = false;
             // 
             // pbxLoginLogo
             // 
-            this.pbxLoginLogo.Location = new System.Drawing.Point(138, 75);
+            this.pbxLoginLogo.Location = new System.Drawing.Point(139, 70);
             this.pbxLoginLogo.Name = "pbxLoginLogo";
-            this.pbxLoginLogo.Size = new System.Drawing.Size(506, 128);
+            this.pbxLoginLogo.Size = new System.Drawing.Size(500, 128);
+            this.pbxLoginLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxLoginLogo.TabIndex = 11;
             this.pbxLoginLogo.TabStop = false;
             // 
@@ -204,7 +207,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label2.Location = new System.Drawing.Point(165, 232);
+            this.label2.Location = new System.Drawing.Point(174, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 28);
             this.label2.TabIndex = 10;
@@ -214,7 +217,7 @@
             // 
             this.lblSA2ConfirmPassword.AutoSize = true;
             this.lblSA2ConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.lblSA2ConfirmPassword.Location = new System.Drawing.Point(165, 326);
+            this.lblSA2ConfirmPassword.Location = new System.Drawing.Point(174, 325);
             this.lblSA2ConfirmPassword.Name = "lblSA2ConfirmPassword";
             this.lblSA2ConfirmPassword.Size = new System.Drawing.Size(91, 28);
             this.lblSA2ConfirmPassword.TabIndex = 10;
@@ -223,24 +226,24 @@
             // txbUsername
             // 
             this.txbUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
-            this.txbUsername.Location = new System.Drawing.Point(170, 263);
+            this.txbUsername.Location = new System.Drawing.Point(179, 263);
             this.txbUsername.Name = "txbUsername";
-            this.txbUsername.Size = new System.Drawing.Size(413, 38);
+            this.txbUsername.Size = new System.Drawing.Size(420, 38);
             this.txbUsername.TabIndex = 4;
             // 
             // txbPassword
             // 
             this.txbPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
-            this.txbPassword.Location = new System.Drawing.Point(170, 357);
+            this.txbPassword.Location = new System.Drawing.Point(179, 357);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '•';
-            this.txbPassword.Size = new System.Drawing.Size(413, 38);
+            this.txbPassword.Size = new System.Drawing.Size(420, 38);
             this.txbPassword.TabIndex = 4;
             // 
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.btnLogin.Location = new System.Drawing.Point(292, 474);
+            this.btnLogin.Location = new System.Drawing.Point(295, 474);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(188, 42);
             this.btnLogin.TabIndex = 0;
@@ -340,9 +343,10 @@
             // 
             // pbxManagerConnectionState
             // 
-            this.pbxManagerConnectionState.Location = new System.Drawing.Point(0, 427);
+            this.pbxManagerConnectionState.Location = new System.Drawing.Point(0, 395);
             this.pbxManagerConnectionState.Name = "pbxManagerConnectionState";
-            this.pbxManagerConnectionState.Size = new System.Drawing.Size(128, 128);
+            this.pbxManagerConnectionState.Size = new System.Drawing.Size(160, 160);
+            this.pbxManagerConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxManagerConnectionState.TabIndex = 11;
             this.pbxManagerConnectionState.TabStop = false;
             // 
@@ -493,9 +497,10 @@
             // 
             // pbxSignUpConnectionState
             // 
-            this.pbxSignUpConnectionState.Location = new System.Drawing.Point(0, 427);
+            this.pbxSignUpConnectionState.Location = new System.Drawing.Point(0, 395);
             this.pbxSignUpConnectionState.Name = "pbxSignUpConnectionState";
-            this.pbxSignUpConnectionState.Size = new System.Drawing.Size(128, 128);
+            this.pbxSignUpConnectionState.Size = new System.Drawing.Size(160, 160);
+            this.pbxSignUpConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxSignUpConnectionState.TabIndex = 11;
             this.pbxSignUpConnectionState.TabStop = false;
             // 
@@ -503,7 +508,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label12.Location = new System.Drawing.Point(108, 232);
+            this.label12.Location = new System.Drawing.Point(133, 227);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(129, 28);
             this.label12.TabIndex = 10;
@@ -513,7 +518,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label9.Location = new System.Drawing.Point(139, 276);
+            this.label9.Location = new System.Drawing.Point(164, 270);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(98, 28);
             this.label9.TabIndex = 10;
@@ -523,7 +528,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label13.Location = new System.Drawing.Point(73, 364);
+            this.label13.Location = new System.Drawing.Point(98, 358);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(164, 28);
             this.label13.TabIndex = 10;
@@ -531,9 +536,10 @@
             // 
             // pbxSignUpLogo
             // 
-            this.pbxSignUpLogo.Location = new System.Drawing.Point(134, 65);
+            this.pbxSignUpLogo.Location = new System.Drawing.Point(139, 70);
             this.pbxSignUpLogo.Name = "pbxSignUpLogo";
-            this.pbxSignUpLogo.Size = new System.Drawing.Size(506, 128);
+            this.pbxSignUpLogo.Size = new System.Drawing.Size(500, 128);
+            this.pbxSignUpLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxSignUpLogo.TabIndex = 11;
             this.pbxSignUpLogo.TabStop = false;
             // 
@@ -541,7 +547,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label10.Location = new System.Drawing.Point(146, 320);
+            this.label10.Location = new System.Drawing.Point(171, 314);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 28);
             this.label10.TabIndex = 10;
@@ -550,7 +556,7 @@
             // txbRegName
             // 
             this.txbRegName.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
-            this.txbRegName.Location = new System.Drawing.Point(243, 227);
+            this.txbRegName.Location = new System.Drawing.Point(268, 222);
             this.txbRegName.Name = "txbRegName";
             this.txbRegName.Size = new System.Drawing.Size(413, 38);
             this.txbRegName.TabIndex = 1;
@@ -559,7 +565,7 @@
             // txbRegUsername
             // 
             this.txbRegUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
-            this.txbRegUsername.Location = new System.Drawing.Point(243, 271);
+            this.txbRegUsername.Location = new System.Drawing.Point(268, 265);
             this.txbRegUsername.Name = "txbRegUsername";
             this.txbRegUsername.Size = new System.Drawing.Size(413, 38);
             this.txbRegUsername.TabIndex = 2;
@@ -567,7 +573,7 @@
             // txbRegConfirmPassword
             // 
             this.txbRegConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
-            this.txbRegConfirmPassword.Location = new System.Drawing.Point(243, 359);
+            this.txbRegConfirmPassword.Location = new System.Drawing.Point(268, 353);
             this.txbRegConfirmPassword.Name = "txbRegConfirmPassword";
             this.txbRegConfirmPassword.PasswordChar = '•';
             this.txbRegConfirmPassword.Size = new System.Drawing.Size(413, 38);
@@ -576,7 +582,7 @@
             // txbRegPassword
             // 
             this.txbRegPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
-            this.txbRegPassword.Location = new System.Drawing.Point(243, 315);
+            this.txbRegPassword.Location = new System.Drawing.Point(268, 309);
             this.txbRegPassword.Name = "txbRegPassword";
             this.txbRegPassword.PasswordChar = '•';
             this.txbRegPassword.Size = new System.Drawing.Size(413, 38);
@@ -585,7 +591,7 @@
             // btnRegCancel
             // 
             this.btnRegCancel.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
-            this.btnRegCancel.Location = new System.Drawing.Point(340, 487);
+            this.btnRegCancel.Location = new System.Drawing.Point(338, 487);
             this.btnRegCancel.Name = "btnRegCancel";
             this.btnRegCancel.Size = new System.Drawing.Size(102, 29);
             this.btnRegCancel.TabIndex = 6;
@@ -596,7 +602,7 @@
             // btnSignUp
             // 
             this.btnSignUp.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.btnSignUp.Location = new System.Drawing.Point(293, 435);
+            this.btnSignUp.Location = new System.Drawing.Point(295, 435);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(188, 42);
             this.btnSignUp.TabIndex = 5;
@@ -630,6 +636,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "QDriveManager";
+            this.Padding = new System.Windows.Forms.Padding(0, 2, 2, 0);
             this.Style.InactiveShadowOpacity = ((byte)(20));
             this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;

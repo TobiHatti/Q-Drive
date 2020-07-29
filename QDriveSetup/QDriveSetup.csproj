@@ -102,23 +102,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QDriveSetup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="QDriveSetup.Designer.cs">
       <DependentUpon>QDriveSetup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VerifyMasterPW.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VerifyMasterPW.Designer.cs">
       <DependentUpon>VerifyMasterPW.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="QDriveSetup.resx">
-      <DependentUpon>QDriveSetup.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -128,6 +125,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QDriveSetup.resx">
+      <DependentUpon>QDriveSetup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerifyMasterPW.resx">
       <DependentUpon>VerifyMasterPW.cs</DependentUpon>
     </EmbeddedResource>

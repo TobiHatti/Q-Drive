@@ -104,6 +104,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QDAddPrivateDrive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDAddPrivateDrive.Designer.cs">
+      <DependentUpon>QDAddPrivateDrive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QDAddPublicDrive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDAddPublicDrive.Designer.cs">
+      <DependentUpon>QDAddPublicDrive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QDAddDriveSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDAddDriveSelector.Designer.cs">
+      <DependentUpon>QDAddDriveSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="QDriveManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +130,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="QDAddDriveSelector.resx">
+      <DependentUpon>QDAddDriveSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QDAddPrivateDrive.resx">
+      <DependentUpon>QDAddPrivateDrive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QDAddPublicDrive.resx">
+      <DependentUpon>QDAddPublicDrive.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QDriveManager.resx">
       <DependentUpon>QDriveManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +150,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -141,6 +169,15 @@
       <Project>{31170584-b7e1-4589-b2a4-64e5d3a283dc}</Project>
       <Name>QDriveLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QDriveLocalConnection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QDriveOnlineConnection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QDriveProgramBanner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" />
