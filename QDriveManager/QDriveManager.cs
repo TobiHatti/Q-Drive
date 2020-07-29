@@ -16,6 +16,25 @@ namespace QDriveManager
 {
     public partial class QDriveManager : SfForm
     {
+        // General properties
+        private bool localConnection = false;
+        private bool promptPassword = false;
+
+        private string defaultUsername = "";
+        private string defaultPassword = "";
+
+        // Online-specific properties
+        private bool userCanToggleKeepLoggedIn = true;
+        private bool userCanAddPrivateDrive = true;
+        private bool userCanAddPublicDrive = true;
+        private bool userCanSelfRegister = true;
+
+        private string dbHost = "";
+        private string dbUser = "";
+        private string dbPass = "";
+        private string dbName = "";
+        private string userID = "";
+
         #region Page Layout and Initial Loading
 
         private List<Panel> panels = new List<Panel>();
@@ -68,8 +87,14 @@ namespace QDriveManager
                         break;
                 }
 
+                if (promptPassword || string.IsNullOrEmpty(defaultUsername) || string.IsNullOrEmpty(defaultPassword))
+                {
 
-                pnlLogin.BringToFront();
+
+                    pnlLogin.BringToFront();
+                }
+                else
+                    pnlManager.BringToFront();
             }
         }
 
@@ -134,24 +159,7 @@ namespace QDriveManager
         }
 
 
-        // General properties
-        private bool localConnection = false;
-        private bool promptPassword = false;
-
-        private string defaultUsername = "";
-        private string defaultPassword = "";
-
-        // Online-specific properties
-        private bool userCanToggleKeepLoggedIn = true;
-        private bool userCanAddPrivateDrive = true;
-        private bool userCanAddPublicDrive = true;
-        private bool userCanSelfRegister = true;
-
-        private string dbHost = "";
-        private string dbUser = "";
-        private string dbPass = "";
-        private string dbName = "";
-        private string userID = "";
+        
 
         private int LoadQDData()
         {
