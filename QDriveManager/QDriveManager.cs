@@ -10,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Schema;
@@ -349,7 +350,51 @@ namespace QDriveManager
 
                 if (addPrivate.ShowDialog() == DialogResult.OK)
                 {
+                    if(connectionOption == 2)
+                    {
+                        using (WrapMySQL sql = new WrapMySQL(dbHost, dbName, dbUser, dbPass))
+                        {
+                            sql.Open();
+                            sql.TransactionBegin();
+                            try
+                            {
+                                Guid driveGuid = Guid.NewGuid();
 
+                                sql.ExecuteNonQuery("INSERT INTO qd_drives (ID, DefaultName, DefaultDriveLetter, LocalPath, IsPublic, IsDeployable) VALUES (?,?,?,?,?,?)",
+                                    driveGuid,
+                                    addPrivate.DisplayName,
+                                    addPrivate.DriveLetter,
+                                    addPrivate.DrivePath,
+                                    false,
+                                    false
+                                );
+
+                                sql.ExecuteNonQuery("INSERT INTO qd_assigns (ID, UserID, DriveID, CustomDriveName, CustomDriveLetter, DUsername, DPassword, DDomain) VALUES (?,?,?,?,?,?,?,?)",
+                                    Guid.NewGuid(),
+                                    userID,
+                                    driveGuid,
+                                    addPrivate.DisplayName,
+                                    addPrivate.DriveLetter,
+                                    Cipher.Encrypt(addPrivate.Username, uPassword),
+                                    Cipher.Encrypt(addPrivate.Password, uPassword),
+                                    Cipher.Encrypt(addPrivate.Domain, uPassword)
+                                );
+
+                                MessageBox.Show("Successfully Added network-drive!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                sql.TransactionCommit();
+                            }
+                            catch
+                            {
+                                sql.TransactionRollback();
+                                MessageBox.Show("Could not add network drive. Please try again later.", "Could not add drive.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            sql.Close();
+                        }
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
         }
