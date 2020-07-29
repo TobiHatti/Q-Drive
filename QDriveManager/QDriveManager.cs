@@ -320,6 +320,40 @@ namespace QDriveManager
             pnlLogin.BringToFront();
         }
 
+        private void btnAddDrive_Click(object sender, EventArgs e)
+        {
+            int connectionOption = 0;
+            if (!localConnection)
+            {
+                QDAddDriveSelector selector = new QDAddDriveSelector();
+                if (selector.ShowDialog() == DialogResult.OK)
+                {
+                    connectionOption = selector.SelectedOption;
+                }
+            }
+            else connectionOption = 3;
+
+
+            if(connectionOption == 1)
+            {
+                QDAddPublicDrive addPublic = new QDAddPublicDrive();
+
+                if(addPublic.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            else if(connectionOption == 2 || connectionOption == 3)
+            {
+                QDAddPrivateDrive addPrivate = new QDAddPrivateDrive();
+
+                if (addPrivate.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
         #endregion
 
         #region Methods ==============================================================================================
@@ -457,6 +491,7 @@ namespace QDriveManager
 
             return passwordValid;
         }
+
 
 
         #endregion

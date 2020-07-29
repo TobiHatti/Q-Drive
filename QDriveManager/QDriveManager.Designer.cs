@@ -336,6 +336,7 @@
             this.btnAddDrive.TabIndex = 6;
             this.btnAddDrive.Text = "Add Drive";
             this.btnAddDrive.UseVisualStyleBackColor = true;
+            this.btnAddDrive.Click += new System.EventHandler(this.btnAddDrive_Click);
             // 
             // pbxManagerConnectionState
             // 
