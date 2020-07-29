@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
 
 namespace QDriveLib
@@ -14,7 +16,7 @@ namespace QDriveLib
             {
                 using (WrapMySQL sql = new WrapMySQL(pDBHost, pDBName, pDBUser, pDBPassword))
                 {
-                    string cipher = sql.ExecuteScalarACon<string>("SELECT QDValue FROM qd_info WHERE QDKey = 'VerificationKey'");
+                    string cipher = sql.ExecuteScalarACon<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.VerificationKey);
 
                     try
                     {
@@ -29,6 +31,18 @@ namespace QDriveLib
                 masterPasswordValid = false;
             }
             return masterPasswordValid;
+        }
+
+        public static string GetMachineMac()
+        {
+             var macAddr =
+            (
+                from nic in NetworkInterface.GetAllNetworkInterfaces()
+                where nic.OperationalStatus == OperationalStatus.Up
+                select nic.GetPhysicalAddress().ToString()
+            ).FirstOrDefault();
+
+            return macAddr;
         }
     }
 }

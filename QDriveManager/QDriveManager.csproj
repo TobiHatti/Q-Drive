@@ -137,9 +137,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\QDriveLib\QDriveLib.csproj">
+    <ProjectReference Include="..\QDriveLibOld\QDriveLibOld.csproj">
       <Project>{5b039be1-a4bd-47a3-ad97-9796bd58e08d}</Project>
-      <Name>QDriveLib</Name>
+      <Name>QDriveLibOld</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

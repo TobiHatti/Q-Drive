@@ -4631,11 +4631,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "U:\\(06) Code\\(01) C#\\(01) Projects [GIT]\\QDrive\\QDriveLib\\QDriveLib.csproj",
+      "projectUniqueName": "U:\\(06) Code\\(01) C#\\(01) Projects [GIT]\\QDrive\\QDriveLibOld\\QDriveLibOld.csproj",
       "projectName": "QDriveLib",
-      "projectPath": "U:\\(06) Code\\(01) C#\\(01) Projects [GIT]\\QDrive\\QDriveLib\\QDriveLib.csproj",
+      "projectPath": "U:\\(06) Code\\(01) C#\\(01) Projects [GIT]\\QDrive\\QDriveLibOld\\QDriveLibOld.csproj",
       "packagesPath": "C:\\Users\\Tobias\\.nuget\\packages\\",
-      "outputPath": "U:\\(06) Code\\(01) C#\\(01) Projects [GIT]\\QDrive\\QDriveLib\\obj\\",
+      "outputPath": "U:\\(06) Code\\(01) C#\\(01) Projects [GIT]\\QDrive\\QDriveLibOld\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Tobias\\AppData\\Roaming\\NuGet\\NuGet.Config",
