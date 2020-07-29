@@ -381,7 +381,7 @@ namespace QDrive
                             // Create new tables
                             sql.ExecuteNonQuery("CREATE TABLE `qd_info` ( `QDKey` VARCHAR(255) NOT NULL , `QDValue` VARCHAR(255) NOT NULL , PRIMARY KEY (`QDKey`))");
                             sql.ExecuteNonQuery("CREATE TABLE `qd_drives` ( `ID` VARCHAR(50) NOT NULL , `DefaultName` VARCHAR(50) NOT NULL , `DefaultDriveLetter` VARCHAR(1) NOT NULL , `LocalPath` VARCHAR(255) NOT NULL , `RemotePath` VARCHAR(255) NOT NULL , `IsPublic` BOOLEAN NOT NULL , `IsDeployable` BOOLEAN NOT NULL , PRIMARY KEY (`ID`))");
-                            sql.ExecuteNonQuery("CREATE TABLE `qd_users` ( `ID` VARCHAR(50) NOT NULL , `Name` VARCHAR(100) NOT NULL , PRIMARY KEY (`ID`))");
+                            sql.ExecuteNonQuery("CREATE TABLE `qd_users` ( `ID` varchar(50) NOT NULL, `Name` varchar(100) NOT NULL, `Username` varchar(100) NOT NULL, `Password` varchar(100) NOT NULL, PRIMARY KEY(`ID`), UNIQUE KEY `Username` (`Username`))");
                             sql.ExecuteNonQuery("CREATE TABLE `qd_assigns` ( `ID` VARCHAR(50) NOT NULL , `UserID` VARCHAR(50) NOT NULL , `DriveID` VARCHAR(50) NOT NULL , `CustomDriveName` VARCHAR(50) NOT NULL , `CustomDriveLetter` VARCHAR(1) NOT NULL , PRIMARY KEY (`ID`))");
 
                             // Create pre-defined settings
@@ -432,14 +432,13 @@ namespace QDrive
 
                         // Create pre-defined settings
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.IsOnlineLinked,          onlineLinked);
-                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.AlwaysPromptPassword,    (!onlineLinked && alwaysPromptPassword));
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.AlwaysPromptPassword,    alwaysPromptPassword);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.SetupSuccess,            true);
 
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBHost,              onlineDBHost);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBName,              onlineDBName);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBUsername,          onlineDBUsername);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBPassword,          onlineDBPassword);
-                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.UserID,              DBNull.Value);
 
                         if (onlineLinked)
                         {

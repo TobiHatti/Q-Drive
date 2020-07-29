@@ -1,4 +1,5 @@
-﻿using QDriveLib;
+﻿using MySql.Data.MySqlClient;
+using QDriveLib;
 using Syncfusion.WinForms.Controls;
 using System;
 using System.Collections.Generic;
@@ -193,8 +194,8 @@ namespace QDriveManager
 
                         if (!localConnection)
                         {
-                            sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", string.Empty, QDInfo.DBL.DefaultUsername);
-                            sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", string.Empty, QDInfo.DBL.DefaultPassword);
+                            sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", DBNull.Value, QDInfo.DBL.DefaultUsername);
+                            sql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", DBNull.Value, QDInfo.DBL.DefaultPassword);
                         }
                     }
 
@@ -223,12 +224,57 @@ namespace QDriveManager
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
+            bool signupSuccess = false;
 
+            if (txbRegPassword.Text != txbRegConfirmPassword.Text)
+            {
+                MessageBox.Show("Passwords are not identical.", "Password invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (string.IsNullOrEmpty(txbRegPassword.Text))
+            {
+                MessageBox.Show("Please enter a password.", "Password invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using(WrapMySQL sql = new WrapMySQL(dbHost, dbName, dbUser, dbPass))
+            {
+                sql.Open();
+
+                if (sql.ExecuteScalar<int>("SELECT COUNT(*) FROM qd_users WHERE Username = ?", txbRegUsername.Text) == 0)
+                {
+                    sql.TransactionBegin();
+
+                    try
+                    {
+                        sql.ExecuteNonQuery("INSERT INTO qd_users (ID, Name, Username, Password) VALUES (?,?,?,?)", Guid.NewGuid(), txbRegName.Text, txbRegUsername.Text, QDLib.HashPassword(txbRegPassword.Text));
+
+                        MessageBox.Show("User signed up successfully! Please log in with your username and password.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        sql.TransactionCommit();
+                        signupSuccess = true;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("An error occured whilst trying to register the user.", "Server error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        sql.TransactionRollback();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Username already in use. Please choose another username", "Username already in use", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                sql.Close();
+            }
+
+            if (signupSuccess) pnlLogin.BringToFront();
         }
 
         #endregion
 
         #region Step D: Manager ======================================================================================
+
+
 
         #endregion
 
@@ -354,21 +400,14 @@ namespace QDriveManager
                 using (WrapMySQL sql = new WrapMySQL(dbHost, dbName, dbUser, dbPass))
                 {
                     sql.Open();
-                    sql.TransactionBegin();
-                    try
+                    using (MySqlDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_users WHERE Username = ? AND Password = ?", pUsername, QDLib.HashPassword(pPassword)))
                     {
-
-                        string dbUsername = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
-                        string dbHash = sql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
-
-
-                        sql.TransactionCommit();
+                        while (reader.Read())
+                        {
+                            userID = Convert.ToString(reader["ID"]);
+                            passwordValid = true;
+                        }
                     }
-                    catch
-                    {
-                        sql.TransactionRollback();
-                    }
-
                     sql.Close();
                 }
             }
