@@ -127,10 +127,10 @@ namespace QDriveLib
                                 ConnectDrive(
                                     Convert.ToChar(reader["DriveLetter"]),
                                     Convert.ToString(reader["Path"]),
-                                    Convert.ToString(reader["Username"]),
+                                    Cipher.Decrypt(Convert.ToString(reader["Username"]), QDInfo.LocalCipherKey),
                                     Cipher.Decrypt(Convert.ToString(reader["Password"]), QDInfo.LocalCipherKey),
                                     Convert.ToString(reader["DriveName"]),
-                                    Convert.ToString(reader["Domain"])
+                                    Cipher.Decrypt(Convert.ToString(reader["Domain"]), QDInfo.LocalCipherKey)
                                 );
                             }
                             catch

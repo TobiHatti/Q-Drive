@@ -393,7 +393,34 @@ namespace QDriveManager
                     }
                     else
                     {
+                        using (WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile, true))
+                        {
+                            sql.Open();
+                            sql.TransactionBegin();
+                            try
+                            {
+                                Guid driveGuid = Guid.NewGuid();
 
+                                sql.ExecuteNonQuery("INSERT INTO qd_drives (ID, LocalPath, Username, Password, Domain, DriveLetter, DriveName) VALUES (?,?,?,?,?,?,?)",
+                                    Guid.NewGuid(),
+                                    addPrivate.DrivePath,
+                                    Cipher.Encrypt(addPrivate.Username, QDInfo.LocalCipherKey),
+                                    Cipher.Encrypt(addPrivate.Password, QDInfo.LocalCipherKey),
+                                    Cipher.Encrypt(addPrivate.Domain, QDInfo.LocalCipherKey),
+                                    addPrivate.DriveLetter,
+                                    addPrivate.DisplayName
+                                );
+
+                                MessageBox.Show("Successfully Added network-drive!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                sql.TransactionCommit();
+                            }
+                            catch
+                            {
+                                sql.TransactionRollback();
+                                MessageBox.Show("Could not add network drive. Please try again later.", "Could not add drive.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            sql.Close();
+                        }
                     }
                 }
             }
