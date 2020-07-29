@@ -18,6 +18,8 @@ namespace QDriveManager
 {
     public partial class QDriveManager : SfForm
     {
+        private bool localUserNoPassword = false;
+
         // General properties
         private bool localConnection = false;
         private bool promptPassword = false;
@@ -93,11 +95,27 @@ namespace QDriveManager
                         break;
                 }
 
-                if (promptPassword || string.IsNullOrEmpty(defaultUsername) || string.IsNullOrEmpty(defaultPassword))
+                // Check if user uses local connection and no password
+                try
+                {
+                    if (localConnection && Cipher.Decrypt(defaultPassword, QDInfo.LocalCipherKey) == string.Empty)
+                    {
+                        localUserNoPassword = true;
+                        txbUsername.ReadOnly = true;
+                        txbPassword.ReadOnly = true;
+                        chbKeepLoggedIn.Enabled = false;
+                        lblKeepLoggedInInfo.Visible = false;
+                        lnkCreateNewAccount.Visible = false;
+                    }
+                }
+                catch { }
+
+
+                if (!localUserNoPassword && (promptPassword || string.IsNullOrEmpty(defaultUsername) || string.IsNullOrEmpty(defaultPassword)))
                 {
                     if(userCanToggleKeepLoggedIn)
                     {
-                        chbKeepLoggedIn.Checked = promptPassword;
+                        chbKeepLoggedIn.Checked = false;
                         chbKeepLoggedIn.Enabled = true;
                         lblKeepLoggedInInfo.Text = string.Empty;
                     }
@@ -165,6 +183,12 @@ namespace QDriveManager
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if(localUserNoPassword)
+            {
+                pnlManager.BringToFront();
+                return;
+            }
+
             if (!VerifyPassword(localConnection, txbUsername.Text, txbPassword.Text))
             {
                 MessageBox.Show("Username or password are invalid!", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -274,7 +298,11 @@ namespace QDriveManager
 
         #region Step D: Manager ======================================================================================
 
-
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            QDLib.DisconnectAllDrives();
+            pnlLogin.BringToFront();
+        }
 
         #endregion
 
@@ -416,5 +444,7 @@ namespace QDriveManager
         }
 
         #endregion
+
+        
     }
 }

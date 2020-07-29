@@ -34,6 +34,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.btnRunSetup = new System.Windows.Forms.Button();
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.lblKeepLoggedInInfo = new System.Windows.Forms.Label();
             this.chbKeepLoggedIn = new System.Windows.Forms.CheckBox();
             this.lnkCreateNewAccount = new System.Windows.Forms.LinkLabel();
             this.pbxLoginConnectionState = new System.Windows.Forms.PictureBox();
@@ -60,24 +61,23 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.lblKeepLoggedInInfo = new System.Windows.Forms.Label();
             this.pnlLoading = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.pnlSignUp = new System.Windows.Forms.Panel();
             this.pbxSignUpConnectionState = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txbRegUsername = new System.Windows.Forms.TextBox();
-            this.txbRegPassword = new System.Windows.Forms.TextBox();
-            this.btnSignUp = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txbRegName = new System.Windows.Forms.TextBox();
-            this.txbRegConfirmPassword = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.pbxSignUpLogo = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txbRegName = new System.Windows.Forms.TextBox();
+            this.txbRegUsername = new System.Windows.Forms.TextBox();
+            this.txbRegConfirmPassword = new System.Windows.Forms.TextBox();
+            this.txbRegPassword = new System.Windows.Forms.TextBox();
             this.btnRegCancel = new System.Windows.Forms.Button();
+            this.btnSignUp = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.pnlNotConfigured.SuspendLayout();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginConnectionState)).BeginInit();
@@ -152,6 +152,16 @@
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(778, 555);
             this.pnlLogin.TabIndex = 0;
+            // 
+            // lblKeepLoggedInInfo
+            // 
+            this.lblKeepLoggedInInfo.ForeColor = System.Drawing.Color.DimGray;
+            this.lblKeepLoggedInInfo.Location = new System.Drawing.Point(248, 435);
+            this.lblKeepLoggedInInfo.Name = "lblKeepLoggedInInfo";
+            this.lblKeepLoggedInInfo.Size = new System.Drawing.Size(288, 21);
+            this.lblKeepLoggedInInfo.TabIndex = 14;
+            this.lblKeepLoggedInInfo.Text = "PromptPasswordNote";
+            this.lblKeepLoggedInInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chbKeepLoggedIn
             // 
@@ -288,6 +298,7 @@
             this.btnDisconnect.TabIndex = 6;
             this.btnDisconnect.Text = "Log Off / Disconnect";
             this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // btnReconnect
             // 
@@ -426,16 +437,6 @@
             this.toolStripButton3.Size = new System.Drawing.Size(50, 22);
             this.toolStripButton3.Text = "Banana";
             // 
-            // lblKeepLoggedInInfo
-            // 
-            this.lblKeepLoggedInInfo.ForeColor = System.Drawing.Color.DimGray;
-            this.lblKeepLoggedInInfo.Location = new System.Drawing.Point(248, 435);
-            this.lblKeepLoggedInInfo.Name = "lblKeepLoggedInInfo";
-            this.lblKeepLoggedInInfo.Size = new System.Drawing.Size(288, 21);
-            this.lblKeepLoggedInInfo.TabIndex = 14;
-            this.lblKeepLoggedInInfo.Text = "PromptPasswordNote";
-            this.lblKeepLoggedInInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pnlLoading
             // 
             this.pnlLoading.Controls.Add(this.label7);
@@ -445,17 +446,6 @@
             this.pnlLoading.Name = "pnlLoading";
             this.pnlLoading.Size = new System.Drawing.Size(778, 555);
             this.pnlLoading.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 28F);
-            this.label6.Location = new System.Drawing.Point(4, 103);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(770, 54);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Q-Drive Manager";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
@@ -467,6 +457,17 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Loading...";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 28F);
+            this.label6.Location = new System.Drawing.Point(4, 103);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(770, 54);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Q-Drive Manager";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlSignUp
             // 
@@ -496,6 +497,16 @@
             this.pbxSignUpConnectionState.TabIndex = 11;
             this.pbxSignUpConnectionState.TabStop = false;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label12.Location = new System.Drawing.Point(108, 232);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(129, 28);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Display Name";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -505,6 +516,24 @@
             this.label9.Size = new System.Drawing.Size(98, 28);
             this.label9.TabIndex = 10;
             this.label9.Text = "Username";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label13.Location = new System.Drawing.Point(73, 364);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(164, 28);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Confirm Password";
+            // 
+            // pbxSignUpLogo
+            // 
+            this.pbxSignUpLogo.Location = new System.Drawing.Point(134, 65);
+            this.pbxSignUpLogo.Name = "pbxSignUpLogo";
+            this.pbxSignUpLogo.Size = new System.Drawing.Size(506, 128);
+            this.pbxSignUpLogo.TabIndex = 11;
+            this.pbxSignUpLogo.TabStop = false;
             // 
             // label10
             // 
@@ -516,6 +545,15 @@
             this.label10.TabIndex = 10;
             this.label10.Text = "Password";
             // 
+            // txbRegName
+            // 
+            this.txbRegName.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
+            this.txbRegName.Location = new System.Drawing.Point(243, 227);
+            this.txbRegName.Name = "txbRegName";
+            this.txbRegName.Size = new System.Drawing.Size(413, 38);
+            this.txbRegName.TabIndex = 4;
+            this.txbRegName.TextChanged += new System.EventHandler(this.txbRegName_TextChanged);
+            // 
             // txbRegUsername
             // 
             this.txbRegUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
@@ -523,6 +561,15 @@
             this.txbRegUsername.Name = "txbRegUsername";
             this.txbRegUsername.Size = new System.Drawing.Size(413, 38);
             this.txbRegUsername.TabIndex = 4;
+            // 
+            // txbRegConfirmPassword
+            // 
+            this.txbRegConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
+            this.txbRegConfirmPassword.Location = new System.Drawing.Point(243, 359);
+            this.txbRegConfirmPassword.Name = "txbRegConfirmPassword";
+            this.txbRegConfirmPassword.PasswordChar = '•';
+            this.txbRegConfirmPassword.Size = new System.Drawing.Size(413, 38);
+            this.txbRegConfirmPassword.TabIndex = 4;
             // 
             // txbRegPassword
             // 
@@ -532,6 +579,17 @@
             this.txbRegPassword.PasswordChar = '•';
             this.txbRegPassword.Size = new System.Drawing.Size(413, 38);
             this.txbRegPassword.TabIndex = 4;
+            // 
+            // btnRegCancel
+            // 
+            this.btnRegCancel.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
+            this.btnRegCancel.Location = new System.Drawing.Point(340, 487);
+            this.btnRegCancel.Name = "btnRegCancel";
+            this.btnRegCancel.Size = new System.Drawing.Size(102, 29);
+            this.btnRegCancel.TabIndex = 0;
+            this.btnRegCancel.Text = "Cancel";
+            this.btnRegCancel.UseVisualStyleBackColor = true;
+            this.btnRegCancel.Click += new System.EventHandler(this.btnRegCancel_Click);
             // 
             // btnSignUp
             // 
@@ -554,63 +612,6 @@
             this.label11.TabIndex = 3;
             this.label11.Text = "Q-Drive • Sign Up";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label12.Location = new System.Drawing.Point(108, 232);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(129, 28);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Display Name";
-            // 
-            // txbRegName
-            // 
-            this.txbRegName.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
-            this.txbRegName.Location = new System.Drawing.Point(243, 227);
-            this.txbRegName.Name = "txbRegName";
-            this.txbRegName.Size = new System.Drawing.Size(413, 38);
-            this.txbRegName.TabIndex = 4;
-            this.txbRegName.TextChanged += new System.EventHandler(this.txbRegName_TextChanged);
-            // 
-            // txbRegConfirmPassword
-            // 
-            this.txbRegConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 17F);
-            this.txbRegConfirmPassword.Location = new System.Drawing.Point(243, 359);
-            this.txbRegConfirmPassword.Name = "txbRegConfirmPassword";
-            this.txbRegConfirmPassword.PasswordChar = '•';
-            this.txbRegConfirmPassword.Size = new System.Drawing.Size(413, 38);
-            this.txbRegConfirmPassword.TabIndex = 4;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label13.Location = new System.Drawing.Point(73, 364);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(164, 28);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "Confirm Password";
-            // 
-            // pbxSignUpLogo
-            // 
-            this.pbxSignUpLogo.Location = new System.Drawing.Point(134, 65);
-            this.pbxSignUpLogo.Name = "pbxSignUpLogo";
-            this.pbxSignUpLogo.Size = new System.Drawing.Size(506, 128);
-            this.pbxSignUpLogo.TabIndex = 11;
-            this.pbxSignUpLogo.TabStop = false;
-            // 
-            // btnRegCancel
-            // 
-            this.btnRegCancel.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
-            this.btnRegCancel.Location = new System.Drawing.Point(340, 487);
-            this.btnRegCancel.Name = "btnRegCancel";
-            this.btnRegCancel.Size = new System.Drawing.Size(102, 29);
-            this.btnRegCancel.TabIndex = 0;
-            this.btnRegCancel.Text = "Cancel";
-            this.btnRegCancel.UseVisualStyleBackColor = true;
-            this.btnRegCancel.Click += new System.EventHandler(this.btnRegCancel_Click);
             // 
             // QDriveManager
             // 
