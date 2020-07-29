@@ -402,7 +402,7 @@ namespace QDriveManager
                                 Guid driveGuid = Guid.NewGuid();
 
                                 sql.ExecuteNonQuery("INSERT INTO qd_drives (ID, LocalPath, Username, Password, Domain, DriveLetter, DriveName) VALUES (?,?,?,?,?,?,?)",
-                                    Guid.NewGuid(),
+                                    Guid.NewGuid().ToString(),
                                     addPrivate.DrivePath,
                                     Cipher.Encrypt(addPrivate.Username, QDInfo.LocalCipherKey),
                                     Cipher.Encrypt(addPrivate.Password, QDInfo.LocalCipherKey),
@@ -424,6 +424,8 @@ namespace QDriveManager
                     }
                 }
             }
+
+            QDLib.ConnectQDDrives(userID, uPassword, dbHost, dbName, dbUser, dbPass, true);
         }
 
         #endregion

@@ -118,7 +118,7 @@ namespace QDriveLib
                 {
                     sqlite.Open();
                     // Connect local network drives
-                    using (SQLiteDataReader reader = sqlite.ExecuteQuery("SELECT * FROM qd_drives WHERE LocalNetwork = 1"))
+                    using (SQLiteDataReader reader = sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
                     {
                         while (reader.Read())
                         {
@@ -126,7 +126,7 @@ namespace QDriveLib
                             {
                                 ConnectDrive(
                                     Convert.ToChar(reader["DriveLetter"]),
-                                    Convert.ToString(reader["Path"]),
+                                    Convert.ToString(reader["LocalPath"]),
                                     Cipher.Decrypt(Convert.ToString(reader["Username"]), QDInfo.LocalCipherKey),
                                     Cipher.Decrypt(Convert.ToString(reader["Password"]), QDInfo.LocalCipherKey),
                                     Convert.ToString(reader["DriveName"]),
