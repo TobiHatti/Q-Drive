@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDAddPrivateDrive));
             this.label3 = new System.Windows.Forms.Label();
             this.txbDrivePath = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -249,6 +250,8 @@
             this.Controls.Add(this.label10);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconSize = new System.Drawing.Size(32, 32);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "QDAddPrivateDrive";

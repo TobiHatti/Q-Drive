@@ -73,9 +73,69 @@ namespace QDriveManager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap QDriveLocalDown {
+            get {
+                object obj = ResourceManager.GetObject("QDriveLocalDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveLocalUp {
+            get {
+                object obj = ResourceManager.GetObject("QDriveLocalUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap QDriveOnlineConnection {
             get {
                 object obj = ResourceManager.GetObject("QDriveOnlineConnection", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveOnlinePrivateDown {
+            get {
+                object obj = ResourceManager.GetObject("QDriveOnlinePrivateDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveOnlinePrivateUp {
+            get {
+                object obj = ResourceManager.GetObject("QDriveOnlinePrivateUp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveOnlinePublicDown {
+            get {
+                object obj = ResourceManager.GetObject("QDriveOnlinePublicDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveOnlinePublicUp {
+            get {
+                object obj = ResourceManager.GetObject("QDriveOnlinePublicUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

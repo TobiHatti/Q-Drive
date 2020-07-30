@@ -63,7 +63,6 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.pnlLoading = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.pnlSignUp = new System.Windows.Forms.Panel();
             this.pbxSignUpConnectionState = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -169,7 +168,7 @@
             this.chbKeepLoggedIn.Location = new System.Drawing.Point(310, 411);
             this.chbKeepLoggedIn.Name = "chbKeepLoggedIn";
             this.chbKeepLoggedIn.Size = new System.Drawing.Size(157, 25);
-            this.chbKeepLoggedIn.TabIndex = 13;
+            this.chbKeepLoggedIn.TabIndex = 3;
             this.chbKeepLoggedIn.Text = "Keep me logged in";
             this.chbKeepLoggedIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chbKeepLoggedIn.UseVisualStyleBackColor = true;
@@ -179,7 +178,7 @@
             this.lnkCreateNewAccount.Location = new System.Drawing.Point(160, 525);
             this.lnkCreateNewAccount.Name = "lnkCreateNewAccount";
             this.lnkCreateNewAccount.Size = new System.Drawing.Size(458, 23);
-            this.lnkCreateNewAccount.TabIndex = 12;
+            this.lnkCreateNewAccount.TabIndex = 5;
             this.lnkCreateNewAccount.TabStop = true;
             this.lnkCreateNewAccount.Text = "AccountCreationOption";
             this.lnkCreateNewAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -229,7 +228,7 @@
             this.txbUsername.Location = new System.Drawing.Point(179, 263);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(420, 38);
-            this.txbUsername.TabIndex = 4;
+            this.txbUsername.TabIndex = 1;
             // 
             // txbPassword
             // 
@@ -238,7 +237,7 @@
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '•';
             this.txbPassword.Size = new System.Drawing.Size(420, 38);
-            this.txbPassword.TabIndex = 4;
+            this.txbPassword.TabIndex = 2;
             // 
             // btnLogin
             // 
@@ -246,7 +245,7 @@
             this.btnLogin.Location = new System.Drawing.Point(295, 474);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(188, 42);
-            this.btnLogin.TabIndex = 0;
+            this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -286,7 +285,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(107, 238);
+            this.label5.Location = new System.Drawing.Point(6, 222);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(204, 147);
             this.label5.TabIndex = 14;
@@ -364,11 +363,19 @@
             // 
             this.grvConnectedDrives.BeforeTouchSize = new System.Drawing.Size(354, 483);
             this.grvConnectedDrives.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.grvConnectedDrives.ButtonView = true;
+            this.grvConnectedDrives.FlatLook = true;
+            this.grvConnectedDrives.ImageSpacing = 20;
+            this.grvConnectedDrives.IntegratedScrolling = true;
             this.grvConnectedDrives.Location = new System.Drawing.Point(421, 65);
             this.grvConnectedDrives.Name = "grvConnectedDrives";
             this.grvConnectedDrives.Size = new System.Drawing.Size(354, 483);
+            this.grvConnectedDrives.SmallImageView = true;
             this.grvConnectedDrives.TabIndex = 5;
             this.grvConnectedDrives.Text = "groupView1";
+            this.grvConnectedDrives.TextSpacing = 70;
+            this.grvConnectedDrives.TextWrap = true;
+            this.grvConnectedDrives.ThemesEnabled = true;
             // 
             // label4
             // 
@@ -446,7 +453,6 @@
             // pnlLoading
             // 
             this.pnlLoading.Controls.Add(this.label7);
-            this.pnlLoading.Controls.Add(this.label6);
             this.pnlLoading.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pnlLoading.Location = new System.Drawing.Point(6, 567);
             this.pnlLoading.Name = "pnlLoading";
@@ -455,25 +461,15 @@
             // 
             // label7
             // 
+            this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 18F);
-            this.label7.Location = new System.Drawing.Point(4, 163);
+            this.label7.Location = new System.Drawing.Point(661, 511);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(770, 54);
+            this.label7.Size = new System.Drawing.Size(113, 32);
             this.label7.TabIndex = 3;
             this.label7.Text = "Loading...";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 28F);
-            this.label6.Location = new System.Drawing.Point(4, 103);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(770, 54);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Q-Drive Manager";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlSignUp
             // 
@@ -633,6 +629,8 @@
             this.Controls.Add(this.pnlNotConfigured);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconSize = new System.Drawing.Size(32, 32);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "QDriveManager";
@@ -658,6 +656,7 @@
             this.toolStripEx1.ResumeLayout(false);
             this.toolStripEx1.PerformLayout();
             this.pnlLoading.ResumeLayout(false);
+            this.pnlLoading.PerformLayout();
             this.pnlSignUp.ResumeLayout(false);
             this.pnlSignUp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpConnectionState)).EndInit();
@@ -702,7 +701,6 @@
         private System.Windows.Forms.Label lblKeepLoggedInInfo;
         private System.Windows.Forms.Panel pnlLoading;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnlSignUp;
         private System.Windows.Forms.PictureBox pbxSignUpConnectionState;
         private System.Windows.Forms.Label label9;

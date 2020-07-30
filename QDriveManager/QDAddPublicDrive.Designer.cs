@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDAddPublicDrive));
             this.SuspendLayout();
             // 
             // QDAddPublicDrive
@@ -37,6 +38,8 @@
             this.ClientSize = new System.Drawing.Size(665, 378);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconSize = new System.Drawing.Size(32, 32);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "QDAddPublicDrive";

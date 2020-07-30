@@ -810,6 +810,8 @@
             this.Controls.Add(this.pnlS1ConnectionType);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconSize = new System.Drawing.Size(32, 32);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "QDriveSetup";

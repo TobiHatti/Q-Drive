@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerifyMasterPW));
             this.txbMasterPassword = new System.Windows.Forms.TextBox();
             this.lblSA2Password = new System.Windows.Forms.Label();
             this.btnVerify = new System.Windows.Forms.Button();
@@ -98,6 +99,8 @@
             this.Controls.Add(this.lblSA2Password);
             this.Controls.Add(this.txbMasterPassword);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconSize = new System.Drawing.Size(32, 32);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "VerifyMasterPW";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

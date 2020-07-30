@@ -177,6 +177,24 @@
     <None Include="Resources\QDriveOnlineConnection.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\QDriveLocalDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QDriveLocalUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QDriveOnlinePrivateDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QDriveOnlinePrivateUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QDriveOnlinePublicDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QDriveOnlinePublicUp.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\QDriveProgramBanner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

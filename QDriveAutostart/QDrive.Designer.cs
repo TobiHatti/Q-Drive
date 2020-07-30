@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDrive));
             this.pbxQDriveSplash = new System.Windows.Forms.PictureBox();
             this.pgbNetDriveProgress = new System.Windows.Forms.ProgressBar();
             this.lblVersionInfo = new System.Windows.Forms.Label();
@@ -99,6 +100,7 @@
             this.Controls.Add(this.pgbNetDriveProgress);
             this.Controls.Add(this.pbxQDriveSplash);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QDrive";
             this.RightToLeftLayout = true;
             this.ShowIcon = false;

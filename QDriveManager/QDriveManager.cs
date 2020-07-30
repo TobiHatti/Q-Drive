@@ -1,10 +1,12 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySql.Data;
+using MySql.Data.MySqlClient;
 using QDriveLib;
 using Syncfusion.WinForms.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -260,7 +262,9 @@ namespace QDriveManager
            
             if (localConnection) QDLib.ConnectQDDrives("", "", dbHost, dbName, dbUser, dbPass, true);
             else QDLib.ConnectQDDrives(userID, uPassword, dbHost, dbName, dbUser, dbPass, true);
-            
+
+            UpdateDriveListView();
+
             pnlManager.BringToFront();
         }
 
@@ -332,6 +336,8 @@ namespace QDriveManager
         {
             if (localConnection) QDLib.ConnectQDDrives("", "", dbHost, dbName, dbUser, dbPass, true);
             else QDLib.ConnectQDDrives(userID, uPassword, dbHost, dbName, dbUser, dbPass, true);
+
+            UpdateDriveListView();
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -450,6 +456,7 @@ namespace QDriveManager
             }
 
             QDLib.ConnectQDDrives(userID, uPassword, dbHost, dbName, dbUser, dbPass, true);
+            UpdateDriveListView();
         }
 
         #endregion
@@ -590,10 +597,118 @@ namespace QDriveManager
             return passwordValid;
         }
 
+        private void UpdateDriveListView()
+        {
+            List<DriveViewItem> drives = new List<DriveViewItem>();
 
+            using(WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile, true))
+            {
+                sql.Open();
+                using (SQLiteDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_drives"))
+                {
+                    while(reader.Read())
+                    {
+                        drives.Add(new DriveViewItem(
+                            Convert.ToString(reader["DriveName"]),
+                            Convert.ToString(reader["LocalPath"]),
+                            Convert.ToString(reader["DriveLetter"]),
+                            true,
+                            false
+                        ));
+                    }
+                }
+                sql.Close();
+            }
+
+            if (!localConnection)
+            {
+                using (WrapMySQL sql = new WrapMySQL(dbHost, dbName, dbUser, dbPass))
+                {
+                    sql.Open();
+                    using (MySqlDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", userID))
+                    {
+                        while (reader.Read())
+                        {
+                            drives.Add(new DriveViewItem(
+                            Convert.ToString(reader["CustomDriveName"]),
+                            Convert.ToString(reader["LocalPath"]),
+                            Convert.ToString(reader["CustomDriveLetter"]),
+                            false,
+                            Convert.ToBoolean(Convert.ToInt16(reader["IsPublic"]))
+                        ));
+                        }
+                    }
+                    sql.Close();
+                }
+            }
+
+            // Sort List
+            drives.Sort();
+
+
+            ImageList imgList = new ImageList()
+            {
+                ImageSize = new Size(80, 80),
+                ColorDepth = ColorDepth.Depth32Bit,
+                
+            };
+
+            imgList.Images.Add("LocalUp", Properties.Resources.QDriveLocalUp);
+            imgList.Images.Add("OnlinePrivateUp", Properties.Resources.QDriveOnlinePrivateUp);
+            imgList.Images.Add("OnlinePublicUp", Properties.Resources.QDriveOnlinePublicUp);
+
+            imgList.Images.Add("LocalDown", Properties.Resources.QDriveLocalDown);
+            imgList.Images.Add("OnlinePrivateDown", Properties.Resources.QDriveOnlinePrivateDown);
+            imgList.Images.Add("OnlinePublicDown", Properties.Resources.QDriveOnlinePublicDown);
+
+            grvConnectedDrives.SmallImageList = imgList;
+
+            grvConnectedDrives.GroupViewItems.Clear();
+
+            // Populate groupview
+            foreach (DriveViewItem drive in drives)
+            {
+                int imgIndex;
+
+                if (drive.IsLocalDrive) imgIndex = 0;
+                else if (drive.IsPublicDrive) imgIndex = 2;
+                else imgIndex = 1;
+
+                grvConnectedDrives.GroupViewItems.Add(
+                    new Syncfusion.Windows.Forms.Tools.GroupViewItem(
+                        $"({drive.DriveLetter}:\\) {drive.DisplayName}\r\n({drive.DrivePath})",
+                        imgIndex
+                    )
+                );
+            }
+        }
 
         #endregion
 
         
+    }
+
+    public class DriveViewItem : IComparable
+    {
+        public string DisplayName { get; set; } = string.Empty;
+        public string DrivePath { get; set; } = string.Empty;
+        public string DriveLetter { get; set; } = string.Empty;
+        public bool IsLocalDrive { get; set; } = false;
+        public bool IsPublicDrive { get; set; } = false;
+
+        public DriveViewItem(string pDisplayName, string pDrivePath, string pDriveLetter, bool pIsLocalDrive, bool pIsPublicDrive)
+        {
+            DisplayName = pDisplayName;
+            DrivePath = pDrivePath;
+            DriveLetter = pDriveLetter;
+            IsLocalDrive = pIsLocalDrive;
+            IsPublicDrive = pIsPublicDrive;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (Convert.ToInt32(Convert.ToChar((obj as DriveViewItem).DriveLetter)) > Convert.ToInt32(Convert.ToChar(DriveLetter))) return -1;
+            else return 1;
+        }
     }
 }
