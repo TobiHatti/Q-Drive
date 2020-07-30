@@ -345,7 +345,12 @@ namespace QDriveManager
             int connectionOption = 0;
             if (!localConnection)
             {
-                QDAddDriveSelector selector = new QDAddDriveSelector();
+                QDAddDriveSelector selector = new QDAddDriveSelector()
+                {
+                    CanAddPrivateDrive = userCanAddPrivateDrive,
+                    CanAddPublicDrive = userCanAddPublicDrive
+                };
+
                 if (selector.ShowDialog() == DialogResult.OK)
                 {
                     connectionOption = selector.SelectedOption;

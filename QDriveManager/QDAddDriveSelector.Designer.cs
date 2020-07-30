@@ -33,9 +33,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.rbnPrivateAccountLinked = new System.Windows.Forms.RadioButton();
             this.rbnPrivateDeviceLinked = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblPublicDrive = new System.Windows.Forms.Label();
+            this.lblPrivateDriveAccountLinked = new System.Windows.Forms.Label();
+            this.lblPrivateDriveDeviceLinked = new System.Windows.Forms.Label();
             this.btnContinue = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -67,7 +67,7 @@
             // rbnPrivateAccountLinked
             // 
             this.rbnPrivateAccountLinked.AutoSize = true;
-            this.rbnPrivateAccountLinked.Location = new System.Drawing.Point(26, 238);
+            this.rbnPrivateAccountLinked.Location = new System.Drawing.Point(26, 259);
             this.rbnPrivateAccountLinked.Name = "rbnPrivateAccountLinked";
             this.rbnPrivateAccountLinked.Size = new System.Drawing.Size(350, 25);
             this.rbnPrivateAccountLinked.TabIndex = 0;
@@ -77,49 +77,49 @@
             // rbnPrivateDeviceLinked
             // 
             this.rbnPrivateDeviceLinked.AutoSize = true;
-            this.rbnPrivateDeviceLinked.Location = new System.Drawing.Point(26, 374);
+            this.rbnPrivateDeviceLinked.Location = new System.Drawing.Point(26, 416);
             this.rbnPrivateDeviceLinked.Name = "rbnPrivateDeviceLinked";
             this.rbnPrivateDeviceLinked.Size = new System.Drawing.Size(334, 25);
             this.rbnPrivateDeviceLinked.TabIndex = 0;
             this.rbnPrivateDeviceLinked.Text = "Connect a private drive (linked to this device)";
             this.rbnPrivateDeviceLinked.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // lblPublicDrive
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(22, 130);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(392, 84);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Connect to a network drive publicly provided by your \r\ncompany or organisation.\r\n" +
+            this.lblPublicDrive.AutoSize = true;
+            this.lblPublicDrive.ForeColor = System.Drawing.Color.DimGray;
+            this.lblPublicDrive.Location = new System.Drawing.Point(22, 130);
+            this.lblPublicDrive.Name = "lblPublicDrive";
+            this.lblPublicDrive.Size = new System.Drawing.Size(392, 84);
+            this.lblPublicDrive.TabIndex = 14;
+            this.lblPublicDrive.Text = "Connect to a network drive publicly provided by your \r\ncompany or organisation.\r\n" +
     "This drive will be linked to your account, so you can \r\naccess it on any compute" +
     "r you log on with your account.";
             // 
-            // label1
+            // lblPrivateDriveAccountLinked
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(22, 266);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(415, 84);
-            this.label1.TabIndex = 14;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.lblPrivateDriveAccountLinked.AutoSize = true;
+            this.lblPrivateDriveAccountLinked.ForeColor = System.Drawing.Color.DimGray;
+            this.lblPrivateDriveAccountLinked.Location = new System.Drawing.Point(22, 287);
+            this.lblPrivateDriveAccountLinked.Name = "lblPrivateDriveAccountLinked";
+            this.lblPrivateDriveAccountLinked.Size = new System.Drawing.Size(415, 84);
+            this.lblPrivateDriveAccountLinked.TabIndex = 14;
+            this.lblPrivateDriveAccountLinked.Text = resources.GetString("lblPrivateDriveAccountLinked.Text");
             // 
-            // label2
+            // lblPrivateDriveDeviceLinked
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(22, 402);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(424, 42);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Connect to a private network-drive. This drive will exclusively \r\nshow up to user" +
+            this.lblPrivateDriveDeviceLinked.AutoSize = true;
+            this.lblPrivateDriveDeviceLinked.ForeColor = System.Drawing.Color.DimGray;
+            this.lblPrivateDriveDeviceLinked.Location = new System.Drawing.Point(22, 444);
+            this.lblPrivateDriveDeviceLinked.Name = "lblPrivateDriveDeviceLinked";
+            this.lblPrivateDriveDeviceLinked.Size = new System.Drawing.Size(424, 42);
+            this.lblPrivateDriveDeviceLinked.TabIndex = 14;
+            this.lblPrivateDriveDeviceLinked.Text = "Connect to a private network-drive. This drive will exclusively \r\nshow up to user" +
     "s that login to q-drive on this device.";
             // 
             // btnContinue
             // 
-            this.btnContinue.Location = new System.Drawing.Point(361, 488);
+            this.btnContinue.Location = new System.Drawing.Point(362, 531);
             this.btnContinue.Name = "btnContinue";
             this.btnContinue.Size = new System.Drawing.Size(120, 34);
             this.btnContinue.TabIndex = 15;
@@ -129,7 +129,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(6, 488);
+            this.btnCancel.Location = new System.Drawing.Point(7, 531);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 34);
             this.btnCancel.TabIndex = 15;
@@ -141,18 +141,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 528);
+            this.ClientSize = new System.Drawing.Size(487, 571);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnContinue);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblPrivateDriveDeviceLinked);
+            this.Controls.Add(this.lblPrivateDriveAccountLinked);
+            this.Controls.Add(this.lblPublicDrive);
             this.Controls.Add(this.rbnPrivateDeviceLinked);
             this.Controls.Add(this.rbnPrivateAccountLinked);
             this.Controls.Add(this.rbnPublicDrive);
             this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconSize = new System.Drawing.Size(32, 32);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "QDAddDriveSelector";
@@ -164,6 +166,7 @@
             this.Style.TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
             this.Style.TitleBar.BottomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
             this.Text = "Add new network drive";
+            this.Load += new System.EventHandler(this.QDAddDriveSelector_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,9 +178,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton rbnPrivateAccountLinked;
         private System.Windows.Forms.RadioButton rbnPrivateDeviceLinked;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPublicDrive;
+        private System.Windows.Forms.Label lblPrivateDriveAccountLinked;
+        private System.Windows.Forms.Label lblPrivateDriveDeviceLinked;
         private System.Windows.Forms.Button btnContinue;
         private System.Windows.Forms.Button btnCancel;
     }
