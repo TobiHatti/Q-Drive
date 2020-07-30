@@ -367,7 +367,13 @@ namespace QDriveManager
 
             if(connectionOption == 1)
             {
-                QDAddPublicDrive addPublic = new QDAddPublicDrive();
+                QDAddPublicDrive addPublic = new QDAddPublicDrive()
+                {
+                    DBHost = dbHost,
+                    DBName = dbName,
+                    DBUser = dbUser,
+                    DBPass = dbPass
+                };
 
                 if(addPublic.ShowDialog() == DialogResult.OK)
                 {
