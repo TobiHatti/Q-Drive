@@ -1,6 +1,7 @@
 ﻿using MySql.Data;
 using MySql.Data.MySqlClient;
 using QDriveLib;
+using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.Controls;
 using System;
 using System.Collections.Generic;
@@ -465,6 +466,62 @@ namespace QDriveManager
             UpdateDriveListView();
         }
 
+        private void grvConnectedDrives_GroupViewItemSelected(object sender, EventArgs e)
+        {
+            btnEditDrive.Enabled = true;
+            btnRemoveDrive.Enabled = true;
+        }
+
+        private void grvConnectedDrives_Click(object sender, EventArgs e)
+        {
+            if(grvConnectedDrives.SelectedItem != -1)
+            {
+                btnEditDrive.Enabled = true;
+                btnRemoveDrive.Enabled = true;
+            }
+        }
+
+        private void grvConnectedDrives_GroupViewItemDoubleClick(GroupView sender, GroupViewItemDoubleClickEventArgs e)
+        {
+            DriveViewItem drive = ((GroupViewItemEx)sender.GroupViewItems[sender.SelectedItem]).Drive;
+            Process.Start(drive.DriveLetter + ":\\");
+        }
+
+        private void btnRemoveDrive_Click(object sender, EventArgs e)
+        {
+            DriveViewItem drive = ((GroupViewItemEx)grvConnectedDrives.GroupViewItems[grvConnectedDrives.SelectedItem]).Drive;
+
+            if (MessageBox.Show("Do you really want to remove the selected drive from your drive-list?", "Remove Drive", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if(drive.IsLocalDrive)
+                {
+                    using(WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile, true))
+                    {
+                        sql.ExecuteNonQueryACon("DELETE FROM qd_drives WHERE ID = ?", drive.ID);
+                    }
+                }
+                else
+                {
+                    using (WrapMySQL sql = new WrapMySQL(dbHost, dbName, dbUser, dbPass))
+                    {
+                        sql.ExecuteNonQueryACon("DELETE FROM qd_assigns WHERE ID = ?", drive.ID);
+                    }
+                }
+
+                QDLib.ConnectQDDrives(userID, uPassword, dbHost, dbName, dbUser, dbPass, true);
+                UpdateDriveListView();
+
+                btnEditDrive.Enabled = false;
+                btnRemoveDrive.Enabled = false;
+            }
+
+        }
+
+        private void btnEditDrive_Click(object sender, EventArgs e)
+        {
+            DriveViewItem drive = ((GroupViewItemEx)grvConnectedDrives.GroupViewItems[grvConnectedDrives.SelectedItem]).Drive;
+        }
+
         #endregion
 
         #region Methods ==============================================================================================
@@ -615,6 +672,7 @@ namespace QDriveManager
                     while(reader.Read())
                     {
                         drives.Add(new DriveViewItem(
+                            Convert.ToString(reader["ID"]),
                             Convert.ToString(reader["DriveName"]),
                             Convert.ToString(reader["LocalPath"]),
                             Convert.ToString(reader["DriveLetter"]),
@@ -631,11 +689,12 @@ namespace QDriveManager
                 using (WrapMySQL sql = new WrapMySQL(dbHost, dbName, dbUser, dbPass))
                 {
                     sql.Open();
-                    using (MySqlDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", userID))
+                    using (MySqlDataReader reader = sql.ExecuteQuery("SELECT *, qd_assigns.ID as AID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", userID))
                     {
                         while (reader.Read())
                         {
                             drives.Add(new DriveViewItem(
+                            Convert.ToString(reader["AID"]),
                             Convert.ToString(reader["CustomDriveName"]),
                             Convert.ToString(reader["LocalPath"]),
                             Convert.ToString(reader["CustomDriveLetter"]),
@@ -681,29 +740,41 @@ namespace QDriveManager
                 else imgIndex = 1;
 
                 grvConnectedDrives.GroupViewItems.Add(
-                    new Syncfusion.Windows.Forms.Tools.GroupViewItem(
+                    new GroupViewItemEx(
                         $"({drive.DriveLetter}:\\) {drive.DisplayName}\r\n({drive.DrivePath})",
+                        drive,
                         imgIndex
                     )
                 );
             }
         }
 
+
+
+
         #endregion
 
         
     }
 
+    public class GroupViewItemEx : Syncfusion.Windows.Forms.Tools.GroupViewItem
+    {
+        public DriveViewItem Drive { get; set; } = null;
+        public GroupViewItemEx(string name, DriveViewItem drive, int image) : base(name, image) => this.Drive = drive;
+    }
+
     public class DriveViewItem : IComparable
     {
+        public string ID { get; set; } = string.Empty;
         public string DisplayName { get; set; } = string.Empty;
         public string DrivePath { get; set; } = string.Empty;
         public string DriveLetter { get; set; } = string.Empty;
         public bool IsLocalDrive { get; set; } = false;
         public bool IsPublicDrive { get; set; } = false;
 
-        public DriveViewItem(string pDisplayName, string pDrivePath, string pDriveLetter, bool pIsLocalDrive, bool pIsPublicDrive)
+        public DriveViewItem(string pID, string pDisplayName, string pDrivePath, string pDriveLetter, bool pIsLocalDrive, bool pIsPublicDrive)
         {
+            ID = pID;
             DisplayName = pDisplayName;
             DrivePath = pDrivePath;
             DriveLetter = pDriveLetter;

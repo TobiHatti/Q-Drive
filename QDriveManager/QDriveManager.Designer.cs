@@ -314,21 +314,25 @@
             // 
             // btnRemoveDrive
             // 
+            this.btnRemoveDrive.Enabled = false;
             this.btnRemoveDrive.Location = new System.Drawing.Point(215, 163);
             this.btnRemoveDrive.Name = "btnRemoveDrive";
             this.btnRemoveDrive.Size = new System.Drawing.Size(200, 30);
             this.btnRemoveDrive.TabIndex = 6;
             this.btnRemoveDrive.Text = "Remove Drive";
             this.btnRemoveDrive.UseVisualStyleBackColor = true;
+            this.btnRemoveDrive.Click += new System.EventHandler(this.btnRemoveDrive_Click);
             // 
             // btnEditDrive
             // 
+            this.btnEditDrive.Enabled = false;
             this.btnEditDrive.Location = new System.Drawing.Point(9, 163);
             this.btnEditDrive.Name = "btnEditDrive";
             this.btnEditDrive.Size = new System.Drawing.Size(200, 30);
             this.btnEditDrive.TabIndex = 6;
             this.btnEditDrive.Text = "Edit Drive";
             this.btnEditDrive.UseVisualStyleBackColor = true;
+            this.btnEditDrive.Click += new System.EventHandler(this.btnEditDrive_Click);
             // 
             // btnAddDrive
             // 
@@ -376,6 +380,8 @@
             this.grvConnectedDrives.TextSpacing = 70;
             this.grvConnectedDrives.TextWrap = true;
             this.grvConnectedDrives.ThemesEnabled = true;
+            this.grvConnectedDrives.GroupViewItemDoubleClick += new Syncfusion.Windows.Forms.Tools.GroupViewItemDoubleClickEventHandler(this.grvConnectedDrives_GroupViewItemDoubleClick);
+            this.grvConnectedDrives.Click += new System.EventHandler(this.grvConnectedDrives_Click);
             // 
             // label4
             // 
