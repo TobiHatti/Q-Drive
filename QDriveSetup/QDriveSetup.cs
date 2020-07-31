@@ -17,15 +17,14 @@ namespace QDrive
 {
     public partial class QDriveSetup : SfForm
     {
+        private readonly List<Panel> panels = new List<Panel>();
+
         private bool localConnection = false;
 
         private bool alwaysPromptPassword = false;
         private string localPassword = string.Empty;
 
-        private string onlineDBHost = string.Empty;
-        private string onlineDBUsername = string.Empty;
-        private string onlineDBPassword = string.Empty;
-        private string onlineDBName = string.Empty;
+        private WrapMySQLConDat onlineDBConDat = null;
 
         private bool onlineAlreadyConfigured;
 
@@ -34,14 +33,13 @@ namespace QDrive
 
         private bool errorEncountered = false;
 
-        #region Page Layout and Initial Loading
+        #region Page Layout and Initial Loading =================================================================[RF]=
 
-        private List<Panel> panels = new List<Panel>();
-        
         public QDriveSetup()
         {
             InitializeComponent();
 
+            // Add Panels to panel-collection
             panels.Add(pnlS0Welcome);
             panels.Add(pnlS1ConnectionType);
             panels.Add(pnlS2LocalConnection);
@@ -50,65 +48,41 @@ namespace QDrive
             panels.Add(pnlS3Finish);
             panels.Add(pnlS3Error);
 
-            AlignPanels();
-        }
-
-        private void AlignPanels()
-        {
-            this.Width = 680;
-            this.Height = 500;
-            foreach(Panel panel in panels) panel.Dock = DockStyle.Fill;
+            QDLib.AlignPanels(this, panels, 680, 500);
         }
 
         private void QDriveSetup_Load(object sender, EventArgs e) => pnlS0Welcome.BringToFront();
 
         #endregion
 
-        #region Step 0: Welcome ======================================================================================
+        #region Step 0: Welcome =================================================================================[RF]=
 
         private void btnS0Next_Click(object sender, EventArgs e) => pnlS1ConnectionType.BringToFront();
 
-
         #endregion
 
-        #region Step 1: Connection type ==============================================================================
+        #region Step 1: Connection type =========================================================================[RF]=
 
         private void btnS1Prev_Click(object sender, EventArgs e) => pnlS0Welcome.BringToFront();
 
         private void btnS1Next_Click(object sender, EventArgs e)
         {
-            if(rbnS1Local.Checked)
-            {
-                localConnection = true;
-                pnlS2LocalConnection.BringToFront();
-            }
-            else
-            {
-                localConnection = false;
-                pnlS2OnlineConnectionA.BringToFront();
-            }
+            localConnection = rbnS1Local.Checked;
+
+            if (localConnection) pnlS2LocalConnection.BringToFront();
+            else pnlS2OnlineConnectionA.BringToFront();
         }
 
         #endregion
 
-        #region Step 2A: Local connection ============================================================================
+        #region Step 2A: Local connection =======================================================================[RF]=
         
         private void chbSA2PromptPassword_CheckedChanged(object sender, EventArgs e)
         {
-            if(chbSA2PromptPassword.Checked)
-            {
-                txbSA2Password.Enabled = true;
-                txbSA2ConfirmPassword.Enabled = true;
-                lblSA2Password.Enabled = true;
-                lblSA2ConfirmPassword.Enabled = true;
-            }
-            else
-            {
-                txbSA2Password.Enabled = false;
-                txbSA2ConfirmPassword.Enabled = false;
-                lblSA2Password.Enabled = false;
-                lblSA2ConfirmPassword.Enabled = false;
-            }
+            txbSA2Password.Enabled = chbSA2PromptPassword.Checked;
+            txbSA2ConfirmPassword.Enabled = chbSA2PromptPassword.Checked;
+            lblSA2Password.Enabled = chbSA2PromptPassword.Checked;
+            lblSA2ConfirmPassword.Enabled = chbSA2PromptPassword.Checked;
         }
 
         private void btnSA2Prev_Click(object sender, EventArgs e) => pnlS1ConnectionType.BringToFront();
@@ -119,84 +93,48 @@ namespace QDrive
 
             if(alwaysPromptPassword)
             {
-                if (txbSA2Password.Text != txbSA2ConfirmPassword.Text)
-                {
-                    MessageBox.Show("Passwords are not identical.", "Password invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                else if(string.IsNullOrEmpty(txbSA2Password.Text))
-                {
-                    MessageBox.Show("Please enter a password.", "Password invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                else
-                {
-                    localPassword = txbSA2Password.Text;
-                }
+                // Check if both passwords are valid
+                if (QDLib.ValidatePasswords(txbSA2Password.Text, txbSA2ConfirmPassword.Text)) localPassword = txbSA2Password.Text;
+                else return;
             }
 
+            // (Try to) save the QD-Config and create DBs 
             SaveConfiguration(localConnection);
 
+            // Check if an error occured and show error-page
             if (!errorEncountered) pnlS3Finish.BringToFront();
             else pnlS3Error.BringToFront();
         }
 
-
         #endregion
 
-        #region Step 2B1: Global connection 1/2 ======================================================================
+        #region Step 2B1: Global connection 1/2 =================================================================[RF]=
 
-        private void btnSB2TestConnection_Click(object sender, EventArgs e)
-        {
-            onlineDBHost = txbSB2DBHostname.Text;
-            onlineDBUsername = txbSB2DBUsername.Text;
-            onlineDBPassword = txbSB2DBPassword.Text;
-            onlineDBName = txbSB2DBName.Text;
-
-            TestConnection();
-        }
+        private void btnSB2TestConnection_Click(object sender, EventArgs e) => TestConnection();
 
         private void btnSB2APrev_Click(object sender, EventArgs e) => pnlS1ConnectionType.BringToFront();
 
         private void btnSB2ANext_Click(object sender, EventArgs e)
         {
-            onlineDBHost = txbSB2DBHostname.Text;
-            onlineDBUsername = txbSB2DBUsername.Text;
-            onlineDBPassword = txbSB2DBPassword.Text;
-            onlineDBName = txbSB2DBName.Text;
-
             if (TestConnection())
             {
+                onlineAlreadyConfigured = IsConfiguredDB();
+
+                rbnSB2ExistingDB.Enabled = onlineAlreadyConfigured;
+                txbSB2ExistingDBPassword.Enabled = onlineAlreadyConfigured;
+                lblSB2AExistingMasterPW.Enabled = onlineAlreadyConfigured;
+
+                if (onlineAlreadyConfigured) rbnSB2ExistingDB.Checked = true;
+                else rbnSB2NewDB.Checked = true;
+
                 pnlS2OnlineConnectionB.BringToFront();
-
-
-                if(IsConfiguredDB())
-                {
-                    rbnSB2ExistingDB.Enabled = true;
-                    txbSB2ExistingDBPassword.Enabled = true;
-                    lblSB2AExistingMasterPW.Enabled = true;
-
-                    rbnSB2ExistingDB.Checked = true;
-
-                    onlineAlreadyConfigured = true;
-                }
-                else
-                {
-                    rbnSB2ExistingDB.Enabled = false;
-                    txbSB2ExistingDBPassword.Enabled = false;
-                    lblSB2AExistingMasterPW.Enabled = false;
-
-                    rbnSB2NewDB.Checked = true;
-
-                    onlineAlreadyConfigured = false;
-                }
             }
             else return;
         }
 
         #endregion
 
-        #region Step 2B2: Global connection 2/2 ======================================================================
+        #region Step 2B2: Global connection 2/2 =================================================================[RF]=
 
         private void rbnSB2ExistingDB_CheckedChanged(object sender, EventArgs e) => EnableDisableNewExisting();
 
@@ -204,81 +142,44 @@ namespace QDrive
 
         private void EnableDisableNewExisting()
         {
-            if(rbnSB2ExistingDB.Checked)
-            {
-                lblSB2AExistingMasterPW.Enabled = true;
-                txbSB2ExistingDBPassword.Enabled = true;
+            lblSB2AExistingMasterPW.Enabled = rbnSB2ExistingDB.Checked;
+            txbSB2ExistingDBPassword.Enabled = rbnSB2ExistingDB.Checked;
 
-                lblSB2BMasterPassword.Enabled = false;
-                lblSB2BConfirmMasterPassword.Enabled = false;
-                txbSB2NewDBPassword.Enabled = false;
-                txbSB2NewDBConfirmPassword.Enabled = false;
-            }
-            else
-            {
-                lblSB2AExistingMasterPW.Enabled = false;
-                txbSB2ExistingDBPassword.Enabled = false;
-
-                lblSB2BMasterPassword.Enabled = true;
-                lblSB2BConfirmMasterPassword.Enabled = true;
-                txbSB2NewDBPassword.Enabled = true;
-                txbSB2NewDBConfirmPassword.Enabled = true;
-            }
+            lblSB2BMasterPassword.Enabled = !rbnSB2ExistingDB.Checked;
+            lblSB2BConfirmMasterPassword.Enabled = !rbnSB2ExistingDB.Checked;
+            txbSB2NewDBPassword.Enabled = !rbnSB2ExistingDB.Checked;
+            txbSB2NewDBConfirmPassword.Enabled = !rbnSB2ExistingDB.Checked;
         }
 
         private void btnSB2BNext_Click(object sender, EventArgs e)
         {
             if(rbnSB2ExistingDB.Checked)
             {
-                if(!QDLib.VerifyMasterPassword(txbSB2ExistingDBPassword.Text, onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
+                if(!QDLib.VerifyMasterPassword(txbSB2ExistingDBPassword.Text, onlineDBConDat))
                 {
                     MessageBox.Show("Master-Password is not valid. Please enter the corrent Master-Password, which has been set when the database was first initialised.", "Invalid Master-Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else
-                {
-                    onlineMasterPassword = txbSB2ExistingDBPassword.Text;
-                }
+                else onlineMasterPassword = txbSB2ExistingDBPassword.Text;
             }
             else
             {
-                if (txbSB2NewDBPassword.Text != txbSB2NewDBConfirmPassword.Text)
-                {
-                    MessageBox.Show("Passwords are not identical.", "Password invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                else if (string.IsNullOrEmpty(txbSB2NewDBPassword.Text))
-                {
-                    MessageBox.Show("Please enter a password.", "Password invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                else
-                {
-                    onlineMasterPassword = txbSB2NewDBPassword.Text;
-                }
+                if (QDLib.ValidatePasswords(txbSB2NewDBPassword.Text, txbSB2NewDBConfirmPassword.Text)) onlineMasterPassword = txbSB2NewDBPassword.Text;
+                else return;
 
                 if (onlineAlreadyConfigured)
                 {
                     if (MessageBox.Show("The given database has already been initialised before. Do you really want to delete the existing database and configure it as a new one?", "Database already initialised", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        VerifyMasterPW verify = new VerifyMasterPW()
-                        {
-                            DBHost = onlineDBHost,
-                            DBUser = onlineDBUsername,
-                            DBPass = onlineDBPassword,
-                            DBName = onlineDBName
-                        };
+                        VerifyMasterPW verify = new VerifyMasterPW() { DBData = onlineDBConDat };
 
                         if (verify.ShowDialog() != DialogResult.OK) return;
                     }
                     else return;
                 }
-
-                
             }
 
             alwaysPromptPassword = chbS2B2PromptUserPassword.Checked;
-
             onlineConfigureAsNewDB = rbnSB2NewDB.Checked;
 
             SaveConfiguration(localConnection);
@@ -291,34 +192,39 @@ namespace QDrive
 
         #endregion
 
-        #region Step 3: Finish =======================================================================================
+        #region Step 3: Finish ==================================================================================[RF]=
 
         private void btnS3Finish_Click(object sender, EventArgs e)
         {
-            if (chbS3LaunchManager.Checked)
-            {
-                string qdManager = "QDriveManager.exe";
-                if (File.Exists(qdManager)) Process.Start(qdManager);
-            }
-            
+            string qdManager = "QDriveManager.exe";
+            if (chbS3LaunchManager.Checked && File.Exists(qdManager)) Process.Start(qdManager);
             this.Close();   
         }
 
         #endregion
 
-        #region Step 3: Error ========================================================================================
+        #region Step 3: Error ===================================================================================[RF]=
 
         private void lklSupportLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start(lklSupportLink.Text);
         private void btnS3ErrorClose_Click(object sender, EventArgs e) => this.Close();
 
         #endregion
 
-        #region Methods ==============================================================================================
+        #region Methods =========================================================================================[RF]=
         private bool TestConnection()
         {
+            onlineDBConDat = new WrapMySQLConDat()
+            {
+                Hostname = txbSB2DBHostname.Text,
+                Database = txbSB2DBName.Text,
+                Username = txbSB2DBUsername.Text,
+                Password = txbSB2DBPassword.Text,
+            };
+
+
             bool success = false;
 
-            using(WrapMySQL sql = new WrapMySQL(onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
+            using(WrapMySQL sql = new WrapMySQL(onlineDBConDat))
             {
                 try
                 {
@@ -337,21 +243,11 @@ namespace QDrive
 
         private bool IsConfiguredDB()
         {
-            bool isConfigured = false;
-
-            using (WrapMySQL sql = new WrapMySQL(onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
+            using (WrapMySQL sql = new WrapMySQL(onlineDBConDat))
             {
-                try
-                {
-                    sql.Open();
-                    if (sql.ExecuteScalar("SHOW TABLES LIKE 'qd_info'") != null) isConfigured = true;
-                    else isConfigured = false;
-                }
-                catch { isConfigured = false; }
-                finally { sql.Close(); }
+                if (sql.ExecuteScalarACon("SHOW TABLES LIKE 'qd_info'") != null) return true;
+                else return false;
             }
-
-            return isConfigured;
         }
 
         private void SaveConfiguration(bool pIsLocal)
@@ -364,7 +260,7 @@ namespace QDrive
         {
             try
             {
-                using (WrapMySQL sql = new WrapMySQL(onlineDBHost, onlineDBName, onlineDBUsername, onlineDBPassword))
+                using (WrapMySQL sql = new WrapMySQL(onlineDBConDat))
                 {
                     if (onlineConfigureAsNewDB)
                     {
@@ -396,11 +292,12 @@ namespace QDrive
                         catch (Exception ex)
                         {
                             sql.TransactionRollback();
-                            MessageBox.Show("Could not create online database. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             errorEncountered = true;
                             txbS3ErrorLog.Text = ex.Message + " " + ex.StackTrace;
                         }
                         sql.Close();
+
+                        if(errorEncountered) MessageBox.Show("Could not create online database. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -435,10 +332,10 @@ namespace QDrive
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.AlwaysPromptPassword,    alwaysPromptPassword);
                         sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.SetupSuccess,            true);
 
-                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBHost,      Cipher.Encrypt(onlineDBHost,QDInfo.LocalCipherKey));
-                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBName,      Cipher.Encrypt(onlineDBName, QDInfo.LocalCipherKey));
-                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBUsername,  Cipher.Encrypt(onlineDBUsername, QDInfo.LocalCipherKey));
-                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBPassword,  Cipher.Encrypt(onlineDBPassword, QDInfo.LocalCipherKey));
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBHost,      Cipher.Encrypt(onlineDBConDat.Hostname,QDInfo.LocalCipherKey));
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBName,      Cipher.Encrypt(onlineDBConDat.Database, QDInfo.LocalCipherKey));
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBUsername,  Cipher.Encrypt(onlineDBConDat.Username, QDInfo.LocalCipherKey));
+                        sql.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBPassword,  Cipher.Encrypt(onlineDBConDat.Password, QDInfo.LocalCipherKey));
 
                         if (onlineLinked)
                         {
@@ -457,11 +354,12 @@ namespace QDrive
                     catch (Exception ex)
                     {
                         sql.TransactionRollback();
-                        MessageBox.Show("Could not create local database. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         errorEncountered = true;
                         txbS3ErrorLog.Text = ex.Message + " " + ex.StackTrace;
                     }
                     sql.Close();
+
+                    if(errorEncountered) MessageBox.Show("Could not create local database. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -471,7 +369,6 @@ namespace QDrive
                 txbS3ErrorLog.Text = ex.Message + " " + ex.StackTrace;
             }
         }
-
 
         #endregion
     }

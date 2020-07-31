@@ -15,11 +15,7 @@ namespace QDriveManager
 {
     public partial class QDAddPublicDrive : SfForm
     {
-        public string DBHost;
-        public string DBName;
-        public string DBUser;
-        public string DBPass;
-
+        public WrapMySQLConDat DBData;
         public QDAddPublicDrive()
         {
             InitializeComponent();
@@ -39,7 +35,7 @@ namespace QDriveManager
             grvPublicDrives.SmallImageList = imgList;
             grvPublicDrives.GroupViewItems.Clear();
 
-            using (WrapMySQL sql = new WrapMySQL(DBHost, DBName, DBUser, DBPass))
+            using (WrapMySQL sql = new WrapMySQL(DBData))
             {
                 sql.Open();
 

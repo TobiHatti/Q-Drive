@@ -14,10 +14,7 @@ namespace QDrive
 {
     public partial class VerifyMasterPW : SfForm
     {
-        public string DBHost;
-        public string DBUser;
-        public string DBPass;
-        public string DBName;
+        public WrapMySQLConDat DBData;
 
         public VerifyMasterPW()
         {
@@ -32,7 +29,7 @@ namespace QDrive
 
         private void btnVerify_Click(object sender, EventArgs e)
         {
-            if(!QDLib.VerifyMasterPassword(txbMasterPassword.Text, DBHost, DBName, DBUser, DBPass)) 
+            if(!QDLib.VerifyMasterPassword(txbMasterPassword.Text, DBData)) 
             {
                 MessageBox.Show("Master-Password is not valid. Please enter the corrent Master-Password, which has been set when the database was first initialised.", "Invalid Master-Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

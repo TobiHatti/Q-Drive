@@ -4,6 +4,14 @@ using MySql.Data.MySqlClient;
 
 namespace QDriveLib
 {
+    public class WrapMySQLConDat
+    {
+        public string Hostname { get; set; } = string.Empty;
+        public string Database { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+
     public class WrapMySQL : WrapSQL
     {
         #region Fields and Properties
@@ -51,6 +59,19 @@ namespace QDriveLib
         {
             // Assemble connection-string
             this.connectionString = $"SERVER={server};Port={port};SslMode={sslMode};DATABASE={database};USER ID={username};PASSWORD={password}";
+
+            // Create connection
+            connection = new MySqlConnection(this.connectionString);
+        }
+
+        /// <summary>
+        /// Creates a new SQL-Wrapper object.
+        /// </summary>
+        /// <param name="conDat">WrapMySQL connection data packet</param>
+        public WrapMySQL(WrapMySQLConDat conDat)
+        {
+            // Assemble connection-string
+            this.connectionString = $"SERVER={conDat.Hostname};Port=3306;SslMode=none;DATABASE={conDat.Database};USER ID={conDat.Username};PASSWORD={conDat.Password}";
 
             // Create connection
             connection = new MySqlConnection(this.connectionString);

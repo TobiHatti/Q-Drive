@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
@@ -7,18 +8,44 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows.Forms;
 
 namespace QDriveLib
 {
     public static class QDLib
     {
-        public static bool VerifyMasterPassword(string pPassword, string pDBHost, string pDBName, string pDBUser, string pDBPassword)
+        public static void AlignPanels(Form form, List<Panel> panels, int width, int height)
+        {
+            form.Width = width;
+            form.Height = height;
+            foreach (Panel panel in panels) panel.Dock = DockStyle.Fill;
+        }
+
+        public static bool ValidatePasswords(string pPW1, string pPW2)
+        {
+            bool passwordsValid = true;
+
+            if (pPW1 != pPW2)
+            {
+                MessageBox.Show("Passwords are not identical.", "Password invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                passwordsValid = false;
+            }
+            else if (string.IsNullOrEmpty(pPW1))
+            {
+                MessageBox.Show("Please enter a password.", "Password invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                passwordsValid = false;
+            }
+
+            return passwordsValid;
+        }
+
+        public static bool VerifyMasterPassword(string pPassword, WrapMySQLConDat pDBData)
         {
             bool masterPasswordValid = false;
 
             try
             {
-                using (WrapMySQL sql = new WrapMySQL(pDBHost, pDBName, pDBUser, pDBPassword))
+                using (WrapMySQL sql = new WrapMySQL(pDBData))
                 {
                     string passwordHash = sql.ExecuteScalarACon<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.MasterPassword);
 
@@ -60,7 +87,7 @@ namespace QDriveLib
             }
         }
 
-        public static int ConnectQDDrives(string pUserID, string pUserPassword, string dbHost, string dbName, string dbUser, string dbPassword, bool pDisconnectFirst = true)
+        public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLConDat pDBData, bool pDisconnectFirst = true)
         {
             // Disconnect all current drives
             if (pDisconnectFirst) DisconnectAllDrives();
@@ -70,7 +97,7 @@ namespace QDriveLib
             {
                 try
                 {
-                    using(WrapMySQL sql = new WrapMySQL(dbHost, dbName, dbUser, dbPassword))
+                    using(WrapMySQL sql = new WrapMySQL(pDBData))
                     {
                         sql.Open();
                         // Connect local network drives
@@ -202,5 +229,32 @@ namespace QDriveLib
         }
 
         
+
+    }
+
+    public class DriveViewItem : IComparable
+    {
+        public string ID { get; set; } = string.Empty;
+        public string DisplayName { get; set; } = string.Empty;
+        public string DrivePath { get; set; } = string.Empty;
+        public string DriveLetter { get; set; } = string.Empty;
+        public bool IsLocalDrive { get; set; } = false;
+        public bool IsPublicDrive { get; set; } = false;
+
+        public DriveViewItem(string pID, string pDisplayName, string pDrivePath, string pDriveLetter, bool pIsLocalDrive, bool pIsPublicDrive)
+        {
+            ID = pID;
+            DisplayName = pDisplayName;
+            DrivePath = pDrivePath;
+            DriveLetter = pDriveLetter;
+            IsLocalDrive = pIsLocalDrive;
+            IsPublicDrive = pIsPublicDrive;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (Convert.ToInt32(Convert.ToChar((obj as DriveViewItem).DriveLetter)) > Convert.ToInt32(Convert.ToChar(DriveLetter))) return -1;
+            else return 1;
+        }
     }
 }
