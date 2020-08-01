@@ -40,9 +40,9 @@
             // 
             this.txbMasterPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbMasterPassword.Location = new System.Drawing.Point(6, 39);
+            this.txbMasterPassword.Location = new System.Drawing.Point(4, 39);
             this.txbMasterPassword.Name = "txbMasterPassword";
-            this.txbMasterPassword.PasswordChar = '*';
+            this.txbMasterPassword.PasswordChar = '•';
             this.txbMasterPassword.Size = new System.Drawing.Size(380, 29);
             this.txbMasterPassword.TabIndex = 1;
             // 

@@ -276,6 +276,7 @@
             this.Style.TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
             this.Style.TitleBar.BottomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
             this.Text = "Add a private drive";
+            this.Load += new System.EventHandler(this.QDAddPrivateDrive_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

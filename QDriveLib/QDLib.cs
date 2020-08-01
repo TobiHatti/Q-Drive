@@ -87,10 +87,10 @@ namespace QDriveLib
             }
         }
 
-        public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLConDat pDBData, bool pDisconnectFirst = true)
+        public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLConDat pDBData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null)
         {
             // Disconnect all current drives
-            if (pDisconnectFirst) DisconnectAllDrives();
+            if (pDisconnectFirst) DisconnectAllDrives(drives);
 
             // Connect online-drives (online-synced)
             if (!string.IsNullOrEmpty(pUserID))
@@ -180,8 +180,23 @@ namespace QDriveLib
             return 0;
         }
 
-        public static void DisconnectAllDrives()
+        public static void DisconnectAllDrives(List<DriveViewItem> drives = null)
         {
+            if (drives != null)
+            {
+                foreach (DriveViewItem drive in drives)
+                {
+                    ProcessStartInfo psireg = new ProcessStartInfo()
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = $@"/c reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2\{drive.DrivePath.Replace('\\', '#')} /f /va",
+                        CreateNoWindow = true,
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    };
+                    Process.Start(psireg);
+                }
+            }
+
             ProcessStartInfo psi = new ProcessStartInfo()
             {
                 FileName = "cmd.exe",
@@ -240,8 +255,13 @@ namespace QDriveLib
         public string DriveLetter { get; set; } = string.Empty;
         public bool IsLocalDrive { get; set; } = false;
         public bool IsPublicDrive { get; set; } = false;
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+        public string Domain { get; set; } = string.Empty;
+        public string ParentDriveID { get; set; } = string.Empty;
 
-        public DriveViewItem(string pID, string pDisplayName, string pDrivePath, string pDriveLetter, bool pIsLocalDrive, bool pIsPublicDrive)
+
+        public DriveViewItem(string pID, string pDisplayName, string pDrivePath, string pDriveLetter, bool pIsLocalDrive, bool pIsPublicDrive, string pUsername, string pPassword, string pDomain, string pParentDriveID = "")
         {
             ID = pID;
             DisplayName = pDisplayName;
@@ -249,6 +269,11 @@ namespace QDriveLib
             DriveLetter = pDriveLetter;
             IsLocalDrive = pIsLocalDrive;
             IsPublicDrive = pIsPublicDrive;
+            Username = pUsername;
+            Password = pPassword;
+            Domain = pDomain;
+
+            ParentDriveID = pParentDriveID;
         }
 
         public int CompareTo(object obj)

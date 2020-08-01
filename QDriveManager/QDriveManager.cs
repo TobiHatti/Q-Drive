@@ -44,6 +44,8 @@ namespace QDriveManager
         private WrapSQLite sqlite = null;
         private WrapMySQL mysql = null;
 
+        private readonly List<DriveViewItem> drives = new List<DriveViewItem>();
+
         #region Page Layout and Initial Loading =================================================================[RF]=
 
         private readonly List<Panel> panels = new List<Panel>();
@@ -72,7 +74,7 @@ namespace QDriveManager
 
             pnlLoading.BringToFront();
 
-            if(!IsQDConfigured()) pnlNotConfigured.BringToFront();
+            if (!IsQDConfigured()) pnlNotConfigured.BringToFront();
             else
             {
                 int loadStatusCode = LoadQDData();
@@ -86,7 +88,7 @@ namespace QDriveManager
                 pbxSignUpConnectionState.Image = statusImage;
                 pbxManagerConnectionState.Image = statusImage;
 
-                switch(loadStatusCode)
+                switch (loadStatusCode)
                 {
                     case 1:
                         MessageBox.Show("Could not load local database (Error E001).\r\n\r\nPlease try again later. If this problem remains, please contact your system administrator.", "Could not start Q-Drive", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -109,7 +111,7 @@ namespace QDriveManager
                 // Check if user uses local connection and no password
                 try
                 {
-                    if (localConnection && Cipher.Decrypt(uPassword, QDInfo.LocalCipherKey) == string.Empty)
+                    if (localConnection && uPassword == string.Empty)
                     {
                         localUserNoPassword = true;
                         txbUsername.ReadOnly = true;
@@ -117,33 +119,45 @@ namespace QDriveManager
                         chbKeepLoggedIn.Enabled = false;
                         lblKeepLoggedInInfo.Visible = false;
                         lnkCreateNewAccount.Visible = false;
+
+                        txbUsername.Visible = false;
+                        txbPassword.Visible = false;
+                        chbKeepLoggedIn.Visible = false;
+                        lblUsername.Visible = false;
+                        lblPassword.Visible = false;
+
                     }
                 }
                 catch { }
 
 
+                chbKeepLoggedIn.Checked = false;
+                chbKeepLoggedIn.Enabled = userCanToggleKeepLoggedIn;
+
+                if (userCanToggleKeepLoggedIn || localConnection) lblKeepLoggedInInfo.Text = string.Empty;
+                else lblKeepLoggedInInfo.Text = "(disabled by administrator)";
+
+                lnkCreateNewAccount.Enabled = userCanSelfRegister;
+
+                if (userCanSelfRegister) lnkCreateNewAccount.Text = "Create a new Account";
+                else lnkCreateNewAccount.Text = "If you do not have an account yet, contact your system administrator.";
+
+                txbUsername.ReadOnly = localConnection;
+                lnkCreateNewAccount.Visible = !localConnection;
+
+                if (localConnection) txbUsername.Text = "local";
+                else txbUsername.Text = string.Empty;
+
+
                 if (!localUserNoPassword && (promptPassword || string.IsNullOrEmpty(uUsername) || string.IsNullOrEmpty(uPassword)))
                 {
-                    chbKeepLoggedIn.Checked = false;
-                    chbKeepLoggedIn.Enabled = userCanToggleKeepLoggedIn;
-
-                    if (userCanToggleKeepLoggedIn) lblKeepLoggedInInfo.Text = string.Empty;
-                    else lblKeepLoggedInInfo.Text = "(disabled by administrator)";
-
-                    lnkCreateNewAccount.Enabled = userCanSelfRegister;
-
-                    if (userCanSelfRegister) lnkCreateNewAccount.Text = "Create a new Account";
-                    else lnkCreateNewAccount.Text = "If you do not have an account yet, contact your system administrator.";
-
-                    txbUsername.ReadOnly = localConnection;
-                    lnkCreateNewAccount.Visible = !localConnection;
-
-                    if (localConnection) txbUsername.Text = "local";
-                    else txbUsername.Text = string.Empty;
-
                     pnlLogin.BringToFront();
                 }
-                else pnlManager.BringToFront();
+                else
+                {
+                    UpdateManagerData();
+                    pnlManager.BringToFront();
+                }
             }
         }
 
@@ -174,6 +188,7 @@ namespace QDriveManager
             if(localUserNoPassword)
             {
                 pnlManager.BringToFront();
+                UpdateManagerData();
                 return;
             }
 
@@ -187,7 +202,7 @@ namespace QDriveManager
             sqlite.TransactionBegin();
             try
             {
-                sqlite.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", chbKeepLoggedIn.Checked, QDInfo.DBL.AlwaysPromptPassword);
+                sqlite.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", !chbKeepLoggedIn.Checked, QDInfo.DBL.AlwaysPromptPassword);
 
                 if (chbKeepLoggedIn.Checked && !localConnection)
                 {
@@ -209,10 +224,10 @@ namespace QDriveManager
 
             sqlite.Close();
             
-            txbPassword.Text = string.Empty;
-
             uUsername = txbUsername.Text;
             uPassword = txbPassword.Text;
+
+            txbPassword.Text = string.Empty;
 
             UpdateManagerData();
 
@@ -267,7 +282,7 @@ namespace QDriveManager
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            QDLib.DisconnectAllDrives();
+            QDLib.DisconnectAllDrives(drives);
             pnlLogin.BringToFront();
         }
 
@@ -293,7 +308,18 @@ namespace QDriveManager
 
                 if(addPublic.ShowDialog() == DialogResult.OK)
                 {
-                    // TODO
+                    mysql.ExecuteNonQueryACon("INSERT INTO qd_assigns (ID, UserID, DriveID, CustomDriveName, CustomDriveLetter, DUsername, DPassword, DDomain) VALUES (?,?,?,?,?,?,?,?)",
+                        Guid.NewGuid(),
+                        userID,
+                        addPublic.DriveID,
+                        addPublic.CustomDriveName,
+                        addPublic.CustomDriveLetter,
+                        Cipher.Encrypt(addPublic.Username, uPassword),
+                        Cipher.Encrypt(addPublic.Password, uPassword),
+                        Cipher.Encrypt(addPublic.Domain, uPassword)
+                    );
+
+                    UpdateManagerData();
                 }
             }
             else if(connectionOption == 2 || connectionOption == 3)
@@ -368,10 +394,12 @@ namespace QDriveManager
                             MessageBox.Show("Could not add network drive. Please try again later.", "Could not add drive.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }                        
                     }
+
+                    UpdateManagerData();
                 }
             }
 
-            UpdateManagerData();
+            
         }
 
         private void grvConnectedDrives_Click(object sender, EventArgs e)
@@ -385,8 +413,15 @@ namespace QDriveManager
 
         private void grvConnectedDrives_GroupViewItemDoubleClick(GroupView sender, GroupViewItemDoubleClickEventArgs e)
         {
-            DriveViewItem drive = ((GroupViewItemEx)sender.GroupViewItems[sender.SelectedItem]).Drive;
-            Process.Start(drive.DriveLetter + ":\\");
+            try
+            {
+                DriveViewItem drive = ((GroupViewItemEx)sender.GroupViewItems[sender.SelectedItem]).Drive;
+                Process.Start(drive.DriveLetter + ":\\");
+            }
+            catch
+            {
+                MessageBox.Show("Could not connect to network drive.\r\n\r\nPlease ensure that the authentication-information is correct and try again. \r\n\r\nNote: It may cause problems if you try to connect to several drives using different user credentials.", "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnRemoveDrive_Click(object sender, EventArgs e)
@@ -409,7 +444,93 @@ namespace QDriveManager
         private void btnEditDrive_Click(object sender, EventArgs e)
         {
             DriveViewItem drive = ((GroupViewItemEx)grvConnectedDrives.GroupViewItems[grvConnectedDrives.SelectedItem]).Drive;
-            // TODO
+
+            // Public drive
+            if (drive.IsPublicDrive)
+            {
+                QDAddPublicDrive editPublic = new QDAddPublicDrive()
+                {
+                    DBEntryID = drive.ID,
+                    DriveID = drive.ParentDriveID,
+                    CustomDriveName = drive.DisplayName,
+                    CustomDriveLetter = drive.DriveLetter,
+                    Username = drive.Username,
+                    Password = drive.Password,
+                    Domain = drive.Domain
+                };
+
+                if(editPublic.ShowDialog() == DialogResult.OK)
+                {
+                    mysql.ExecuteNonQueryACon("UPDATE qd_assigns SET DriveID = ?, CustomDriveName = ?, CustomDriveLetter = ?, DUsername = ?, DPassword = ?, DDomain = ? WHERE ID = ?",
+                        editPublic.DriveID,
+                        editPublic.CustomDriveName,
+                        editPublic.CustomDriveLetter,
+                        Cipher.Encrypt(editPublic.Username, uPassword),
+                        Cipher.Encrypt(editPublic.Password, uPassword),
+                        Cipher.Encrypt(editPublic.Domain, uPassword),
+                        editPublic.DBEntryID
+                    );
+
+                    UpdateManagerData();
+                }
+            }
+            else
+            {
+                QDAddPrivateDrive editPrivate = new QDAddPrivateDrive()
+                {
+                    DBEntryID = drive.ID,
+                    DrivePath = drive.DrivePath,
+                    DisplayName = drive.DisplayName,
+                    DriveLetter = drive.DriveLetter,
+                    Username = drive.Username,
+                    Password = drive.Password,
+                    Domain = drive.Domain
+                };
+
+                if(editPrivate.ShowDialog() == DialogResult.OK)
+                {
+                    // Private drive (device linked)
+                    if (drive.IsLocalDrive)
+                    {
+                        sqlite.ExecuteNonQueryACon("UPDATE qd_drives SET LocalPath = ?, Username = ?, Password = ?, Domain = ?, DriveLetter = ?, DriveName = ? WHERE ID = ?",
+                            editPrivate.DrivePath,
+                            Cipher.Encrypt(editPrivate.Username, QDInfo.LocalCipherKey),
+                            Cipher.Encrypt(editPrivate.Password, QDInfo.LocalCipherKey),
+                            Cipher.Encrypt(editPrivate.Domain, QDInfo.LocalCipherKey),
+                            editPrivate.DriveLetter,
+                            editPrivate.DisplayName,
+                            editPrivate.DBEntryID
+                        );
+                    }
+                    // Private drive (user linked)
+                    else
+                    {
+                        mysql.Open();
+
+                        string qdDriveID = mysql.ExecuteScalar<string>("SELECT DriveID FROM qd_assigns WHERE ID = ?", editPrivate.DBEntryID);
+
+                        mysql.ExecuteNonQuery("UPDATE qd_assigns SET CustomDriveName = ?, CustomDriveLetter = ?, DUsername = ?, DPassword = ?, DDomain = ? WHERE ID = ?",
+                            editPrivate.DisplayName,
+                            editPrivate.DriveLetter,
+                            Cipher.Encrypt(editPrivate.Username, uPassword),
+                            Cipher.Encrypt(editPrivate.Password, uPassword),
+                            Cipher.Encrypt(editPrivate.Domain, uPassword),
+                            editPrivate.DBEntryID
+                        );
+
+                        mysql.ExecuteNonQuery("UPDATE qd_drives SET DefaultName = ?, DefaultDriveLetter = ?, LocalPath = ? WHERE ID = ?",
+                            editPrivate.DisplayName,
+                            editPrivate.DriveLetter,
+                            editPrivate.DrivePath,
+                            qdDriveID
+                        );
+
+                        mysql.Close();
+                    }
+
+                    UpdateManagerData();
+                }
+            }
         }
 
         #endregion
@@ -447,6 +568,8 @@ namespace QDriveManager
 
             uUsername = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
             uPassword = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
+
+            if (!string.IsNullOrEmpty(uPassword)) uPassword = Cipher.Decrypt(uPassword, QDInfo.LocalCipherKey);
 
             dbData.Hostname = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost), QDInfo.LocalCipherKey);
             dbData.Username = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername), QDInfo.LocalCipherKey);
@@ -526,7 +649,7 @@ namespace QDriveManager
 
         private void UpdateDriveListView()
         {
-            List<DriveViewItem> drives = new List<DriveViewItem>();
+            drives.Clear();
 
             sqlite.Open();
             using (SQLiteDataReader reader = sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
@@ -539,7 +662,10 @@ namespace QDriveManager
                         Convert.ToString(reader["LocalPath"]),
                         Convert.ToString(reader["DriveLetter"]),
                         true,
-                        false
+                        false,
+                        Cipher.Decrypt(Convert.ToString(reader["Username"]), QDInfo.LocalCipherKey),
+                        Cipher.Decrypt(Convert.ToString(reader["Password"]), QDInfo.LocalCipherKey),
+                        Cipher.Decrypt(Convert.ToString(reader["Domain"]), QDInfo.LocalCipherKey)
                     ));
                 }
             }
@@ -548,7 +674,7 @@ namespace QDriveManager
             if (!localConnection)
             {
                 mysql.Open();
-                using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT *, qd_assigns.ID as AID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", userID))
+                using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT *, qd_assigns.ID as AID, qd_drives.ID AS DID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", userID))
                 {
                     while (reader.Read())
                     {
@@ -558,7 +684,11 @@ namespace QDriveManager
                         Convert.ToString(reader["LocalPath"]),
                         Convert.ToString(reader["CustomDriveLetter"]),
                         false,
-                        Convert.ToBoolean(Convert.ToInt16(reader["IsPublic"]))
+                        Convert.ToBoolean(Convert.ToInt16(reader["IsPublic"])),
+                        Cipher.Decrypt(Convert.ToString(reader["DUsername"]), uPassword),
+                        Cipher.Decrypt(Convert.ToString(reader["DPassword"]), uPassword),
+                        Cipher.Decrypt(Convert.ToString(reader["DDomain"]), uPassword),
+                        Convert.ToString(reader["DID"])
                     ));
                     }
                 }
@@ -594,6 +724,8 @@ namespace QDriveManager
                 else if (drive.IsPublicDrive) imgIndex = 2;
                 else imgIndex = 1;
 
+                if (!Directory.Exists($"{drive.DriveLetter}:\\")) imgIndex += 3;
+                
                 grvConnectedDrives.GroupViewItems.Add(
                     new GroupViewItemEx(
                         $"({drive.DriveLetter}:\\) {drive.DisplayName}\r\n({drive.DrivePath})",

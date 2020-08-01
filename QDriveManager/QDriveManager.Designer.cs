@@ -39,8 +39,8 @@
             this.lnkCreateNewAccount = new System.Windows.Forms.LinkLabel();
             this.pbxLoginConnectionState = new System.Windows.Forms.PictureBox();
             this.pbxLoginLogo = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblSA2ConfirmPassword = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.txbUsername = new System.Windows.Forms.TextBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -141,8 +141,8 @@
             this.pnlLogin.Controls.Add(this.lnkCreateNewAccount);
             this.pnlLogin.Controls.Add(this.pbxLoginConnectionState);
             this.pnlLogin.Controls.Add(this.pbxLoginLogo);
-            this.pnlLogin.Controls.Add(this.label2);
-            this.pnlLogin.Controls.Add(this.lblSA2ConfirmPassword);
+            this.pnlLogin.Controls.Add(this.lblUsername);
+            this.pnlLogin.Controls.Add(this.lblPassword);
             this.pnlLogin.Controls.Add(this.txbUsername);
             this.pnlLogin.Controls.Add(this.txbPassword);
             this.pnlLogin.Controls.Add(this.btnLogin);
@@ -202,25 +202,25 @@
             this.pbxLoginLogo.TabIndex = 11;
             this.pbxLoginLogo.TabStop = false;
             // 
-            // label2
+            // lblUsername
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label2.Location = new System.Drawing.Point(174, 232);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 28);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Username";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.lblUsername.Location = new System.Drawing.Point(174, 232);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(98, 28);
+            this.lblUsername.TabIndex = 10;
+            this.lblUsername.Text = "Username";
             // 
-            // lblSA2ConfirmPassword
+            // lblPassword
             // 
-            this.lblSA2ConfirmPassword.AutoSize = true;
-            this.lblSA2ConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.lblSA2ConfirmPassword.Location = new System.Drawing.Point(174, 325);
-            this.lblSA2ConfirmPassword.Name = "lblSA2ConfirmPassword";
-            this.lblSA2ConfirmPassword.Size = new System.Drawing.Size(91, 28);
-            this.lblSA2ConfirmPassword.TabIndex = 10;
-            this.lblSA2ConfirmPassword.Text = "Password";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.lblPassword.Location = new System.Drawing.Point(174, 325);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(91, 28);
+            this.lblPassword.TabIndex = 10;
+            this.lblPassword.Text = "Password";
             // 
             // txbUsername
             // 
@@ -682,8 +682,8 @@
         private System.Windows.Forms.TextBox txbUsername;
         private System.Windows.Forms.TextBox txbPassword;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblSA2ConfirmPassword;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.LinkLabel lnkCreateNewAccount;
         private System.Windows.Forms.PictureBox pbxLoginLogo;
         private System.Windows.Forms.CheckBox chbKeepLoggedIn;

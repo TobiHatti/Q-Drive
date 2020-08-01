@@ -13,16 +13,39 @@ namespace QDriveManager
 {
     public partial class QDAddPrivateDrive : SfForm
     {
+        // Reserved for editing entry
+        public string DBEntryID = null;
+
         public string DrivePath;
         public string DisplayName;
         public string Username;
         public string Password;
         public string Domain;
         public string DriveLetter;
+
         public QDAddPrivateDrive()
         {
             InitializeComponent();
             cbxDriveLetter.SelectedIndex = 2;
+        }
+
+        private void QDAddPrivateDrive_Load(object sender, EventArgs e)
+        {
+            if (DBEntryID != null)
+            {
+                txbDrivePath.Text = DrivePath;
+                txbDisplayName.Text = DisplayName;
+                txbUsername.Text = Username;
+                txbPassword.Text = Password;
+                txbDomain.Text = Domain;
+
+                for (int i = 0; i < cbxDriveLetter.Items.Count; i++)
+                    if (cbxDriveLetter.Items[i].ToString()[0].ToString() == DriveLetter)
+                        cbxDriveLetter.SelectedIndex = i;
+
+                this.Text = "Edit private drive";
+                btnSubmit.Text = "Update Drive";
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -49,5 +72,7 @@ namespace QDriveManager
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        
     }
 }

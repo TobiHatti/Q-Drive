@@ -24,7 +24,7 @@ namespace QDrive
         private bool alwaysPromptPassword = false;
         private string localPassword = string.Empty;
 
-        private WrapMySQLConDat onlineDBConDat = null;
+        private WrapMySQLConDat onlineDBConDat = new WrapMySQLConDat();
 
         private bool onlineAlreadyConfigured;
 

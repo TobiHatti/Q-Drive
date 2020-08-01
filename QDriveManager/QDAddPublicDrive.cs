@@ -15,7 +15,18 @@ namespace QDriveManager
 {
     public partial class QDAddPublicDrive : SfForm
     {
+        // Reserved for editing entry
+        public string DBEntryID = null;
+
         public WrapMySQLConDat DBData;
+
+        public string DriveID;
+        public string CustomDriveName;
+        public string CustomDriveLetter;
+        public string Username;
+        public string Password;
+        public string Domain;
+
         public QDAddPublicDrive()
         {
             InitializeComponent();
@@ -44,8 +55,19 @@ namespace QDriveManager
                     while(reader.Read())
                     {
                         grvPublicDrives.GroupViewItems.Add(
-                            new Syncfusion.Windows.Forms.Tools.GroupViewItem(
+                            new GroupViewItemEx(
                                 $"({Convert.ToString(reader["DefaultDriveLetter"])}:\\) {Convert.ToString(reader["DefaultName"])}\r\n({Convert.ToString(reader["LocalPath"])})",
+                                new DriveViewItem(
+                                    Convert.ToString(reader["ID"]),
+                                    Convert.ToString(reader["DefaultName"]),
+                                    Convert.ToString(reader["LocalPath"]),
+                                    Convert.ToString(reader["DefaultDriveLetter"]),
+                                    false,
+                                    true,
+                                    "",
+                                    "",
+                                    ""
+                                ),
                                 0
                             )
                         );
@@ -54,16 +76,69 @@ namespace QDriveManager
 
                 sql.Close();
             }
-        }
 
+            // Set values for edit mode
+            if(DBEntryID != null)
+            {
+                txbDisplayName.Text = CustomDriveName;
+                txbUsername.Text = Username;
+                txbPassword.Text = Password;
+                txbDomainName.Text = Domain;
+
+                for (int i = 0; i < cbxDriveLetter.Items.Count; i++)
+                    if (cbxDriveLetter.Items[i].ToString()[0].ToString() == CustomDriveLetter)
+                        cbxDriveLetter.SelectedIndex = i;
+
+                for(int i = 0; i < grvPublicDrives.GroupViewItems.Count; i++)
+                {
+                    if ((grvPublicDrives.GroupViewItems[i] as GroupViewItemEx).Drive.ID == DriveID)
+                    {
+                        grvPublicDrives.SelectedItem = i;
+                        txbDrivePath.Text = (grvPublicDrives.GroupViewItems[i] as GroupViewItemEx).Drive.DrivePath;
+                    }
+                }
+
+                this.Text = "Edit public drive";
+                btnSubmit.Text = "Update Drive";
+            }
+        }
+        
+        private void grvPublicDrives_Click(object sender, EventArgs e)
+        {
+            if (grvPublicDrives.SelectedItem != -1)
+            {
+                DriveViewItem drive = (grvPublicDrives.GroupViewItems[grvPublicDrives.SelectedItem] as GroupViewItemEx).Drive;
+
+                txbDrivePath.Text = drive.DrivePath;
+                txbDisplayName.Text = drive.DisplayName;
+
+                DriveID = drive.ID;
+
+                for (int i = 0; i < cbxDriveLetter.Items.Count; i++)
+                    if (cbxDriveLetter.Items[i].ToString()[0].ToString() == drive.DriveLetter)
+                        cbxDriveLetter.SelectedIndex = i;
+            }
+        }
+  
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txbDisplayName.Text)) { MessageBox.Show("Please enter a Display-Name.", "Missing Value", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+            if (string.IsNullOrEmpty(txbUsername.Text)) { MessageBox.Show("Please enter a Username.", "Missing Value", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+            if (string.IsNullOrEmpty(txbPassword.Text)) { MessageBox.Show("Please enter a Password.", "Missing Value", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+
+            CustomDriveName = txbDisplayName.Text;
+            CustomDriveLetter = cbxDriveLetter.Text[0].ToString();
+            Username = txbUsername.Text;
+            Password = txbPassword.Text;
+            Domain = txbDomainName.Text;
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
