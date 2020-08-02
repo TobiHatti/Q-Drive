@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDriveManager));
             this.pnlNotConfigured = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlManager = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnDisconnect = new System.Windows.Forms.Button();
             this.btnReconnect = new System.Windows.Forms.Button();
@@ -57,10 +59,10 @@
             this.grvConnectedDrives = new Syncfusion.Windows.Forms.Tools.GroupView();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.toolStripEx1 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.tseToolstrip = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
+            this.tsbQDrive = new System.Windows.Forms.ToolStripButton();
+            this.tsbFile = new System.Windows.Forms.ToolStripButton();
+            this.tsbSettings = new System.Windows.Forms.ToolStripButton();
             this.pnlLoading = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlSignUp = new System.Windows.Forms.Panel();
@@ -77,18 +79,42 @@
             this.btnRegCancel = new System.Windows.Forms.Button();
             this.btnSignUp = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.cmsFile = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmExportUserData = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmImportUserData = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsQDrive = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsSettings = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmChangeOnlineDBConnection = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmResetLocalDatabase = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmAddDrive = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmUpdateReconnectDrives = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmLogOffDisconnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmRunQDriveSetup = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmAutoStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDisableAutostart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmEnableAutostart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCheckForUpdates = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCloseQDrive = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmChangePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.sfdSaveConfig = new System.Windows.Forms.SaveFileDialog();
+            this.ofdOpenConfig = new System.Windows.Forms.OpenFileDialog();
             this.pnlNotConfigured.SuspendLayout();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginConnectionState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).BeginInit();
             this.pnlManager.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxManagerConnectionState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.toolStripEx1.SuspendLayout();
+            this.tseToolstrip.SuspendLayout();
             this.pnlLoading.SuspendLayout();
             this.pnlSignUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpConnectionState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpLogo)).BeginInit();
+            this.cmsFile.SuspendLayout();
+            this.cmsQDrive.SuspendLayout();
+            this.cmsSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlNotConfigured
@@ -263,6 +289,7 @@
             // 
             // pnlManager
             // 
+            this.pnlManager.Controls.Add(this.pictureBox1);
             this.pnlManager.Controls.Add(this.label5);
             this.pnlManager.Controls.Add(this.btnDisconnect);
             this.pnlManager.Controls.Add(this.btnReconnect);
@@ -274,27 +301,35 @@
             this.pnlManager.Controls.Add(this.grvConnectedDrives);
             this.pnlManager.Controls.Add(this.label4);
             this.pnlManager.Controls.Add(this.label3);
-            this.pnlManager.Controls.Add(this.toolStripEx1);
+            this.pnlManager.Controls.Add(this.tseToolstrip);
             this.pnlManager.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.pnlManager.Location = new System.Drawing.Point(2358, 6);
             this.pnlManager.Name = "pnlManager";
             this.pnlManager.Size = new System.Drawing.Size(778, 555);
             this.pnlManager.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
+            this.pictureBox1.Location = new System.Drawing.Point(364, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(3, 527);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(6, 222);
+            this.label5.Location = new System.Drawing.Point(166, 448);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(204, 147);
+            this.label5.Size = new System.Drawing.Size(147, 21);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Information Text Placeholder\r\n\r\nInformation Text Placeholder\r\n\r\nInformation Text " +
-    "Placeholder\r\n\r\nInformation Text Placeholder";
+            this.label5.Text = "Q-Drive version XXX";
             // 
             // btnDisconnect
             // 
-            this.btnDisconnect.Location = new System.Drawing.Point(215, 518);
+            this.btnDisconnect.Location = new System.Drawing.Point(3, 359);
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(200, 30);
             this.btnDisconnect.TabIndex = 6;
@@ -304,7 +339,7 @@
             // 
             // btnReconnect
             // 
-            this.btnReconnect.Location = new System.Drawing.Point(215, 482);
+            this.btnReconnect.Location = new System.Drawing.Point(3, 323);
             this.btnReconnect.Name = "btnReconnect";
             this.btnReconnect.Size = new System.Drawing.Size(200, 30);
             this.btnReconnect.TabIndex = 6;
@@ -315,7 +350,7 @@
             // btnRemoveDrive
             // 
             this.btnRemoveDrive.Enabled = false;
-            this.btnRemoveDrive.Location = new System.Drawing.Point(215, 163);
+            this.btnRemoveDrive.Location = new System.Drawing.Point(3, 173);
             this.btnRemoveDrive.Name = "btnRemoveDrive";
             this.btnRemoveDrive.Size = new System.Drawing.Size(200, 30);
             this.btnRemoveDrive.TabIndex = 6;
@@ -326,7 +361,7 @@
             // btnEditDrive
             // 
             this.btnEditDrive.Enabled = false;
-            this.btnEditDrive.Location = new System.Drawing.Point(9, 163);
+            this.btnEditDrive.Location = new System.Drawing.Point(3, 137);
             this.btnEditDrive.Name = "btnEditDrive";
             this.btnEditDrive.Size = new System.Drawing.Size(200, 30);
             this.btnEditDrive.TabIndex = 6;
@@ -336,7 +371,7 @@
             // 
             // btnAddDrive
             // 
-            this.btnAddDrive.Location = new System.Drawing.Point(111, 103);
+            this.btnAddDrive.Location = new System.Drawing.Point(3, 77);
             this.btnAddDrive.Name = "btnAddDrive";
             this.btnAddDrive.Size = new System.Drawing.Size(200, 54);
             this.btnAddDrive.TabIndex = 6;
@@ -365,15 +400,15 @@
             // 
             // grvConnectedDrives
             // 
-            this.grvConnectedDrives.BeforeTouchSize = new System.Drawing.Size(354, 483);
-            this.grvConnectedDrives.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.grvConnectedDrives.BeforeTouchSize = new System.Drawing.Size(411, 490);
+            this.grvConnectedDrives.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grvConnectedDrives.ButtonView = true;
             this.grvConnectedDrives.FlatLook = true;
             this.grvConnectedDrives.ImageSpacing = 20;
             this.grvConnectedDrives.IntegratedScrolling = true;
-            this.grvConnectedDrives.Location = new System.Drawing.Point(421, 65);
+            this.grvConnectedDrives.Location = new System.Drawing.Point(364, 65);
             this.grvConnectedDrives.Name = "grvConnectedDrives";
-            this.grvConnectedDrives.Size = new System.Drawing.Size(354, 483);
+            this.grvConnectedDrives.Size = new System.Drawing.Size(411, 490);
             this.grvConnectedDrives.SmallImageView = true;
             this.grvConnectedDrives.TabIndex = 5;
             this.grvConnectedDrives.Text = "groupView1";
@@ -387,7 +422,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
-            this.label4.Location = new System.Drawing.Point(416, 37);
+            this.label4.Location = new System.Drawing.Point(367, 37);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(156, 25);
@@ -407,54 +442,57 @@
             this.label3.Text = "Q-Drive Manager";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // toolStripEx1
+            // tseToolstrip
             // 
-            this.toolStripEx1.CaptionAlignment = Syncfusion.Windows.Forms.Tools.CaptionAlignment.Near;
-            this.toolStripEx1.CaptionStyle = Syncfusion.Windows.Forms.Tools.CaptionStyle.Bottom;
-            this.toolStripEx1.CaptionTextStyle = Syncfusion.Windows.Forms.Tools.CaptionTextStyle.Plain;
-            this.toolStripEx1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.toolStripEx1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStripEx1.Image = null;
-            this.toolStripEx1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3});
-            this.toolStripEx1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripEx1.Name = "toolStripEx1";
-            this.toolStripEx1.Office12Mode = false;
-            this.toolStripEx1.ShowCaption = false;
-            this.toolStripEx1.Size = new System.Drawing.Size(778, 25);
-            this.toolStripEx1.TabIndex = 13;
-            this.toolStripEx1.Text = "ä";
-            this.toolStripEx1.ThemeName = "Office2016White";
-            this.toolStripEx1.VisualStyle = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Office2016White;
+            this.tseToolstrip.CaptionAlignment = Syncfusion.Windows.Forms.Tools.CaptionAlignment.Near;
+            this.tseToolstrip.CaptionStyle = Syncfusion.Windows.Forms.Tools.CaptionStyle.Bottom;
+            this.tseToolstrip.CaptionTextStyle = Syncfusion.Windows.Forms.Tools.CaptionTextStyle.Plain;
+            this.tseToolstrip.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.tseToolstrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tseToolstrip.Image = null;
+            this.tseToolstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbQDrive,
+            this.tsbFile,
+            this.tsbSettings});
+            this.tseToolstrip.Location = new System.Drawing.Point(0, 0);
+            this.tseToolstrip.Name = "tseToolstrip";
+            this.tseToolstrip.Office12Mode = false;
+            this.tseToolstrip.ShowCaption = false;
+            this.tseToolstrip.Size = new System.Drawing.Size(778, 25);
+            this.tseToolstrip.TabIndex = 13;
+            this.tseToolstrip.Text = "ä";
+            this.tseToolstrip.ThemeName = "Office2016White";
+            this.tseToolstrip.VisualStyle = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Office2016White;
             // 
-            // toolStripButton1
+            // tsbQDrive
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 22);
-            this.toolStripButton1.Text = "File";
+            this.tsbQDrive.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbQDrive.Image = ((System.Drawing.Image)(resources.GetObject("tsbQDrive.Image")));
+            this.tsbQDrive.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbQDrive.Name = "tsbQDrive";
+            this.tsbQDrive.Size = new System.Drawing.Size(52, 22);
+            this.tsbQDrive.Text = "Q-Drive";
+            this.tsbQDrive.Click += new System.EventHandler(this.tsbQDrive_Click);
             // 
-            // toolStripButton2
+            // tsbFile
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(36, 22);
-            this.toolStripButton2.Text = "Stuff";
+            this.tsbFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbFile.Image = ((System.Drawing.Image)(resources.GetObject("tsbFile.Image")));
+            this.tsbFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFile.Name = "tsbFile";
+            this.tsbFile.Size = new System.Drawing.Size(29, 22);
+            this.tsbFile.Text = "File";
+            this.tsbFile.Click += new System.EventHandler(this.tsbFile_Click);
             // 
-            // toolStripButton3
+            // tsbSettings
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(50, 22);
-            this.toolStripButton3.Text = "Banana";
+            this.tsbSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSettings.Image = ((System.Drawing.Image)(resources.GetObject("tsbSettings.Image")));
+            this.tsbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSettings.Name = "tsbSettings";
+            this.tsbSettings.Size = new System.Drawing.Size(53, 22);
+            this.tsbSettings.Text = "Settings";
+            this.tsbSettings.Click += new System.EventHandler(this.tsbSettings_Click);
             // 
             // pnlLoading
             // 
@@ -623,6 +661,155 @@
             this.label11.Text = "Q-Drive • Sign Up";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // cmsFile
+            // 
+            this.cmsFile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmExportUserData,
+            this.tsmImportUserData});
+            this.cmsFile.Name = "cmsFile";
+            this.cmsFile.ShowImageMargin = false;
+            this.cmsFile.Size = new System.Drawing.Size(125, 48);
+            // 
+            // tsmExportUserData
+            // 
+            this.tsmExportUserData.Name = "tsmExportUserData";
+            this.tsmExportUserData.Size = new System.Drawing.Size(124, 22);
+            this.tsmExportUserData.Text = "Export Config";
+            this.tsmExportUserData.Click += new System.EventHandler(this.tsmExportUserData_Click);
+            // 
+            // tsmImportUserData
+            // 
+            this.tsmImportUserData.Name = "tsmImportUserData";
+            this.tsmImportUserData.Size = new System.Drawing.Size(124, 22);
+            this.tsmImportUserData.Text = "Import Config";
+            this.tsmImportUserData.Click += new System.EventHandler(this.tsmImportUserData_Click);
+            // 
+            // cmsQDrive
+            // 
+            this.cmsQDrive.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmAddDrive,
+            this.tsmUpdateReconnectDrives,
+            this.tsmLogOffDisconnect,
+            this.tsmChangePassword,
+            this.toolStripSeparator1,
+            this.tsmCheckForUpdates,
+            this.tsmCloseQDrive});
+            this.cmsQDrive.Name = "cmsQDrive";
+            this.cmsQDrive.ShowImageMargin = false;
+            this.cmsQDrive.Size = new System.Drawing.Size(189, 142);
+            // 
+            // cmsSettings
+            // 
+            this.cmsSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmAutoStart,
+            this.tsmRunQDriveSetup,
+            this.tsmChangeOnlineDBConnection,
+            this.tsmResetLocalDatabase});
+            this.cmsSettings.Name = "cmsSettings";
+            this.cmsSettings.ShowImageMargin = false;
+            this.cmsSettings.Size = new System.Drawing.Size(240, 92);
+            // 
+            // tsmChangeOnlineDBConnection
+            // 
+            this.tsmChangeOnlineDBConnection.Name = "tsmChangeOnlineDBConnection";
+            this.tsmChangeOnlineDBConnection.Size = new System.Drawing.Size(239, 22);
+            this.tsmChangeOnlineDBConnection.Text = "Change online database connection";
+            this.tsmChangeOnlineDBConnection.Click += new System.EventHandler(this.tsmChangeOnlineDBConnection_Click);
+            // 
+            // tsmResetLocalDatabase
+            // 
+            this.tsmResetLocalDatabase.Name = "tsmResetLocalDatabase";
+            this.tsmResetLocalDatabase.Size = new System.Drawing.Size(239, 22);
+            this.tsmResetLocalDatabase.Text = "Reset local database";
+            this.tsmResetLocalDatabase.Click += new System.EventHandler(this.tsmResetLocalDatabase_Click);
+            // 
+            // tsmAddDrive
+            // 
+            this.tsmAddDrive.Name = "tsmAddDrive";
+            this.tsmAddDrive.Size = new System.Drawing.Size(188, 22);
+            this.tsmAddDrive.Text = "Add Drive";
+            this.tsmAddDrive.Click += new System.EventHandler(this.tsmAddDrive_Click);
+            // 
+            // tsmUpdateReconnectDrives
+            // 
+            this.tsmUpdateReconnectDrives.Name = "tsmUpdateReconnectDrives";
+            this.tsmUpdateReconnectDrives.Size = new System.Drawing.Size(188, 22);
+            this.tsmUpdateReconnectDrives.Text = "Update / Reconnect drives";
+            // 
+            // tsmLogOffDisconnect
+            // 
+            this.tsmLogOffDisconnect.Name = "tsmLogOffDisconnect";
+            this.tsmLogOffDisconnect.Size = new System.Drawing.Size(188, 22);
+            this.tsmLogOffDisconnect.Text = "Log Off / Disconnect";
+            this.tsmLogOffDisconnect.Click += new System.EventHandler(this.tsmLogOffDisconnect_Click);
+            // 
+            // tsmRunQDriveSetup
+            // 
+            this.tsmRunQDriveSetup.Name = "tsmRunQDriveSetup";
+            this.tsmRunQDriveSetup.Size = new System.Drawing.Size(239, 22);
+            this.tsmRunQDriveSetup.Text = "Run Q-Drive setup";
+            this.tsmRunQDriveSetup.Click += new System.EventHandler(this.tsmRunQDriveSetup_Click);
+            // 
+            // tsmAutoStart
+            // 
+            this.tsmAutoStart.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmEnableAutostart,
+            this.tsmDisableAutostart});
+            this.tsmAutoStart.Name = "tsmAutoStart";
+            this.tsmAutoStart.Size = new System.Drawing.Size(239, 22);
+            this.tsmAutoStart.Text = "Autostart";
+            // 
+            // tsmDisableAutostart
+            // 
+            this.tsmDisableAutostart.Name = "tsmDisableAutostart";
+            this.tsmDisableAutostart.Size = new System.Drawing.Size(180, 22);
+            this.tsmDisableAutostart.Text = "Disable Autostart";
+            this.tsmDisableAutostart.Click += new System.EventHandler(this.tsmDisableAutostart_Click);
+            // 
+            // tsmEnableAutostart
+            // 
+            this.tsmEnableAutostart.Name = "tsmEnableAutostart";
+            this.tsmEnableAutostart.Size = new System.Drawing.Size(180, 22);
+            this.tsmEnableAutostart.Text = "Enable Autostart";
+            this.tsmEnableAutostart.Click += new System.EventHandler(this.tsmEnableAutostart_Click);
+            // 
+            // tsmCheckForUpdates
+            // 
+            this.tsmCheckForUpdates.Name = "tsmCheckForUpdates";
+            this.tsmCheckForUpdates.Size = new System.Drawing.Size(188, 22);
+            this.tsmCheckForUpdates.Text = "Check for updates";
+            this.tsmCheckForUpdates.Click += new System.EventHandler(this.tsmCheckForUpdates_Click);
+            // 
+            // tsmCloseQDrive
+            // 
+            this.tsmCloseQDrive.Name = "tsmCloseQDrive";
+            this.tsmCloseQDrive.Size = new System.Drawing.Size(188, 22);
+            this.tsmCloseQDrive.Text = "Close Q-Drive";
+            this.tsmCloseQDrive.Click += new System.EventHandler(this.tsmCloseQDrive_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            // 
+            // tsmChangePassword
+            // 
+            this.tsmChangePassword.Name = "tsmChangePassword";
+            this.tsmChangePassword.Size = new System.Drawing.Size(188, 22);
+            this.tsmChangePassword.Text = "Change password";
+            this.tsmChangePassword.Click += new System.EventHandler(this.tsmChangePassword_Click);
+            // 
+            // sfdSaveConfig
+            // 
+            this.sfdSaveConfig.FileName = "backup.qdbackup";
+            this.sfdSaveConfig.Filter = "Q-Drive backup files|*.qdbackup|All Files|*.*";
+            this.sfdSaveConfig.Title = "Create a Q-Drive backup";
+            // 
+            // ofdOpenConfig
+            // 
+            this.ofdOpenConfig.Filter = "Q-Drive backup files|*.qdbackup|All Files|*.*";
+            this.ofdOpenConfig.Title = "Load a Q-Drive backup";
+            // 
             // QDriveManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -657,16 +844,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).EndInit();
             this.pnlManager.ResumeLayout(false);
             this.pnlManager.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxManagerConnectionState)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.toolStripEx1.ResumeLayout(false);
-            this.toolStripEx1.PerformLayout();
+            this.tseToolstrip.ResumeLayout(false);
+            this.tseToolstrip.PerformLayout();
             this.pnlLoading.ResumeLayout(false);
             this.pnlLoading.PerformLayout();
             this.pnlSignUp.ResumeLayout(false);
             this.pnlSignUp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpConnectionState)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpLogo)).EndInit();
+            this.cmsFile.ResumeLayout(false);
+            this.cmsQDrive.ResumeLayout(false);
+            this.cmsSettings.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -693,10 +884,10 @@
         private System.Windows.Forms.PictureBox pbxLoginConnectionState;
         private System.Windows.Forms.PictureBox pbxManagerConnectionState;
         private System.Windows.Forms.Label label3;
-        private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private Syncfusion.Windows.Forms.Tools.ToolStripEx tseToolstrip;
+        private System.Windows.Forms.ToolStripButton tsbQDrive;
+        private System.Windows.Forms.ToolStripButton tsbFile;
+        private System.Windows.Forms.ToolStripButton tsbSettings;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnDisconnect;
@@ -721,6 +912,27 @@
         private System.Windows.Forms.TextBox txbRegName;
         private System.Windows.Forms.TextBox txbRegConfirmPassword;
         private System.Windows.Forms.Button btnRegCancel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ContextMenuStrip cmsFile;
+        private System.Windows.Forms.ToolStripMenuItem tsmExportUserData;
+        private System.Windows.Forms.ToolStripMenuItem tsmImportUserData;
+        private System.Windows.Forms.ContextMenuStrip cmsQDrive;
+        private System.Windows.Forms.ContextMenuStrip cmsSettings;
+        private System.Windows.Forms.ToolStripMenuItem tsmAddDrive;
+        private System.Windows.Forms.ToolStripMenuItem tsmUpdateReconnectDrives;
+        private System.Windows.Forms.ToolStripMenuItem tsmLogOffDisconnect;
+        private System.Windows.Forms.ToolStripMenuItem tsmChangeOnlineDBConnection;
+        private System.Windows.Forms.ToolStripMenuItem tsmResetLocalDatabase;
+        private System.Windows.Forms.ToolStripMenuItem tsmRunQDriveSetup;
+        private System.Windows.Forms.ToolStripMenuItem tsmChangePassword;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tsmCheckForUpdates;
+        private System.Windows.Forms.ToolStripMenuItem tsmCloseQDrive;
+        private System.Windows.Forms.ToolStripMenuItem tsmAutoStart;
+        private System.Windows.Forms.ToolStripMenuItem tsmDisableAutostart;
+        private System.Windows.Forms.ToolStripMenuItem tsmEnableAutostart;
+        private System.Windows.Forms.SaveFileDialog sfdSaveConfig;
+        private System.Windows.Forms.OpenFileDialog ofdOpenConfig;
     }
 }
 
