@@ -60,16 +60,21 @@ namespace QDriveLib
             return masterPasswordValid;
         }
 
+        private static string macAddress = null;
+
         public static string GetMachineMac()
         {
-            var macAddr =
-           (
-               from nic in NetworkInterface.GetAllNetworkInterfaces()
-               where nic.OperationalStatus == OperationalStatus.Up
-               select nic.GetPhysicalAddress().ToString()
-           ).FirstOrDefault();
+            if (macAddress == null)
+            {
+                macAddress =
+                (
+                    from nic in NetworkInterface.GetAllNetworkInterfaces()
+                    where nic.OperationalStatus == OperationalStatus.Up
+                    select nic.GetPhysicalAddress().ToString()
+                ).FirstOrDefault();
+            }
 
-            return macAddr;
+            return macAddress;
         }
 
         public static string HashPassword(string pPassword)

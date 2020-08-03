@@ -83,22 +83,24 @@
             this.tsmExportUserData = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmImportUserData = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsQDrive = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsSettings = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmChangeOnlineDBConnection = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmResetLocalDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAddDrive = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmUpdateReconnectDrives = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmLogOffDisconnect = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmRunQDriveSetup = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmAutoStart = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmDisableAutostart = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmEnableAutostart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmChangePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmCheckForUpdates = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCloseQDrive = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmChangePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsSettings = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmAutoStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmEnableAutostart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDisableAutostart = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmRunQDriveSetup = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmChangeOnlineDBConnection = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmResetLocalDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.sfdSaveConfig = new System.Windows.Forms.SaveFileDialog();
             this.ofdOpenConfig = new System.Windows.Forms.OpenFileDialog();
+            this.btnNotConfigured = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlNotConfigured.SuspendLayout();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginConnectionState)).BeginInit();
@@ -119,6 +121,8 @@
             // 
             // pnlNotConfigured
             // 
+            this.pnlNotConfigured.Controls.Add(this.label2);
+            this.pnlNotConfigured.Controls.Add(this.btnNotConfigured);
             this.pnlNotConfigured.Controls.Add(this.label19);
             this.pnlNotConfigured.Controls.Add(this.label21);
             this.pnlNotConfigured.Controls.Add(this.btnRunSetup);
@@ -698,31 +702,6 @@
             this.cmsQDrive.ShowImageMargin = false;
             this.cmsQDrive.Size = new System.Drawing.Size(189, 142);
             // 
-            // cmsSettings
-            // 
-            this.cmsSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmAutoStart,
-            this.tsmRunQDriveSetup,
-            this.tsmChangeOnlineDBConnection,
-            this.tsmResetLocalDatabase});
-            this.cmsSettings.Name = "cmsSettings";
-            this.cmsSettings.ShowImageMargin = false;
-            this.cmsSettings.Size = new System.Drawing.Size(240, 92);
-            // 
-            // tsmChangeOnlineDBConnection
-            // 
-            this.tsmChangeOnlineDBConnection.Name = "tsmChangeOnlineDBConnection";
-            this.tsmChangeOnlineDBConnection.Size = new System.Drawing.Size(239, 22);
-            this.tsmChangeOnlineDBConnection.Text = "Change online database connection";
-            this.tsmChangeOnlineDBConnection.Click += new System.EventHandler(this.tsmChangeOnlineDBConnection_Click);
-            // 
-            // tsmResetLocalDatabase
-            // 
-            this.tsmResetLocalDatabase.Name = "tsmResetLocalDatabase";
-            this.tsmResetLocalDatabase.Size = new System.Drawing.Size(239, 22);
-            this.tsmResetLocalDatabase.Text = "Reset local database";
-            this.tsmResetLocalDatabase.Click += new System.EventHandler(this.tsmResetLocalDatabase_Click);
-            // 
             // tsmAddDrive
             // 
             this.tsmAddDrive.Name = "tsmAddDrive";
@@ -743,35 +722,17 @@
             this.tsmLogOffDisconnect.Text = "Log Off / Disconnect";
             this.tsmLogOffDisconnect.Click += new System.EventHandler(this.tsmLogOffDisconnect_Click);
             // 
-            // tsmRunQDriveSetup
+            // tsmChangePassword
             // 
-            this.tsmRunQDriveSetup.Name = "tsmRunQDriveSetup";
-            this.tsmRunQDriveSetup.Size = new System.Drawing.Size(239, 22);
-            this.tsmRunQDriveSetup.Text = "Run Q-Drive setup";
-            this.tsmRunQDriveSetup.Click += new System.EventHandler(this.tsmRunQDriveSetup_Click);
+            this.tsmChangePassword.Name = "tsmChangePassword";
+            this.tsmChangePassword.Size = new System.Drawing.Size(188, 22);
+            this.tsmChangePassword.Text = "Change password";
+            this.tsmChangePassword.Click += new System.EventHandler(this.tsmChangePassword_Click);
             // 
-            // tsmAutoStart
+            // toolStripSeparator1
             // 
-            this.tsmAutoStart.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmEnableAutostart,
-            this.tsmDisableAutostart});
-            this.tsmAutoStart.Name = "tsmAutoStart";
-            this.tsmAutoStart.Size = new System.Drawing.Size(239, 22);
-            this.tsmAutoStart.Text = "Autostart";
-            // 
-            // tsmDisableAutostart
-            // 
-            this.tsmDisableAutostart.Name = "tsmDisableAutostart";
-            this.tsmDisableAutostart.Size = new System.Drawing.Size(180, 22);
-            this.tsmDisableAutostart.Text = "Disable Autostart";
-            this.tsmDisableAutostart.Click += new System.EventHandler(this.tsmDisableAutostart_Click);
-            // 
-            // tsmEnableAutostart
-            // 
-            this.tsmEnableAutostart.Name = "tsmEnableAutostart";
-            this.tsmEnableAutostart.Size = new System.Drawing.Size(180, 22);
-            this.tsmEnableAutostart.Text = "Enable Autostart";
-            this.tsmEnableAutostart.Click += new System.EventHandler(this.tsmEnableAutostart_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
             // 
             // tsmCheckForUpdates
             // 
@@ -787,17 +748,60 @@
             this.tsmCloseQDrive.Text = "Close Q-Drive";
             this.tsmCloseQDrive.Click += new System.EventHandler(this.tsmCloseQDrive_Click);
             // 
-            // toolStripSeparator1
+            // cmsSettings
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            this.cmsSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmAutoStart,
+            this.tsmRunQDriveSetup,
+            this.tsmChangeOnlineDBConnection,
+            this.tsmResetLocalDatabase});
+            this.cmsSettings.Name = "cmsSettings";
+            this.cmsSettings.ShowImageMargin = false;
+            this.cmsSettings.Size = new System.Drawing.Size(240, 92);
             // 
-            // tsmChangePassword
+            // tsmAutoStart
             // 
-            this.tsmChangePassword.Name = "tsmChangePassword";
-            this.tsmChangePassword.Size = new System.Drawing.Size(188, 22);
-            this.tsmChangePassword.Text = "Change password";
-            this.tsmChangePassword.Click += new System.EventHandler(this.tsmChangePassword_Click);
+            this.tsmAutoStart.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmEnableAutostart,
+            this.tsmDisableAutostart});
+            this.tsmAutoStart.Name = "tsmAutoStart";
+            this.tsmAutoStart.Size = new System.Drawing.Size(239, 22);
+            this.tsmAutoStart.Text = "Autostart";
+            // 
+            // tsmEnableAutostart
+            // 
+            this.tsmEnableAutostart.Name = "tsmEnableAutostart";
+            this.tsmEnableAutostart.Size = new System.Drawing.Size(164, 22);
+            this.tsmEnableAutostart.Text = "Enable Autostart";
+            this.tsmEnableAutostart.Click += new System.EventHandler(this.tsmEnableAutostart_Click);
+            // 
+            // tsmDisableAutostart
+            // 
+            this.tsmDisableAutostart.Name = "tsmDisableAutostart";
+            this.tsmDisableAutostart.Size = new System.Drawing.Size(164, 22);
+            this.tsmDisableAutostart.Text = "Disable Autostart";
+            this.tsmDisableAutostart.Click += new System.EventHandler(this.tsmDisableAutostart_Click);
+            // 
+            // tsmRunQDriveSetup
+            // 
+            this.tsmRunQDriveSetup.Name = "tsmRunQDriveSetup";
+            this.tsmRunQDriveSetup.Size = new System.Drawing.Size(239, 22);
+            this.tsmRunQDriveSetup.Text = "Run Q-Drive setup";
+            this.tsmRunQDriveSetup.Click += new System.EventHandler(this.tsmRunQDriveSetup_Click);
+            // 
+            // tsmChangeOnlineDBConnection
+            // 
+            this.tsmChangeOnlineDBConnection.Name = "tsmChangeOnlineDBConnection";
+            this.tsmChangeOnlineDBConnection.Size = new System.Drawing.Size(239, 22);
+            this.tsmChangeOnlineDBConnection.Text = "Change online database connection";
+            this.tsmChangeOnlineDBConnection.Click += new System.EventHandler(this.tsmChangeOnlineDBConnection_Click);
+            // 
+            // tsmResetLocalDatabase
+            // 
+            this.tsmResetLocalDatabase.Name = "tsmResetLocalDatabase";
+            this.tsmResetLocalDatabase.Size = new System.Drawing.Size(239, 22);
+            this.tsmResetLocalDatabase.Text = "Reset local database";
+            this.tsmResetLocalDatabase.Click += new System.EventHandler(this.tsmResetLocalDatabase_Click);
             // 
             // sfdSaveConfig
             // 
@@ -809,6 +813,26 @@
             // 
             this.ofdOpenConfig.Filter = "Q-Drive backup files|*.qdbackup|All Files|*.*";
             this.ofdOpenConfig.Title = "Load a Q-Drive backup";
+            // 
+            // btnNotConfigured
+            // 
+            this.btnNotConfigured.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.btnNotConfigured.Location = new System.Drawing.Point(305, 411);
+            this.btnNotConfigured.Name = "btnNotConfigured";
+            this.btnNotConfigured.Size = new System.Drawing.Size(168, 27);
+            this.btnNotConfigured.TabIndex = 5;
+            this.btnNotConfigured.Text = "Load a Q-Drive backup";
+            this.btnNotConfigured.UseVisualStyleBackColor = true;
+            this.btnNotConfigured.Click += new System.EventHandler(this.btnNotConfigured_Click);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(305, 377);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(168, 21);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "or";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // QDriveManager
             // 
@@ -933,6 +957,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmEnableAutostart;
         private System.Windows.Forms.SaveFileDialog sfdSaveConfig;
         private System.Windows.Forms.OpenFileDialog ofdOpenConfig;
+        private System.Windows.Forms.Button btnNotConfigured;
+        private System.Windows.Forms.Label label2;
     }
 }
 

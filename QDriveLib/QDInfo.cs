@@ -16,6 +16,14 @@ namespace QDriveLib
             }
         }
 
+        public static string GlobalCipherKey
+        {
+            get
+            {
+                return "Endev2dsUSWTWRJLRQc85zDLNnn6wpFZ5qHCDGphJsYWBaFP9Sdmawhw3mMBBzKG9GSftQDSystem";
+            }
+        }
+
         public static string ConfigFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Endev", "Q-Drive", "qd.db");
 
         /// <summary>
