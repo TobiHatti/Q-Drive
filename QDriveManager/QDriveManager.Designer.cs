@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDriveManager));
             this.pnlNotConfigured = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnNotConfigured = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.btnRunSetup = new System.Windows.Forms.Button();
@@ -47,6 +49,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlManager = new System.Windows.Forms.Panel();
+            this.pbxNoDrivesConnected = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnDisconnect = new System.Windows.Forms.Button();
@@ -99,13 +102,12 @@
             this.tsmResetLocalDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.sfdSaveConfig = new System.Windows.Forms.SaveFileDialog();
             this.ofdOpenConfig = new System.Windows.Forms.OpenFileDialog();
-            this.btnNotConfigured = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlNotConfigured.SuspendLayout();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginConnectionState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).BeginInit();
             this.pnlManager.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNoDrivesConnected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxManagerConnectionState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -130,6 +132,26 @@
             this.pnlNotConfigured.Name = "pnlNotConfigured";
             this.pnlNotConfigured.Size = new System.Drawing.Size(778, 555);
             this.pnlNotConfigured.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(305, 377);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(168, 21);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "or";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnNotConfigured
+            // 
+            this.btnNotConfigured.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.btnNotConfigured.Location = new System.Drawing.Point(305, 411);
+            this.btnNotConfigured.Name = "btnNotConfigured";
+            this.btnNotConfigured.Size = new System.Drawing.Size(168, 27);
+            this.btnNotConfigured.TabIndex = 1;
+            this.btnNotConfigured.Text = "Load a Q-Drive backup";
+            this.btnNotConfigured.UseVisualStyleBackColor = true;
+            this.btnNotConfigured.Click += new System.EventHandler(this.btnNotConfigured_Click);
             // 
             // label19
             // 
@@ -198,7 +220,7 @@
             this.chbKeepLoggedIn.Location = new System.Drawing.Point(310, 411);
             this.chbKeepLoggedIn.Name = "chbKeepLoggedIn";
             this.chbKeepLoggedIn.Size = new System.Drawing.Size(157, 25);
-            this.chbKeepLoggedIn.TabIndex = 3;
+            this.chbKeepLoggedIn.TabIndex = 4;
             this.chbKeepLoggedIn.Text = "Keep me logged in";
             this.chbKeepLoggedIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chbKeepLoggedIn.UseVisualStyleBackColor = true;
@@ -275,7 +297,7 @@
             this.btnLogin.Location = new System.Drawing.Point(295, 474);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(188, 42);
-            this.btnLogin.TabIndex = 4;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -293,6 +315,7 @@
             // 
             // pnlManager
             // 
+            this.pnlManager.Controls.Add(this.pbxNoDrivesConnected);
             this.pnlManager.Controls.Add(this.pictureBox1);
             this.pnlManager.Controls.Add(this.label5);
             this.pnlManager.Controls.Add(this.btnDisconnect);
@@ -311,6 +334,15 @@
             this.pnlManager.Name = "pnlManager";
             this.pnlManager.Size = new System.Drawing.Size(778, 555);
             this.pnlManager.TabIndex = 0;
+            // 
+            // pbxNoDrivesConnected
+            // 
+            this.pbxNoDrivesConnected.Location = new System.Drawing.Point(400, 155);
+            this.pbxNoDrivesConnected.Name = "pbxNoDrivesConnected";
+            this.pbxNoDrivesConnected.Size = new System.Drawing.Size(350, 285);
+            this.pbxNoDrivesConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxNoDrivesConnected.TabIndex = 16;
+            this.pbxNoDrivesConnected.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -336,7 +368,7 @@
             this.btnDisconnect.Location = new System.Drawing.Point(3, 359);
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(200, 30);
-            this.btnDisconnect.TabIndex = 6;
+            this.btnDisconnect.TabIndex = 5;
             this.btnDisconnect.Text = "Log Off / Disconnect";
             this.btnDisconnect.UseVisualStyleBackColor = true;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
@@ -346,7 +378,7 @@
             this.btnReconnect.Location = new System.Drawing.Point(3, 323);
             this.btnReconnect.Name = "btnReconnect";
             this.btnReconnect.Size = new System.Drawing.Size(200, 30);
-            this.btnReconnect.TabIndex = 6;
+            this.btnReconnect.TabIndex = 4;
             this.btnReconnect.Text = "Update / Reconnect";
             this.btnReconnect.UseVisualStyleBackColor = true;
             this.btnReconnect.Click += new System.EventHandler(this.btnReconnect_Click);
@@ -357,7 +389,7 @@
             this.btnRemoveDrive.Location = new System.Drawing.Point(3, 173);
             this.btnRemoveDrive.Name = "btnRemoveDrive";
             this.btnRemoveDrive.Size = new System.Drawing.Size(200, 30);
-            this.btnRemoveDrive.TabIndex = 6;
+            this.btnRemoveDrive.TabIndex = 3;
             this.btnRemoveDrive.Text = "Remove Drive";
             this.btnRemoveDrive.UseVisualStyleBackColor = true;
             this.btnRemoveDrive.Click += new System.EventHandler(this.btnRemoveDrive_Click);
@@ -368,7 +400,7 @@
             this.btnEditDrive.Location = new System.Drawing.Point(3, 137);
             this.btnEditDrive.Name = "btnEditDrive";
             this.btnEditDrive.Size = new System.Drawing.Size(200, 30);
-            this.btnEditDrive.TabIndex = 6;
+            this.btnEditDrive.TabIndex = 2;
             this.btnEditDrive.Text = "Edit Drive";
             this.btnEditDrive.UseVisualStyleBackColor = true;
             this.btnEditDrive.Click += new System.EventHandler(this.btnEditDrive_Click);
@@ -378,7 +410,7 @@
             this.btnAddDrive.Location = new System.Drawing.Point(3, 77);
             this.btnAddDrive.Name = "btnAddDrive";
             this.btnAddDrive.Size = new System.Drawing.Size(200, 54);
-            this.btnAddDrive.TabIndex = 6;
+            this.btnAddDrive.TabIndex = 1;
             this.btnAddDrive.Text = "Add Drive";
             this.btnAddDrive.UseVisualStyleBackColor = true;
             this.btnAddDrive.Click += new System.EventHandler(this.btnAddDrive_Click);
@@ -463,7 +495,7 @@
             this.tseToolstrip.Office12Mode = false;
             this.tseToolstrip.ShowCaption = false;
             this.tseToolstrip.Size = new System.Drawing.Size(778, 25);
-            this.tseToolstrip.TabIndex = 13;
+            this.tseToolstrip.TabIndex = 6;
             this.tseToolstrip.Text = "ä";
             this.tseToolstrip.ThemeName = "Office2016White";
             this.tseToolstrip.VisualStyle = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Office2016White;
@@ -738,7 +770,7 @@
             // 
             this.tsmCheckForUpdates.Name = "tsmCheckForUpdates";
             this.tsmCheckForUpdates.Size = new System.Drawing.Size(188, 22);
-            this.tsmCheckForUpdates.Text = "Check for updates";
+            this.tsmCheckForUpdates.Text = "Version information";
             this.tsmCheckForUpdates.Click += new System.EventHandler(this.tsmCheckForUpdates_Click);
             // 
             // tsmCloseQDrive
@@ -814,26 +846,6 @@
             this.ofdOpenConfig.Filter = "Q-Drive backup files|*.qdbackup|All Files|*.*";
             this.ofdOpenConfig.Title = "Load a Q-Drive backup";
             // 
-            // btnNotConfigured
-            // 
-            this.btnNotConfigured.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
-            this.btnNotConfigured.Location = new System.Drawing.Point(305, 411);
-            this.btnNotConfigured.Name = "btnNotConfigured";
-            this.btnNotConfigured.Size = new System.Drawing.Size(168, 27);
-            this.btnNotConfigured.TabIndex = 5;
-            this.btnNotConfigured.Text = "Load a Q-Drive backup";
-            this.btnNotConfigured.UseVisualStyleBackColor = true;
-            this.btnNotConfigured.Click += new System.EventHandler(this.btnNotConfigured_Click);
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(305, 377);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 21);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "or";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // QDriveManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -852,6 +864,7 @@
             this.MaximizeBox = false;
             this.Name = "QDriveManager";
             this.Padding = new System.Windows.Forms.Padding(0, 2, 2, 0);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Style.InactiveShadowOpacity = ((byte)(20));
             this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
@@ -868,6 +881,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).EndInit();
             this.pnlManager.ResumeLayout(false);
             this.pnlManager.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNoDrivesConnected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxManagerConnectionState)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -959,6 +973,7 @@
         private System.Windows.Forms.OpenFileDialog ofdOpenConfig;
         private System.Windows.Forms.Button btnNotConfigured;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pbxNoDrivesConnected;
     }
 }
 

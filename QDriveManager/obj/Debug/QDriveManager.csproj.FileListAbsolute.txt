@@ -126,3 +126,7 @@ F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.csproj.CoreCompileIn
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.exe
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.pdb
+F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Licensing.dll
+F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDChangePassword.resources
+F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDVersionInfo.resources
+F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDDatabaseConnection.resources

@@ -58,10 +58,17 @@
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Core.WinForms, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Core.WinForms, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Core.WinForms.18.2.0.44\lib\net46\Syncfusion.Core.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Data.WinForms, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grid.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
-    <Reference Include="Syncfusion.Shared.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Licensing, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.18.2.0.44\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Shared.Base.18.2.0.44\lib\net46\Syncfusion.Shared.Base.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Shared.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Tools.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Tools.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
@@ -125,6 +132,18 @@
     <Compile Include="QDAddDriveSelector.Designer.cs">
       <DependentUpon>QDAddDriveSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="QDChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDChangePassword.Designer.cs">
+      <DependentUpon>QDChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QDDatabaseConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDDatabaseConnection.Designer.cs">
+      <DependentUpon>QDDatabaseConnection.cs</DependentUpon>
+    </Compile>
     <Compile Include="QDriveManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +152,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QDVersionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDVersionInfo.Designer.cs">
+      <DependentUpon>QDVersionInfo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="QDAddDriveSelector.resx">
       <DependentUpon>QDAddDriveSelector.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +166,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QDAddPublicDrive.resx">
       <DependentUpon>QDAddPublicDrive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QDChangePassword.resx">
+      <DependentUpon>QDChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QDDatabaseConnection.resx">
+      <DependentUpon>QDDatabaseConnection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QDriveManager.resx">
       <DependentUpon>QDriveManager.cs</DependentUpon>
@@ -155,6 +186,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QDVersionInfo.resx">
+      <DependentUpon>QDVersionInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -202,6 +236,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QDriveLogo.ico" />
+    <None Include="Resources\QDriveNoDrives.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" />

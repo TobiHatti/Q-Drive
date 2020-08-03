@@ -122,7 +122,7 @@
             this.btnContinue.Location = new System.Drawing.Point(362, 531);
             this.btnContinue.Name = "btnContinue";
             this.btnContinue.Size = new System.Drawing.Size(120, 34);
-            this.btnContinue.TabIndex = 15;
+            this.btnContinue.TabIndex = 1;
             this.btnContinue.Text = "Continue >";
             this.btnContinue.UseVisualStyleBackColor = true;
             this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
@@ -132,7 +132,7 @@
             this.btnCancel.Location = new System.Drawing.Point(7, 531);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 34);
-            this.btnCancel.TabIndex = 15;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

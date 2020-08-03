@@ -14,14 +14,16 @@ namespace QDriveManager
 {
     public partial class QDriveManager : SfForm
     {
+        public bool AutostartLogin = false;
+
         private bool localUserNoPassword = false;
 
         // General properties
         private bool localConnection = false;
         private bool promptPassword = false;
 
-        private string uUsername = "";
-        private string uPassword = "";
+        public string uUsername = "";
+        public string uPassword = "";
 
         // Online-specific properties
         private bool userCanToggleKeepLoggedIn = true;
@@ -29,14 +31,14 @@ namespace QDriveManager
         private bool userCanAddPublicDrive = true;
         private bool userCanSelfRegister = true;
 
-        private string userID = "";
+        public string userID = "";
 
         private readonly WrapMySQLConDat dbData = new WrapMySQLConDat();
 
         private WrapSQLite sqlite = null;
         private WrapMySQL mysql = null;
 
-        private readonly List<DriveViewItem> drives = new List<DriveViewItem>();
+        private List<DriveViewItem> drives = new List<DriveViewItem>();
 
         #region Page Layout and Initial Loading =================================================================[RF]=
 
@@ -45,6 +47,8 @@ namespace QDriveManager
         public QDriveManager(params string[] args)
         {
             InitializeComponent();
+
+            this.DialogResult = DialogResult.Cancel;
 
             panels.Add(pnlNotConfigured);
             panels.Add(pnlLogin);
@@ -66,7 +70,8 @@ namespace QDriveManager
 
             pnlLoading.BringToFront();
 
-            if (!IsQDConfigured()) pnlNotConfigured.BringToFront();
+
+            if (!QDLib.IsQDConfigured()) pnlNotConfigured.BringToFront();
             else
             {
                 int loadStatusCode = LoadQDData();
@@ -79,6 +84,8 @@ namespace QDriveManager
                 pbxLoginConnectionState.Image = statusImage;
                 pbxSignUpConnectionState.Image = statusImage;
                 pbxManagerConnectionState.Image = statusImage;
+
+                pbxNoDrivesConnected.Image = Properties.Resources.QDriveNoDrives;
 
                 switch (loadStatusCode)
                 {
@@ -140,10 +147,10 @@ namespace QDriveManager
                 if (localConnection) txbUsername.Text = "local";
                 else txbUsername.Text = string.Empty;
 
-
-                if (!localUserNoPassword && (promptPassword || string.IsNullOrEmpty(uUsername) || string.IsNullOrEmpty(uPassword)))
+                if (AutostartLogin || (!localUserNoPassword && (promptPassword || string.IsNullOrEmpty(uUsername) || string.IsNullOrEmpty(uPassword))))
                 {
                     pnlLogin.BringToFront();
+                    txbUsername.Focus();
                 }
                 else
                 {
@@ -157,7 +164,10 @@ namespace QDriveManager
 
         #region Step A: Not Configured ==========================================================================[RF]=
 
-        private void btnRunSetup_Click(object sender, EventArgs e) => RunQDriveSetup();
+        private void btnRunSetup_Click(object sender, EventArgs e)
+        {
+            if (QDLib.RunQDriveSetup()) this.Close();
+        }
 
         private void btnNotConfigured_Click(object sender, EventArgs e) => ImportQDConfig();
 
@@ -165,18 +175,30 @@ namespace QDriveManager
 
         #region Step B: Login ===================================================================================[RF]=
 
-        private void lnkCreateNewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => pnlSignUp.BringToFront();
+        private void lnkCreateNewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pnlSignUp.BringToFront();
+            txbRegName.Focus();
+        }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (localUserNoPassword)
             {
-                pnlManager.BringToFront();
-                UpdateManagerData();
-                return;
+                if(AutostartLogin)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    pnlManager.BringToFront();
+                    UpdateManagerData();
+                    return;
+                }
             }
 
-            if (!VerifyPassword(localConnection, txbUsername.Text, txbPassword.Text))
+            if (!QDLib.VerifyPassword(localConnection, txbUsername.Text, txbPassword.Text, out userID, dbData))
             {
                 MessageBox.Show("Username or password are invalid!", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -213,9 +235,16 @@ namespace QDriveManager
 
             txbPassword.Text = string.Empty;
 
-            UpdateManagerData();
-
-            pnlManager.BringToFront();
+            if(AutostartLogin)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                UpdateManagerData();
+                pnlManager.BringToFront();
+            }
         }
 
         #endregion
@@ -252,6 +281,7 @@ namespace QDriveManager
             {
                 txbUsername.Text = txbRegUsername.Text;
                 pnlLogin.BringToFront();
+                txbUsername.Focus();
             }
         }
 
@@ -423,14 +453,32 @@ namespace QDriveManager
 
         private void tsmChangePassword_Click(object sender, EventArgs e)
         {
-            // TODO
-            // Show password form
+            QDChangePassword changePW = new QDChangePassword()
+            {
+                OldPassword = uPassword,
+                NoOldPassword = localUserNoPassword
+            };
+
+            if(changePW.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if (localConnection) sqlite.ExecuteNonQueryACon("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", Cipher.Encrypt(changePW.NewPassword, QDInfo.LocalCipherKey), QDInfo.DBL.DefaultPassword);
+                    else mysql.ExecuteNonQueryACon("UPDATE qd_users SET Password = ? WHERE ID = ?", QDLib.HashPassword(changePW.NewPassword), userID);
+
+                    MessageBox.Show("Password sucessfully changed! Please restart the program for the changes to take effect.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Could not change password. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void tsmCheckForUpdates_Click(object sender, EventArgs e)
         {
-            // TODO
-            // Show update form
+            QDVersionInfo version = new QDVersionInfo();
+            version.ShowDialog();
         }
 
         private void tsmCloseQDrive_Click(object sender, EventArgs e) => this.Close();
@@ -690,26 +738,55 @@ namespace QDriveManager
 
         private void tsmEnableAutostart_Click(object sender, EventArgs e)
         {
-            // TODO
-            // Enable Autostart
+            string autoStartLinkFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Q-Drive.lnk");
+            File.Copy("Q-Drive.lnk", autoStartLinkFile);
+            MessageBox.Show("Added Q-Drive to your Autostart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void tsmDisableAutostart_Click(object sender, EventArgs e)
         {
-            // TODO
-            // Disable Autostart
+            string autoStartLinkFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Q-Drive.lnk");
+            if(File.Exists(autoStartLinkFile))
+                File.Delete(autoStartLinkFile);
+            MessageBox.Show("Added Q-Drive to your Autostart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void tsmRunQDriveSetup_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you really want to reconfigure Q-Drive?\r\n\r\nAny localy saved data will be gone once the QD-Setup has finished. Do you want to continue?", "Q-Drive Setup", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                RunQDriveSetup();
+                if (QDLib.RunQDriveSetup()) this.Close();
         }
 
         private void tsmChangeOnlineDBConnection_Click(object sender, EventArgs e)
         {
-            // TODO
-            // Show DB Connection form
+            QDDatabaseConnection dbConForm = new QDDatabaseConnection() { dbConDat = dbData };
+
+            bool success = false;
+
+            if(dbConForm.ShowDialog() == DialogResult.OK)
+            {
+                sqlite.Open();
+                sqlite.TransactionBegin();
+
+                try
+                {
+                    sqlite.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", Cipher.Encrypt(dbConForm.dbConDat.Hostname, QDInfo.LocalCipherKey), QDInfo.DBL.DBHost);
+                    sqlite.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", Cipher.Encrypt(dbConForm.dbConDat.Database, QDInfo.LocalCipherKey), QDInfo.DBL.DBName);
+                    sqlite.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", Cipher.Encrypt(dbConForm.dbConDat.Username, QDInfo.LocalCipherKey), QDInfo.DBL.DBUsername);
+                    sqlite.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", Cipher.Encrypt(dbConForm.dbConDat.Password, QDInfo.LocalCipherKey), QDInfo.DBL.DBPassword);
+                    sqlite.TransactionCommit();
+                    success = true;
+                }
+                catch
+                {
+                    sqlite.TransactionRollback();
+                }
+
+                sqlite.Close();
+
+                if (success) MessageBox.Show("Successfully updated Online-DB connection. Please restart the program for the changes to take effect.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else MessageBox.Show("Could not updated Online-DB connection. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void tsmResetLocalDatabase_Click(object sender, EventArgs e)
@@ -778,7 +855,7 @@ namespace QDriveManager
                 {
                     if (connectionOption == 2)
                     {
-                        int mboxMessage = 0;
+                        int mboxMessage;
 
                         mysql.Open();
                         mysql.TransactionBegin();
@@ -847,37 +924,16 @@ namespace QDriveManager
                 }
             }
         }
-
-        private void RunQDriveSetup()
-        {
-            string qdSetupProgram = "QDriveSetup.exe";
-
-            if (File.Exists(qdSetupProgram))
-            {
-                Process.Start(qdSetupProgram);
-                this.Close();
-            }
-            else MessageBox.Show($"Could not start setup!\r\n\r\nThe setup could not be started > The file \"{qdSetupProgram}\" could not be found. If this error remains, please try to re-install the program.", "Could not start setup", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
+        
         private void UpdateManagerData()
         {
             if (localConnection) QDLib.ConnectQDDrives("", "", dbData, true);
             else QDLib.ConnectQDDrives(userID, uPassword, dbData, true);
 
             UpdateDriveListView();
-        }
 
-        private bool IsQDConfigured()
-        {
-            if (File.Exists(QDInfo.ConfigFile))
-            {
-                object result = sqlite.ExecuteScalarACon("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.SetupSuccess);
-
-                if (result != null && Convert.ToBoolean(Convert.ToInt16(result))) return true;
-                else return false;
-            }
-            else return false;
+            if (grvConnectedDrives.GroupViewItems.Count == 0) pbxNoDrivesConnected.Visible = true;
+            else pbxNoDrivesConnected.Visible = false;
         }
 
         private int LoadQDData()
@@ -924,101 +980,17 @@ namespace QDriveManager
                 userCanSelfRegister = false;
             }
 
-            if (!promptPassword) VerifyPassword(localConnection, uUsername, uPassword);
+            if (!promptPassword) QDLib.VerifyPassword(localConnection, uUsername, uPassword, out userID, dbData);
 
             return 0;
         }
 
-        private bool VerifyPassword(bool pIsLocalConnection, string pUsername, string pPassword)
-        {
-            bool passwordValid = false;
 
-            if (pIsLocalConnection)
-            {
-                bool errorEncountered = false;
-                sqlite.Open();
-                try
-                {
-                    string dbUsername = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
-                    string dbCipher = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
-
-                    string pwDecrypt = Cipher.Decrypt(dbCipher, QDInfo.LocalCipherKey);
-                    if (dbUsername == pUsername && pwDecrypt == pPassword) passwordValid = true;
-                }
-                catch
-                {
-                    errorEncountered = true;
-                }
-                sqlite.Close();
-
-                if (errorEncountered) MessageBox.Show("An error occured whilst trying to authenticate the user.", "Authentication error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                mysql.Open();
-                using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT * FROM qd_users WHERE Username = ? AND Password = ?", pUsername, QDLib.HashPassword(pPassword)))
-                {
-                    while (reader.Read())
-                    {
-                        userID = Convert.ToString(reader["ID"]);
-                        passwordValid = true;
-                    }
-                }
-                mysql.Close();
-            }
-
-            return passwordValid;
-        }
+        
 
         private void UpdateDriveListView()
         {
-            drives.Clear();
-
-            sqlite.Open();
-            using (SQLiteDataReader reader = sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
-            {
-                while (reader.Read())
-                {
-                    drives.Add(new DriveViewItem(
-                        Convert.ToString(reader["ID"]),
-                        Convert.ToString(reader["DriveName"]),
-                        Convert.ToString(reader["LocalPath"]),
-                        Convert.ToString(reader["DriveLetter"]),
-                        true,
-                        false,
-                        Cipher.Decrypt(Convert.ToString(reader["Username"]), QDInfo.LocalCipherKey),
-                        Cipher.Decrypt(Convert.ToString(reader["Password"]), QDInfo.LocalCipherKey),
-                        Cipher.Decrypt(Convert.ToString(reader["Domain"]), QDInfo.LocalCipherKey)
-                    ));
-                }
-            }
-            sqlite.Close();
-
-            if (!localConnection)
-            {
-                mysql.Open();
-                using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT *, qd_assigns.ID as AID, qd_drives.ID AS DID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", userID))
-                {
-                    while (reader.Read())
-                    {
-                        drives.Add(new DriveViewItem(
-                        Convert.ToString(reader["AID"]),
-                        Convert.ToString(reader["CustomDriveName"]),
-                        Convert.ToString(reader["LocalPath"]),
-                        Convert.ToString(reader["CustomDriveLetter"]),
-                        false,
-                        Convert.ToBoolean(Convert.ToInt16(reader["IsPublic"])),
-                        Cipher.Decrypt(Convert.ToString(reader["DUsername"]), uPassword),
-                        Cipher.Decrypt(Convert.ToString(reader["DPassword"]), uPassword),
-                        Cipher.Decrypt(Convert.ToString(reader["DDomain"]), uPassword),
-                        Convert.ToString(reader["DID"])
-                    ));
-                    }
-                }
-                mysql.Close();
-            }
-
-            drives.Sort();
+            drives = QDLib.CreateDriveList(localConnection, userID, uPassword, dbData);
 
             ImageList imgList = new ImageList()
             {

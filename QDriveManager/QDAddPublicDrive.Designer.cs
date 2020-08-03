@@ -72,7 +72,7 @@
             this.btnCancel.Location = new System.Drawing.Point(412, 393);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 34);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -82,7 +82,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(540, 393);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(120, 34);
-            this.btnSubmit.TabIndex = 4;
+            this.btnSubmit.TabIndex = 7;
             this.btnSubmit.Text = "Add Drive";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -178,7 +178,7 @@
             this.txbUsername.Location = new System.Drawing.Point(412, 213);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(248, 29);
-            this.txbUsername.TabIndex = 2;
+            this.txbUsername.TabIndex = 4;
             // 
             // label5
             // 
@@ -195,7 +195,7 @@
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '•';
             this.txbPassword.Size = new System.Drawing.Size(248, 29);
-            this.txbPassword.TabIndex = 2;
+            this.txbPassword.TabIndex = 5;
             // 
             // label6
             // 
@@ -211,7 +211,7 @@
             this.txbDomainName.Location = new System.Drawing.Point(412, 325);
             this.txbDomainName.Name = "txbDomainName";
             this.txbDomainName.Size = new System.Drawing.Size(248, 29);
-            this.txbDomainName.TabIndex = 2;
+            this.txbDomainName.TabIndex = 6;
             // 
             // label7
             // 

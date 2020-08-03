@@ -93,6 +93,16 @@ namespace QDriveManager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap QDriveNoDrives {
+            get {
+                object obj = ResourceManager.GetObject("QDriveNoDrives", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap QDriveOnlineConnection {
             get {
                 object obj = ResourceManager.GetObject("QDriveOnlineConnection", resourceCulture);

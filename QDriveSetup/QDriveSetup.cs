@@ -57,7 +57,11 @@ namespace QDrive
 
         #region Step 0: Welcome =================================================================================[RF]=
 
-        private void btnS0Next_Click(object sender, EventArgs e) => pnlS1ConnectionType.BringToFront();
+        private void btnS0Next_Click(object sender, EventArgs e)
+        {
+            pnlS1ConnectionType.BringToFront();
+            rbnS1Local.Focus();
+        }
 
         #endregion
 
@@ -69,8 +73,16 @@ namespace QDrive
         {
             localConnection = rbnS1Local.Checked;
 
-            if (localConnection) pnlS2LocalConnection.BringToFront();
-            else pnlS2OnlineConnectionA.BringToFront();
+            if (localConnection)
+            {
+                pnlS2LocalConnection.BringToFront();
+                chbSA2PromptPassword.Focus();
+            }
+            else
+            {
+                pnlS2OnlineConnectionA.BringToFront();
+                txbSB2DBHostname.Focus();
+            }
         }
 
         #endregion
@@ -102,21 +114,43 @@ namespace QDrive
             SaveConfiguration(localConnection);
 
             // Check if an error occured and show error-page
-            if (!errorEncountered) pnlS3Finish.BringToFront();
-            else pnlS3Error.BringToFront();
+            if (!errorEncountered)
+            {
+                pnlS3Finish.BringToFront();
+                chbS3LaunchManager.Focus();
+            }
+            else
+            {
+                pnlS3Error.BringToFront();
+                btnS3ErrorClose.Focus();
+            }
         }
 
         #endregion
 
         #region Step 2B1: Global connection 1/2 =================================================================[RF]=
 
-        private void btnSB2TestConnection_Click(object sender, EventArgs e) => TestConnection();
+        private void btnSB2TestConnection_Click(object sender, EventArgs e) => QDLib.TestConnection(new WrapMySQLConDat(){
+            Hostname = txbSB2DBHostname.Text,
+            Database = txbSB2DBName.Text,
+            Username = txbSB2DBUsername.Text,
+            Password = txbSB2DBPassword.Text 
+        });
 
         private void btnSB2APrev_Click(object sender, EventArgs e) => pnlS1ConnectionType.BringToFront();
 
         private void btnSB2ANext_Click(object sender, EventArgs e)
         {
-            if (TestConnection())
+            onlineDBConDat = new WrapMySQLConDat() 
+            {
+                Hostname = txbSB2DBHostname.Text,
+                Database = txbSB2DBName.Text,
+                Username = txbSB2DBUsername.Text,
+                Password = txbSB2DBPassword.Text
+            };
+
+
+            if (QDLib.TestConnection(onlineDBConDat))
             {
                 onlineAlreadyConfigured = IsConfiguredDB();
 
@@ -130,6 +164,8 @@ namespace QDrive
                 pnlS2OnlineConnectionB.BringToFront();
             }
             else return;
+
+            rbnSB2ExistingDB.Focus();
         }
 
         #endregion
@@ -184,8 +220,16 @@ namespace QDrive
 
             SaveConfiguration(localConnection);
 
-            if (!errorEncountered) pnlS3Finish.BringToFront();
-            else pnlS3Error.BringToFront();
+            if (!errorEncountered)
+            {
+                pnlS3Finish.BringToFront();
+                chbS3LaunchManager.Focus();
+            }
+            else
+            {
+                pnlS3Error.BringToFront();
+                btnS3ErrorClose.Focus();
+            }
         }
 
         private void btnSB2BPrev_Click(object sender, EventArgs e) => pnlS2OnlineConnectionA.BringToFront();
@@ -211,35 +255,6 @@ namespace QDrive
         #endregion
 
         #region Methods =========================================================================================[RF]=
-        private bool TestConnection()
-        {
-            onlineDBConDat = new WrapMySQLConDat()
-            {
-                Hostname = txbSB2DBHostname.Text,
-                Database = txbSB2DBName.Text,
-                Username = txbSB2DBUsername.Text,
-                Password = txbSB2DBPassword.Text,
-            };
-
-
-            bool success = false;
-
-            using(WrapMySQL sql = new WrapMySQL(onlineDBConDat))
-            {
-                try
-                {
-                    sql.Open();
-                    success = true;
-                }
-                catch { success = false; }
-                finally { sql.Close(); }
-            }
-
-            if (success) MessageBox.Show("Connection to the database established successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else MessageBox.Show("Could not connect to the database.", "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            return success;
-        }
 
         private bool IsConfiguredDB()
         {

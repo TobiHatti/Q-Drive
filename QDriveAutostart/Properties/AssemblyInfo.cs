@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
-[assembly: AssemblyTitle("QDriveAutostart")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Q-Drive")]
+[assembly: AssemblyDescription("Q-Drive Autostart")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("QDriveAutostart")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCompany("Endev")]
+[assembly: AssemblyProduct("Q-Drive")]
+[assembly: AssemblyCopyright("Copyright ©  2020 Tobias Hattinger")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -38,5 +38,10 @@ namespace QDrive
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void VerifyMasterPW_Load(object sender, EventArgs e)
+        {
+            txbMasterPassword.Focus();
+        }
     }
 }

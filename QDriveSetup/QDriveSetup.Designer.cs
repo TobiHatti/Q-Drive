@@ -479,7 +479,7 @@
             this.txbSB2NewDBConfirmPassword.Name = "txbSB2NewDBConfirmPassword";
             this.txbSB2NewDBConfirmPassword.PasswordChar = '•';
             this.txbSB2NewDBConfirmPassword.Size = new System.Drawing.Size(357, 29);
-            this.txbSB2NewDBConfirmPassword.TabIndex = 5;
+            this.txbSB2NewDBConfirmPassword.TabIndex = 4;
             // 
             // btnSB2BPrev
             // 
@@ -487,7 +487,7 @@
             this.btnSB2BPrev.Location = new System.Drawing.Point(446, 402);
             this.btnSB2BPrev.Name = "btnSB2BPrev";
             this.btnSB2BPrev.Size = new System.Drawing.Size(95, 36);
-            this.btnSB2BPrev.TabIndex = 8;
+            this.btnSB2BPrev.TabIndex = 7;
             this.btnSB2BPrev.Text = "< Previous";
             this.btnSB2BPrev.UseVisualStyleBackColor = true;
             this.btnSB2BPrev.Click += new System.EventHandler(this.btnSB2BPrev_Click);
@@ -498,7 +498,7 @@
             this.chbS2B2PromptUserPassword.Location = new System.Drawing.Point(23, 327);
             this.chbS2B2PromptUserPassword.Name = "chbS2B2PromptUserPassword";
             this.chbS2B2PromptUserPassword.Size = new System.Drawing.Size(444, 25);
-            this.chbS2B2PromptUserPassword.TabIndex = 2;
+            this.chbS2B2PromptUserPassword.TabIndex = 5;
             this.chbS2B2PromptUserPassword.Text = "Require user-password to connect to drives after every restart";
             this.chbS2B2PromptUserPassword.UseVisualStyleBackColor = true;
             this.chbS2B2PromptUserPassword.CheckedChanged += new System.EventHandler(this.chbSA2PromptPassword_CheckedChanged);
@@ -509,7 +509,7 @@
             this.txbSB2ExistingDBPassword.Name = "txbSB2ExistingDBPassword";
             this.txbSB2ExistingDBPassword.PasswordChar = '•';
             this.txbSB2ExistingDBPassword.Size = new System.Drawing.Size(357, 29);
-            this.txbSB2ExistingDBPassword.TabIndex = 3;
+            this.txbSB2ExistingDBPassword.TabIndex = 2;
             // 
             // txbSB2NewDBPassword
             // 
@@ -518,7 +518,7 @@
             this.txbSB2NewDBPassword.Name = "txbSB2NewDBPassword";
             this.txbSB2NewDBPassword.PasswordChar = '•';
             this.txbSB2NewDBPassword.Size = new System.Drawing.Size(357, 29);
-            this.txbSB2NewDBPassword.TabIndex = 4;
+            this.txbSB2NewDBPassword.TabIndex = 3;
             // 
             // btnSB2BNext
             // 
@@ -526,7 +526,7 @@
             this.btnSB2BNext.Location = new System.Drawing.Point(547, 402);
             this.btnSB2BNext.Name = "btnSB2BNext";
             this.btnSB2BNext.Size = new System.Drawing.Size(95, 36);
-            this.btnSB2BNext.TabIndex = 7;
+            this.btnSB2BNext.TabIndex = 6;
             this.btnSB2BNext.Text = "Next >";
             this.btnSB2BNext.UseVisualStyleBackColor = true;
             this.btnSB2BNext.Click += new System.EventHandler(this.btnSB2BNext_Click);
@@ -549,7 +549,7 @@
             this.rbnSB2NewDB.Margin = new System.Windows.Forms.Padding(4);
             this.rbnSB2NewDB.Name = "rbnSB2NewDB";
             this.rbnSB2NewDB.Size = new System.Drawing.Size(272, 25);
-            this.rbnSB2NewDB.TabIndex = 2;
+            this.rbnSB2NewDB.TabIndex = 1;
             this.rbnSB2NewDB.Text = "Configure as new Q-Drive Database";
             this.rbnSB2NewDB.UseVisualStyleBackColor = true;
             this.rbnSB2NewDB.CheckedChanged += new System.EventHandler(this.rbnSB2NewDB_CheckedChanged);
@@ -732,7 +732,7 @@
             this.txbS3ErrorLog.Name = "txbS3ErrorLog";
             this.txbS3ErrorLog.ReadOnly = true;
             this.txbS3ErrorLog.Size = new System.Drawing.Size(619, 149);
-            this.txbS3ErrorLog.TabIndex = 6;
+            this.txbS3ErrorLog.TabIndex = 3;
             // 
             // lklSupportLink
             // 
@@ -740,7 +740,7 @@
             this.lklSupportLink.Location = new System.Drawing.Point(19, 177);
             this.lklSupportLink.Name = "lklSupportLink";
             this.lklSupportLink.Size = new System.Drawing.Size(185, 21);
-            this.lklSupportLink.TabIndex = 5;
+            this.lklSupportLink.TabIndex = 2;
             this.lklSupportLink.TabStop = true;
             this.lklSupportLink.Text = "https://endev.at/s/q-drive";
             this.lklSupportLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklSupportLink_LinkClicked);
@@ -771,7 +771,7 @@
             this.btnS3ErrorClose.Location = new System.Drawing.Point(547, 402);
             this.btnS3ErrorClose.Name = "btnS3ErrorClose";
             this.btnS3ErrorClose.Size = new System.Drawing.Size(95, 36);
-            this.btnS3ErrorClose.TabIndex = 2;
+            this.btnS3ErrorClose.TabIndex = 1;
             this.btnS3ErrorClose.Text = "OK";
             this.btnS3ErrorClose.UseVisualStyleBackColor = true;
             this.btnS3ErrorClose.Click += new System.EventHandler(this.btnS3ErrorClose_Click);

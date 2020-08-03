@@ -60,6 +60,94 @@ namespace QDriveLib
             return masterPasswordValid;
         }
 
+        public static bool RunQDriveSetup()
+        {
+            string qdSetupProgram = "QDriveSetup.exe";
+
+            if (File.Exists(qdSetupProgram))
+            {
+                Process.Start(qdSetupProgram);
+                return true;
+            }
+            else MessageBox.Show($"Could not start setup!\r\n\r\nThe setup could not be started > The file \"{qdSetupProgram}\" could not be found. If this error remains, please try to re-install the program.", "Could not start setup", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        public static bool IsQDConfigured()
+        {
+            if (File.Exists(QDInfo.ConfigFile))
+            {
+                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+                {
+                    object result = sqlite.ExecuteScalarACon("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.SetupSuccess);
+
+                    if (result != null && Convert.ToBoolean(Convert.ToInt16(result))) return true;
+                    else return false;
+                }
+            }
+            else return false;
+        }
+
+        public static List<DriveViewItem> CreateDriveList(bool pIsLocalConnection, string pUserID, string pUserPassword, WrapMySQLConDat pDBConDat)
+        {
+            List<DriveViewItem> driveList = new List<DriveViewItem>();
+
+            using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+            {
+                sqlite.Open();
+                using (SQLiteDataReader reader = sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
+                {
+                    while (reader.Read())
+                    {
+                        driveList.Add(new DriveViewItem(
+                            Convert.ToString(reader["ID"]),
+                            Convert.ToString(reader["DriveName"]),
+                            Convert.ToString(reader["LocalPath"]),
+                            Convert.ToString(reader["DriveLetter"]),
+                            true,
+                            false,
+                            Cipher.Decrypt(Convert.ToString(reader["Username"]), QDInfo.LocalCipherKey),
+                            Cipher.Decrypt(Convert.ToString(reader["Password"]), QDInfo.LocalCipherKey),
+                            Cipher.Decrypt(Convert.ToString(reader["Domain"]), QDInfo.LocalCipherKey)
+                        ));
+                    }
+                }
+                sqlite.Close();
+            }
+
+            if (!pIsLocalConnection)
+            {
+                using (WrapMySQL mysql = new WrapMySQL(pDBConDat))
+                {
+                    mysql.Open();
+                    using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT *, qd_assigns.ID as AID, qd_drives.ID AS DID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", pUserID))
+                    {
+                        while (reader.Read())
+                        {
+                            driveList.Add(new DriveViewItem(
+                            Convert.ToString(reader["AID"]),
+                            Convert.ToString(reader["CustomDriveName"]),
+                            Convert.ToString(reader["LocalPath"]),
+                            Convert.ToString(reader["CustomDriveLetter"]),
+                            false,
+                            Convert.ToBoolean(Convert.ToInt16(reader["IsPublic"])),
+                            Cipher.Decrypt(Convert.ToString(reader["DUsername"]), pUserPassword),
+                            Cipher.Decrypt(Convert.ToString(reader["DPassword"]), pUserPassword),
+                            Cipher.Decrypt(Convert.ToString(reader["DDomain"]), pUserPassword),
+                            Convert.ToString(reader["DID"])
+                        ));
+                        }
+                    }
+                    mysql.Close();
+                }
+            }
+
+            driveList.Sort();
+
+            return driveList;
+        }
+
+
         private static string macAddress = null;
 
         public static string GetMachineMac()
@@ -183,6 +271,76 @@ namespace QDriveLib
             }
 
             return 0;
+        }
+
+        public static bool TestConnection(WrapMySQLConDat pOnlineDBConDat)
+        {
+            bool success = false;
+
+            using (WrapMySQL sql = new WrapMySQL(pOnlineDBConDat))
+            {
+                try
+                {
+                    sql.Open();
+                    success = true;
+                }
+                catch { success = false; }
+                finally { sql.Close(); }
+            }
+
+            if (success) MessageBox.Show("Connection to the database established successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Could not connect to the database.", "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            return success;
+        }
+
+        public static bool VerifyPassword(bool pIsLocalConnection, string pUsername, string pPassword, out string pUserID, WrapMySQLConDat pDBData)
+        {
+            pUserID = "";
+
+            bool passwordValid = false;
+
+            if (pIsLocalConnection)
+            {
+                bool errorEncountered = false;
+                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+                {
+                    sqlite.Open();
+                    try
+                    {
+                        string dbUsername = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
+                        string dbCipher = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
+
+                        string pwDecrypt = Cipher.Decrypt(dbCipher, QDInfo.LocalCipherKey);
+                        if (dbUsername == pUsername && pwDecrypt == pPassword) passwordValid = true;
+                    }
+                    catch
+                    {
+                        errorEncountered = true;
+                    }
+                    sqlite.Close();
+                }
+
+                if (errorEncountered) MessageBox.Show("An error occured whilst trying to authenticate the user.", "Authentication error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                using (WrapMySQL mysql = new WrapMySQL(pDBData))
+                {
+                    mysql.Open();
+                    using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT * FROM qd_users WHERE Username = ? AND Password = ?", pUsername, QDLib.HashPassword(pPassword)))
+                    {
+                        while (reader.Read())
+                        {
+                            pUserID = Convert.ToString(reader["ID"]);
+                            passwordValid = true;
+                        }
+                    }
+                    mysql.Close();
+                }
+            }
+
+            return passwordValid;
         }
 
         public static void DisconnectAllDrives(List<DriveViewItem> drives = null)
