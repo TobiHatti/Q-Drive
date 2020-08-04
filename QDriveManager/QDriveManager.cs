@@ -59,6 +59,7 @@ namespace QDriveManager
             panels.Add(pnlLoading);
 
             this.Style.Border = new Pen(Color.FromArgb(77, 216, 255), 2);
+            this.Style.InactiveBorder = new Pen(Color.FromArgb(77, 216, 255), 2);
 
             pbxLoginLogo.Image = Properties.Resources.QDriveProgramBanner;
             pbxSignUpLogo.Image = Properties.Resources.QDriveProgramBanner;
@@ -171,6 +172,8 @@ namespace QDriveManager
 
                 if (localConnection) txbUsername.Text = "local";
                 else txbUsername.Text = string.Empty;
+
+                if (localConnection) tsmChangeOnlineDBConnection.Enabled = false;
 
                 if (AutostartLogin || (!localUserNoPassword && (promptPassword || string.IsNullOrEmpty(uUsername) || string.IsNullOrEmpty(uPassword))))
                 {
@@ -787,7 +790,8 @@ namespace QDriveManager
         private void tsmEnableAutostart_Click(object sender, EventArgs e)
         {
             string autoStartLinkFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Q-Drive.lnk");
-            File.Copy("Q-Drive.lnk", autoStartLinkFile);
+            if(File.Exists("Q-Drive.lnk"))
+                File.Copy("Q-Drive.lnk", autoStartLinkFile);
             MessageBox.Show("Added Q-Drive to your Autostart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -796,7 +800,7 @@ namespace QDriveManager
             string autoStartLinkFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Q-Drive.lnk");
             if(File.Exists(autoStartLinkFile))
                 File.Delete(autoStartLinkFile);
-            MessageBox.Show("Added Q-Drive to your Autostart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Removed Q-Drive to your Autostart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void tsmRunQDriveSetup_Click(object sender, EventArgs e)

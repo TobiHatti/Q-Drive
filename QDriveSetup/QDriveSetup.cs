@@ -49,6 +49,9 @@ namespace QDrive
             panels.Add(pnlS3Error);
 
             QDLib.AlignPanels(this, panels, 680, 500);
+
+            this.Style.Border = new Pen(Color.FromArgb(77, 216, 255), 2);
+            this.Style.InactiveBorder = new Pen(Color.FromArgb(77, 216, 255), 2);
         }
 
         private void QDriveSetup_Load(object sender, EventArgs e) => pnlS0Welcome.BringToFront();

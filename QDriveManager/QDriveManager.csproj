@@ -236,14 +236,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QDriveLogo.ico" />
-    <None Include="Resources\QDriveNoDrivesAvailable.png" />
-    <None Include="Resources\QDriveRemoveDrive.png" />
     <None Include="Resources\QDriveUpdate.png" />
     <None Include="Resources\QDriveLogOff.png" />
-    <None Include="Resources\QDriveRemoveDriveDisabled.png" />
     <None Include="Resources\QDriveEditDriveDisabled.png" />
+    <None Include="Resources\QDriveRemoveDriveDisabled.png" />
+    <None Include="Resources\QDriveRemoveDrive.png" />
     <None Include="Resources\QDriveEditDrive.png" />
+    <None Include="Resources\QDriveRemoveDrives.png" />
     <None Include="Resources\QDriveAddDrives.png" />
+    <None Include="Resources\QDriveNoDrivesAvailable.png" />
     <None Include="Resources\QDriveNoDrives.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

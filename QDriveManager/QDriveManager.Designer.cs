@@ -328,11 +328,11 @@
             // 
             this.lblQDriveManagerInfo.AutoSize = true;
             this.lblQDriveManagerInfo.ForeColor = System.Drawing.Color.DimGray;
-            this.lblQDriveManagerInfo.Location = new System.Drawing.Point(6, 211);
+            this.lblQDriveManagerInfo.Location = new System.Drawing.Point(186, 448);
             this.lblQDriveManagerInfo.Name = "lblQDriveManagerInfo";
-            this.lblQDriveManagerInfo.Size = new System.Drawing.Size(147, 21);
+            this.lblQDriveManagerInfo.Size = new System.Drawing.Size(147, 84);
             this.lblQDriveManagerInfo.TabIndex = 14;
-            this.lblQDriveManagerInfo.Text = "Q-Drive version XXX";
+            this.lblQDriveManagerInfo.Text = "Q-Drive version XXX\r\n_\r\n_\r\n_";
             // 
             // grvConnectedDrives
             // 
@@ -710,9 +710,9 @@
             // 
             // pbxDisconnectBtn
             // 
-            this.pbxDisconnectBtn.Location = new System.Drawing.Point(220, 417);
+            this.pbxDisconnectBtn.Location = new System.Drawing.Point(6, 359);
             this.pbxDisconnectBtn.Name = "pbxDisconnectBtn";
-            this.pbxDisconnectBtn.Size = new System.Drawing.Size(110, 60);
+            this.pbxDisconnectBtn.Size = new System.Drawing.Size(350, 30);
             this.pbxDisconnectBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxDisconnectBtn.TabIndex = 17;
             this.pbxDisconnectBtn.TabStop = false;
@@ -723,9 +723,9 @@
             // 
             // pbxUpdateBtn
             // 
-            this.pbxUpdateBtn.Location = new System.Drawing.Point(219, 474);
+            this.pbxUpdateBtn.Location = new System.Drawing.Point(6, 327);
             this.pbxUpdateBtn.Name = "pbxUpdateBtn";
-            this.pbxUpdateBtn.Size = new System.Drawing.Size(110, 60);
+            this.pbxUpdateBtn.Size = new System.Drawing.Size(350, 30);
             this.pbxUpdateBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxUpdateBtn.TabIndex = 17;
             this.pbxUpdateBtn.TabStop = false;
@@ -737,7 +737,7 @@
             // pbxRemoveDriveBtn
             // 
             this.pbxRemoveDriveBtn.Enabled = false;
-            this.pbxRemoveDriveBtn.Location = new System.Drawing.Point(183, 310);
+            this.pbxRemoveDriveBtn.Location = new System.Drawing.Point(181, 155);
             this.pbxRemoveDriveBtn.Name = "pbxRemoveDriveBtn";
             this.pbxRemoveDriveBtn.Size = new System.Drawing.Size(175, 60);
             this.pbxRemoveDriveBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -751,9 +751,9 @@
             // pbxEditDriveBtn
             // 
             this.pbxEditDriveBtn.Enabled = false;
-            this.pbxEditDriveBtn.Location = new System.Drawing.Point(8, 310);
+            this.pbxEditDriveBtn.Location = new System.Drawing.Point(6, 155);
             this.pbxEditDriveBtn.Name = "pbxEditDriveBtn";
-            this.pbxEditDriveBtn.Size = new System.Drawing.Size(175, 60);
+            this.pbxEditDriveBtn.Size = new System.Drawing.Size(176, 60);
             this.pbxEditDriveBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxEditDriveBtn.TabIndex = 17;
             this.pbxEditDriveBtn.TabStop = false;
@@ -764,7 +764,7 @@
             // 
             // pbxAddDriveBtn
             // 
-            this.pbxAddDriveBtn.Location = new System.Drawing.Point(8, 110);
+            this.pbxAddDriveBtn.Location = new System.Drawing.Point(6, 78);
             this.pbxAddDriveBtn.Name = "pbxAddDriveBtn";
             this.pbxAddDriveBtn.Size = new System.Drawing.Size(350, 80);
             this.pbxAddDriveBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
