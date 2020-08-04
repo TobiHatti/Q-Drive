@@ -23,6 +23,8 @@ namespace QDriveManager
         public string Domain;
         public string DriveLetter;
 
+        public bool ForceAutofill = false;
+
         public QDAddPrivateDrive()
         {
             InitializeComponent();
@@ -31,6 +33,21 @@ namespace QDriveManager
 
         private void QDAddPrivateDrive_Load(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(Username)) txbUsername.Text = Username;
+            if (!string.IsNullOrEmpty(Password)) txbPassword.Text = Password;
+            if (!string.IsNullOrEmpty(Domain)) txbDomain.Text = Domain;
+
+            if (ForceAutofill && !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Domain))
+            {
+                txbUsername.ReadOnly = true;
+                txbPassword.ReadOnly = true;
+                txbDomain.ReadOnly = true;
+
+                txbUsername.Enabled = false;
+                txbPassword.Enabled = false;
+                txbDomain.Enabled = false;
+            }
+
             if (DBEntryID != null)
             {
                 txbDrivePath.Text = DrivePath;

@@ -65,3 +65,4 @@ F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csproj.CoreCompileInputs.cac
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.dll
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.pdb
+F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csprojAssemblyReference.cache

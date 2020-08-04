@@ -27,6 +27,8 @@ namespace QDriveManager
         public string Password;
         public string Domain;
 
+        public bool ForceAutofill = false;
+
         public QDAddPublicDrive()
         {
             InitializeComponent();
@@ -78,7 +80,6 @@ namespace QDriveManager
                 sql.Close();
             }
 
-
             if (grvPublicDrives.GroupViewItems.Count == 0)
             {
                 pbxNoDrivesFound.Visible = true;
@@ -86,6 +87,20 @@ namespace QDriveManager
             }
             else pbxNoDrivesFound.Visible = false;
 
+            if (!string.IsNullOrEmpty(Username)) txbUsername.Text = Username;
+            if (!string.IsNullOrEmpty(Password)) txbPassword.Text = Password;
+            if (!string.IsNullOrEmpty(Domain)) txbDomainName.Text = Domain;
+
+            if (ForceAutofill && !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password) && !string.IsNullOrEmpty(Domain))
+            {
+                txbUsername.ReadOnly = true;
+                txbPassword.ReadOnly = true;
+                txbDomainName.ReadOnly = true;
+
+                txbUsername.Enabled = false;
+                txbPassword.Enabled = false;
+                txbDomainName.Enabled = false;
+            }
 
             // Set values for edit mode
             if (DBEntryID != null)

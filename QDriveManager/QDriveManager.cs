@@ -25,6 +25,13 @@ namespace QDriveManager
         public string uUsername = "";
         public string uPassword = "";
 
+        // New Drive predefined values
+        private bool useLoginAsDriveAuth = false;
+        private bool forceLoginDriveAuth = false;
+        private string ndDefaultDomain = "";
+        private string ndUsername = "";
+        private string ndPassword = "";
+
         // Online-specific properties
         private bool userCanToggleKeepLoggedIn = true;
         private bool userCanAddPrivateDrive = true;
@@ -261,6 +268,12 @@ namespace QDriveManager
             uUsername = txbUsername.Text;
             uPassword = txbPassword.Text;
 
+            if (useLoginAsDriveAuth)
+            {
+                ndUsername = uUsername;
+                ndPassword = uPassword;
+            }
+
             txbPassword.Text = string.Empty;
 
             if(AutostartLogin)
@@ -407,7 +420,8 @@ namespace QDriveManager
                     CustomDriveLetter = drive.DriveLetter,
                     Username = drive.Username,
                     Password = drive.Password,
-                    Domain = drive.Domain
+                    Domain = drive.Domain,
+                    ForceAutofill = forceLoginDriveAuth
                 };
 
                 if (editPublic.ShowDialog() == DialogResult.OK)
@@ -435,7 +449,8 @@ namespace QDriveManager
                     DriveLetter = drive.DriveLetter,
                     Username = drive.Username,
                     Password = drive.Password,
-                    Domain = drive.Domain
+                    Domain = drive.Domain,
+                    ForceAutofill = forceLoginDriveAuth
                 };
 
                 if (editPrivate.ShowDialog() == DialogResult.OK)
@@ -881,7 +896,14 @@ namespace QDriveManager
 
             if (connectionOption == 1)
             {
-                QDAddPublicDrive addPublic = new QDAddPublicDrive() { DBData = dbData };
+                QDAddPublicDrive addPublic = new QDAddPublicDrive() 
+                { 
+                    DBData = dbData,
+                    Username = ndUsername,
+                    Password = ndPassword,
+                    Domain = ndDefaultDomain,
+                    ForceAutofill = forceLoginDriveAuth
+                };
 
                 if (addPublic.ShowDialog() == DialogResult.OK)
                 {
@@ -901,7 +923,13 @@ namespace QDriveManager
             }
             else if (connectionOption == 2 || connectionOption == 3)
             {
-                QDAddPrivateDrive addPrivate = new QDAddPrivateDrive();
+                QDAddPrivateDrive addPrivate = new QDAddPrivateDrive()
+                {
+                    Username = ndUsername,
+                    Password = ndPassword,
+                    Domain = ndDefaultDomain,
+                    ForceAutofill = forceLoginDriveAuth
+                };
 
                 if (addPrivate.ShowDialog() == DialogResult.OK)
                 {
@@ -1027,6 +1055,11 @@ namespace QDriveManager
                     userCanAddPrivateDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPrivateDrive));
                     userCanAddPublicDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPublicDrive));
                     userCanSelfRegister = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanSelfRegister));
+                    useLoginAsDriveAuth = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UseLoginAsDriveAuthentication));
+                    forceLoginDriveAuth = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.ForceLoginAsDriveAuthentication));
+                    
+                    if (useLoginAsDriveAuth) ndDefaultDomain = mysql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.DefaultDomain);
+
                     mysql.Close();
                 }
                 catch { return 2; }
@@ -1037,9 +1070,20 @@ namespace QDriveManager
                 userCanAddPrivateDrive = true;
                 userCanAddPublicDrive = false;
                 userCanSelfRegister = false;
+                useLoginAsDriveAuth = false;
+                forceLoginDriveAuth = false;
             }
 
-            if (!promptPassword) QDLib.VerifyPassword(localConnection, uUsername, uPassword, out userID, dbData);
+            if (!promptPassword)
+            {
+                QDLib.VerifyPassword(localConnection, uUsername, uPassword, out userID, dbData);
+
+                if(useLoginAsDriveAuth)
+                {
+                    ndUsername = uUsername;
+                    ndPassword = uPassword;
+                }
+            }
 
             return 0;
         }

@@ -304,6 +304,9 @@ namespace QDrive
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.UserCanAddPublicDrive,      true);
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.UserCanSelfRegister,        true);
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.MasterPassword,             QDLib.HashPassword(onlineMasterPassword));
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.DefaultDomain,              "");
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.UseLoginAsDriveAuthentication, false);
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.ForceLoginAsDriveAuthentication, false);
 
                             sql.TransactionCommit();
                         }

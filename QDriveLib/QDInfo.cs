@@ -36,6 +36,9 @@ namespace QDriveLib
             public const string UserCanAddPublicDrive = "UserCanAddPublicDrive";
             public const string UserCanSelfRegister = "UserCanSelfRegister";
             public const string MasterPassword = "MasterPassword";
+            public const string DefaultDomain = "DefaultDomain";
+            public const string UseLoginAsDriveAuthentication = "UseLoginAsDriveAuthentication";
+            public const string ForceLoginAsDriveAuthentication = "ForceLoginAsDriveAuthentication";
         }
 
         /// <summary>

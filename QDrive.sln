@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QDriveManager", "QDriveMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QDriveLib", "QDriveLib\QDriveLib.csproj", "{31170584-B7E1-4589-B2A4-64E5D3A283DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QDriveAdminConsole", "QDriveAdminConsole\QDriveAdminConsole.csproj", "{DD0B7720-2971-4F91-86CD-F0822195AC2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{31170584-B7E1-4589-B2A4-64E5D3A283DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31170584-B7E1-4589-B2A4-64E5D3A283DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31170584-B7E1-4589-B2A4-64E5D3A283DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD0B7720-2971-4F91-86CD-F0822195AC2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD0B7720-2971-4F91-86CD-F0822195AC2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD0B7720-2971-4F91-86CD-F0822195AC2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD0B7720-2971-4F91-86CD-F0822195AC2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
