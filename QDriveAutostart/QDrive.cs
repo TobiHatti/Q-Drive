@@ -37,7 +37,11 @@ namespace QDriveAutostart
             lblVersionInfo.Text = QDInfo.QDVersion;
 
             ContextMenu ctmQDriveMenu = new ContextMenu();
-            ctmQDriveMenu.MenuItems.Add("Menu 1");
+            ctmQDriveMenu.MenuItems.Add("Open QD-Manager", nfiQDriveMenu_OpenManager_Click);
+            ctmQDriveMenu.MenuItems.Add("Reconnect Drives", nfiQDriveMenu_Reconnect_Click);
+            ctmQDriveMenu.MenuItems.Add("Log Off / Disconnect", nfiQDriveMenu_LogOff_Click);
+            ctmQDriveMenu.MenuItems.Add("Quit Q-Drive", nfiQDriveMenu_Close_Click);
+
             nfiQDriveMenu.Visible = true;
             nfiQDriveMenu.ContextMenu = ctmQDriveMenu;
         }
@@ -72,7 +76,8 @@ namespace QDriveAutostart
 
             driveList = QDLib.CreateDriveList(localConnection, UserID, Password, dbData);
 
-            QDLib.ConnectQDDrives(UserID, Password, dbData, true, driveList);
+            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, true, driveList);
+            else QDLib.ConnectQDDrives(UserID, Password, dbData, true, driveList);
 
             Thread.Sleep(1000);
 
@@ -139,10 +144,30 @@ namespace QDriveAutostart
 
         #region NortifyIcon Events ==============================================================================[RF]=
 
-        private void nfiQDriveMenu_DoubleClick(object sender, EventArgs e)
+        private void nfiQDriveMenu_DoubleClick(object sender, EventArgs e) => OpenManager();
+
+        private void nfiQDriveMenu_OpenManager_Click(object sender, EventArgs e) => OpenManager();
+
+        private void OpenManager()
         {
             QDriveManager.QDriveManager managerLogin = new QDriveManager.QDriveManager();
             managerLogin.Show();
+        }
+
+        private void nfiQDriveMenu_Reconnect_Click(object sender, EventArgs e)
+        {
+            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, true);
+            else QDLib.ConnectQDDrives(UserID, Password, dbData, true);
+        }
+
+        private void nfiQDriveMenu_LogOff_Click(object sender, EventArgs e)
+        {
+            QDLib.DisconnectAllDrives(driveList);
+        }
+
+        private void nfiQDriveMenu_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         #endregion

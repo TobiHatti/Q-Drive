@@ -30,6 +30,7 @@ namespace QDriveManager
         public QDAddPublicDrive()
         {
             InitializeComponent();
+            pbxNoDrivesFound.Image = Properties.Resources.QDriveNoDrivesAvailable;
         }
 
         private void QDAddPublicDrive_Load(object sender, EventArgs e)
@@ -77,8 +78,17 @@ namespace QDriveManager
                 sql.Close();
             }
 
+
+            if (grvPublicDrives.GroupViewItems.Count == 0)
+            {
+                pbxNoDrivesFound.Visible = true;
+                btnSubmit.Enabled = false;
+            }
+            else pbxNoDrivesFound.Visible = false;
+
+
             // Set values for edit mode
-            if(DBEntryID != null)
+            if (DBEntryID != null)
             {
                 txbDisplayName.Text = CustomDriveName;
                 txbUsername.Text = Username;

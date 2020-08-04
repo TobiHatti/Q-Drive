@@ -46,6 +46,8 @@
             this.txbDomainName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.pbxNoDrivesFound = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNoDrivesFound)).BeginInit();
             this.SuspendLayout();
             // 
             // grvPublicDrives
@@ -236,11 +238,21 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "NetBIOS name";
             // 
+            // pbxNoDrivesFound
+            // 
+            this.pbxNoDrivesFound.Location = new System.Drawing.Point(31, 97);
+            this.pbxNoDrivesFound.Name = "pbxNoDrivesFound";
+            this.pbxNoDrivesFound.Size = new System.Drawing.Size(350, 285);
+            this.pbxNoDrivesFound.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxNoDrivesFound.TabIndex = 16;
+            this.pbxNoDrivesFound.TabStop = false;
+            // 
             // QDAddPublicDrive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 432);
+            this.Controls.Add(this.pbxNoDrivesFound);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
@@ -274,6 +286,7 @@
             this.Style.TitleBar.BottomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
             this.Text = "Add a public drive";
             this.Load += new System.EventHandler(this.QDAddPublicDrive_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNoDrivesFound)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +311,6 @@
         private System.Windows.Forms.TextBox txbDomainName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pbxNoDrivesFound;
     }
 }

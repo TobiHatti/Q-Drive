@@ -11,11 +11,11 @@ namespace QDriveManager
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(params string[] args)
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QDriveManager(args));
+            Application.Run(new QDriveManager());
         }
     }
 }

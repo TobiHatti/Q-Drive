@@ -63,6 +63,36 @@ namespace QDriveManager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap QDriveAddDrives {
+            get {
+                object obj = ResourceManager.GetObject("QDriveAddDrives", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveEditDrive {
+            get {
+                object obj = ResourceManager.GetObject("QDriveEditDrive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveEditDriveDisabled {
+            get {
+                object obj = ResourceManager.GetObject("QDriveEditDriveDisabled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap QDriveLocalConnection {
             get {
                 object obj = ResourceManager.GetObject("QDriveLocalConnection", resourceCulture);
@@ -93,9 +123,29 @@ namespace QDriveManager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap QDriveLogOff {
+            get {
+                object obj = ResourceManager.GetObject("QDriveLogOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap QDriveNoDrives {
             get {
                 object obj = ResourceManager.GetObject("QDriveNoDrives", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveNoDrivesAvailable {
+            get {
+                object obj = ResourceManager.GetObject("QDriveNoDrivesAvailable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +206,36 @@ namespace QDriveManager.Properties {
         internal static System.Drawing.Bitmap QDriveProgramBanner {
             get {
                 object obj = ResourceManager.GetObject("QDriveProgramBanner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveRemoveDrive {
+            get {
+                object obj = ResourceManager.GetObject("QDriveRemoveDrive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveRemoveDriveDisabled {
+            get {
+                object obj = ResourceManager.GetObject("QDriveRemoveDriveDisabled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDriveUpdate {
+            get {
+                object obj = ResourceManager.GetObject("QDriveUpdate", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

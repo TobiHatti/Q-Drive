@@ -40,11 +40,13 @@ namespace QDriveManager
 
         private List<DriveViewItem> drives = new List<DriveViewItem>();
 
+        private ImageList imgList = null;
+
         #region Page Layout and Initial Loading =================================================================[RF]=
 
         private readonly List<Panel> panels = new List<Panel>();
 
-        public QDriveManager(params string[] args)
+        public QDriveManager()
         {
             InitializeComponent();
 
@@ -61,7 +63,30 @@ namespace QDriveManager
             pbxLoginLogo.Image = Properties.Resources.QDriveProgramBanner;
             pbxSignUpLogo.Image = Properties.Resources.QDriveProgramBanner;
 
+            pbxAddDriveBtn.Image = Properties.Resources.QDriveAddDrives;
+            pbxEditDriveBtn.Image = Properties.Resources.QDriveEditDriveDisabled;
+            pbxRemoveDriveBtn.Image = Properties.Resources.QDriveRemoveDriveDisabled;
+
+            pbxUpdateBtn.Image = Properties.Resources.QDriveUpdate;
+            pbxDisconnectBtn.Image = Properties.Resources.QDriveLogOff;
+
+
             QDLib.AlignPanels(this, panels, 800, 600);
+
+            imgList = new ImageList()
+            {
+                ImageSize = new Size(80, 80),
+                ColorDepth = ColorDepth.Depth32Bit,
+            };
+
+            imgList.Images.Add("LocalUp", Properties.Resources.QDriveLocalUp);
+            imgList.Images.Add("OnlinePrivateUp", Properties.Resources.QDriveOnlinePrivateUp);
+            imgList.Images.Add("OnlinePublicUp", Properties.Resources.QDriveOnlinePublicUp);
+            imgList.Images.Add("LocalDown", Properties.Resources.QDriveLocalDown);
+            imgList.Images.Add("OnlinePrivateDown", Properties.Resources.QDriveOnlinePrivateDown);
+            imgList.Images.Add("OnlinePublicDown", Properties.Resources.QDriveOnlinePublicDown);
+
+            grvConnectedDrives.SmallImageList = imgList;
         }
 
         private void QDriveManager_Load(object sender, EventArgs e)
@@ -300,14 +325,34 @@ namespace QDriveManager
             pnlLogin.BringToFront();
         }
 
+        private void pbxButtons_MouseLeave(object sender, EventArgs e)
+        {
+            (sender as PictureBox).BackColor = Color.Transparent;
+        }
+
+        private void pbxButtons_MouseOver(object sender, EventArgs e)
+        {
+            if((sender as PictureBox).Enabled)
+                (sender as PictureBox).BackColor = Color.FromArgb(229, 243, 255);
+        }
+
+        private void pbxButtons_MouseDown(object sender, MouseEventArgs e)
+        {
+            if ((sender as PictureBox).Enabled)
+                (sender as PictureBox).BackColor = Color.FromArgb(204, 232, 255);
+        }
+
         private void btnAddDrive_Click(object sender, EventArgs e) => ShowAddDriveDialog();
 
         private void grvConnectedDrives_Click(object sender, EventArgs e)
         {
             if (grvConnectedDrives.SelectedItem != -1)
             {
-                btnEditDrive.Enabled = true;
-                btnRemoveDrive.Enabled = true;
+                pbxEditDriveBtn.Enabled = true;
+                pbxRemoveDriveBtn.Enabled = true;
+
+                pbxEditDriveBtn.Image = Properties.Resources.QDriveEditDrive;
+                pbxRemoveDriveBtn.Image = Properties.Resources.QDriveRemoveDrive;
             }
         }
 
@@ -335,8 +380,11 @@ namespace QDriveManager
 
                 UpdateManagerData();
 
-                btnEditDrive.Enabled = false;
-                btnRemoveDrive.Enabled = false;
+                pbxEditDriveBtn.Enabled = false;
+                pbxRemoveDriveBtn.Enabled = false;
+
+                pbxEditDriveBtn.Image = Properties.Resources.QDriveEditDriveDisabled;
+                pbxRemoveDriveBtn.Image = Properties.Resources.QDriveRemoveDriveDisabled;
             }
 
         }
@@ -927,13 +975,20 @@ namespace QDriveManager
         
         private void UpdateManagerData()
         {
-            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, true);
-            else QDLib.ConnectQDDrives(userID, uPassword, dbData, true);
+            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, true, drives);
+            else QDLib.ConnectQDDrives(userID, uPassword, dbData, true, drives);
 
             UpdateDriveListView();
 
             if (grvConnectedDrives.GroupViewItems.Count == 0) pbxNoDrivesConnected.Visible = true;
             else pbxNoDrivesConnected.Visible = false;
+
+
+            lblQDriveManagerInfo.Text = 
+            "Q-Drive Version " + QDInfo.QDVersion + Environment.NewLine + 
+            Environment.NewLine + 
+            "Connected Drives: " + grvConnectedDrives.GroupViewItems.Count + Environment.NewLine + 
+            "Last updated: " + DateTime.Now.ToShortTimeString();
         }
 
         private int LoadQDData()
@@ -992,21 +1047,7 @@ namespace QDriveManager
         {
             drives = QDLib.CreateDriveList(localConnection, userID, uPassword, dbData);
 
-            ImageList imgList = new ImageList()
-            {
-                ImageSize = new Size(80, 80),
-                ColorDepth = ColorDepth.Depth32Bit,
-            };
-
-            imgList.Images.Add("LocalUp", Properties.Resources.QDriveLocalUp);
-            imgList.Images.Add("OnlinePrivateUp", Properties.Resources.QDriveOnlinePrivateUp);
-            imgList.Images.Add("OnlinePublicUp", Properties.Resources.QDriveOnlinePublicUp);
-
-            imgList.Images.Add("LocalDown", Properties.Resources.QDriveLocalDown);
-            imgList.Images.Add("OnlinePrivateDown", Properties.Resources.QDriveOnlinePrivateDown);
-            imgList.Images.Add("OnlinePublicDown", Properties.Resources.QDriveOnlinePublicDown);
-
-            grvConnectedDrives.SmallImageList = imgList;
+            
 
             grvConnectedDrives.GroupViewItems.Clear();
 
@@ -1031,10 +1072,53 @@ namespace QDriveManager
             }
         }
 
-
-
-
         #endregion
+
+        private void bgwDriveStatus_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            try
+            {
+                if (drives != null && drives.Count > 0)
+                {
+                    int lastSelectedIndex = grvConnectedDrives.SelectedItem;
+
+                    grvConnectedDrives.GroupViewItems.Clear();
+
+                    foreach (DriveViewItem drive in drives)
+                    {
+                        int imgIndex;
+
+                        if (drive.IsLocalDrive) imgIndex = 0;
+                        else if (drive.IsPublicDrive) imgIndex = 2;
+                        else imgIndex = 1;
+
+                        if (!Directory.Exists($"{drive.DriveLetter}:\\")) imgIndex += 3;
+
+                        grvConnectedDrives.GroupViewItems.Add(
+                            new GroupViewItemEx(
+                                $"({drive.DriveLetter}:\\) {drive.DisplayName}\r\n({drive.DrivePath})",
+                                drive,
+                                imgIndex
+                            )
+                        );
+                    }
+
+                    try { grvConnectedDrives.SelectedItem = lastSelectedIndex; }
+                    catch { }
+                }
+            }
+            catch { }
+        }
+
+        private void tmrUpdateDriveStatus_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!bgwDriveStatus.IsBusy)
+                    bgwDriveStatus.RunWorkerAsync();
+            }
+            catch { }
+        }
 
         
     }

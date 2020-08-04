@@ -61,7 +61,6 @@ F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Data.SQLite.dll.config
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Memory.xml
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Numerics.Vectors.xml
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csprojAssemblyReference.cache
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csproj.CoreCompileInputs.cache
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.dll

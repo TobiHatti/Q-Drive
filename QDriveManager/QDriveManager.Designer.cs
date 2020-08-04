@@ -40,8 +40,6 @@
             this.lblKeepLoggedInInfo = new System.Windows.Forms.Label();
             this.chbKeepLoggedIn = new System.Windows.Forms.CheckBox();
             this.lnkCreateNewAccount = new System.Windows.Forms.LinkLabel();
-            this.pbxLoginConnectionState = new System.Windows.Forms.PictureBox();
-            this.pbxLoginLogo = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txbUsername = new System.Windows.Forms.TextBox();
@@ -49,31 +47,17 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlManager = new System.Windows.Forms.Panel();
-            this.pbxNoDrivesConnected = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnDisconnect = new System.Windows.Forms.Button();
-            this.btnReconnect = new System.Windows.Forms.Button();
-            this.btnRemoveDrive = new System.Windows.Forms.Button();
-            this.btnEditDrive = new System.Windows.Forms.Button();
-            this.btnAddDrive = new System.Windows.Forms.Button();
-            this.pbxManagerConnectionState = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblQDriveManagerInfo = new System.Windows.Forms.Label();
             this.grvConnectedDrives = new Syncfusion.Windows.Forms.Tools.GroupView();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tseToolstrip = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
-            this.tsbQDrive = new System.Windows.Forms.ToolStripButton();
-            this.tsbFile = new System.Windows.Forms.ToolStripButton();
-            this.tsbSettings = new System.Windows.Forms.ToolStripButton();
             this.pnlLoading = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlSignUp = new System.Windows.Forms.Panel();
-            this.pbxSignUpConnectionState = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.pbxSignUpLogo = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txbRegName = new System.Windows.Forms.TextBox();
             this.txbRegUsername = new System.Windows.Forms.TextBox();
@@ -102,23 +86,46 @@
             this.tsmResetLocalDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.sfdSaveConfig = new System.Windows.Forms.SaveFileDialog();
             this.ofdOpenConfig = new System.Windows.Forms.OpenFileDialog();
+            this.bgwDriveStatus = new System.ComponentModel.BackgroundWorker();
+            this.tmrUpdateDriveStatus = new System.Windows.Forms.Timer(this.components);
+            this.pbxDisconnectBtn = new System.Windows.Forms.PictureBox();
+            this.pbxUpdateBtn = new System.Windows.Forms.PictureBox();
+            this.pbxRemoveDriveBtn = new System.Windows.Forms.PictureBox();
+            this.pbxEditDriveBtn = new System.Windows.Forms.PictureBox();
+            this.pbxAddDriveBtn = new System.Windows.Forms.PictureBox();
+            this.pbxNoDrivesConnected = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbxManagerConnectionState = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.tsbQDrive = new System.Windows.Forms.ToolStripButton();
+            this.tsbFile = new System.Windows.Forms.ToolStripButton();
+            this.tsbSettings = new System.Windows.Forms.ToolStripButton();
+            this.pbxSignUpConnectionState = new System.Windows.Forms.PictureBox();
+            this.pbxSignUpLogo = new System.Windows.Forms.PictureBox();
+            this.pbxLoginConnectionState = new System.Windows.Forms.PictureBox();
+            this.pbxLoginLogo = new System.Windows.Forms.PictureBox();
             this.pnlNotConfigured.SuspendLayout();
             this.pnlLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLoginConnectionState)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).BeginInit();
             this.pnlManager.SuspendLayout();
+            this.tseToolstrip.SuspendLayout();
+            this.pnlLoading.SuspendLayout();
+            this.pnlSignUp.SuspendLayout();
+            this.cmsFile.SuspendLayout();
+            this.cmsQDrive.SuspendLayout();
+            this.cmsSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxDisconnectBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxUpdateBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxRemoveDriveBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxEditDriveBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAddDriveBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNoDrivesConnected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxManagerConnectionState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.tseToolstrip.SuspendLayout();
-            this.pnlLoading.SuspendLayout();
-            this.pnlSignUp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpConnectionState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpLogo)).BeginInit();
-            this.cmsFile.SuspendLayout();
-            this.cmsQDrive.SuspendLayout();
-            this.cmsSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLoginConnectionState)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlNotConfigured
@@ -236,24 +243,6 @@
             this.lnkCreateNewAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lnkCreateNewAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkCreateNewAccount_LinkClicked);
             // 
-            // pbxLoginConnectionState
-            // 
-            this.pbxLoginConnectionState.Location = new System.Drawing.Point(0, 395);
-            this.pbxLoginConnectionState.Name = "pbxLoginConnectionState";
-            this.pbxLoginConnectionState.Size = new System.Drawing.Size(160, 160);
-            this.pbxLoginConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxLoginConnectionState.TabIndex = 11;
-            this.pbxLoginConnectionState.TabStop = false;
-            // 
-            // pbxLoginLogo
-            // 
-            this.pbxLoginLogo.Location = new System.Drawing.Point(139, 70);
-            this.pbxLoginLogo.Name = "pbxLoginLogo";
-            this.pbxLoginLogo.Size = new System.Drawing.Size(500, 128);
-            this.pbxLoginLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxLoginLogo.TabIndex = 11;
-            this.pbxLoginLogo.TabStop = false;
-            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -315,14 +304,14 @@
             // 
             // pnlManager
             // 
+            this.pnlManager.Controls.Add(this.pbxDisconnectBtn);
+            this.pnlManager.Controls.Add(this.pbxUpdateBtn);
+            this.pnlManager.Controls.Add(this.pbxRemoveDriveBtn);
+            this.pnlManager.Controls.Add(this.pbxEditDriveBtn);
+            this.pnlManager.Controls.Add(this.pbxAddDriveBtn);
             this.pnlManager.Controls.Add(this.pbxNoDrivesConnected);
             this.pnlManager.Controls.Add(this.pictureBox1);
-            this.pnlManager.Controls.Add(this.label5);
-            this.pnlManager.Controls.Add(this.btnDisconnect);
-            this.pnlManager.Controls.Add(this.btnReconnect);
-            this.pnlManager.Controls.Add(this.btnRemoveDrive);
-            this.pnlManager.Controls.Add(this.btnEditDrive);
-            this.pnlManager.Controls.Add(this.btnAddDrive);
+            this.pnlManager.Controls.Add(this.lblQDriveManagerInfo);
             this.pnlManager.Controls.Add(this.pbxManagerConnectionState);
             this.pnlManager.Controls.Add(this.pictureBox2);
             this.pnlManager.Controls.Add(this.grvConnectedDrives);
@@ -335,116 +324,27 @@
             this.pnlManager.Size = new System.Drawing.Size(778, 555);
             this.pnlManager.TabIndex = 0;
             // 
-            // pbxNoDrivesConnected
+            // lblQDriveManagerInfo
             // 
-            this.pbxNoDrivesConnected.Location = new System.Drawing.Point(400, 155);
-            this.pbxNoDrivesConnected.Name = "pbxNoDrivesConnected";
-            this.pbxNoDrivesConnected.Size = new System.Drawing.Size(350, 285);
-            this.pbxNoDrivesConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxNoDrivesConnected.TabIndex = 16;
-            this.pbxNoDrivesConnected.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
-            this.pictureBox1.Location = new System.Drawing.Point(364, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(3, 527);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(166, 448);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(147, 21);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Q-Drive version XXX";
-            // 
-            // btnDisconnect
-            // 
-            this.btnDisconnect.Location = new System.Drawing.Point(3, 359);
-            this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(200, 30);
-            this.btnDisconnect.TabIndex = 5;
-            this.btnDisconnect.Text = "Log Off / Disconnect";
-            this.btnDisconnect.UseVisualStyleBackColor = true;
-            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
-            // 
-            // btnReconnect
-            // 
-            this.btnReconnect.Location = new System.Drawing.Point(3, 323);
-            this.btnReconnect.Name = "btnReconnect";
-            this.btnReconnect.Size = new System.Drawing.Size(200, 30);
-            this.btnReconnect.TabIndex = 4;
-            this.btnReconnect.Text = "Update / Reconnect";
-            this.btnReconnect.UseVisualStyleBackColor = true;
-            this.btnReconnect.Click += new System.EventHandler(this.btnReconnect_Click);
-            // 
-            // btnRemoveDrive
-            // 
-            this.btnRemoveDrive.Enabled = false;
-            this.btnRemoveDrive.Location = new System.Drawing.Point(3, 173);
-            this.btnRemoveDrive.Name = "btnRemoveDrive";
-            this.btnRemoveDrive.Size = new System.Drawing.Size(200, 30);
-            this.btnRemoveDrive.TabIndex = 3;
-            this.btnRemoveDrive.Text = "Remove Drive";
-            this.btnRemoveDrive.UseVisualStyleBackColor = true;
-            this.btnRemoveDrive.Click += new System.EventHandler(this.btnRemoveDrive_Click);
-            // 
-            // btnEditDrive
-            // 
-            this.btnEditDrive.Enabled = false;
-            this.btnEditDrive.Location = new System.Drawing.Point(3, 137);
-            this.btnEditDrive.Name = "btnEditDrive";
-            this.btnEditDrive.Size = new System.Drawing.Size(200, 30);
-            this.btnEditDrive.TabIndex = 2;
-            this.btnEditDrive.Text = "Edit Drive";
-            this.btnEditDrive.UseVisualStyleBackColor = true;
-            this.btnEditDrive.Click += new System.EventHandler(this.btnEditDrive_Click);
-            // 
-            // btnAddDrive
-            // 
-            this.btnAddDrive.Location = new System.Drawing.Point(3, 77);
-            this.btnAddDrive.Name = "btnAddDrive";
-            this.btnAddDrive.Size = new System.Drawing.Size(200, 54);
-            this.btnAddDrive.TabIndex = 1;
-            this.btnAddDrive.Text = "Add Drive";
-            this.btnAddDrive.UseVisualStyleBackColor = true;
-            this.btnAddDrive.Click += new System.EventHandler(this.btnAddDrive_Click);
-            // 
-            // pbxManagerConnectionState
-            // 
-            this.pbxManagerConnectionState.Location = new System.Drawing.Point(0, 395);
-            this.pbxManagerConnectionState.Name = "pbxManagerConnectionState";
-            this.pbxManagerConnectionState.Size = new System.Drawing.Size(160, 160);
-            this.pbxManagerConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxManagerConnectionState.TabIndex = 11;
-            this.pbxManagerConnectionState.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 25);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(778, 3);
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
+            this.lblQDriveManagerInfo.AutoSize = true;
+            this.lblQDriveManagerInfo.ForeColor = System.Drawing.Color.DimGray;
+            this.lblQDriveManagerInfo.Location = new System.Drawing.Point(6, 211);
+            this.lblQDriveManagerInfo.Name = "lblQDriveManagerInfo";
+            this.lblQDriveManagerInfo.Size = new System.Drawing.Size(147, 21);
+            this.lblQDriveManagerInfo.TabIndex = 14;
+            this.lblQDriveManagerInfo.Text = "Q-Drive version XXX";
             // 
             // grvConnectedDrives
             // 
-            this.grvConnectedDrives.BeforeTouchSize = new System.Drawing.Size(411, 490);
+            this.grvConnectedDrives.BeforeTouchSize = new System.Drawing.Size(402, 483);
             this.grvConnectedDrives.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grvConnectedDrives.ButtonView = true;
             this.grvConnectedDrives.FlatLook = true;
             this.grvConnectedDrives.ImageSpacing = 20;
             this.grvConnectedDrives.IntegratedScrolling = true;
-            this.grvConnectedDrives.Location = new System.Drawing.Point(364, 65);
+            this.grvConnectedDrives.Location = new System.Drawing.Point(372, 65);
             this.grvConnectedDrives.Name = "grvConnectedDrives";
-            this.grvConnectedDrives.Size = new System.Drawing.Size(411, 490);
+            this.grvConnectedDrives.Size = new System.Drawing.Size(402, 483);
             this.grvConnectedDrives.SmallImageView = true;
             this.grvConnectedDrives.TabIndex = 5;
             this.grvConnectedDrives.Text = "groupView1";
@@ -500,36 +400,6 @@
             this.tseToolstrip.ThemeName = "Office2016White";
             this.tseToolstrip.VisualStyle = Syncfusion.Windows.Forms.Tools.ToolStripExStyle.Office2016White;
             // 
-            // tsbQDrive
-            // 
-            this.tsbQDrive.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbQDrive.Image = ((System.Drawing.Image)(resources.GetObject("tsbQDrive.Image")));
-            this.tsbQDrive.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbQDrive.Name = "tsbQDrive";
-            this.tsbQDrive.Size = new System.Drawing.Size(52, 22);
-            this.tsbQDrive.Text = "Q-Drive";
-            this.tsbQDrive.Click += new System.EventHandler(this.tsbQDrive_Click);
-            // 
-            // tsbFile
-            // 
-            this.tsbFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbFile.Image = ((System.Drawing.Image)(resources.GetObject("tsbFile.Image")));
-            this.tsbFile.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFile.Name = "tsbFile";
-            this.tsbFile.Size = new System.Drawing.Size(29, 22);
-            this.tsbFile.Text = "File";
-            this.tsbFile.Click += new System.EventHandler(this.tsbFile_Click);
-            // 
-            // tsbSettings
-            // 
-            this.tsbSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbSettings.Image = ((System.Drawing.Image)(resources.GetObject("tsbSettings.Image")));
-            this.tsbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSettings.Name = "tsbSettings";
-            this.tsbSettings.Size = new System.Drawing.Size(53, 22);
-            this.tsbSettings.Text = "Settings";
-            this.tsbSettings.Click += new System.EventHandler(this.tsbSettings_Click);
-            // 
             // pnlLoading
             // 
             this.pnlLoading.Controls.Add(this.label7);
@@ -571,15 +441,6 @@
             this.pnlSignUp.Size = new System.Drawing.Size(778, 555);
             this.pnlSignUp.TabIndex = 0;
             // 
-            // pbxSignUpConnectionState
-            // 
-            this.pbxSignUpConnectionState.Location = new System.Drawing.Point(0, 395);
-            this.pbxSignUpConnectionState.Name = "pbxSignUpConnectionState";
-            this.pbxSignUpConnectionState.Size = new System.Drawing.Size(160, 160);
-            this.pbxSignUpConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxSignUpConnectionState.TabIndex = 11;
-            this.pbxSignUpConnectionState.TabStop = false;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -609,15 +470,6 @@
             this.label13.Size = new System.Drawing.Size(164, 28);
             this.label13.TabIndex = 10;
             this.label13.Text = "Confirm Password";
-            // 
-            // pbxSignUpLogo
-            // 
-            this.pbxSignUpLogo.Location = new System.Drawing.Point(139, 70);
-            this.pbxSignUpLogo.Name = "pbxSignUpLogo";
-            this.pbxSignUpLogo.Size = new System.Drawing.Size(500, 128);
-            this.pbxSignUpLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxSignUpLogo.TabIndex = 11;
-            this.pbxSignUpLogo.TabStop = false;
             // 
             // label10
             // 
@@ -846,6 +698,186 @@
             this.ofdOpenConfig.Filter = "Q-Drive backup files|*.qdbackup|All Files|*.*";
             this.ofdOpenConfig.Title = "Load a Q-Drive backup";
             // 
+            // bgwDriveStatus
+            // 
+            this.bgwDriveStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwDriveStatus_DoWork);
+            // 
+            // tmrUpdateDriveStatus
+            // 
+            this.tmrUpdateDriveStatus.Enabled = true;
+            this.tmrUpdateDriveStatus.Interval = 5000;
+            this.tmrUpdateDriveStatus.Tick += new System.EventHandler(this.tmrUpdateDriveStatus_Tick);
+            // 
+            // pbxDisconnectBtn
+            // 
+            this.pbxDisconnectBtn.Location = new System.Drawing.Point(220, 417);
+            this.pbxDisconnectBtn.Name = "pbxDisconnectBtn";
+            this.pbxDisconnectBtn.Size = new System.Drawing.Size(110, 60);
+            this.pbxDisconnectBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxDisconnectBtn.TabIndex = 17;
+            this.pbxDisconnectBtn.TabStop = false;
+            this.pbxDisconnectBtn.Click += new System.EventHandler(this.btnDisconnect_Click);
+            this.pbxDisconnectBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxButtons_MouseDown);
+            this.pbxDisconnectBtn.MouseEnter += new System.EventHandler(this.pbxButtons_MouseOver);
+            this.pbxDisconnectBtn.MouseLeave += new System.EventHandler(this.pbxButtons_MouseLeave);
+            // 
+            // pbxUpdateBtn
+            // 
+            this.pbxUpdateBtn.Location = new System.Drawing.Point(219, 474);
+            this.pbxUpdateBtn.Name = "pbxUpdateBtn";
+            this.pbxUpdateBtn.Size = new System.Drawing.Size(110, 60);
+            this.pbxUpdateBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxUpdateBtn.TabIndex = 17;
+            this.pbxUpdateBtn.TabStop = false;
+            this.pbxUpdateBtn.Click += new System.EventHandler(this.btnReconnect_Click);
+            this.pbxUpdateBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxButtons_MouseDown);
+            this.pbxUpdateBtn.MouseEnter += new System.EventHandler(this.pbxButtons_MouseOver);
+            this.pbxUpdateBtn.MouseLeave += new System.EventHandler(this.pbxButtons_MouseLeave);
+            // 
+            // pbxRemoveDriveBtn
+            // 
+            this.pbxRemoveDriveBtn.Enabled = false;
+            this.pbxRemoveDriveBtn.Location = new System.Drawing.Point(183, 310);
+            this.pbxRemoveDriveBtn.Name = "pbxRemoveDriveBtn";
+            this.pbxRemoveDriveBtn.Size = new System.Drawing.Size(175, 60);
+            this.pbxRemoveDriveBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxRemoveDriveBtn.TabIndex = 17;
+            this.pbxRemoveDriveBtn.TabStop = false;
+            this.pbxRemoveDriveBtn.Click += new System.EventHandler(this.btnRemoveDrive_Click);
+            this.pbxRemoveDriveBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxButtons_MouseDown);
+            this.pbxRemoveDriveBtn.MouseEnter += new System.EventHandler(this.pbxButtons_MouseOver);
+            this.pbxRemoveDriveBtn.MouseLeave += new System.EventHandler(this.pbxButtons_MouseLeave);
+            // 
+            // pbxEditDriveBtn
+            // 
+            this.pbxEditDriveBtn.Enabled = false;
+            this.pbxEditDriveBtn.Location = new System.Drawing.Point(8, 310);
+            this.pbxEditDriveBtn.Name = "pbxEditDriveBtn";
+            this.pbxEditDriveBtn.Size = new System.Drawing.Size(175, 60);
+            this.pbxEditDriveBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxEditDriveBtn.TabIndex = 17;
+            this.pbxEditDriveBtn.TabStop = false;
+            this.pbxEditDriveBtn.Click += new System.EventHandler(this.btnEditDrive_Click);
+            this.pbxEditDriveBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxButtons_MouseDown);
+            this.pbxEditDriveBtn.MouseEnter += new System.EventHandler(this.pbxButtons_MouseOver);
+            this.pbxEditDriveBtn.MouseLeave += new System.EventHandler(this.pbxButtons_MouseLeave);
+            // 
+            // pbxAddDriveBtn
+            // 
+            this.pbxAddDriveBtn.Location = new System.Drawing.Point(8, 110);
+            this.pbxAddDriveBtn.Name = "pbxAddDriveBtn";
+            this.pbxAddDriveBtn.Size = new System.Drawing.Size(350, 80);
+            this.pbxAddDriveBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxAddDriveBtn.TabIndex = 17;
+            this.pbxAddDriveBtn.TabStop = false;
+            this.pbxAddDriveBtn.Click += new System.EventHandler(this.btnAddDrive_Click);
+            this.pbxAddDriveBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbxButtons_MouseDown);
+            this.pbxAddDriveBtn.MouseEnter += new System.EventHandler(this.pbxButtons_MouseOver);
+            this.pbxAddDriveBtn.MouseLeave += new System.EventHandler(this.pbxButtons_MouseLeave);
+            // 
+            // pbxNoDrivesConnected
+            // 
+            this.pbxNoDrivesConnected.Location = new System.Drawing.Point(400, 155);
+            this.pbxNoDrivesConnected.Name = "pbxNoDrivesConnected";
+            this.pbxNoDrivesConnected.Size = new System.Drawing.Size(350, 285);
+            this.pbxNoDrivesConnected.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxNoDrivesConnected.TabIndex = 16;
+            this.pbxNoDrivesConnected.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
+            this.pictureBox1.Location = new System.Drawing.Point(364, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(3, 527);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pbxManagerConnectionState
+            // 
+            this.pbxManagerConnectionState.Location = new System.Drawing.Point(0, 395);
+            this.pbxManagerConnectionState.Name = "pbxManagerConnectionState";
+            this.pbxManagerConnectionState.Size = new System.Drawing.Size(160, 160);
+            this.pbxManagerConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxManagerConnectionState.TabIndex = 11;
+            this.pbxManagerConnectionState.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 25);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(778, 3);
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            // 
+            // tsbQDrive
+            // 
+            this.tsbQDrive.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbQDrive.Image = ((System.Drawing.Image)(resources.GetObject("tsbQDrive.Image")));
+            this.tsbQDrive.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbQDrive.Name = "tsbQDrive";
+            this.tsbQDrive.Size = new System.Drawing.Size(52, 22);
+            this.tsbQDrive.Text = "Q-Drive";
+            this.tsbQDrive.Click += new System.EventHandler(this.tsbQDrive_Click);
+            // 
+            // tsbFile
+            // 
+            this.tsbFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbFile.Image = ((System.Drawing.Image)(resources.GetObject("tsbFile.Image")));
+            this.tsbFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFile.Name = "tsbFile";
+            this.tsbFile.Size = new System.Drawing.Size(29, 22);
+            this.tsbFile.Text = "File";
+            this.tsbFile.Click += new System.EventHandler(this.tsbFile_Click);
+            // 
+            // tsbSettings
+            // 
+            this.tsbSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSettings.Image = ((System.Drawing.Image)(resources.GetObject("tsbSettings.Image")));
+            this.tsbSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSettings.Name = "tsbSettings";
+            this.tsbSettings.Size = new System.Drawing.Size(53, 22);
+            this.tsbSettings.Text = "Settings";
+            this.tsbSettings.Click += new System.EventHandler(this.tsbSettings_Click);
+            // 
+            // pbxSignUpConnectionState
+            // 
+            this.pbxSignUpConnectionState.Location = new System.Drawing.Point(0, 395);
+            this.pbxSignUpConnectionState.Name = "pbxSignUpConnectionState";
+            this.pbxSignUpConnectionState.Size = new System.Drawing.Size(160, 160);
+            this.pbxSignUpConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxSignUpConnectionState.TabIndex = 11;
+            this.pbxSignUpConnectionState.TabStop = false;
+            // 
+            // pbxSignUpLogo
+            // 
+            this.pbxSignUpLogo.Location = new System.Drawing.Point(139, 70);
+            this.pbxSignUpLogo.Name = "pbxSignUpLogo";
+            this.pbxSignUpLogo.Size = new System.Drawing.Size(500, 128);
+            this.pbxSignUpLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxSignUpLogo.TabIndex = 11;
+            this.pbxSignUpLogo.TabStop = false;
+            // 
+            // pbxLoginConnectionState
+            // 
+            this.pbxLoginConnectionState.Location = new System.Drawing.Point(0, 395);
+            this.pbxLoginConnectionState.Name = "pbxLoginConnectionState";
+            this.pbxLoginConnectionState.Size = new System.Drawing.Size(160, 160);
+            this.pbxLoginConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLoginConnectionState.TabIndex = 11;
+            this.pbxLoginConnectionState.TabStop = false;
+            // 
+            // pbxLoginLogo
+            // 
+            this.pbxLoginLogo.Location = new System.Drawing.Point(139, 70);
+            this.pbxLoginLogo.Name = "pbxLoginLogo";
+            this.pbxLoginLogo.Size = new System.Drawing.Size(500, 128);
+            this.pbxLoginLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLoginLogo.TabIndex = 11;
+            this.pbxLoginLogo.TabStop = false;
+            // 
             // QDriveManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -877,25 +909,30 @@
             this.pnlNotConfigured.PerformLayout();
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLoginConnectionState)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).EndInit();
             this.pnlManager.ResumeLayout(false);
             this.pnlManager.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxNoDrivesConnected)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxManagerConnectionState)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tseToolstrip.ResumeLayout(false);
             this.tseToolstrip.PerformLayout();
             this.pnlLoading.ResumeLayout(false);
             this.pnlLoading.PerformLayout();
             this.pnlSignUp.ResumeLayout(false);
             this.pnlSignUp.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpConnectionState)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpLogo)).EndInit();
             this.cmsFile.ResumeLayout(false);
             this.cmsQDrive.ResumeLayout(false);
             this.cmsSettings.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxDisconnectBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxUpdateBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxRemoveDriveBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxEditDriveBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxAddDriveBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNoDrivesConnected)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxManagerConnectionState)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpConnectionState)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxSignUpLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLoginConnectionState)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -917,7 +954,6 @@
         private System.Windows.Forms.PictureBox pbxLoginLogo;
         private System.Windows.Forms.CheckBox chbKeepLoggedIn;
         private System.Windows.Forms.Panel pnlManager;
-        private System.Windows.Forms.Button btnAddDrive;
         private Syncfusion.Windows.Forms.Tools.GroupView grvConnectedDrives;
         private System.Windows.Forms.PictureBox pbxLoginConnectionState;
         private System.Windows.Forms.PictureBox pbxManagerConnectionState;
@@ -928,11 +964,7 @@
         private System.Windows.Forms.ToolStripButton tsbSettings;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnDisconnect;
-        private System.Windows.Forms.Button btnReconnect;
-        private System.Windows.Forms.Button btnRemoveDrive;
-        private System.Windows.Forms.Button btnEditDrive;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblQDriveManagerInfo;
         private System.Windows.Forms.Label lblKeepLoggedInInfo;
         private System.Windows.Forms.Panel pnlLoading;
         private System.Windows.Forms.Label label7;
@@ -974,6 +1006,13 @@
         private System.Windows.Forms.Button btnNotConfigured;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pbxNoDrivesConnected;
+        private System.ComponentModel.BackgroundWorker bgwDriveStatus;
+        private System.Windows.Forms.Timer tmrUpdateDriveStatus;
+        private System.Windows.Forms.PictureBox pbxAddDriveBtn;
+        private System.Windows.Forms.PictureBox pbxRemoveDriveBtn;
+        private System.Windows.Forms.PictureBox pbxEditDriveBtn;
+        private System.Windows.Forms.PictureBox pbxDisconnectBtn;
+        private System.Windows.Forms.PictureBox pbxUpdateBtn;
     }
 }
 
