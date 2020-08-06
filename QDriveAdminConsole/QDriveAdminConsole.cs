@@ -33,7 +33,7 @@ namespace QDriveAdminConsole
             pbxQDLogoLocal.Image = Properties.Resources.QDriveProgamFavicon;
             pbxQDLogoLoading.Image = Properties.Resources.QDriveProgamFavicon;
 
-            pnlLoading.BringToFront();
+            pnlSettings.BringToFront();
             txbMasterPassword.Focus();
         }
 
