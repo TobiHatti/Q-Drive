@@ -47,18 +47,24 @@
             // 
             // txbName
             // 
+            this.txbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbName.Location = new System.Drawing.Point(135, 248);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(357, 29);
             this.txbName.TabIndex = 4;
+            this.txbName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // txbPassword
             // 
+            this.txbPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbPassword.Location = new System.Drawing.Point(135, 213);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '•';
             this.txbPassword.Size = new System.Drawing.Size(357, 29);
             this.txbPassword.TabIndex = 3;
+            this.txbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label7
             // 
@@ -72,17 +78,23 @@
             // 
             // txbUsername
             // 
+            this.txbUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbUsername.Location = new System.Drawing.Point(135, 178);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(357, 29);
             this.txbUsername.TabIndex = 2;
+            this.txbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // txbHostname
             // 
+            this.txbHostname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbHostname.Location = new System.Drawing.Point(135, 143);
             this.txbHostname.Name = "txbHostname";
             this.txbHostname.Size = new System.Drawing.Size(357, 29);
             this.txbHostname.TabIndex = 1;
+            this.txbHostname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label5
             // 
@@ -97,6 +109,7 @@
             // 
             // btnTestConnection
             // 
+            this.btnTestConnection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTestConnection.Location = new System.Drawing.Point(354, 283);
             this.btnTestConnection.Name = "btnTestConnection";
             this.btnTestConnection.Size = new System.Drawing.Size(138, 36);
@@ -152,7 +165,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.Location = new System.Drawing.Point(6, 354);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(95, 36);

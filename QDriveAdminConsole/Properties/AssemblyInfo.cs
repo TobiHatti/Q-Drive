@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("QDriveAdminConsole")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Q-Drive Admin Console")]
+[assembly: AssemblyDescription("Q-Drive Admin Console")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("QDriveAdminConsole")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCompany("Endev")]
+[assembly: AssemblyProduct("Q-Drive")]
+[assembly: AssemblyCopyright("Copyright ©  2020 Tobias Hattinger")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

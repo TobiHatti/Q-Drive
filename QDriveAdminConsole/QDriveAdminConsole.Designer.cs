@@ -83,16 +83,6 @@
             this.btnRemoveOnlineDrive = new System.Windows.Forms.Button();
             this.btnEditOnlineDrive = new System.Windows.Forms.Button();
             this.btnAddOnlineDrive = new System.Windows.Forms.Button();
-            this.tabDeployDrives = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.lbxDeployedDrives = new System.Windows.Forms.ListBox();
-            this.lbxDeployableDrives = new System.Windows.Forms.ListBox();
-            this.btnRemoveFromSelectedUsers = new System.Windows.Forms.Button();
-            this.btnRemoveFromAllUsers = new System.Windows.Forms.Button();
-            this.btnDeployToSelectedUsers = new System.Windows.Forms.Button();
-            this.btnDeployToAllUsers = new System.Windows.Forms.Button();
             this.tabInfoAndMore = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.lnkReleases = new System.Windows.Forms.LinkLabel();
             this.lblVersion = new System.Windows.Forms.Label();
@@ -132,7 +122,6 @@
             this.tabUsers.SuspendLayout();
             this.tabMySQL.SuspendLayout();
             this.tabOnlineDrives.SuspendLayout();
-            this.tabDeployDrives.SuspendLayout();
             this.tabInfoAndMore.SuspendLayout();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogo)).BeginInit();
@@ -164,7 +153,6 @@
             this.tabControlAdv1.Controls.Add(this.tabUsers);
             this.tabControlAdv1.Controls.Add(this.tabMySQL);
             this.tabControlAdv1.Controls.Add(this.tabOnlineDrives);
-            this.tabControlAdv1.Controls.Add(this.tabDeployDrives);
             this.tabControlAdv1.Controls.Add(this.tabInfoAndMore);
             this.tabControlAdv1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControlAdv1.FocusOnTabClick = false;
@@ -207,6 +195,8 @@
             // 
             // txbDefaultDomain
             // 
+            this.txbDefaultDomain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbDefaultDomain.Location = new System.Drawing.Point(254, 275);
             this.txbDefaultDomain.Name = "txbDefaultDomain";
             this.txbDefaultDomain.Size = new System.Drawing.Size(293, 29);
@@ -497,6 +487,8 @@
             // 
             // label22
             // 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.ForeColor = System.Drawing.Color.DimGray;
             this.label22.Location = new System.Drawing.Point(3, 290);
             this.label22.Name = "label22";
@@ -677,128 +669,6 @@
             this.btnAddOnlineDrive.UseVisualStyleBackColor = true;
             this.btnAddOnlineDrive.Click += new System.EventHandler(this.btnAddOnlineDrive_Click);
             // 
-            // tabDeployDrives
-            // 
-            this.tabDeployDrives.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.tabDeployDrives.Controls.Add(this.label24);
-            this.tabDeployDrives.Controls.Add(this.label26);
-            this.tabDeployDrives.Controls.Add(this.label25);
-            this.tabDeployDrives.Controls.Add(this.lbxDeployedDrives);
-            this.tabDeployDrives.Controls.Add(this.lbxDeployableDrives);
-            this.tabDeployDrives.Controls.Add(this.btnRemoveFromSelectedUsers);
-            this.tabDeployDrives.Controls.Add(this.btnRemoveFromAllUsers);
-            this.tabDeployDrives.Controls.Add(this.btnDeployToSelectedUsers);
-            this.tabDeployDrives.Controls.Add(this.btnDeployToAllUsers);
-            this.tabDeployDrives.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tabDeployDrives.Image = null;
-            this.tabDeployDrives.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabDeployDrives.Location = new System.Drawing.Point(1, 30);
-            this.tabDeployDrives.Name = "tabDeployDrives";
-            this.tabDeployDrives.ShowCloseButton = true;
-            this.tabDeployDrives.Size = new System.Drawing.Size(691, 318);
-            this.tabDeployDrives.TabIndex = 6;
-            this.tabDeployDrives.Text = " Deploy Drives ";
-            this.tabDeployDrives.ThemesEnabled = false;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label24.Location = new System.Drawing.Point(16, 13);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(216, 28);
-            this.label24.TabIndex = 13;
-            this.label24.Text = "Q-Drive Deploy to Users\r\n";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(269, 55);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(139, 21);
-            this.label26.TabIndex = 1;
-            this.label26.Text = "Deployed to Users:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(3, 55);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(137, 21);
-            this.label25.TabIndex = 1;
-            this.label25.Text = "Deployable Drives:";
-            // 
-            // lbxDeployedDrives
-            // 
-            this.lbxDeployedDrives.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbxDeployedDrives.FormattingEnabled = true;
-            this.lbxDeployedDrives.ItemHeight = 21;
-            this.lbxDeployedDrives.Location = new System.Drawing.Point(273, 79);
-            this.lbxDeployedDrives.Name = "lbxDeployedDrives";
-            this.lbxDeployedDrives.Size = new System.Drawing.Size(265, 172);
-            this.lbxDeployedDrives.TabIndex = 2;
-            // 
-            // lbxDeployableDrives
-            // 
-            this.lbxDeployableDrives.FormattingEnabled = true;
-            this.lbxDeployableDrives.ItemHeight = 21;
-            this.lbxDeployableDrives.Location = new System.Drawing.Point(2, 79);
-            this.lbxDeployableDrives.Name = "lbxDeployableDrives";
-            this.lbxDeployableDrives.Size = new System.Drawing.Size(265, 235);
-            this.lbxDeployableDrives.TabIndex = 1;
-            this.lbxDeployableDrives.SelectedIndexChanged += new System.EventHandler(this.lbxDeployableDrives_SelectedIndexChanged);
-            // 
-            // btnRemoveFromSelectedUsers
-            // 
-            this.btnRemoveFromSelectedUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveFromSelectedUsers.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoveFromSelectedUsers.Location = new System.Drawing.Point(544, 260);
-            this.btnRemoveFromSelectedUsers.Name = "btnRemoveFromSelectedUsers";
-            this.btnRemoveFromSelectedUsers.Size = new System.Drawing.Size(143, 54);
-            this.btnRemoveFromSelectedUsers.TabIndex = 6;
-            this.btnRemoveFromSelectedUsers.Text = "Remove from selected users";
-            this.btnRemoveFromSelectedUsers.UseVisualStyleBackColor = true;
-            this.btnRemoveFromSelectedUsers.Click += new System.EventHandler(this.btnRemoveFromSelectedUsers_Click);
-            // 
-            // btnRemoveFromAllUsers
-            // 
-            this.btnRemoveFromAllUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemoveFromAllUsers.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoveFromAllUsers.Location = new System.Drawing.Point(544, 200);
-            this.btnRemoveFromAllUsers.Name = "btnRemoveFromAllUsers";
-            this.btnRemoveFromAllUsers.Size = new System.Drawing.Size(143, 54);
-            this.btnRemoveFromAllUsers.TabIndex = 5;
-            this.btnRemoveFromAllUsers.Text = "Remove from all users";
-            this.btnRemoveFromAllUsers.UseVisualStyleBackColor = true;
-            this.btnRemoveFromAllUsers.Click += new System.EventHandler(this.btnRemoveFromAllUsers_Click);
-            // 
-            // btnDeployToSelectedUsers
-            // 
-            this.btnDeployToSelectedUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeployToSelectedUsers.ForeColor = System.Drawing.Color.Black;
-            this.btnDeployToSelectedUsers.Location = new System.Drawing.Point(544, 140);
-            this.btnDeployToSelectedUsers.Name = "btnDeployToSelectedUsers";
-            this.btnDeployToSelectedUsers.Size = new System.Drawing.Size(143, 54);
-            this.btnDeployToSelectedUsers.TabIndex = 4;
-            this.btnDeployToSelectedUsers.Text = "Deploy to selected users";
-            this.btnDeployToSelectedUsers.UseVisualStyleBackColor = true;
-            this.btnDeployToSelectedUsers.Click += new System.EventHandler(this.btnDeployToSelectedUsers_Click);
-            // 
-            // btnDeployToAllUsers
-            // 
-            this.btnDeployToAllUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeployToAllUsers.ForeColor = System.Drawing.Color.Black;
-            this.btnDeployToAllUsers.Location = new System.Drawing.Point(544, 80);
-            this.btnDeployToAllUsers.Name = "btnDeployToAllUsers";
-            this.btnDeployToAllUsers.Size = new System.Drawing.Size(143, 54);
-            this.btnDeployToAllUsers.TabIndex = 3;
-            this.btnDeployToAllUsers.Text = "Deploy to all users";
-            this.btnDeployToAllUsers.UseVisualStyleBackColor = true;
-            this.btnDeployToAllUsers.Click += new System.EventHandler(this.btnDeployToAllUsers_Click);
-            // 
             // tabInfoAndMore
             // 
             this.tabInfoAndMore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
@@ -821,6 +691,8 @@
             // 
             // lnkReleases
             // 
+            this.lnkReleases.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lnkReleases.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lnkReleases.Location = new System.Drawing.Point(177, 166);
             this.lnkReleases.Name = "lnkReleases";
@@ -833,6 +705,8 @@
             // 
             // lblVersion
             // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersion.ForeColor = System.Drawing.Color.DimGray;
             this.lblVersion.Location = new System.Drawing.Point(2, 87);
             this.lblVersion.Name = "lblVersion";
@@ -843,6 +717,8 @@
             // 
             // label19
             // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.ForeColor = System.Drawing.Color.DimGray;
             this.label19.Location = new System.Drawing.Point(3, 115);
             this.label19.Name = "label19";
@@ -853,7 +729,8 @@
             // 
             // btnChangeMasterPassword
             // 
-            this.btnChangeMasterPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChangeMasterPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnChangeMasterPassword.ForeColor = System.Drawing.Color.Black;
             this.btnChangeMasterPassword.Location = new System.Drawing.Point(245, 239);
             this.btnChangeMasterPassword.Name = "btnChangeMasterPassword";
@@ -865,6 +742,8 @@
             // 
             // label20
             // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
             this.label20.Location = new System.Drawing.Point(2, 55);
             this.label20.Name = "label20";
@@ -932,6 +811,8 @@
             // 
             // pbxQDLogo
             // 
+            this.pbxQDLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxQDLogo.Location = new System.Drawing.Point(247, 19);
             this.pbxQDLogo.Name = "pbxQDLogo";
             this.pbxQDLogo.Size = new System.Drawing.Size(200, 200);
@@ -941,6 +822,8 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(187, 259);
@@ -951,16 +834,20 @@
             // 
             // txbMasterPassword
             // 
+            this.txbMasterPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbMasterPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.txbMasterPassword.Location = new System.Drawing.Point(187, 283);
             this.txbMasterPassword.Name = "txbMasterPassword";
             this.txbMasterPassword.PasswordChar = '•';
             this.txbMasterPassword.Size = new System.Drawing.Size(320, 32);
             this.txbMasterPassword.TabIndex = 1;
+            this.txbMasterPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // btnLogin
             // 
-            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
             this.btnLogin.Location = new System.Drawing.Point(297, 330);
@@ -983,6 +870,8 @@
             // 
             // pbxQDLogoLocal
             // 
+            this.pbxQDLogoLocal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxQDLogoLocal.Location = new System.Drawing.Point(247, 19);
             this.pbxQDLogoLocal.Name = "pbxQDLogoLocal";
             this.pbxQDLogoLocal.Size = new System.Drawing.Size(200, 200);
@@ -992,6 +881,8 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(3, 259);
@@ -1004,7 +895,8 @@
             // 
             // btnLocalClose
             // 
-            this.btnLocalClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLocalClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLocalClose.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.btnLocalClose.ForeColor = System.Drawing.Color.Black;
             this.btnLocalClose.Location = new System.Drawing.Point(297, 351);
@@ -1026,6 +918,8 @@
             // 
             // pbxQDLogoLoading
             // 
+            this.pbxQDLogoLoading.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxQDLogoLoading.Location = new System.Drawing.Point(247, 19);
             this.pbxQDLogoLoading.Name = "pbxQDLogoLoading";
             this.pbxQDLogoLoading.Size = new System.Drawing.Size(200, 200);
@@ -1035,6 +929,8 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(3, 259);
@@ -1056,6 +952,8 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Location = new System.Drawing.Point(247, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 200);
@@ -1065,6 +963,8 @@
             // 
             // label21
             // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.label21.ForeColor = System.Drawing.Color.White;
             this.label21.Location = new System.Drawing.Point(3, 224);
@@ -1078,7 +978,8 @@
             // 
             // btnRunSetup
             // 
-            this.btnRunSetup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRunSetup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRunSetup.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.btnRunSetup.ForeColor = System.Drawing.Color.Black;
             this.btnRunSetup.Location = new System.Drawing.Point(247, 351);
@@ -1136,8 +1037,6 @@
             this.tabMySQL.PerformLayout();
             this.tabOnlineDrives.ResumeLayout(false);
             this.tabOnlineDrives.PerformLayout();
-            this.tabDeployDrives.ResumeLayout(false);
-            this.tabDeployDrives.PerformLayout();
             this.tabInfoAndMore.ResumeLayout(false);
             this.tabInfoAndMore.PerformLayout();
             this.pnlLogin.ResumeLayout(false);
@@ -1218,21 +1117,11 @@
         private System.Windows.Forms.Button btnRunSetup;
         private System.Windows.Forms.Label label22;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabOnlineDrives;
-        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabDeployDrives;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ListBox lbxOnlineDrives;
         private System.Windows.Forms.Button btnRemoveOnlineDrive;
         private System.Windows.Forms.Button btnEditOnlineDrive;
         private System.Windows.Forms.Button btnAddOnlineDrive;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.ListBox lbxDeployableDrives;
-        private System.Windows.Forms.Button btnRemoveFromAllUsers;
-        private System.Windows.Forms.Button btnDeployToSelectedUsers;
-        private System.Windows.Forms.Button btnDeployToAllUsers;
-        private System.Windows.Forms.Button btnRemoveFromSelectedUsers;
-        private System.Windows.Forms.ListBox lbxDeployedDrives;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label25;
     }
 }
 

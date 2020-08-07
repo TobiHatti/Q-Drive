@@ -89,11 +89,14 @@
             // 
             // txbDisplayName
             // 
+            this.txbDisplayName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbDisplayName.Location = new System.Drawing.Point(155, 64);
             this.txbDisplayName.Name = "txbDisplayName";
             this.txbDisplayName.Size = new System.Drawing.Size(308, 29);
             this.txbDisplayName.TabIndex = 1;
             this.txbDisplayName.TextChanged += new System.EventHandler(this.txbDisplayName_TextChanged);
+            this.txbDisplayName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label1
             // 
@@ -127,26 +130,35 @@
             // 
             // txbUsername
             // 
+            this.txbUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbUsername.Location = new System.Drawing.Point(155, 99);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(308, 29);
             this.txbUsername.TabIndex = 2;
+            this.txbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // txbPassword
             // 
+            this.txbPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbPassword.Location = new System.Drawing.Point(155, 134);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '•';
             this.txbPassword.Size = new System.Drawing.Size(308, 29);
             this.txbPassword.TabIndex = 3;
+            this.txbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // txbConfirmPassword
             // 
+            this.txbConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbConfirmPassword.Location = new System.Drawing.Point(155, 169);
             this.txbConfirmPassword.Name = "txbConfirmPassword";
             this.txbConfirmPassword.PasswordChar = '•';
             this.txbConfirmPassword.Size = new System.Drawing.Size(308, 29);
             this.txbConfirmPassword.TabIndex = 4;
+            this.txbConfirmPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // QDAddUser
             // 

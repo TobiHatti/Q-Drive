@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,8 @@ namespace QDriveAdminConsole
             pbxQDLogo.Image = Properties.Resources.QDriveProgamFavicon;
             pbxQDLogoLocal.Image = Properties.Resources.QDriveProgamFavicon;
             pbxQDLogoLoading.Image = Properties.Resources.QDriveProgamFavicon;
+
+            lblVersion.Text = "Version " + QDInfo.QDVersion;
 
             pnlLoading.BringToFront();
             txbMasterPassword.Focus();
@@ -103,6 +106,8 @@ namespace QDriveAdminConsole
                 UpdateAll();
 
                 pnlLogin.BringToFront();
+
+                txbMasterPassword.Focus();
             }
         }
 
@@ -267,7 +272,6 @@ namespace QDriveAdminConsole
                 }
 
                 UpdateOnlineDrives();
-                UpdateDeployDrives();
             }
         }
 
@@ -298,7 +302,6 @@ namespace QDriveAdminConsole
                 if(!success) MessageBox.Show("Could not remove drive. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 UpdateOnlineDrives();
-                UpdateDeployDrives();
             }
         }
 
@@ -345,140 +348,7 @@ namespace QDriveAdminConsole
                     }
 
                     UpdateOnlineDrives();
-                    UpdateDeployDrives();
                 }
-            }
-        }
-
-        #endregion
-
-        #region Settings: Deploy Drives =========================================================================[RF]=
-
-        private void btnDeployToAllUsers_Click(object sender, EventArgs e)
-        {
-            List<string> userIDs = new List<string>();
-
-            if(lbxDeployableDrives.SelectedIndex != -1)
-            {
-                mysql.Open();
-                using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT * FROM qd_users"))
-                {
-                    while (reader.Read())
-                        userIDs.Add(Convert.ToString(reader["ID"]));
-                }
-                mysql.Close();
-            }
-
-            DeployToUsers(userIDs, lbxDeployableDrives.SelectedValue.ToString());
-        }
-
-        private void btnDeployToSelectedUsers_Click(object sender, EventArgs e)
-        {
-            if (lbxDeployableDrives.SelectedIndex != -1)
-            {
-                QDUserSelector userSelector = new QDUserSelector() { dbData = dbData };
-                if (userSelector.ShowDialog() == DialogResult.OK)
-                {
-                    DeployToUsers(userSelector.userIDs, lbxDeployableDrives.SelectedValue.ToString());
-                }
-            }
-        }
-
-        private void btnRemoveFromAllUsers_Click(object sender, EventArgs e)
-        {
-            if (lbxDeployableDrives.SelectedIndex != -1)
-            {
-                List<string> userIDs = new List<string>();
-
-                if (lbxDeployableDrives.SelectedIndex != -1)
-                {
-                    mysql.Open();
-                    using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT * FROM qd_users"))
-                    {
-                        while (reader.Read())
-                            userIDs.Add(Convert.ToString(reader["ID"]));
-                    }
-                    mysql.Close();
-                }
-
-                RemoveFromUsers(userIDs, lbxDeployableDrives.SelectedValue.ToString());
-            }
-        }
-
-        private void btnRemoveFromSelectedUsers_Click(object sender, EventArgs e)
-        {
-            if (lbxDeployableDrives.SelectedIndex != -1)
-            {
-                if (lbxDeployableDrives.SelectedIndex != -1)
-                {
-                    QDUserSelector userSelector = new QDUserSelector() { dbData = dbData, userIDs = selectedUserIDs };
-
-                    if (userSelector.ShowDialog() == DialogResult.OK)
-                    {
-                        RemoveFromUsers(userSelector.userIDs, lbxDeployableDrives.SelectedValue.ToString());
-                    }
-                }
-            }
-        }
-
-        private void DeployToUsers(List<string> pUserIDs, string driveID)
-        {
-            mysql.Open();
-            mysql.TransactionBegin();
-
-            try
-            {
-                foreach (string userID in pUserIDs)
-                {
-                    if (mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM qd_assigns WHERE UserID = ? AND DriveID = ?", userID, driveID) == 0)
-                    {
-                        mysql.ExecuteNonQuery("INSERT INTO qd_assigns () VALUES ()");
-                    }
-                }
-
-                mysql.TransactionCommit();
-            }
-            catch
-            {
-                mysql.TransactionRollback();
-            }
-
-            mysql.Close();
-        }
-
-        private void RemoveFromUsers(List<string> pUserIDs, string driveID)
-        {
-
-        }
-
-        private List<string> selectedUserIDs = new List<string>();
-
-        private void lbxDeployableDrives_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(lbxDeployableDrives.SelectedIndex != -1)
-            {
-                lbxDeployedDrives.DataSource = null;
-                lbxDeployedDrives.Items.Clear();
-
-                string sqlQuery = "SELECT CONCAT(Name, ' (', Username, ')') AS UserDisplay, qd_users.ID AS UserID FROM qd_users INNER JOIN qd_assigns ON qd_users.ID = qd_assigns.UserID INNER JOIN qd_drives ON qd_assigns.DriveID = qd_drives.ID WHERE qd_assigns.UserID = ? AND qd_drives.IsPublic = 1 ORDER BY Name ASC";
-
-                lbxDeployedDrives.DisplayMember = "UserDisplay";
-                lbxDeployedDrives.ValueMember = "UserID";
-                lbxDeployedDrives.DataSource = mysql.FillDataTable(sqlQuery, 
-                    lbxDeployableDrives.SelectedValue.ToString()
-                );
-
-                selectedUserIDs.Clear();
-
-                mysql.Open();
-
-                using (MySqlDataReader reader = mysql.ExecuteQuery(sqlQuery, lbxDeployableDrives.SelectedValue.ToString()))
-                {
-                    while (reader.Read())
-                        selectedUserIDs.Add(Convert.ToString(reader["UserID"]));
-                }
-
-                mysql.Close();
             }
         }
 
@@ -488,19 +358,40 @@ namespace QDriveAdminConsole
 
         private void lnkReleases_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            Process.Start("https://endev.at/p/q-drive");
         }
 
         private void btnChangeMasterPassword_Click(object sender, EventArgs e)
         {
+            QDChangeMasterPassword changeMasterPassword = new QDChangeMasterPassword() { MasterPassword = masterPassword };
 
+            if(changeMasterPassword.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    mysql.ExecuteNonQueryACon("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", QDLib.HashPassword(changeMasterPassword.MasterPassword), QDInfo.DBO.MasterPassword);
+                    MessageBox.Show("Successfully changed Master-Password.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Could not change password. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         #endregion
 
         #region Login ===========================================================================================[RF]=
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e) => Submit();
+
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Submit();
+        }
+
+        private void Submit()
         {
             if (masterPassword == QDLib.HashPassword(txbMasterPassword.Text)) pnlSettings.BringToFront();
             else MessageBox.Show("Password not valid.", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -531,7 +422,6 @@ namespace QDriveAdminConsole
             UpdateUsersSettings();
             UpdateMySQLSettings();
             UpdateOnlineDrives();
-            UpdateDeployDrives();
         }
 
         private void UpdateQDSettings()
@@ -571,16 +461,6 @@ namespace QDriveAdminConsole
             lbxOnlineDrives.DisplayMember = "DriveDisplay";
             lbxOnlineDrives.ValueMember = "ID";
             lbxOnlineDrives.DataSource = mysql.FillDataTable(@"SELECT CONCAT('(', DefaultDriveLetter, ':\\) ', DefaultName, ' (', LocalPath, ')') AS DriveDisplay, ID FROM qd_drives WHERE IsPublic = 1 ORDER BY DefaultDriveLetter ASC");
-        }
-
-        private void UpdateDeployDrives()
-        {
-            lbxDeployableDrives.DataSource = null;
-            lbxDeployableDrives.Items.Clear();
-
-            lbxDeployableDrives.DisplayMember = "DriveDisplay";
-            lbxDeployableDrives.ValueMember = "ID";
-            lbxDeployableDrives.DataSource = mysql.FillDataTable(@"SELECT CONCAT('(', DefaultDriveLetter, ':\\) ', DefaultName, ' (', LocalPath, ')') AS DriveDisplay, ID FROM qd_drives WHERE IsDeployable = 1 ORDER BY DefaultDriveLetter ASC");
         }
 
         private bool SaveChanges()
@@ -652,9 +532,6 @@ namespace QDriveAdminConsole
             return successOnline && successLocal;
         }
 
-
         #endregion
-
-        
     }
 }

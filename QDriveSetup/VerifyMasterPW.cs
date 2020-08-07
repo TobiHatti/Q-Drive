@@ -27,9 +27,22 @@ namespace QDrive
             this.Close();
         }
 
-        private void btnVerify_Click(object sender, EventArgs e)
+        private void btnVerify_Click(object sender, EventArgs e) => Submit();
+
+        private void VerifyMasterPW_Load(object sender, EventArgs e)
         {
-            if(!QDLib.VerifyMasterPassword(txbMasterPassword.Text, DBData)) 
+            txbMasterPassword.Focus();
+        }
+
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Submit();
+        }
+
+        private void Submit()
+        {
+            if (!QDLib.VerifyMasterPassword(txbMasterPassword.Text, DBData))
             {
                 MessageBox.Show("Master-Password is not valid. Please enter the corrent Master-Password, which has been set when the database was first initialised.", "Invalid Master-Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -37,11 +50,6 @@ namespace QDrive
 
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-        private void VerifyMasterPW_Load(object sender, EventArgs e)
-        {
-            txbMasterPassword.Focus();
         }
     }
 }

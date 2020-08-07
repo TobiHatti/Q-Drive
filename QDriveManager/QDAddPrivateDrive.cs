@@ -71,11 +71,25 @@ namespace QDriveManager
             this.Close();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e) => Submit();
+
+        private void SubmitForm(object sender, KeyEventArgs e)
         {
-            if(string.IsNullOrEmpty(txbDrivePath.Text) || string.IsNullOrEmpty(txbDisplayName.Text) || string.IsNullOrEmpty(txbUsername.Text) || string.IsNullOrEmpty(txbPassword.Text))
+            if (e.KeyCode == Keys.Enter)
+                Submit();
+        }
+
+        private void Submit()
+        {
+            if (string.IsNullOrEmpty(txbDisplayName.Text) || string.IsNullOrEmpty(txbUsername.Text) || string.IsNullOrEmpty(txbPassword.Text))
             {
                 MessageBox.Show("Please fill out all required options.", "Missing input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txbDrivePath.Text) || !txbDrivePath.Text.StartsWith(@"\\"))
+            {
+                MessageBox.Show("Please enter a valid drive-path.", "Invalid Drive-Path", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -90,6 +104,5 @@ namespace QDriveManager
             this.Close();
         }
 
-        
     }
 }

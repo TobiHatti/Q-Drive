@@ -52,6 +52,8 @@
             // 
             // grvPublicDrives
             // 
+            this.grvPublicDrives.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grvPublicDrives.BeforeTouchSize = new System.Drawing.Size(401, 368);
             this.grvPublicDrives.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.grvPublicDrives.ButtonView = true;
@@ -71,6 +73,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Location = new System.Drawing.Point(412, 393);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 34);
@@ -81,6 +84,7 @@
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.Location = new System.Drawing.Point(540, 393);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(120, 34);
@@ -91,6 +95,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(408, 133);
             this.label1.Name = "label1";
@@ -100,13 +105,16 @@
             // 
             // txbDisplayName
             // 
+            this.txbDisplayName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txbDisplayName.Location = new System.Drawing.Point(412, 157);
             this.txbDisplayName.Name = "txbDisplayName";
             this.txbDisplayName.Size = new System.Drawing.Size(184, 29);
             this.txbDisplayName.TabIndex = 2;
+            this.txbDisplayName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(598, 133);
             this.label2.Name = "label2";
@@ -116,6 +124,7 @@
             // 
             // cbxDriveLetter
             // 
+            this.cbxDriveLetter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxDriveLetter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDriveLetter.FormattingEnabled = true;
             this.cbxDriveLetter.Items.AddRange(new object[] {
@@ -151,6 +160,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(412, 59);
             this.label3.Name = "label3";
@@ -160,6 +170,7 @@
             // 
             // txbDrivePath
             // 
+            this.txbDrivePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txbDrivePath.Location = new System.Drawing.Point(412, 83);
             this.txbDrivePath.Name = "txbDrivePath";
             this.txbDrivePath.ReadOnly = true;
@@ -168,6 +179,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(408, 189);
             this.label4.Name = "label4";
@@ -177,13 +189,16 @@
             // 
             // txbUsername
             // 
+            this.txbUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txbUsername.Location = new System.Drawing.Point(412, 213);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(248, 29);
             this.txbUsername.TabIndex = 4;
+            this.txbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(412, 245);
             this.label5.Name = "label5";
@@ -193,14 +208,17 @@
             // 
             // txbPassword
             // 
+            this.txbPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txbPassword.Location = new System.Drawing.Point(412, 269);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.PasswordChar = '•';
             this.txbPassword.Size = new System.Drawing.Size(248, 29);
             this.txbPassword.TabIndex = 5;
+            this.txbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(408, 301);
             this.label6.Name = "label6";
@@ -210,10 +228,12 @@
             // 
             // txbDomainName
             // 
+            this.txbDomainName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txbDomainName.Location = new System.Drawing.Point(412, 325);
             this.txbDomainName.Name = "txbDomainName";
             this.txbDomainName.Size = new System.Drawing.Size(248, 29);
             this.txbDomainName.TabIndex = 6;
+            this.txbDomainName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label7
             // 
@@ -229,6 +249,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
             this.label8.ForeColor = System.Drawing.Color.DimGray;
@@ -240,6 +261,8 @@
             // 
             // pbxNoDrivesFound
             // 
+            this.pbxNoDrivesFound.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxNoDrivesFound.Location = new System.Drawing.Point(31, 97);
             this.pbxNoDrivesFound.Name = "pbxNoDrivesFound";
             this.pbxNoDrivesFound.Size = new System.Drawing.Size(350, 285);

@@ -58,4 +58,3 @@ F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Debug\System.Runtime.CompilerServic
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDAddPublicDrive.resources
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDAddUser.resources
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDChangeMasterPassword.resources
-F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDUserSelector.resources

@@ -57,12 +57,25 @@ namespace QDriveAdminConsole
             this.Close();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e) => Submit();
+
+        private void txbDisplayName_TextChanged(object sender, EventArgs e)
+        {
+            if(EditID == null) txbUsername.Text = txbDisplayName.Text.Replace(' ', '.').ToLower();
+        }
+
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Submit();
+        }
+
+        private void Submit()
         {
             if (EditID == null || (EditID != null && !string.IsNullOrEmpty(txbPassword.Text) && !string.IsNullOrEmpty(txbConfirmPassword.Text)))
                 if (!QDLib.ValidatePasswords(txbPassword.Text, txbConfirmPassword.Text)) return;
 
-            if(string.IsNullOrEmpty(txbDisplayName.Text))
+            if (string.IsNullOrEmpty(txbDisplayName.Text))
             {
                 MessageBox.Show("Please enter a valid display-name.", "Invalid Display-Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -89,15 +102,10 @@ namespace QDriveAdminConsole
             DisplayName = txbDisplayName.Text;
             Username = txbUsername.Text;
 
-            if(EditID == null || (EditID != null && !string.IsNullOrEmpty(txbPassword.Text) && !string.IsNullOrEmpty(txbConfirmPassword.Text))) Password = txbPassword.Text;
+            if (EditID == null || (EditID != null && !string.IsNullOrEmpty(txbPassword.Text) && !string.IsNullOrEmpty(txbConfirmPassword.Text))) Password = txbPassword.Text;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-        private void txbDisplayName_TextChanged(object sender, EventArgs e)
-        {
-            if(EditID == null) txbUsername.Text = txbDisplayName.Text.Replace(' ', '.').ToLower();
         }
     }
 }

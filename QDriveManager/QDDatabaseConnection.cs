@@ -40,7 +40,21 @@ namespace QDriveManager
             Password = txbPassword.Text
         });
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e) => Submit();
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Submit();
+        }
+
+        private void Submit()
         {
             dbConDat = new WrapMySQLConDat()
             {
@@ -50,19 +64,12 @@ namespace QDriveManager
                 Password = txbPassword.Text
             };
 
-            if (QDLib.TestConnection(dbConDat))
+            if (QDLib.TestConnection(dbConDat, false))
             {
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        
     }
 }

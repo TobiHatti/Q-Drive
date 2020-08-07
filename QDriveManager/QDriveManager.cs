@@ -216,11 +216,19 @@ namespace QDriveManager
             txbRegName.Focus();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e) => SubmitLogin();
+
+        private void SubmitLoginForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SubmitLogin();
+        }
+
+        private void SubmitLogin()
         {
             if (localUserNoPassword)
             {
-                if(AutostartLogin)
+                if (AutostartLogin)
                 {
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -276,7 +284,7 @@ namespace QDriveManager
 
             txbPassword.Text = string.Empty;
 
-            if(AutostartLogin)
+            if (AutostartLogin)
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -296,7 +304,15 @@ namespace QDriveManager
 
         private void btnRegCancel_Click(object sender, EventArgs e) => pnlLogin.BringToFront();
 
-        private void btnSignUp_Click(object sender, EventArgs e)
+        private void btnSignUp_Click(object sender, EventArgs e) => SubmitRegister();
+
+        private void SubmitRegisterForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SubmitRegister();
+        }
+
+        private void SubmitRegister()
         {
             bool signupSuccess = false;
 

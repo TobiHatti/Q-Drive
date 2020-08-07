@@ -45,6 +45,7 @@
             this.txbMasterPassword.PasswordChar = '•';
             this.txbMasterPassword.Size = new System.Drawing.Size(380, 29);
             this.txbMasterPassword.TabIndex = 1;
+            this.txbMasterPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // lblSA2Password
             // 

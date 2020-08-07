@@ -104,6 +104,7 @@
             this.txbConfirmNewPassword.PasswordChar = '•';
             this.txbConfirmNewPassword.Size = new System.Drawing.Size(346, 29);
             this.txbConfirmNewPassword.TabIndex = 3;
+            this.txbConfirmNewPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // txbNewPassword
             // 
@@ -114,6 +115,7 @@
             this.txbNewPassword.PasswordChar = '•';
             this.txbNewPassword.Size = new System.Drawing.Size(346, 29);
             this.txbNewPassword.TabIndex = 2;
+            this.txbNewPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // lblSA2Password
             // 
@@ -134,6 +136,7 @@
             this.txbOldPassword.PasswordChar = '•';
             this.txbOldPassword.Size = new System.Drawing.Size(346, 29);
             this.txbOldPassword.TabIndex = 1;
+            this.txbOldPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // QDChangeMasterPassword
             // 

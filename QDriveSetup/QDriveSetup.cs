@@ -102,11 +102,19 @@ namespace QDrive
 
         private void btnSA2Prev_Click(object sender, EventArgs e) => pnlS1ConnectionType.BringToFront();
 
-        private void btnSA2Next_Click(object sender, EventArgs e)
+        private void btnSA2Next_Click(object sender, EventArgs e) => SubmitSA2();
+
+        private void SubmitSA2Form(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SubmitSA2();
+        }
+
+        private void SubmitSA2()
         {
             alwaysPromptPassword = chbSA2PromptPassword.Checked;
 
-            if(alwaysPromptPassword)
+            if (alwaysPromptPassword)
             {
                 // Check if both passwords are valid
                 if (QDLib.ValidatePasswords(txbSA2Password.Text, txbSA2ConfirmPassword.Text)) localPassword = txbSA2Password.Text;
@@ -142,9 +150,17 @@ namespace QDrive
 
         private void btnSB2APrev_Click(object sender, EventArgs e) => pnlS1ConnectionType.BringToFront();
 
-        private void btnSB2ANext_Click(object sender, EventArgs e)
+        private void btnSB2ANext_Click(object sender, EventArgs e) => SubmitSB2A();
+
+        private void SubmitSB2AForm(object sender, KeyEventArgs e)
         {
-            onlineDBConDat = new WrapMySQLConDat() 
+            if (e.KeyCode == Keys.Enter)
+                SubmitSB2A();
+        }
+
+        private void SubmitSB2A()
+        {
+            onlineDBConDat = new WrapMySQLConDat()
             {
                 Hostname = txbSB2DBHostname.Text,
                 Database = txbSB2DBName.Text,
@@ -153,7 +169,7 @@ namespace QDrive
             };
 
 
-            if (QDLib.TestConnection(onlineDBConDat))
+            if (QDLib.TestConnection(onlineDBConDat, false))
             {
                 onlineAlreadyConfigured = IsConfiguredDB();
 
@@ -190,11 +206,19 @@ namespace QDrive
             txbSB2NewDBConfirmPassword.Enabled = !rbnSB2ExistingDB.Checked;
         }
 
-        private void btnSB2BNext_Click(object sender, EventArgs e)
+        private void btnSB2BNext_Click(object sender, EventArgs e) => SubmitSB2B();
+
+        private void SubmitSB2BForm(object sender, KeyEventArgs e)
         {
-            if(rbnSB2ExistingDB.Checked)
+            if (e.KeyCode == Keys.Enter)
+                SubmitSB2B();
+        }
+
+        private void SubmitSB2B()
+        {
+            if (rbnSB2ExistingDB.Checked)
             {
-                if(!QDLib.VerifyMasterPassword(txbSB2ExistingDBPassword.Text, onlineDBConDat))
+                if (!QDLib.VerifyMasterPassword(txbSB2ExistingDBPassword.Text, onlineDBConDat))
                 {
                     MessageBox.Show("Master-Password is not valid. Please enter the corrent Master-Password, which has been set when the database was first initialised.", "Invalid Master-Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;

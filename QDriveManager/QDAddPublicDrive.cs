@@ -152,7 +152,15 @@ namespace QDriveManager
         }
 
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e) => Submit();
+
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Submit();
+        }
+
+        private void Submit()
         {
             if (string.IsNullOrEmpty(txbDisplayName.Text)) { MessageBox.Show("Please enter a Display-Name.", "Missing Value", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
             if (string.IsNullOrEmpty(txbUsername.Text)) { MessageBox.Show("Please enter a Username.", "Missing Value", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }

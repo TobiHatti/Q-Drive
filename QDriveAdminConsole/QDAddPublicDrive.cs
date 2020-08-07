@@ -32,28 +32,7 @@ namespace QDriveAdminConsole
             this.Close();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txbDrivePath.Text))
-            {
-                MessageBox.Show("Please enter a valid drive-path.", "Invalid Drive-Path", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txbDisplayName.Text))
-            {
-                MessageBox.Show("Please enter a display-name.", "Invalid Drive-Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            DrivePath = txbDrivePath.Text;
-            DriveName = txbDisplayName.Text;
-            DriveLetter = cbxDriveLetter.Text[0].ToString();
-            CanBeDeployed = chbCanBeDeployed.Checked;
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
+        private void btnSubmit_Click(object sender, EventArgs e) => Submit();
 
         private void QDAddPublicDrive_Load(object sender, EventArgs e)
         {
@@ -72,6 +51,35 @@ namespace QDriveAdminConsole
                 lblAddDriveTitle.Text = "Edit public drive template";
                 btnSubmit.Text = "Update Drive";
             }
+        }
+
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Submit();
+        }
+
+        private void Submit()
+        {
+            if (string.IsNullOrEmpty(txbDrivePath.Text) || !txbDrivePath.Text.StartsWith(@"\\"))
+            {
+                MessageBox.Show("Please enter a valid drive-path.", "Invalid Drive-Path", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txbDisplayName.Text))
+            {
+                MessageBox.Show("Please enter a display-name.", "Invalid Drive-Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DrivePath = txbDrivePath.Text;
+            DriveName = txbDisplayName.Text;
+            DriveLetter = cbxDriveLetter.Text[0].ToString();
+            CanBeDeployed = chbCanBeDeployed.Checked;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

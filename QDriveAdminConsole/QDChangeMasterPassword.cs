@@ -27,9 +27,17 @@ namespace QDriveAdminConsole
             this.Close();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e) => Submit();
+
+        private void SubmitForm(object sender, KeyEventArgs e)
         {
-            if(txbOldPassword.Text != MasterPassword)
+            if (e.KeyCode == Keys.Enter)
+                Submit();
+        }
+
+        private void Submit()
+        {
+            if (QDLib.HashPassword(txbOldPassword.Text) != MasterPassword)
             {
                 MessageBox.Show("Old password is not valid.", "Invalid password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

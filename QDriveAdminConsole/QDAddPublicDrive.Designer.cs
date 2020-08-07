@@ -44,6 +44,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Location = new System.Drawing.Point(287, 260);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 34);
@@ -54,6 +55,7 @@
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.Location = new System.Drawing.Point(413, 260);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(120, 34);
@@ -123,17 +125,23 @@
             // 
             // txbDisplayName
             // 
+            this.txbDisplayName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbDisplayName.Location = new System.Drawing.Point(167, 143);
             this.txbDisplayName.Name = "txbDisplayName";
             this.txbDisplayName.Size = new System.Drawing.Size(366, 29);
             this.txbDisplayName.TabIndex = 2;
+            this.txbDisplayName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // txbDrivePath
             // 
+            this.txbDrivePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbDrivePath.Location = new System.Drawing.Point(113, 65);
             this.txbDrivePath.Name = "txbDrivePath";
             this.txbDrivePath.Size = new System.Drawing.Size(420, 29);
             this.txbDrivePath.TabIndex = 1;
+            this.txbDrivePath.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label2
             // 

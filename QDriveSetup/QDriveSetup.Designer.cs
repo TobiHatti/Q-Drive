@@ -213,21 +213,27 @@
             // 
             // txbSA2ConfirmPassword
             // 
+            this.txbSA2ConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSA2ConfirmPassword.Enabled = false;
             this.txbSA2ConfirmPassword.Location = new System.Drawing.Point(46, 201);
             this.txbSA2ConfirmPassword.Name = "txbSA2ConfirmPassword";
             this.txbSA2ConfirmPassword.PasswordChar = '•';
             this.txbSA2ConfirmPassword.Size = new System.Drawing.Size(357, 29);
             this.txbSA2ConfirmPassword.TabIndex = 4;
+            this.txbSA2ConfirmPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitSA2Form);
             // 
             // txbSA2Password
             // 
+            this.txbSA2Password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSA2Password.Enabled = false;
             this.txbSA2Password.Location = new System.Drawing.Point(46, 135);
             this.txbSA2Password.Name = "txbSA2Password";
             this.txbSA2Password.PasswordChar = '•';
             this.txbSA2Password.Size = new System.Drawing.Size(357, 29);
             this.txbSA2Password.TabIndex = 3;
+            this.txbSA2Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitSA2Form);
             // 
             // chbSA2PromptPassword
             // 
@@ -316,18 +322,24 @@
             // 
             // txbSB2DBName
             // 
+            this.txbSB2DBName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSB2DBName.Location = new System.Drawing.Point(168, 259);
             this.txbSB2DBName.Name = "txbSB2DBName";
             this.txbSB2DBName.Size = new System.Drawing.Size(361, 29);
             this.txbSB2DBName.TabIndex = 4;
+            this.txbSB2DBName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitSB2AForm);
             // 
             // txbSB2DBPassword
             // 
+            this.txbSB2DBPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSB2DBPassword.Location = new System.Drawing.Point(168, 224);
             this.txbSB2DBPassword.Name = "txbSB2DBPassword";
             this.txbSB2DBPassword.PasswordChar = '•';
             this.txbSB2DBPassword.Size = new System.Drawing.Size(361, 29);
             this.txbSB2DBPassword.TabIndex = 3;
+            this.txbSB2DBPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitSB2AForm);
             // 
             // label7
             // 
@@ -341,17 +353,23 @@
             // 
             // txbSB2DBUsername
             // 
+            this.txbSB2DBUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSB2DBUsername.Location = new System.Drawing.Point(168, 189);
             this.txbSB2DBUsername.Name = "txbSB2DBUsername";
             this.txbSB2DBUsername.Size = new System.Drawing.Size(361, 29);
             this.txbSB2DBUsername.TabIndex = 2;
+            this.txbSB2DBUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitSB2AForm);
             // 
             // txbSB2DBHostname
             // 
+            this.txbSB2DBHostname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSB2DBHostname.Location = new System.Drawing.Point(168, 154);
             this.txbSB2DBHostname.Name = "txbSB2DBHostname";
             this.txbSB2DBHostname.Size = new System.Drawing.Size(361, 29);
             this.txbSB2DBHostname.TabIndex = 1;
+            this.txbSB2DBHostname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitSB2AForm);
             // 
             // btnSB2APrev
             // 
@@ -388,6 +406,7 @@
             // 
             // btnSB2TestConnection
             // 
+            this.btnSB2TestConnection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSB2TestConnection.Location = new System.Drawing.Point(391, 294);
             this.btnSB2TestConnection.Name = "btnSB2TestConnection";
             this.btnSB2TestConnection.Size = new System.Drawing.Size(138, 36);
@@ -474,12 +493,15 @@
             // 
             // txbSB2NewDBConfirmPassword
             // 
+            this.txbSB2NewDBConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSB2NewDBConfirmPassword.Enabled = false;
             this.txbSB2NewDBConfirmPassword.Location = new System.Drawing.Point(43, 266);
             this.txbSB2NewDBConfirmPassword.Name = "txbSB2NewDBConfirmPassword";
             this.txbSB2NewDBConfirmPassword.PasswordChar = '•';
             this.txbSB2NewDBConfirmPassword.Size = new System.Drawing.Size(357, 29);
             this.txbSB2NewDBConfirmPassword.TabIndex = 4;
+            this.txbSB2NewDBConfirmPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitSB2BForm);
             // 
             // btnSB2BPrev
             // 
@@ -505,20 +527,26 @@
             // 
             // txbSB2ExistingDBPassword
             // 
+            this.txbSB2ExistingDBPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSB2ExistingDBPassword.Location = new System.Drawing.Point(43, 110);
             this.txbSB2ExistingDBPassword.Name = "txbSB2ExistingDBPassword";
             this.txbSB2ExistingDBPassword.PasswordChar = '•';
             this.txbSB2ExistingDBPassword.Size = new System.Drawing.Size(357, 29);
             this.txbSB2ExistingDBPassword.TabIndex = 2;
+            this.txbSB2ExistingDBPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitSB2BForm);
             // 
             // txbSB2NewDBPassword
             // 
+            this.txbSB2NewDBPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSB2NewDBPassword.Enabled = false;
             this.txbSB2NewDBPassword.Location = new System.Drawing.Point(43, 200);
             this.txbSB2NewDBPassword.Name = "txbSB2NewDBPassword";
             this.txbSB2NewDBPassword.PasswordChar = '•';
             this.txbSB2NewDBPassword.Size = new System.Drawing.Size(357, 29);
             this.txbSB2NewDBPassword.TabIndex = 3;
+            this.txbSB2NewDBPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitSB2BForm);
             // 
             // btnSB2BNext
             // 

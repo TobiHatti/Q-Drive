@@ -70,6 +70,7 @@
             this.txbOldPassword.PasswordChar = '•';
             this.txbOldPassword.Size = new System.Drawing.Size(368, 29);
             this.txbOldPassword.TabIndex = 1;
+            this.txbOldPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label1
             // 
@@ -89,6 +90,7 @@
             this.txbNewPassword.PasswordChar = '•';
             this.txbNewPassword.Size = new System.Drawing.Size(368, 29);
             this.txbNewPassword.TabIndex = 2;
+            this.txbNewPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // txbConfirmNewPassword
             // 
@@ -99,6 +101,7 @@
             this.txbConfirmNewPassword.PasswordChar = '•';
             this.txbConfirmNewPassword.Size = new System.Drawing.Size(368, 29);
             this.txbConfirmNewPassword.TabIndex = 3;
+            this.txbConfirmNewPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SubmitForm);
             // 
             // label2
             // 
@@ -111,6 +114,7 @@
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.Location = new System.Drawing.Point(254, 315);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(120, 34);
@@ -121,6 +125,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.Location = new System.Drawing.Point(6, 315);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 34);
