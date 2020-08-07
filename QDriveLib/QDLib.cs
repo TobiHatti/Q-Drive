@@ -273,7 +273,7 @@ namespace QDriveLib
             return 0;
         }
 
-        public static bool TestConnection(WrapMySQLConDat pOnlineDBConDat)
+        public static bool TestConnection(WrapMySQLConDat pOnlineDBConDat, bool messageOnSuccess = true)
         {
             bool success = false;
 
@@ -288,7 +288,10 @@ namespace QDriveLib
                 finally { sql.Close(); }
             }
 
-            if (success) MessageBox.Show("Connection to the database established successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (success)
+            {
+                if(messageOnSuccess) MessageBox.Show("Connection to the database established successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else MessageBox.Show("Could not connect to the database.", "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             return success;

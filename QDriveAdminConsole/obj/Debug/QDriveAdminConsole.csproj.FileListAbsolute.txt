@@ -54,4 +54,8 @@ F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Debug\K4os.Compression.LZ4.xml
 F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Debug\K4os.Hash.xxHash.xml
 F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Debug\System.Memory.xml
 F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Debug\System.Numerics.Vectors.xml
-F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.exe.config
+F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDAddPublicDrive.resources
+F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDAddUser.resources
+F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDChangeMasterPassword.resources
+F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDUserSelector.resources

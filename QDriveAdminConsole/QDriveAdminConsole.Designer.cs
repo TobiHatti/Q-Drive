@@ -28,26 +28,78 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection6 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection6 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection3 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection3 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
             Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection3 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection3 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection5 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
             Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection5 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection6 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection6 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDriveAdminConsole));
             this.pnlSettings = new System.Windows.Forms.Panel();
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
-            this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.toggleButton1 = new Syncfusion.Windows.Forms.Tools.ToggleButton();
-            this.tabPageAdv4 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.tabPageAdv3 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.tabSettings = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.txbDefaultDomain = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tglUserCanToggleKeepLoggedIn = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.tglUserCanSelfRegister = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.tglUserCanAddPublicDrives = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.tglUserCanAddPrivateDrives = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.tglForceLoginAsDriveAuthentication = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.tglUseLoginAsDriveAuthentication = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.tabUsers = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.lbxUserList = new System.Windows.Forms.ListBox();
+            this.btnDeleteAccount = new System.Windows.Forms.Button();
+            this.btnEditUserAccount = new System.Windows.Forms.Button();
+            this.btnRegisterNewUser = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tabMySQL = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnTestDBConnection = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txbDBDatabase = new System.Windows.Forms.TextBox();
+            this.txbDBPassword = new System.Windows.Forms.TextBox();
+            this.txbDBUsername = new System.Windows.Forms.TextBox();
+            this.txbDBHostname = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tabOnlineDrives = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.label23 = new System.Windows.Forms.Label();
+            this.lbxOnlineDrives = new System.Windows.Forms.ListBox();
+            this.btnRemoveOnlineDrive = new System.Windows.Forms.Button();
+            this.btnEditOnlineDrive = new System.Windows.Forms.Button();
+            this.btnAddOnlineDrive = new System.Windows.Forms.Button();
+            this.tabDeployDrives = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.lbxDeployedDrives = new System.Windows.Forms.ListBox();
+            this.lbxDeployableDrives = new System.Windows.Forms.ListBox();
+            this.btnRemoveFromSelectedUsers = new System.Windows.Forms.Button();
+            this.btnRemoveFromAllUsers = new System.Windows.Forms.Button();
+            this.btnDeployToSelectedUsers = new System.Windows.Forms.Button();
+            this.btnDeployToAllUsers = new System.Windows.Forms.Button();
+            this.tabInfoAndMore = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.lnkReleases = new System.Windows.Forms.LinkLabel();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnChangeMasterPassword = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
@@ -63,60 +115,33 @@
             this.pnlLoading = new System.Windows.Forms.Panel();
             this.pbxQDLogoLoading = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.toggleButton2 = new Syncfusion.Windows.Forms.Tools.ToggleButton();
-            this.toggleButton3 = new Syncfusion.Windows.Forms.Tools.ToggleButton();
-            this.toggleButton4 = new Syncfusion.Windows.Forms.Tools.ToggleButton();
-            this.toggleButton5 = new Syncfusion.Windows.Forms.Tools.ToggleButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.toggleButton6 = new Syncfusion.Windows.Forms.Tools.ToggleButton();
-            this.label13 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.lnkReleases = new System.Windows.Forms.LinkLabel();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.pnlNotConfigured = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.btnRunSetup = new System.Windows.Forms.Button();
             this.pnlSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
-            this.tabPageAdv1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton1)).BeginInit();
-            this.tabPageAdv4.SuspendLayout();
-            this.tabPageAdv2.SuspendLayout();
-            this.tabPageAdv3.SuspendLayout();
+            this.tabSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanToggleKeepLoggedIn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanSelfRegister)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanAddPublicDrives)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanAddPrivateDrives)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglForceLoginAsDriveAuthentication)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUseLoginAsDriveAuthentication)).BeginInit();
+            this.tabUsers.SuspendLayout();
+            this.tabMySQL.SuspendLayout();
+            this.tabOnlineDrives.SuspendLayout();
+            this.tabDeployDrives.SuspendLayout();
+            this.tabInfoAndMore.SuspendLayout();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogo)).BeginInit();
             this.pnlLocal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLocal)).BeginInit();
             this.pnlLoading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLoading)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton6)).BeginInit();
+            this.pnlNotConfigured.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSettings
@@ -126,137 +151,737 @@
             this.pnlSettings.Controls.Add(this.btnClose);
             this.pnlSettings.Controls.Add(this.btnApply);
             this.pnlSettings.Controls.Add(this.btnSubmit);
-            this.pnlSettings.Location = new System.Drawing.Point(460, 6);
+            this.pnlSettings.Location = new System.Drawing.Point(6, 6);
             this.pnlSettings.Name = "pnlSettings";
-            this.pnlSettings.Size = new System.Drawing.Size(448, 395);
+            this.pnlSettings.Size = new System.Drawing.Size(694, 395);
             this.pnlSettings.TabIndex = 0;
             // 
             // tabControlAdv1
             // 
             this.tabControlAdv1.ActiveTabFont = new System.Drawing.Font("Segoe UI Semilight", 12F);
-            this.tabControlAdv1.BeforeTouchSize = new System.Drawing.Size(448, 350);
-            this.tabControlAdv1.Controls.Add(this.tabPageAdv1);
-            this.tabControlAdv1.Controls.Add(this.tabPageAdv4);
-            this.tabControlAdv1.Controls.Add(this.tabPageAdv2);
-            this.tabControlAdv1.Controls.Add(this.tabPageAdv3);
+            this.tabControlAdv1.BeforeTouchSize = new System.Drawing.Size(694, 350);
+            this.tabControlAdv1.Controls.Add(this.tabSettings);
+            this.tabControlAdv1.Controls.Add(this.tabUsers);
+            this.tabControlAdv1.Controls.Add(this.tabMySQL);
+            this.tabControlAdv1.Controls.Add(this.tabOnlineDrives);
+            this.tabControlAdv1.Controls.Add(this.tabDeployDrives);
+            this.tabControlAdv1.Controls.Add(this.tabInfoAndMore);
             this.tabControlAdv1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControlAdv1.FocusOnTabClick = false;
             this.tabControlAdv1.Location = new System.Drawing.Point(0, 0);
             this.tabControlAdv1.Name = "tabControlAdv1";
-            this.tabControlAdv1.Size = new System.Drawing.Size(448, 350);
+            this.tabControlAdv1.Size = new System.Drawing.Size(694, 350);
             this.tabControlAdv1.TabIndex = 0;
             this.tabControlAdv1.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016Black);
             this.tabControlAdv1.ThemeName = "TabRendererOffice2016Black";
+            this.tabControlAdv1.ThemeStyle.PrimitiveButtonStyle.DisabledNextPageImage = null;
             // 
-            // tabPageAdv1
+            // tabSettings
             // 
-            this.tabPageAdv1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.tabPageAdv1.Controls.Add(this.textBox1);
-            this.tabPageAdv1.Controls.Add(this.label14);
-            this.tabPageAdv1.Controls.Add(this.label13);
-            this.tabPageAdv1.Controls.Add(this.label12);
-            this.tabPageAdv1.Controls.Add(this.label11);
-            this.tabPageAdv1.Controls.Add(this.label10);
-            this.tabPageAdv1.Controls.Add(this.label9);
-            this.tabPageAdv1.Controls.Add(this.label8);
-            this.tabPageAdv1.Controls.Add(this.label4);
-            this.tabPageAdv1.Controls.Add(this.toggleButton5);
-            this.tabPageAdv1.Controls.Add(this.toggleButton4);
-            this.tabPageAdv1.Controls.Add(this.toggleButton3);
-            this.tabPageAdv1.Controls.Add(this.toggleButton2);
-            this.tabPageAdv1.Controls.Add(this.toggleButton6);
-            this.tabPageAdv1.Controls.Add(this.toggleButton1);
-            this.tabPageAdv1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tabPageAdv1.Image = null;
-            this.tabPageAdv1.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabPageAdv1.Location = new System.Drawing.Point(1, 30);
-            this.tabPageAdv1.Name = "tabPageAdv1";
-            this.tabPageAdv1.ShowCloseButton = true;
-            this.tabPageAdv1.Size = new System.Drawing.Size(445, 318);
-            this.tabPageAdv1.TabIndex = 1;
-            this.tabPageAdv1.Text = " QD-Settings ";
-            this.tabPageAdv1.ThemesEnabled = false;
+            this.tabSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabSettings.Controls.Add(this.txbDefaultDomain);
+            this.tabSettings.Controls.Add(this.label14);
+            this.tabSettings.Controls.Add(this.label13);
+            this.tabSettings.Controls.Add(this.label12);
+            this.tabSettings.Controls.Add(this.label11);
+            this.tabSettings.Controls.Add(this.label10);
+            this.tabSettings.Controls.Add(this.label9);
+            this.tabSettings.Controls.Add(this.label8);
+            this.tabSettings.Controls.Add(this.label4);
+            this.tabSettings.Controls.Add(this.tglUserCanToggleKeepLoggedIn);
+            this.tabSettings.Controls.Add(this.tglUserCanSelfRegister);
+            this.tabSettings.Controls.Add(this.tglUserCanAddPublicDrives);
+            this.tabSettings.Controls.Add(this.tglUserCanAddPrivateDrives);
+            this.tabSettings.Controls.Add(this.tglForceLoginAsDriveAuthentication);
+            this.tabSettings.Controls.Add(this.tglUseLoginAsDriveAuthentication);
+            this.tabSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabSettings.Image = null;
+            this.tabSettings.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabSettings.Location = new System.Drawing.Point(1, 30);
+            this.tabSettings.Name = "tabSettings";
+            this.tabSettings.ShowCloseButton = true;
+            this.tabSettings.Size = new System.Drawing.Size(691, 318);
+            this.tabSettings.TabIndex = 1;
+            this.tabSettings.Text = " QD-Settings ";
+            this.tabSettings.ThemesEnabled = false;
             // 
-            // toggleButton1
+            // txbDefaultDomain
+            // 
+            this.txbDefaultDomain.Location = new System.Drawing.Point(254, 275);
+            this.txbDefaultDomain.Name = "txbDefaultDomain";
+            this.txbDefaultDomain.Size = new System.Drawing.Size(293, 29);
+            this.txbDefaultDomain.TabIndex = 7;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(128, 278);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(120, 21);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Default domain:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(195, 237);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(316, 21);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Force User-Login as Net-Drive authentication";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(195, 203);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(329, 21);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Autofill User-Login as Net-Drive authentication";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(195, 151);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(200, 21);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Users can add private drives";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(195, 117);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(196, 21);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Users can add public drives";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(195, 83);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(243, 21);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Users can create Q-Drive accounts";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(195, 49);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(291, 21);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Users can toggle \"Keep logged in\" option";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label4.Location = new System.Drawing.Point(16, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(221, 28);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Q-Drive General Settings";
+            // 
+            // tglUserCanToggleKeepLoggedIn
+            // 
+            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.tglUserCanToggleKeepLoggedIn.ActiveState = activeStateCollection1;
+            this.tglUserCanToggleKeepLoggedIn.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
+            this.tglUserCanToggleKeepLoggedIn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tglUserCanToggleKeepLoggedIn.ForeColor = System.Drawing.Color.Black;
+            this.tglUserCanToggleKeepLoggedIn.Location = new System.Drawing.Point(137, 46);
+            this.tglUserCanToggleKeepLoggedIn.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tglUserCanToggleKeepLoggedIn.Name = "tglUserCanToggleKeepLoggedIn";
+            this.tglUserCanToggleKeepLoggedIn.Size = new System.Drawing.Size(52, 29);
+            this.tglUserCanToggleKeepLoggedIn.Slider = sliderCollection1;
+            this.tglUserCanToggleKeepLoggedIn.TabIndex = 1;
+            this.tglUserCanToggleKeepLoggedIn.Text = "toggleButton1";
+            this.tglUserCanToggleKeepLoggedIn.ThemeName = "Office2016Black";
+            this.tglUserCanToggleKeepLoggedIn.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.tglUserCanToggleKeepLoggedIn.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            // 
+            // tglUserCanSelfRegister
+            // 
+            activeStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.tglUserCanSelfRegister.ActiveState = activeStateCollection2;
+            this.tglUserCanSelfRegister.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
+            this.tglUserCanSelfRegister.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tglUserCanSelfRegister.ForeColor = System.Drawing.Color.Black;
+            this.tglUserCanSelfRegister.Location = new System.Drawing.Point(137, 80);
+            this.tglUserCanSelfRegister.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tglUserCanSelfRegister.Name = "tglUserCanSelfRegister";
+            this.tglUserCanSelfRegister.Size = new System.Drawing.Size(52, 29);
+            this.tglUserCanSelfRegister.Slider = sliderCollection2;
+            this.tglUserCanSelfRegister.TabIndex = 2;
+            this.tglUserCanSelfRegister.Text = "toggleButton1";
+            this.tglUserCanSelfRegister.ThemeName = "Office2016Black";
+            this.tglUserCanSelfRegister.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.tglUserCanSelfRegister.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            // 
+            // tglUserCanAddPublicDrives
+            // 
+            activeStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.tglUserCanAddPublicDrives.ActiveState = activeStateCollection3;
+            this.tglUserCanAddPublicDrives.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
+            this.tglUserCanAddPublicDrives.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tglUserCanAddPublicDrives.ForeColor = System.Drawing.Color.Black;
+            this.tglUserCanAddPublicDrives.Location = new System.Drawing.Point(137, 114);
+            this.tglUserCanAddPublicDrives.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tglUserCanAddPublicDrives.Name = "tglUserCanAddPublicDrives";
+            this.tglUserCanAddPublicDrives.Size = new System.Drawing.Size(52, 29);
+            this.tglUserCanAddPublicDrives.Slider = sliderCollection3;
+            this.tglUserCanAddPublicDrives.TabIndex = 3;
+            this.tglUserCanAddPublicDrives.Text = "toggleButton1";
+            this.tglUserCanAddPublicDrives.ThemeName = "Office2016Black";
+            this.tglUserCanAddPublicDrives.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.tglUserCanAddPublicDrives.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            // 
+            // tglUserCanAddPrivateDrives
+            // 
+            activeStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.tglUserCanAddPrivateDrives.ActiveState = activeStateCollection4;
+            this.tglUserCanAddPrivateDrives.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
+            this.tglUserCanAddPrivateDrives.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tglUserCanAddPrivateDrives.ForeColor = System.Drawing.Color.Black;
+            this.tglUserCanAddPrivateDrives.Location = new System.Drawing.Point(137, 148);
+            this.tglUserCanAddPrivateDrives.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tglUserCanAddPrivateDrives.Name = "tglUserCanAddPrivateDrives";
+            this.tglUserCanAddPrivateDrives.Size = new System.Drawing.Size(52, 29);
+            this.tglUserCanAddPrivateDrives.Slider = sliderCollection4;
+            this.tglUserCanAddPrivateDrives.TabIndex = 4;
+            this.tglUserCanAddPrivateDrives.Text = "toggleButton1";
+            this.tglUserCanAddPrivateDrives.ThemeName = "Office2016Black";
+            this.tglUserCanAddPrivateDrives.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.tglUserCanAddPrivateDrives.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            // 
+            // tglForceLoginAsDriveAuthentication
+            // 
+            activeStateCollection5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.tglForceLoginAsDriveAuthentication.ActiveState = activeStateCollection5;
+            this.tglForceLoginAsDriveAuthentication.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
+            this.tglForceLoginAsDriveAuthentication.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tglForceLoginAsDriveAuthentication.ForeColor = System.Drawing.Color.Black;
+            this.tglForceLoginAsDriveAuthentication.Location = new System.Drawing.Point(137, 234);
+            this.tglForceLoginAsDriveAuthentication.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tglForceLoginAsDriveAuthentication.Name = "tglForceLoginAsDriveAuthentication";
+            this.tglForceLoginAsDriveAuthentication.Size = new System.Drawing.Size(52, 29);
+            this.tglForceLoginAsDriveAuthentication.Slider = sliderCollection5;
+            this.tglForceLoginAsDriveAuthentication.TabIndex = 6;
+            this.tglForceLoginAsDriveAuthentication.Text = "toggleButton1";
+            this.tglForceLoginAsDriveAuthentication.ThemeName = "Office2016Black";
+            this.tglForceLoginAsDriveAuthentication.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.tglForceLoginAsDriveAuthentication.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            // 
+            // tglUseLoginAsDriveAuthentication
             // 
             activeStateCollection6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            this.toggleButton1.ActiveState = activeStateCollection6;
-            this.toggleButton1.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
-            this.toggleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toggleButton1.ForeColor = System.Drawing.Color.Black;
-            this.toggleButton1.Location = new System.Drawing.Point(21, 200);
-            this.toggleButton1.MinimumSize = new System.Drawing.Size(52, 20);
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.Size = new System.Drawing.Size(52, 29);
-            this.toggleButton1.Slider = sliderCollection6;
-            this.toggleButton1.TabIndex = 0;
-            this.toggleButton1.Text = "toggleButton1";
-            this.toggleButton1.ThemeName = "Office2016Black";
-            this.toggleButton1.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
-            this.toggleButton1.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            this.tglUseLoginAsDriveAuthentication.ActiveState = activeStateCollection6;
+            this.tglUseLoginAsDriveAuthentication.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
+            this.tglUseLoginAsDriveAuthentication.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tglUseLoginAsDriveAuthentication.ForeColor = System.Drawing.Color.Black;
+            this.tglUseLoginAsDriveAuthentication.Location = new System.Drawing.Point(137, 200);
+            this.tglUseLoginAsDriveAuthentication.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tglUseLoginAsDriveAuthentication.Name = "tglUseLoginAsDriveAuthentication";
+            this.tglUseLoginAsDriveAuthentication.Size = new System.Drawing.Size(52, 29);
+            this.tglUseLoginAsDriveAuthentication.Slider = sliderCollection6;
+            this.tglUseLoginAsDriveAuthentication.TabIndex = 5;
+            this.tglUseLoginAsDriveAuthentication.Text = "toggleButton1";
+            this.tglUseLoginAsDriveAuthentication.ThemeName = "Office2016Black";
+            this.tglUseLoginAsDriveAuthentication.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.tglUseLoginAsDriveAuthentication.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
             // 
-            // tabPageAdv4
+            // tabUsers
             // 
-            this.tabPageAdv4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.tabPageAdv4.Controls.Add(this.listBox1);
-            this.tabPageAdv4.Controls.Add(this.button3);
-            this.tabPageAdv4.Controls.Add(this.button2);
-            this.tabPageAdv4.Controls.Add(this.button1);
-            this.tabPageAdv4.Controls.Add(this.label5);
-            this.tabPageAdv4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tabPageAdv4.Image = null;
-            this.tabPageAdv4.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabPageAdv4.Location = new System.Drawing.Point(1, 30);
-            this.tabPageAdv4.Name = "tabPageAdv4";
-            this.tabPageAdv4.ShowCloseButton = true;
-            this.tabPageAdv4.Size = new System.Drawing.Size(445, 318);
-            this.tabPageAdv4.TabIndex = 4;
-            this.tabPageAdv4.Text = " Users ";
-            this.tabPageAdv4.ThemesEnabled = false;
+            this.tabUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabUsers.Controls.Add(this.lbxUserList);
+            this.tabUsers.Controls.Add(this.btnDeleteAccount);
+            this.tabUsers.Controls.Add(this.btnEditUserAccount);
+            this.tabUsers.Controls.Add(this.btnRegisterNewUser);
+            this.tabUsers.Controls.Add(this.label5);
+            this.tabUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabUsers.Image = null;
+            this.tabUsers.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabUsers.Location = new System.Drawing.Point(1, 30);
+            this.tabUsers.Name = "tabUsers";
+            this.tabUsers.ShowCloseButton = true;
+            this.tabUsers.Size = new System.Drawing.Size(691, 318);
+            this.tabUsers.TabIndex = 4;
+            this.tabUsers.Text = " Users ";
+            this.tabUsers.ThemesEnabled = false;
             // 
-            // tabPageAdv2
+            // lbxUserList
             // 
-            this.tabPageAdv2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.tabPageAdv2.Controls.Add(this.label18);
-            this.tabPageAdv2.Controls.Add(this.label17);
-            this.tabPageAdv2.Controls.Add(this.label16);
-            this.tabPageAdv2.Controls.Add(this.button4);
-            this.tabPageAdv2.Controls.Add(this.label15);
-            this.tabPageAdv2.Controls.Add(this.textBox5);
-            this.tabPageAdv2.Controls.Add(this.textBox4);
-            this.tabPageAdv2.Controls.Add(this.textBox3);
-            this.tabPageAdv2.Controls.Add(this.textBox2);
-            this.tabPageAdv2.Controls.Add(this.label6);
-            this.tabPageAdv2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tabPageAdv2.Image = null;
-            this.tabPageAdv2.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabPageAdv2.Location = new System.Drawing.Point(1, 30);
-            this.tabPageAdv2.Name = "tabPageAdv2";
-            this.tabPageAdv2.ShowCloseButton = true;
-            this.tabPageAdv2.Size = new System.Drawing.Size(445, 318);
-            this.tabPageAdv2.TabIndex = 2;
-            this.tabPageAdv2.Text = " MySQL-Connection ";
-            this.tabPageAdv2.ThemesEnabled = false;
+            this.lbxUserList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbxUserList.FormattingEnabled = true;
+            this.lbxUserList.ItemHeight = 21;
+            this.lbxUserList.Location = new System.Drawing.Point(2, 58);
+            this.lbxUserList.Name = "lbxUserList";
+            this.lbxUserList.Size = new System.Drawing.Size(686, 214);
+            this.lbxUserList.TabIndex = 1;
+            this.lbxUserList.DoubleClick += new System.EventHandler(this.lbxUserList_DoubleClick);
             // 
-            // tabPageAdv3
+            // btnDeleteAccount
             // 
-            this.tabPageAdv3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.tabPageAdv3.Controls.Add(this.lnkReleases);
-            this.tabPageAdv3.Controls.Add(this.lblVersion);
-            this.tabPageAdv3.Controls.Add(this.label19);
-            this.tabPageAdv3.Controls.Add(this.button5);
-            this.tabPageAdv3.Controls.Add(this.label20);
-            this.tabPageAdv3.Controls.Add(this.label7);
-            this.tabPageAdv3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tabPageAdv3.Image = null;
-            this.tabPageAdv3.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabPageAdv3.Location = new System.Drawing.Point(1, 30);
-            this.tabPageAdv3.Name = "tabPageAdv3";
-            this.tabPageAdv3.ShowCloseButton = true;
-            this.tabPageAdv3.Size = new System.Drawing.Size(445, 318);
-            this.tabPageAdv3.TabIndex = 3;
-            this.tabPageAdv3.Text = " Info and More  ";
-            this.tabPageAdv3.ThemesEnabled = false;
+            this.btnDeleteAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteAccount.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteAccount.Location = new System.Drawing.Point(545, 279);
+            this.btnDeleteAccount.Name = "btnDeleteAccount";
+            this.btnDeleteAccount.Size = new System.Drawing.Size(143, 36);
+            this.btnDeleteAccount.TabIndex = 4;
+            this.btnDeleteAccount.Text = "Delete Account";
+            this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
+            // 
+            // btnEditUserAccount
+            // 
+            this.btnEditUserAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditUserAccount.ForeColor = System.Drawing.Color.Black;
+            this.btnEditUserAccount.Location = new System.Drawing.Point(396, 279);
+            this.btnEditUserAccount.Name = "btnEditUserAccount";
+            this.btnEditUserAccount.Size = new System.Drawing.Size(143, 36);
+            this.btnEditUserAccount.TabIndex = 3;
+            this.btnEditUserAccount.Text = "Edit Account";
+            this.btnEditUserAccount.UseVisualStyleBackColor = true;
+            this.btnEditUserAccount.Click += new System.EventHandler(this.btnEditUserAccount_Click);
+            // 
+            // btnRegisterNewUser
+            // 
+            this.btnRegisterNewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRegisterNewUser.ForeColor = System.Drawing.Color.Black;
+            this.btnRegisterNewUser.Location = new System.Drawing.Point(2, 278);
+            this.btnRegisterNewUser.Name = "btnRegisterNewUser";
+            this.btnRegisterNewUser.Size = new System.Drawing.Size(143, 36);
+            this.btnRegisterNewUser.TabIndex = 2;
+            this.btnRegisterNewUser.Text = "Register new user";
+            this.btnRegisterNewUser.UseVisualStyleBackColor = true;
+            this.btnRegisterNewUser.Click += new System.EventHandler(this.btnRegisterNewUser_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label5.Location = new System.Drawing.Point(16, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(303, 28);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Q-Drive User and Account settings";
+            // 
+            // tabMySQL
+            // 
+            this.tabMySQL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabMySQL.Controls.Add(this.label22);
+            this.tabMySQL.Controls.Add(this.label18);
+            this.tabMySQL.Controls.Add(this.label17);
+            this.tabMySQL.Controls.Add(this.label16);
+            this.tabMySQL.Controls.Add(this.btnTestDBConnection);
+            this.tabMySQL.Controls.Add(this.label15);
+            this.tabMySQL.Controls.Add(this.txbDBDatabase);
+            this.tabMySQL.Controls.Add(this.txbDBPassword);
+            this.tabMySQL.Controls.Add(this.txbDBUsername);
+            this.tabMySQL.Controls.Add(this.txbDBHostname);
+            this.tabMySQL.Controls.Add(this.label6);
+            this.tabMySQL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabMySQL.Image = null;
+            this.tabMySQL.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabMySQL.Location = new System.Drawing.Point(1, 30);
+            this.tabMySQL.Name = "tabMySQL";
+            this.tabMySQL.ShowCloseButton = true;
+            this.tabMySQL.Size = new System.Drawing.Size(691, 318);
+            this.tabMySQL.TabIndex = 2;
+            this.tabMySQL.Text = " MySQL-Connection ";
+            this.tabMySQL.ThemesEnabled = false;
+            // 
+            // label22
+            // 
+            this.label22.ForeColor = System.Drawing.Color.DimGray;
+            this.label22.Location = new System.Drawing.Point(3, 290);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(685, 28);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "This will only affect this device!";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(132, 186);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(74, 21);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Database";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(132, 151);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 21);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Password";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(127, 116);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(79, 21);
+            this.label16.TabIndex = 4;
+            this.label16.Text = "Username";
+            // 
+            // btnTestDBConnection
+            // 
+            this.btnTestDBConnection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTestDBConnection.ForeColor = System.Drawing.Color.Black;
+            this.btnTestDBConnection.Location = new System.Drawing.Point(421, 218);
+            this.btnTestDBConnection.Name = "btnTestDBConnection";
+            this.btnTestDBConnection.Size = new System.Drawing.Size(142, 36);
+            this.btnTestDBConnection.TabIndex = 5;
+            this.btnTestDBConnection.Text = "Test Connection";
+            this.btnTestDBConnection.UseVisualStyleBackColor = true;
+            this.btnTestDBConnection.Click += new System.EventHandler(this.btnTestDBConnection_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(126, 81);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(80, 21);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Hostname";
+            // 
+            // txbDBDatabase
+            // 
+            this.txbDBDatabase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDBDatabase.Location = new System.Drawing.Point(212, 183);
+            this.txbDBDatabase.Name = "txbDBDatabase";
+            this.txbDBDatabase.Size = new System.Drawing.Size(351, 29);
+            this.txbDBDatabase.TabIndex = 4;
+            // 
+            // txbDBPassword
+            // 
+            this.txbDBPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDBPassword.Location = new System.Drawing.Point(212, 148);
+            this.txbDBPassword.Name = "txbDBPassword";
+            this.txbDBPassword.PasswordChar = '•';
+            this.txbDBPassword.Size = new System.Drawing.Size(351, 29);
+            this.txbDBPassword.TabIndex = 3;
+            // 
+            // txbDBUsername
+            // 
+            this.txbDBUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDBUsername.Location = new System.Drawing.Point(212, 113);
+            this.txbDBUsername.Name = "txbDBUsername";
+            this.txbDBUsername.Size = new System.Drawing.Size(351, 29);
+            this.txbDBUsername.TabIndex = 2;
+            // 
+            // txbDBHostname
+            // 
+            this.txbDBHostname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDBHostname.Location = new System.Drawing.Point(212, 78);
+            this.txbDBHostname.Name = "txbDBHostname";
+            this.txbDBHostname.Size = new System.Drawing.Size(351, 29);
+            this.txbDBHostname.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label6.Location = new System.Drawing.Point(16, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(302, 28);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Q-Drive Online MySQL connection";
+            // 
+            // tabOnlineDrives
+            // 
+            this.tabOnlineDrives.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabOnlineDrives.Controls.Add(this.label23);
+            this.tabOnlineDrives.Controls.Add(this.lbxOnlineDrives);
+            this.tabOnlineDrives.Controls.Add(this.btnRemoveOnlineDrive);
+            this.tabOnlineDrives.Controls.Add(this.btnEditOnlineDrive);
+            this.tabOnlineDrives.Controls.Add(this.btnAddOnlineDrive);
+            this.tabOnlineDrives.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabOnlineDrives.Image = null;
+            this.tabOnlineDrives.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabOnlineDrives.Location = new System.Drawing.Point(1, 30);
+            this.tabOnlineDrives.Name = "tabOnlineDrives";
+            this.tabOnlineDrives.ShowCloseButton = true;
+            this.tabOnlineDrives.Size = new System.Drawing.Size(691, 318);
+            this.tabOnlineDrives.TabIndex = 5;
+            this.tabOnlineDrives.Text = " Online Drives ";
+            this.tabOnlineDrives.ThemesEnabled = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label23.Location = new System.Drawing.Point(16, 13);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(196, 28);
+            this.label23.TabIndex = 9;
+            this.label23.Text = "Q-Drive Online Drives";
+            // 
+            // lbxOnlineDrives
+            // 
+            this.lbxOnlineDrives.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbxOnlineDrives.FormattingEnabled = true;
+            this.lbxOnlineDrives.ItemHeight = 21;
+            this.lbxOnlineDrives.Location = new System.Drawing.Point(2, 58);
+            this.lbxOnlineDrives.Name = "lbxOnlineDrives";
+            this.lbxOnlineDrives.Size = new System.Drawing.Size(686, 214);
+            this.lbxOnlineDrives.TabIndex = 1;
+            this.lbxOnlineDrives.DoubleClick += new System.EventHandler(this.lbxOnlineDrives_DoubleClick);
+            // 
+            // btnRemoveOnlineDrive
+            // 
+            this.btnRemoveOnlineDrive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveOnlineDrive.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoveOnlineDrive.Location = new System.Drawing.Point(545, 279);
+            this.btnRemoveOnlineDrive.Name = "btnRemoveOnlineDrive";
+            this.btnRemoveOnlineDrive.Size = new System.Drawing.Size(143, 36);
+            this.btnRemoveOnlineDrive.TabIndex = 4;
+            this.btnRemoveOnlineDrive.Text = "Remove Drive";
+            this.btnRemoveOnlineDrive.UseVisualStyleBackColor = true;
+            this.btnRemoveOnlineDrive.Click += new System.EventHandler(this.btnRemoveOnlineDrive_Click);
+            // 
+            // btnEditOnlineDrive
+            // 
+            this.btnEditOnlineDrive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditOnlineDrive.ForeColor = System.Drawing.Color.Black;
+            this.btnEditOnlineDrive.Location = new System.Drawing.Point(396, 279);
+            this.btnEditOnlineDrive.Name = "btnEditOnlineDrive";
+            this.btnEditOnlineDrive.Size = new System.Drawing.Size(143, 36);
+            this.btnEditOnlineDrive.TabIndex = 3;
+            this.btnEditOnlineDrive.Text = "Edit Drive";
+            this.btnEditOnlineDrive.UseVisualStyleBackColor = true;
+            this.btnEditOnlineDrive.Click += new System.EventHandler(this.btnEditOnlineDrive_Click);
+            // 
+            // btnAddOnlineDrive
+            // 
+            this.btnAddOnlineDrive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddOnlineDrive.ForeColor = System.Drawing.Color.Black;
+            this.btnAddOnlineDrive.Location = new System.Drawing.Point(2, 278);
+            this.btnAddOnlineDrive.Name = "btnAddOnlineDrive";
+            this.btnAddOnlineDrive.Size = new System.Drawing.Size(143, 36);
+            this.btnAddOnlineDrive.TabIndex = 2;
+            this.btnAddOnlineDrive.Text = "Add Online Drive";
+            this.btnAddOnlineDrive.UseVisualStyleBackColor = true;
+            this.btnAddOnlineDrive.Click += new System.EventHandler(this.btnAddOnlineDrive_Click);
+            // 
+            // tabDeployDrives
+            // 
+            this.tabDeployDrives.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabDeployDrives.Controls.Add(this.label24);
+            this.tabDeployDrives.Controls.Add(this.label26);
+            this.tabDeployDrives.Controls.Add(this.label25);
+            this.tabDeployDrives.Controls.Add(this.lbxDeployedDrives);
+            this.tabDeployDrives.Controls.Add(this.lbxDeployableDrives);
+            this.tabDeployDrives.Controls.Add(this.btnRemoveFromSelectedUsers);
+            this.tabDeployDrives.Controls.Add(this.btnRemoveFromAllUsers);
+            this.tabDeployDrives.Controls.Add(this.btnDeployToSelectedUsers);
+            this.tabDeployDrives.Controls.Add(this.btnDeployToAllUsers);
+            this.tabDeployDrives.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabDeployDrives.Image = null;
+            this.tabDeployDrives.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabDeployDrives.Location = new System.Drawing.Point(1, 30);
+            this.tabDeployDrives.Name = "tabDeployDrives";
+            this.tabDeployDrives.ShowCloseButton = true;
+            this.tabDeployDrives.Size = new System.Drawing.Size(691, 318);
+            this.tabDeployDrives.TabIndex = 6;
+            this.tabDeployDrives.Text = " Deploy Drives ";
+            this.tabDeployDrives.ThemesEnabled = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label24.Location = new System.Drawing.Point(16, 13);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(216, 28);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Q-Drive Deploy to Users\r\n";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(269, 55);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(139, 21);
+            this.label26.TabIndex = 1;
+            this.label26.Text = "Deployed to Users:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(3, 55);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(137, 21);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Deployable Drives:";
+            // 
+            // lbxDeployedDrives
+            // 
+            this.lbxDeployedDrives.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbxDeployedDrives.FormattingEnabled = true;
+            this.lbxDeployedDrives.ItemHeight = 21;
+            this.lbxDeployedDrives.Location = new System.Drawing.Point(273, 79);
+            this.lbxDeployedDrives.Name = "lbxDeployedDrives";
+            this.lbxDeployedDrives.Size = new System.Drawing.Size(265, 172);
+            this.lbxDeployedDrives.TabIndex = 2;
+            // 
+            // lbxDeployableDrives
+            // 
+            this.lbxDeployableDrives.FormattingEnabled = true;
+            this.lbxDeployableDrives.ItemHeight = 21;
+            this.lbxDeployableDrives.Location = new System.Drawing.Point(2, 79);
+            this.lbxDeployableDrives.Name = "lbxDeployableDrives";
+            this.lbxDeployableDrives.Size = new System.Drawing.Size(265, 235);
+            this.lbxDeployableDrives.TabIndex = 1;
+            this.lbxDeployableDrives.SelectedIndexChanged += new System.EventHandler(this.lbxDeployableDrives_SelectedIndexChanged);
+            // 
+            // btnRemoveFromSelectedUsers
+            // 
+            this.btnRemoveFromSelectedUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveFromSelectedUsers.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoveFromSelectedUsers.Location = new System.Drawing.Point(544, 260);
+            this.btnRemoveFromSelectedUsers.Name = "btnRemoveFromSelectedUsers";
+            this.btnRemoveFromSelectedUsers.Size = new System.Drawing.Size(143, 54);
+            this.btnRemoveFromSelectedUsers.TabIndex = 6;
+            this.btnRemoveFromSelectedUsers.Text = "Remove from selected users";
+            this.btnRemoveFromSelectedUsers.UseVisualStyleBackColor = true;
+            this.btnRemoveFromSelectedUsers.Click += new System.EventHandler(this.btnRemoveFromSelectedUsers_Click);
+            // 
+            // btnRemoveFromAllUsers
+            // 
+            this.btnRemoveFromAllUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveFromAllUsers.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoveFromAllUsers.Location = new System.Drawing.Point(544, 200);
+            this.btnRemoveFromAllUsers.Name = "btnRemoveFromAllUsers";
+            this.btnRemoveFromAllUsers.Size = new System.Drawing.Size(143, 54);
+            this.btnRemoveFromAllUsers.TabIndex = 5;
+            this.btnRemoveFromAllUsers.Text = "Remove from all users";
+            this.btnRemoveFromAllUsers.UseVisualStyleBackColor = true;
+            this.btnRemoveFromAllUsers.Click += new System.EventHandler(this.btnRemoveFromAllUsers_Click);
+            // 
+            // btnDeployToSelectedUsers
+            // 
+            this.btnDeployToSelectedUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeployToSelectedUsers.ForeColor = System.Drawing.Color.Black;
+            this.btnDeployToSelectedUsers.Location = new System.Drawing.Point(544, 140);
+            this.btnDeployToSelectedUsers.Name = "btnDeployToSelectedUsers";
+            this.btnDeployToSelectedUsers.Size = new System.Drawing.Size(143, 54);
+            this.btnDeployToSelectedUsers.TabIndex = 4;
+            this.btnDeployToSelectedUsers.Text = "Deploy to selected users";
+            this.btnDeployToSelectedUsers.UseVisualStyleBackColor = true;
+            this.btnDeployToSelectedUsers.Click += new System.EventHandler(this.btnDeployToSelectedUsers_Click);
+            // 
+            // btnDeployToAllUsers
+            // 
+            this.btnDeployToAllUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeployToAllUsers.ForeColor = System.Drawing.Color.Black;
+            this.btnDeployToAllUsers.Location = new System.Drawing.Point(544, 80);
+            this.btnDeployToAllUsers.Name = "btnDeployToAllUsers";
+            this.btnDeployToAllUsers.Size = new System.Drawing.Size(143, 54);
+            this.btnDeployToAllUsers.TabIndex = 3;
+            this.btnDeployToAllUsers.Text = "Deploy to all users";
+            this.btnDeployToAllUsers.UseVisualStyleBackColor = true;
+            this.btnDeployToAllUsers.Click += new System.EventHandler(this.btnDeployToAllUsers_Click);
+            // 
+            // tabInfoAndMore
+            // 
+            this.tabInfoAndMore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabInfoAndMore.Controls.Add(this.lnkReleases);
+            this.tabInfoAndMore.Controls.Add(this.lblVersion);
+            this.tabInfoAndMore.Controls.Add(this.label19);
+            this.tabInfoAndMore.Controls.Add(this.btnChangeMasterPassword);
+            this.tabInfoAndMore.Controls.Add(this.label20);
+            this.tabInfoAndMore.Controls.Add(this.label7);
+            this.tabInfoAndMore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabInfoAndMore.Image = null;
+            this.tabInfoAndMore.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabInfoAndMore.Location = new System.Drawing.Point(1, 30);
+            this.tabInfoAndMore.Name = "tabInfoAndMore";
+            this.tabInfoAndMore.ShowCloseButton = true;
+            this.tabInfoAndMore.Size = new System.Drawing.Size(691, 318);
+            this.tabInfoAndMore.TabIndex = 3;
+            this.tabInfoAndMore.Text = " Info and More  ";
+            this.tabInfoAndMore.ThemesEnabled = false;
+            // 
+            // lnkReleases
+            // 
+            this.lnkReleases.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lnkReleases.Location = new System.Drawing.Point(177, 166);
+            this.lnkReleases.Name = "lnkReleases";
+            this.lnkReleases.Size = new System.Drawing.Size(337, 26);
+            this.lnkReleases.TabIndex = 12;
+            this.lnkReleases.TabStop = true;
+            this.lnkReleases.Text = "Click here to get the latest version of Q-Drive";
+            this.lnkReleases.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lnkReleases.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkReleases_LinkClicked);
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.ForeColor = System.Drawing.Color.DimGray;
+            this.lblVersion.Location = new System.Drawing.Point(2, 87);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(686, 23);
+            this.lblVersion.TabIndex = 14;
+            this.lblVersion.Text = "Version X.X.X";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.ForeColor = System.Drawing.Color.DimGray;
+            this.label19.Location = new System.Drawing.Point(3, 115);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(685, 51);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "Created by Tobias Hattinger @ Endev\r\nCopyright (c) 2020 Tobias Hattinger";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnChangeMasterPassword
+            // 
+            this.btnChangeMasterPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnChangeMasterPassword.ForeColor = System.Drawing.Color.Black;
+            this.btnChangeMasterPassword.Location = new System.Drawing.Point(245, 239);
+            this.btnChangeMasterPassword.Name = "btnChangeMasterPassword";
+            this.btnChangeMasterPassword.Size = new System.Drawing.Size(200, 36);
+            this.btnChangeMasterPassword.TabIndex = 1;
+            this.btnChangeMasterPassword.Text = "Change Master Password";
+            this.btnChangeMasterPassword.UseVisualStyleBackColor = true;
+            this.btnChangeMasterPassword.Click += new System.EventHandler(this.btnChangeMasterPassword_Click);
+            // 
+            // label20
+            // 
+            this.label20.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
+            this.label20.Location = new System.Drawing.Point(2, 55);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(686, 32);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Q-Drive";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label7.Location = new System.Drawing.Point(16, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(270, 28);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Q-Drive Information and more";
             // 
             // btnClose
             // 
@@ -265,31 +890,34 @@
             this.btnClose.Location = new System.Drawing.Point(3, 356);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(102, 36);
-            this.btnClose.TabIndex = 1;
+            this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnApply.ForeColor = System.Drawing.Color.Black;
-            this.btnApply.Location = new System.Drawing.Point(235, 356);
+            this.btnApply.Location = new System.Drawing.Point(481, 356);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(102, 36);
-            this.btnApply.TabIndex = 1;
+            this.btnApply.TabIndex = 9;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // btnSubmit
             // 
             this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.ForeColor = System.Drawing.Color.Black;
-            this.btnSubmit.Location = new System.Drawing.Point(343, 356);
+            this.btnSubmit.Location = new System.Drawing.Point(589, 356);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(102, 36);
-            this.btnSubmit.TabIndex = 1;
+            this.btnSubmit.TabIndex = 8;
             this.btnSubmit.Text = "OK";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // pnlLogin
             // 
@@ -297,14 +925,14 @@
             this.pnlLogin.Controls.Add(this.label1);
             this.pnlLogin.Controls.Add(this.txbMasterPassword);
             this.pnlLogin.Controls.Add(this.btnLogin);
-            this.pnlLogin.Location = new System.Drawing.Point(6, 6);
+            this.pnlLogin.Location = new System.Drawing.Point(709, 6);
             this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(448, 395);
+            this.pnlLogin.Size = new System.Drawing.Size(694, 395);
             this.pnlLogin.TabIndex = 1;
             // 
             // pbxQDLogo
             // 
-            this.pbxQDLogo.Location = new System.Drawing.Point(124, 19);
+            this.pbxQDLogo.Location = new System.Drawing.Point(247, 19);
             this.pbxQDLogo.Name = "pbxQDLogo";
             this.pbxQDLogo.Size = new System.Drawing.Size(200, 200);
             this.pbxQDLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -315,7 +943,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(60, 259);
+            this.label1.Location = new System.Drawing.Point(187, 259);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(237, 21);
             this.label1.TabIndex = 1;
@@ -324,7 +952,7 @@
             // txbMasterPassword
             // 
             this.txbMasterPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
-            this.txbMasterPassword.Location = new System.Drawing.Point(64, 283);
+            this.txbMasterPassword.Location = new System.Drawing.Point(187, 283);
             this.txbMasterPassword.Name = "txbMasterPassword";
             this.txbMasterPassword.PasswordChar = '•';
             this.txbMasterPassword.Size = new System.Drawing.Size(320, 32);
@@ -335,7 +963,7 @@
             this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
-            this.btnLogin.Location = new System.Drawing.Point(174, 321);
+            this.btnLogin.Location = new System.Drawing.Point(297, 330);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 40);
             this.btnLogin.TabIndex = 2;
@@ -350,12 +978,12 @@
             this.pnlLocal.Controls.Add(this.btnLocalClose);
             this.pnlLocal.Location = new System.Drawing.Point(6, 407);
             this.pnlLocal.Name = "pnlLocal";
-            this.pnlLocal.Size = new System.Drawing.Size(448, 395);
+            this.pnlLocal.Size = new System.Drawing.Size(694, 395);
             this.pnlLocal.TabIndex = 1;
             // 
             // pbxQDLogoLocal
             // 
-            this.pbxQDLogoLocal.Location = new System.Drawing.Point(124, 19);
+            this.pbxQDLogoLocal.Location = new System.Drawing.Point(247, 19);
             this.pbxQDLogoLocal.Name = "pbxQDLogoLocal";
             this.pbxQDLogoLocal.Size = new System.Drawing.Size(200, 200);
             this.pbxQDLogoLocal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -368,7 +996,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(3, 259);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(442, 89);
+            this.label2.Size = new System.Drawing.Size(688, 89);
             this.label2.TabIndex = 1;
             this.label2.Text = "Q-Drive Admin Console is only \r\navailable if you have set up Q-Drive \r\nto save da" +
     "ta online.";
@@ -379,26 +1007,26 @@
             this.btnLocalClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLocalClose.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
             this.btnLocalClose.ForeColor = System.Drawing.Color.Black;
-            this.btnLocalClose.Location = new System.Drawing.Point(174, 351);
+            this.btnLocalClose.Location = new System.Drawing.Point(297, 351);
             this.btnLocalClose.Name = "btnLocalClose";
             this.btnLocalClose.Size = new System.Drawing.Size(100, 40);
             this.btnLocalClose.TabIndex = 2;
             this.btnLocalClose.Text = "Close";
             this.btnLocalClose.UseVisualStyleBackColor = true;
-            this.btnLocalClose.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLocalClose.Click += new System.EventHandler(this.btnLocalClose_Click);
             // 
             // pnlLoading
             // 
             this.pnlLoading.Controls.Add(this.pbxQDLogoLoading);
             this.pnlLoading.Controls.Add(this.label3);
-            this.pnlLoading.Location = new System.Drawing.Point(460, 407);
+            this.pnlLoading.Location = new System.Drawing.Point(709, 407);
             this.pnlLoading.Name = "pnlLoading";
-            this.pnlLoading.Size = new System.Drawing.Size(448, 395);
+            this.pnlLoading.Size = new System.Drawing.Size(694, 395);
             this.pnlLoading.TabIndex = 1;
             // 
             // pbxQDLogoLoading
             // 
-            this.pbxQDLogoLoading.Location = new System.Drawing.Point(124, 19);
+            this.pbxQDLogoLoading.Location = new System.Drawing.Point(247, 19);
             this.pbxQDLogoLoading.Name = "pbxQDLogoLoading";
             this.pbxQDLogoLoading.Size = new System.Drawing.Size(200, 200);
             this.pbxQDLogoLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -411,387 +1039,64 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(3, 259);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(442, 89);
+            this.label3.Size = new System.Drawing.Size(688, 89);
             this.label3.TabIndex = 1;
             this.label3.Text = "Loading...";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // toggleButton2
-            // 
-            activeStateCollection4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            this.toggleButton2.ActiveState = activeStateCollection4;
-            this.toggleButton2.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
-            this.toggleButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toggleButton2.ForeColor = System.Drawing.Color.Black;
-            this.toggleButton2.Location = new System.Drawing.Point(21, 148);
-            this.toggleButton2.MinimumSize = new System.Drawing.Size(52, 20);
-            this.toggleButton2.Name = "toggleButton2";
-            this.toggleButton2.Size = new System.Drawing.Size(52, 29);
-            this.toggleButton2.Slider = sliderCollection4;
-            this.toggleButton2.TabIndex = 0;
-            this.toggleButton2.Text = "toggleButton1";
-            this.toggleButton2.ThemeName = "Office2016Black";
-            this.toggleButton2.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
-            this.toggleButton2.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
-            // 
-            // toggleButton3
-            // 
-            activeStateCollection3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            this.toggleButton3.ActiveState = activeStateCollection3;
-            this.toggleButton3.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
-            this.toggleButton3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toggleButton3.ForeColor = System.Drawing.Color.Black;
-            this.toggleButton3.Location = new System.Drawing.Point(21, 114);
-            this.toggleButton3.MinimumSize = new System.Drawing.Size(52, 20);
-            this.toggleButton3.Name = "toggleButton3";
-            this.toggleButton3.Size = new System.Drawing.Size(52, 29);
-            this.toggleButton3.Slider = sliderCollection3;
-            this.toggleButton3.TabIndex = 0;
-            this.toggleButton3.Text = "toggleButton1";
-            this.toggleButton3.ThemeName = "Office2016Black";
-            this.toggleButton3.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
-            this.toggleButton3.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
-            // 
-            // toggleButton4
-            // 
-            activeStateCollection2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            this.toggleButton4.ActiveState = activeStateCollection2;
-            this.toggleButton4.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
-            this.toggleButton4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toggleButton4.ForeColor = System.Drawing.Color.Black;
-            this.toggleButton4.Location = new System.Drawing.Point(21, 80);
-            this.toggleButton4.MinimumSize = new System.Drawing.Size(52, 20);
-            this.toggleButton4.Name = "toggleButton4";
-            this.toggleButton4.Size = new System.Drawing.Size(52, 29);
-            this.toggleButton4.Slider = sliderCollection2;
-            this.toggleButton4.TabIndex = 0;
-            this.toggleButton4.Text = "toggleButton1";
-            this.toggleButton4.ThemeName = "Office2016Black";
-            this.toggleButton4.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
-            this.toggleButton4.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
-            // 
-            // toggleButton5
-            // 
-            activeStateCollection1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            this.toggleButton5.ActiveState = activeStateCollection1;
-            this.toggleButton5.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
-            this.toggleButton5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toggleButton5.ForeColor = System.Drawing.Color.Black;
-            this.toggleButton5.Location = new System.Drawing.Point(21, 46);
-            this.toggleButton5.MinimumSize = new System.Drawing.Size(52, 20);
-            this.toggleButton5.Name = "toggleButton5";
-            this.toggleButton5.Size = new System.Drawing.Size(52, 29);
-            this.toggleButton5.Slider = sliderCollection1;
-            this.toggleButton5.TabIndex = 0;
-            this.toggleButton5.Text = "toggleButton1";
-            this.toggleButton5.ThemeName = "Office2016Black";
-            this.toggleButton5.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
-            this.toggleButton5.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label4.Location = new System.Drawing.Point(16, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(221, 28);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Q-Drive General Settings";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label5.Location = new System.Drawing.Point(16, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(303, 28);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Q-Drive User and Account settings";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label6.Location = new System.Drawing.Point(16, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(302, 28);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Q-Drive Online MySQL connection";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
-            this.label7.Location = new System.Drawing.Point(16, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(270, 28);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Q-Drive Information and more";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(79, 49);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(291, 21);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Users can toggle \"Keep logged in\" option";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(79, 83);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(243, 21);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Users can create Q-Drive accounts";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(79, 117);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(196, 21);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Users can add public drives";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(79, 151);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(200, 21);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Users can add private drives";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(79, 203);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(329, 21);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Autofill User-Login as Net-Drive authentication";
-            // 
-            // toggleButton6
-            // 
-            activeStateCollection5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            this.toggleButton6.ActiveState = activeStateCollection5;
-            this.toggleButton6.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
-            this.toggleButton6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toggleButton6.ForeColor = System.Drawing.Color.Black;
-            this.toggleButton6.Location = new System.Drawing.Point(21, 234);
-            this.toggleButton6.MinimumSize = new System.Drawing.Size(52, 20);
-            this.toggleButton6.Name = "toggleButton6";
-            this.toggleButton6.Size = new System.Drawing.Size(52, 29);
-            this.toggleButton6.Slider = sliderCollection5;
-            this.toggleButton6.TabIndex = 0;
-            this.toggleButton6.Text = "toggleButton1";
-            this.toggleButton6.ThemeName = "Office2016Black";
-            this.toggleButton6.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
-            this.toggleButton6.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(79, 237);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(316, 21);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Force User-Login as Net-Drive authentication";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(2, 279);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 36);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Register new user";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(151, 279);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(143, 36);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Edit Account";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(300, 279);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(143, 36);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Delete Account";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(138, 275);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(293, 29);
-            this.textBox1.TabIndex = 6;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(12, 278);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(120, 21);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Default domain:";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(2, 57);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(440, 214);
-            this.listBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(98, 83);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(330, 29);
-            this.textBox2.TabIndex = 3;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(98, 118);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(330, 29);
-            this.textBox3.TabIndex = 3;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(98, 153);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(330, 29);
-            this.textBox4.TabIndex = 3;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(98, 188);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(330, 29);
-            this.textBox5.TabIndex = 3;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 86);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(80, 21);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "Hostname";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 121);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(79, 21);
-            this.label16.TabIndex = 4;
-            this.label16.Text = "Username";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(18, 156);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(74, 21);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "Password";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(18, 191);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(74, 21);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Database";
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(286, 223);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(142, 36);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Test Connection";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // lnkReleases
-            // 
-            this.lnkReleases.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lnkReleases.Location = new System.Drawing.Point(55, 164);
-            this.lnkReleases.Name = "lnkReleases";
-            this.lnkReleases.Size = new System.Drawing.Size(337, 26);
-            this.lnkReleases.TabIndex = 12;
-            this.lnkReleases.TabStop = true;
-            this.lnkReleases.Text = "Click here to get the latest version of Q-Drive";
-            this.lnkReleases.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.ForeColor = System.Drawing.Color.DimGray;
-            this.lblVersion.Location = new System.Drawing.Point(55, 87);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(337, 23);
-            this.lblVersion.TabIndex = 14;
-            this.lblVersion.Text = "Version X.X.X";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label19
-            // 
-            this.label19.ForeColor = System.Drawing.Color.DimGray;
-            this.label19.Location = new System.Drawing.Point(55, 115);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(337, 51);
-            this.label19.TabIndex = 15;
-            this.label19.Text = "Created by Tobias Hattinger @ Endev\r\nCopyright (c) 2020 Tobias Hattinger";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label20
-            // 
-            this.label20.Font = new System.Drawing.Font("Segoe UI Semilight", 16F);
-            this.label20.Location = new System.Drawing.Point(55, 55);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(337, 32);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Q-Drive";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.ForeColor = System.Drawing.Color.Black;
-            this.button5.Location = new System.Drawing.Point(123, 239);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(200, 36);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Change Master Password";
-            this.button5.UseVisualStyleBackColor = true;
+            // pnlNotConfigured
+            // 
+            this.pnlNotConfigured.Controls.Add(this.pictureBox1);
+            this.pnlNotConfigured.Controls.Add(this.label21);
+            this.pnlNotConfigured.Controls.Add(this.btnRunSetup);
+            this.pnlNotConfigured.Location = new System.Drawing.Point(1406, 6);
+            this.pnlNotConfigured.Name = "pnlNotConfigured";
+            this.pnlNotConfigured.Size = new System.Drawing.Size(694, 395);
+            this.pnlNotConfigured.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(247, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label21
+            // 
+            this.label21.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(3, 224);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(688, 126);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "We noticed you haven\'t run the Q-Drive Setup yet. \r\nThe setup has to be completed" +
+    " at least once to \r\nensure the correct functionality of the program.\r\n\r\nClick on" +
+    " the button below to start the setup.";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnRunSetup
+            // 
+            this.btnRunSetup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRunSetup.Font = new System.Drawing.Font("Segoe UI Semilight", 14F);
+            this.btnRunSetup.ForeColor = System.Drawing.Color.Black;
+            this.btnRunSetup.Location = new System.Drawing.Point(247, 351);
+            this.btnRunSetup.Name = "btnRunSetup";
+            this.btnRunSetup.Size = new System.Drawing.Size(200, 40);
+            this.btnRunSetup.TabIndex = 2;
+            this.btnRunSetup.Text = "Run Setup";
+            this.btnRunSetup.UseVisualStyleBackColor = true;
+            this.btnRunSetup.Click += new System.EventHandler(this.btnRunSetup_Click);
             // 
             // QDriveAdminConsole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(910, 816);
+            this.ClientSize = new System.Drawing.Size(2364, 1061);
             this.Controls.Add(this.pnlLoading);
+            this.Controls.Add(this.pnlNotConfigured);
             this.Controls.Add(this.pnlLocal);
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.pnlSettings);
@@ -813,18 +1118,28 @@
             this.Style.TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
             this.Style.TitleBar.BottomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
             this.Text = "Q-Drive Admin Console";
+            this.Load += new System.EventHandler(this.QDriveAdminConsole_Load);
             this.pnlSettings.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).EndInit();
             this.tabControlAdv1.ResumeLayout(false);
-            this.tabPageAdv1.ResumeLayout(false);
-            this.tabPageAdv1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton1)).EndInit();
-            this.tabPageAdv4.ResumeLayout(false);
-            this.tabPageAdv4.PerformLayout();
-            this.tabPageAdv2.ResumeLayout(false);
-            this.tabPageAdv2.PerformLayout();
-            this.tabPageAdv3.ResumeLayout(false);
-            this.tabPageAdv3.PerformLayout();
+            this.tabSettings.ResumeLayout(false);
+            this.tabSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanToggleKeepLoggedIn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanSelfRegister)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanAddPublicDrives)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanAddPrivateDrives)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglForceLoginAsDriveAuthentication)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUseLoginAsDriveAuthentication)).EndInit();
+            this.tabUsers.ResumeLayout(false);
+            this.tabUsers.PerformLayout();
+            this.tabMySQL.ResumeLayout(false);
+            this.tabMySQL.PerformLayout();
+            this.tabOnlineDrives.ResumeLayout(false);
+            this.tabOnlineDrives.PerformLayout();
+            this.tabDeployDrives.ResumeLayout(false);
+            this.tabDeployDrives.PerformLayout();
+            this.tabInfoAndMore.ResumeLayout(false);
+            this.tabInfoAndMore.PerformLayout();
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogo)).EndInit();
@@ -832,11 +1147,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLocal)).EndInit();
             this.pnlLoading.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLoading)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleButton6)).EndInit();
+            this.pnlNotConfigured.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -845,9 +1157,9 @@
 
         private System.Windows.Forms.Panel pnlSettings;
         private Syncfusion.Windows.Forms.Tools.TabControlAdv tabControlAdv1;
-        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv1;
-        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv2;
-        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv3;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabSettings;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabMySQL;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabInfoAndMore;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnSubmit;
@@ -863,13 +1175,13 @@
         private System.Windows.Forms.Panel pnlLoading;
         private System.Windows.Forms.PictureBox pbxQDLogoLoading;
         private System.Windows.Forms.Label label3;
-        private Syncfusion.Windows.Forms.Tools.ToggleButton toggleButton1;
-        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv4;
-        private Syncfusion.Windows.Forms.Tools.ToggleButton toggleButton5;
-        private Syncfusion.Windows.Forms.Tools.ToggleButton toggleButton4;
-        private Syncfusion.Windows.Forms.Tools.ToggleButton toggleButton3;
-        private Syncfusion.Windows.Forms.Tools.ToggleButton toggleButton2;
-        private System.Windows.Forms.TextBox textBox1;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton tglUseLoginAsDriveAuthentication;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabUsers;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton tglUserCanToggleKeepLoggedIn;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton tglUserCanSelfRegister;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton tglUserCanAddPublicDrives;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton tglUserCanAddPrivateDrives;
+        private System.Windows.Forms.TextBox txbDefaultDomain;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -878,28 +1190,49 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
-        private Syncfusion.Windows.Forms.Tools.ToggleButton toggleButton6;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton tglForceLoginAsDriveAuthentication;
+        private System.Windows.Forms.ListBox lbxUserList;
+        private System.Windows.Forms.Button btnDeleteAccount;
+        private System.Windows.Forms.Button btnEditUserAccount;
+        private System.Windows.Forms.Button btnRegisterNewUser;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txbDBDatabase;
+        private System.Windows.Forms.TextBox txbDBPassword;
+        private System.Windows.Forms.TextBox txbDBUsername;
+        private System.Windows.Forms.TextBox txbDBHostname;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnTestDBConnection;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.LinkLabel lnkReleases;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnChangeMasterPassword;
+        private System.Windows.Forms.Panel pnlNotConfigured;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btnRunSetup;
+        private System.Windows.Forms.Label label22;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabOnlineDrives;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabDeployDrives;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ListBox lbxOnlineDrives;
+        private System.Windows.Forms.Button btnRemoveOnlineDrive;
+        private System.Windows.Forms.Button btnEditOnlineDrive;
+        private System.Windows.Forms.Button btnAddOnlineDrive;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ListBox lbxDeployableDrives;
+        private System.Windows.Forms.Button btnRemoveFromAllUsers;
+        private System.Windows.Forms.Button btnDeployToSelectedUsers;
+        private System.Windows.Forms.Button btnDeployToAllUsers;
+        private System.Windows.Forms.Button btnRemoveFromSelectedUsers;
+        private System.Windows.Forms.ListBox lbxDeployedDrives;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
     }
 }
 
