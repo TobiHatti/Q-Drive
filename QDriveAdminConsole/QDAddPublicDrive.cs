@@ -34,7 +34,7 @@ namespace QDriveAdminConsole
         public string DrivePath = "";
         public string DriveName = "";
         public string DriveLetter = "";
-        public bool CanBeDeployed = true;
+        public bool CanBeDeployed = false;
 
         public QDAddPublicDrive()
         {
@@ -60,8 +60,6 @@ namespace QDriveAdminConsole
                 for (int i = 0; i < cbxDriveLetter.Items.Count; i++)
                     if (cbxDriveLetter.Items[i].ToString()[0].ToString() == DriveLetter)
                         cbxDriveLetter.SelectedIndex = i;
-
-                chbCanBeDeployed.Checked = CanBeDeployed;
 
                 this.Text = "Edit Public Drive";
                 lblAddDriveTitle.Text = "Edit public drive template";
@@ -92,7 +90,6 @@ namespace QDriveAdminConsole
             DrivePath = txbDrivePath.Text;
             DriveName = txbDisplayName.Text;
             DriveLetter = cbxDriveLetter.Text[0].ToString();
-            CanBeDeployed = chbCanBeDeployed.Checked;
 
             this.DialogResult = DialogResult.OK;
             this.Close();

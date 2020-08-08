@@ -47,18 +47,18 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pbxNoDrivesFound = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNoDrivesFound)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // grvPublicDrives
             // 
-            this.grvPublicDrives.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.grvPublicDrives.BeforeTouchSize = new System.Drawing.Size(401, 368);
-            this.grvPublicDrives.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.grvPublicDrives.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grvPublicDrives.ButtonView = true;
             this.grvPublicDrives.FlatLook = true;
-            this.grvPublicDrives.ImageSpacing = 20;
+            this.grvPublicDrives.ImageSpacing = 10;
             this.grvPublicDrives.IntegratedScrolling = true;
             this.grvPublicDrives.Location = new System.Drawing.Point(5, 59);
             this.grvPublicDrives.Name = "grvPublicDrives";
@@ -66,9 +66,9 @@
             this.grvPublicDrives.SmallImageView = true;
             this.grvPublicDrives.TabIndex = 1;
             this.grvPublicDrives.Text = "groupView1";
-            this.grvPublicDrives.TextSpacing = 70;
-            this.grvPublicDrives.TextWrap = true;
+            this.grvPublicDrives.TextSpacing = 50;
             this.grvPublicDrives.ThemesEnabled = true;
+            this.grvPublicDrives.GroupViewItemSelected += new System.EventHandler(this.grvPublicDrives_Click);
             this.grvPublicDrives.Click += new System.EventHandler(this.grvPublicDrives_Click);
             // 
             // btnCancel
@@ -242,9 +242,9 @@
             this.label7.Location = new System.Drawing.Point(17, 24);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(254, 32);
+            this.label7.Size = new System.Drawing.Size(246, 32);
             this.label7.TabIndex = 4;
-            this.label7.Text = "Connect a private drive";
+            this.label7.Text = "Connect a public drive";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label8
@@ -270,11 +270,21 @@
             this.pbxNoDrivesFound.TabIndex = 16;
             this.pbxNoDrivesFound.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
+            this.pictureBox1.Location = new System.Drawing.Point(408, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(3, 427);
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
             // QDAddPublicDrive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 432);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pbxNoDrivesFound);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnCancel);
@@ -310,6 +320,7 @@
             this.Text = "Add a public drive";
             this.Load += new System.EventHandler(this.QDAddPublicDrive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxNoDrivesFound)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,5 +346,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pbxNoDrivesFound;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

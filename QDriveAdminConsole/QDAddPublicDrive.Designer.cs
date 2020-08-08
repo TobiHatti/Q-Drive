@@ -39,13 +39,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.chbCanBeDeployed = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(287, 260);
+            this.btnCancel.Location = new System.Drawing.Point(287, 230);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 34);
             this.btnCancel.TabIndex = 6;
@@ -56,7 +55,7 @@
             // btnSubmit
             // 
             this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubmit.Location = new System.Drawing.Point(413, 260);
+            this.btnSubmit.Location = new System.Drawing.Point(413, 230);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(120, 34);
             this.btnSubmit.TabIndex = 5;
@@ -173,26 +172,12 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "Drive-Path";
             // 
-            // chbCanBeDeployed
-            // 
-            this.chbCanBeDeployed.AutoSize = true;
-            this.chbCanBeDeployed.Checked = true;
-            this.chbCanBeDeployed.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbCanBeDeployed.ForeColor = System.Drawing.Color.White;
-            this.chbCanBeDeployed.Location = new System.Drawing.Point(167, 220);
-            this.chbCanBeDeployed.Name = "chbCanBeDeployed";
-            this.chbCanBeDeployed.Size = new System.Drawing.Size(268, 25);
-            this.chbCanBeDeployed.TabIndex = 4;
-            this.chbCanBeDeployed.Text = "This drive can be deployed to users";
-            this.chbCanBeDeployed.UseVisualStyleBackColor = true;
-            // 
             // QDAddPublicDrive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(539, 300);
-            this.Controls.Add(this.chbCanBeDeployed);
+            this.ClientSize = new System.Drawing.Size(539, 270);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.cbxDriveLetter);
@@ -215,8 +200,9 @@
             this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
             this.Style.ShadowOpacity = ((byte)(30));
-            this.Style.TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
-            this.Style.TitleBar.BottomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
+            this.Style.TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.Style.TitleBar.BottomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.Style.TitleBar.ForeColor = System.Drawing.Color.White;
             this.Text = "Add Public Drive";
             this.Load += new System.EventHandler(this.QDAddPublicDrive_Load);
             this.ResumeLayout(false);
@@ -236,6 +222,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox chbCanBeDeployed;
     }
 }

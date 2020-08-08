@@ -55,7 +55,7 @@ namespace QDriveManager
         {
             ImageList imgList = new ImageList()
             {
-                ImageSize = new Size(80, 80),
+                ImageSize = new Size(60, 60),
                 ColorDepth = ColorDepth.Depth32Bit,
 
             };
@@ -69,7 +69,7 @@ namespace QDriveManager
             {
                 sql.Open();
 
-                using (MySqlDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_drives WHERE IsPublic = 1"))
+                using (MySqlDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_drives WHERE IsPublic = 1 ORDER BY DefaultDriveLetter ASC"))
                 {
                     while(reader.Read())
                     {

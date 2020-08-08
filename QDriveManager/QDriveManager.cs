@@ -459,7 +459,8 @@ namespace QDriveManager
                     Username = drive.Username,
                     Password = drive.Password,
                     Domain = drive.Domain,
-                    ForceAutofill = forceLoginDriveAuth
+                    ForceAutofill = forceLoginDriveAuth,
+                    DBData = dbData
                 };
 
                 if (editPublic.ShowDialog() == DialogResult.OK)
@@ -1132,14 +1133,10 @@ namespace QDriveManager
             return 0;
         }
 
-
-        
-
         private void UpdateDriveListView()
         {
             drives = QDLib.CreateDriveList(localConnection, userID, uPassword, dbData);
 
-            
 
             grvConnectedDrives.GroupViewItems.Clear();
 
@@ -1166,53 +1163,17 @@ namespace QDriveManager
 
         #endregion
 
-        private void bgwDriveStatus_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            try
-            {
-                if (drives != null && drives.Count > 0)
-                {
-                    int lastSelectedIndex = grvConnectedDrives.SelectedItem;
-
-                    grvConnectedDrives.GroupViewItems.Clear();
-
-                    foreach (DriveViewItem drive in drives)
-                    {
-                        int imgIndex;
-
-                        if (drive.IsLocalDrive) imgIndex = 0;
-                        else if (drive.IsPublicDrive) imgIndex = 2;
-                        else imgIndex = 1;
-
-                        if (!Directory.Exists($"{drive.DriveLetter}:\\")) imgIndex += 3;
-
-                        grvConnectedDrives.GroupViewItems.Add(
-                            new GroupViewItemEx(
-                                $"({drive.DriveLetter}:\\) {drive.DisplayName}\r\n({drive.DrivePath})",
-                                drive,
-                                imgIndex
-                            )
-                        );
-                    }
-
-                    try { grvConnectedDrives.SelectedItem = lastSelectedIndex; }
-                    catch { }
-                }
-            }
-            catch { }
-        }
 
         private void tmrUpdateDriveStatus_Tick(object sender, EventArgs e)
         {
             try
             {
-                if (!bgwDriveStatus.IsBusy)
-                    bgwDriveStatus.RunWorkerAsync();
+                // Disabled.
+                // Syncfusion GroupView crashes on paint.
+                //UpdateDriveListView();
             }
             catch { }
-        }
-
-        
+        } 
     }
 
     public class GroupViewItemEx : Syncfusion.Windows.Forms.Tools.GroupViewItem

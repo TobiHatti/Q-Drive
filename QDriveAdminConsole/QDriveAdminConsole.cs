@@ -53,8 +53,8 @@ namespace QDriveAdminConsole
         {
             InitializeComponent();
 
-            this.Style.Border = new Pen(Color.FromArgb(77, 216, 255), 2);
-            this.Style.InactiveBorder = new Pen(Color.FromArgb(77, 216, 255), 2);
+            this.Style.Border = new Pen(Color.FromArgb(1, 115, 199), 2);
+            this.Style.InactiveBorder = new Pen(Color.FromArgb(1, 115, 199), 2);
 
             panels.Add(pnlLogin);
             panels.Add(pnlSettings);

@@ -37,10 +37,10 @@
             this.label21 = new System.Windows.Forms.Label();
             this.btnRunSetup = new System.Windows.Forms.Button();
             this.pnlLogin = new System.Windows.Forms.Panel();
+            this.pbxLoginConnectionState = new System.Windows.Forms.PictureBox();
             this.lblKeepLoggedInInfo = new System.Windows.Forms.Label();
             this.chbKeepLoggedIn = new System.Windows.Forms.CheckBox();
             this.lnkCreateNewAccount = new System.Windows.Forms.LinkLabel();
-            this.pbxLoginConnectionState = new System.Windows.Forms.PictureBox();
             this.pbxLoginLogo = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -102,7 +102,6 @@
             this.tsmResetLocalDatabase = new System.Windows.Forms.ToolStripMenuItem();
             this.sfdSaveConfig = new System.Windows.Forms.SaveFileDialog();
             this.ofdOpenConfig = new System.Windows.Forms.OpenFileDialog();
-            this.bgwDriveStatus = new System.ComponentModel.BackgroundWorker();
             this.tmrUpdateDriveStatus = new System.Windows.Forms.Timer(this.components);
             this.pnlNotConfigured.SuspendLayout();
             this.pnlLogin.SuspendLayout();
@@ -219,6 +218,16 @@
             this.pnlLogin.Size = new System.Drawing.Size(778, 555);
             this.pnlLogin.TabIndex = 0;
             // 
+            // pbxLoginConnectionState
+            // 
+            this.pbxLoginConnectionState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbxLoginConnectionState.Location = new System.Drawing.Point(0, 395);
+            this.pbxLoginConnectionState.Name = "pbxLoginConnectionState";
+            this.pbxLoginConnectionState.Size = new System.Drawing.Size(160, 160);
+            this.pbxLoginConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLoginConnectionState.TabIndex = 11;
+            this.pbxLoginConnectionState.TabStop = false;
+            // 
             // lblKeepLoggedInInfo
             // 
             this.lblKeepLoggedInInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -256,16 +265,6 @@
             this.lnkCreateNewAccount.Text = "AccountCreationOption";
             this.lnkCreateNewAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lnkCreateNewAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkCreateNewAccount_LinkClicked);
-            // 
-            // pbxLoginConnectionState
-            // 
-            this.pbxLoginConnectionState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pbxLoginConnectionState.Location = new System.Drawing.Point(0, 395);
-            this.pbxLoginConnectionState.Name = "pbxLoginConnectionState";
-            this.pbxLoginConnectionState.Size = new System.Drawing.Size(160, 160);
-            this.pbxLoginConnectionState.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxLoginConnectionState.TabIndex = 11;
-            this.pbxLoginConnectionState.TabStop = false;
             // 
             // pbxLoginLogo
             // 
@@ -488,21 +487,22 @@
             // grvConnectedDrives
             // 
             this.grvConnectedDrives.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.grvConnectedDrives.BeforeTouchSize = new System.Drawing.Size(402, 483);
+            this.grvConnectedDrives.BeforeTouchSize = new System.Drawing.Size(410, 483);
             this.grvConnectedDrives.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grvConnectedDrives.ButtonView = true;
             this.grvConnectedDrives.FlatLook = true;
             this.grvConnectedDrives.ImageSpacing = 20;
             this.grvConnectedDrives.IntegratedScrolling = true;
-            this.grvConnectedDrives.Location = new System.Drawing.Point(372, 65);
+            this.grvConnectedDrives.Location = new System.Drawing.Point(364, 65);
             this.grvConnectedDrives.Name = "grvConnectedDrives";
-            this.grvConnectedDrives.Size = new System.Drawing.Size(402, 483);
+            this.grvConnectedDrives.Size = new System.Drawing.Size(410, 483);
             this.grvConnectedDrives.SmallImageView = true;
             this.grvConnectedDrives.TabIndex = 5;
             this.grvConnectedDrives.Text = "groupView1";
             this.grvConnectedDrives.TextSpacing = 70;
             this.grvConnectedDrives.TextWrap = true;
             this.grvConnectedDrives.ThemesEnabled = true;
+            this.grvConnectedDrives.GroupViewItemSelected += new System.EventHandler(this.grvConnectedDrives_Click);
             this.grvConnectedDrives.GroupViewItemDoubleClick += new Syncfusion.Windows.Forms.Tools.GroupViewItemDoubleClickEventHandler(this.grvConnectedDrives_GroupViewItemDoubleClick);
             this.grvConnectedDrives.Click += new System.EventHandler(this.grvConnectedDrives_Click);
             // 
@@ -921,10 +921,6 @@
             this.ofdOpenConfig.Filter = "Q-Drive backup files|*.qdbackup|All Files|*.*";
             this.ofdOpenConfig.Title = "Load a Q-Drive backup";
             // 
-            // bgwDriveStatus
-            // 
-            this.bgwDriveStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwDriveStatus_DoWork);
-            // 
             // tmrUpdateDriveStatus
             // 
             this.tmrUpdateDriveStatus.Enabled = true;
@@ -949,7 +945,6 @@
             this.MaximizeBox = false;
             this.Name = "QDriveManager";
             this.Padding = new System.Windows.Forms.Padding(0, 2, 2, 0);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Style.InactiveShadowOpacity = ((byte)(20));
             this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
@@ -1059,7 +1054,6 @@
         private System.Windows.Forms.Button btnNotConfigured;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pbxNoDrivesConnected;
-        private System.ComponentModel.BackgroundWorker bgwDriveStatus;
         private System.Windows.Forms.Timer tmrUpdateDriveStatus;
         private System.Windows.Forms.PictureBox pbxAddDriveBtn;
         private System.Windows.Forms.PictureBox pbxRemoveDriveBtn;
