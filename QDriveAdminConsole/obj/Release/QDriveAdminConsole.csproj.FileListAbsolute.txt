@@ -58,3 +58,4 @@ F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Release\QDriveAdminConsole.csproj.C
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Release\QDriveAdminConsole.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Release\QDriveAdminConsole.exe
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Release\QDriveAdminConsole.pdb
+F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Release\Syncfusion.Licensing.dll

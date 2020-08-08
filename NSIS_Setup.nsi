@@ -55,7 +55,7 @@ var ICONS_GROUP
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 OutFile "QDrive_Setup.exe"
-InstallDir "$PROGRAMFILES\Q-Drive"
+InstallDir "$PROGRAMFILES\Endev\Q-Drive"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
 ShowUnInstDetails show
@@ -74,7 +74,6 @@ Section "Q-Drive Base" SEC01
   File "QDriveManager\bin\Release\QDriveLib.dll.config"
   File "QDriveManager\bin\Release\Renci.SshNet.dll"
   File "QDriveManager\bin\Release\stdole.dll"
-  File "QDriveManager\bin\Release\Syncfusion.Core.WinForms.dll"
   File "QDriveManager\bin\Release\Syncfusion.Data.WinForms.dll"
   File "QDriveManager\bin\Release\Syncfusion.Grid.Base.dll"
   File "QDriveManager\bin\Release\Syncfusion.Grid.Windows.dll"
@@ -112,7 +111,6 @@ Section "Q-Drive Base" SEC01
   CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Q-Drive Manager.lnk" "$INSTDIR\QDriveManager.exe"
   CreateShortCut "$DESKTOP\Q-Drive Manager.lnk" "$INSTDIR\QDriveManager.exe"
   CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Q-Drive Setup.lnk" "$INSTDIR\QDriveSetup.exe"
-  CreateShortCut "$DESKTOP\Q-Drive Setup.lnk" "$INSTDIR\QDriveSetup.exe"
   CreateShortCut "$SMSTARTUP\Q-Drive.lnk" "$INSTDIR\QDriveAutostart.exe"
   !insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
@@ -191,7 +189,6 @@ Section Uninstall
   Delete "$INSTDIR\Syncfusion.Grid.Windows.dll"
   Delete "$INSTDIR\Syncfusion.Grid.Base.dll"
   Delete "$INSTDIR\Syncfusion.Data.WinForms.dll"
-  Delete "$INSTDIR\Syncfusion.Core.WinForms.dll"
   Delete "$INSTDIR\stdole.dll"
   Delete "$INSTDIR\Renci.SshNet.dll"
   Delete "$INSTDIR\QDriveLib.dll.config"
@@ -208,7 +205,6 @@ Section Uninstall
   Delete "$SMPROGRAMS\$ICONS_GROUP\Website.lnk"
   Delete "$DESKTOP\Q-Drive Admin Console.lnk"
   Delete "$SMPROGRAMS\$ICONS_GROUP\Q-Drive Admin Console.lnk"
-  Delete "$DESKTOP\Q-Drive Setup.lnk"
   Delete "$SMPROGRAMS\$ICONS_GROUP\Q-Drive Setup.lnk"
   Delete "$DESKTOP\Q-Drive Manager.lnk"
   Delete "$SMPROGRAMS\$ICONS_GROUP\Q-Drive Manager.lnk"

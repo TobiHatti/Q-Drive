@@ -63,7 +63,7 @@ namespace QDriveManager
 
         private List<DriveViewItem> drives = new List<DriveViewItem>();
 
-        private ImageList imgList = null;
+        private readonly ImageList imgList = null;
 
         #region Page Layout and Initial Loading =================================================================[RF]=
 
@@ -93,7 +93,6 @@ namespace QDriveManager
 
             pbxUpdateBtn.Image = Properties.Resources.QDriveUpdate;
             pbxDisconnectBtn.Image = Properties.Resources.QDriveLogOff;
-
 
             QDLib.AlignPanels(this, panels, 800, 600);
 

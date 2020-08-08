@@ -42,7 +42,7 @@ namespace QDriveAdminConsole
         private string masterPassword = "";
 
 
-        private WrapMySQLConDat dbData = new WrapMySQLConDat();
+        private readonly WrapMySQLConDat dbData = new WrapMySQLConDat();
         private WrapMySQL mysql = null;
 
         #region Page Layout and Initial Loading =================================================================[RF]=

@@ -248,7 +248,7 @@
             this.chbKeepLoggedIn.Location = new System.Drawing.Point(310, 411);
             this.chbKeepLoggedIn.Name = "chbKeepLoggedIn";
             this.chbKeepLoggedIn.Size = new System.Drawing.Size(157, 25);
-            this.chbKeepLoggedIn.TabIndex = 4;
+            this.chbKeepLoggedIn.TabIndex = 3;
             this.chbKeepLoggedIn.Text = "Keep me logged in";
             this.chbKeepLoggedIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chbKeepLoggedIn.UseVisualStyleBackColor = true;
@@ -328,7 +328,7 @@
             this.btnLogin.Location = new System.Drawing.Point(295, 474);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(188, 42);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -945,6 +945,7 @@
             this.MaximizeBox = false;
             this.Name = "QDriveManager";
             this.Padding = new System.Windows.Forms.Padding(0, 2, 2, 0);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Style.InactiveShadowOpacity = ((byte)(20));
             this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;

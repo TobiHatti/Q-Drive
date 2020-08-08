@@ -58,3 +58,4 @@ F:\Desktop\QDriveTemp\QDriveAutostart\obj\Release\QDriveAutostart.csproj.CoreCom
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Release\QDriveAutostart.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Release\QDriveAutostart.exe
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Release\QDriveAutostart.pdb
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Release\Syncfusion.Licensing.dll

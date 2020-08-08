@@ -9,10 +9,8 @@ F:\Desktop\QDriveTemp\QDriveManager\bin\Release\K4os.Hash.xxHash.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\MySql.Data.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\QDriveLib.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Renci.SshNet.dll
-F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Core.WinForms.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Data.WinForms.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Grid.Windows.dll
-F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Licensing.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Shared.Base.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Shared.Windows.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Tools.Base.dll
@@ -36,7 +34,6 @@ F:\Desktop\QDriveTemp\QDriveManager\bin\Release\K4os.Compression.LZ4.Streams.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\K4os.Hash.xxHash.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\MySql.Data.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Renci.SshNet.xml
-F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Core.WinForms.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Data.WinForms.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Grid.Windows.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Shared.Base.xml
@@ -66,3 +63,4 @@ F:\Desktop\QDriveTemp\QDriveManager\obj\Release\QDriveManager.csproj.CoreCompile
 F:\Desktop\QDriveTemp\QDriveManager\obj\Release\QDriveManager.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveManager\obj\Release\QDriveManager.exe
 F:\Desktop\QDriveTemp\QDriveManager\obj\Release\QDriveManager.pdb
+F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Syncfusion.Licensing.dll
