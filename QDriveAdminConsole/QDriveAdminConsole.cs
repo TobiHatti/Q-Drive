@@ -67,6 +67,7 @@ namespace QDriveAdminConsole
             pbxQDLogo.Image = Properties.Resources.QDriveProgamFavicon;
             pbxQDLogoLocal.Image = Properties.Resources.QDriveProgamFavicon;
             pbxQDLogoLoading.Image = Properties.Resources.QDriveProgamFavicon;
+            pbxLogoNotConfigured.Image = Properties.Resources.QDriveProgamFavicon;
 
             lblVersion.Text = "Version " + QDInfo.QDVersion;
 

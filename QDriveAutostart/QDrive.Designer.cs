@@ -33,6 +33,7 @@
             this.pbxQDriveSplash = new System.Windows.Forms.PictureBox();
             this.lblVersionInfo = new System.Windows.Forms.Label();
             this.nfiQDriveMenu = new System.Windows.Forms.NotifyIcon(this.components);
+            this.tmrQDSplash = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDriveSplash)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +67,11 @@
             this.nfiQDriveMenu.Visible = true;
             this.nfiQDriveMenu.DoubleClick += new System.EventHandler(this.nfiQDriveMenu_DoubleClick);
             // 
+            // tmrQDSplash
+            // 
+            this.tmrQDSplash.Interval = 2000;
+            this.tmrQDSplash.Tick += new System.EventHandler(this.tmrQDSplash_Tick);
+            // 
             // QDrive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -84,6 +90,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QDrive";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.Load += new System.EventHandler(this.QDrive_Load);
             this.Shown += new System.EventHandler(this.QDrive_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDriveSplash)).EndInit();
             this.ResumeLayout(false);
@@ -96,6 +103,7 @@
         private System.Windows.Forms.PictureBox pbxQDriveSplash;
         private System.Windows.Forms.Label lblVersionInfo;
         private System.Windows.Forms.NotifyIcon nfiQDriveMenu;
+        private System.Windows.Forms.Timer tmrQDSplash;
     }
 }
 

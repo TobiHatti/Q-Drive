@@ -106,7 +106,7 @@
             this.pbxQDLogoLoading = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlNotConfigured = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbxLogoNotConfigured = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.btnRunSetup = new System.Windows.Forms.Button();
             this.pnlSettings.SuspendLayout();
@@ -130,7 +130,7 @@
             this.pnlLoading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLoading)).BeginInit();
             this.pnlNotConfigured.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogoNotConfigured)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSettings
@@ -942,7 +942,7 @@
             // 
             // pnlNotConfigured
             // 
-            this.pnlNotConfigured.Controls.Add(this.pictureBox1);
+            this.pnlNotConfigured.Controls.Add(this.pbxLogoNotConfigured);
             this.pnlNotConfigured.Controls.Add(this.label21);
             this.pnlNotConfigured.Controls.Add(this.btnRunSetup);
             this.pnlNotConfigured.Location = new System.Drawing.Point(1406, 6);
@@ -950,16 +950,16 @@
             this.pnlNotConfigured.Size = new System.Drawing.Size(694, 395);
             this.pnlNotConfigured.TabIndex = 1;
             // 
-            // pictureBox1
+            // pbxLogoNotConfigured
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pbxLogoNotConfigured.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(247, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pbxLogoNotConfigured.Location = new System.Drawing.Point(247, 19);
+            this.pbxLogoNotConfigured.Name = "pbxLogoNotConfigured";
+            this.pbxLogoNotConfigured.Size = new System.Drawing.Size(200, 200);
+            this.pbxLogoNotConfigured.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxLogoNotConfigured.TabIndex = 2;
+            this.pbxLogoNotConfigured.TabStop = false;
             // 
             // label21
             // 
@@ -1047,7 +1047,7 @@
             this.pnlLoading.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLoading)).EndInit();
             this.pnlNotConfigured.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogoNotConfigured)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1112,7 +1112,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btnChangeMasterPassword;
         private System.Windows.Forms.Panel pnlNotConfigured;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbxLogoNotConfigured;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btnRunSetup;
         private System.Windows.Forms.Label label22;

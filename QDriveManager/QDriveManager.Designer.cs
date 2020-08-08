@@ -203,10 +203,10 @@
             // 
             // pnlLogin
             // 
+            this.pnlLogin.Controls.Add(this.pbxLoginConnectionState);
             this.pnlLogin.Controls.Add(this.lblKeepLoggedInInfo);
             this.pnlLogin.Controls.Add(this.chbKeepLoggedIn);
             this.pnlLogin.Controls.Add(this.lnkCreateNewAccount);
-            this.pnlLogin.Controls.Add(this.pbxLoginConnectionState);
             this.pnlLogin.Controls.Add(this.pbxLoginLogo);
             this.pnlLogin.Controls.Add(this.lblUsername);
             this.pnlLogin.Controls.Add(this.lblPassword);
@@ -248,9 +248,9 @@
             // 
             this.lnkCreateNewAccount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lnkCreateNewAccount.Location = new System.Drawing.Point(160, 525);
+            this.lnkCreateNewAccount.Location = new System.Drawing.Point(3, 525);
             this.lnkCreateNewAccount.Name = "lnkCreateNewAccount";
-            this.lnkCreateNewAccount.Size = new System.Drawing.Size(458, 23);
+            this.lnkCreateNewAccount.Size = new System.Drawing.Size(771, 23);
             this.lnkCreateNewAccount.TabIndex = 5;
             this.lnkCreateNewAccount.TabStop = true;
             this.lnkCreateNewAccount.Text = "AccountCreationOption";
@@ -779,20 +779,20 @@
             this.tsmImportUserData});
             this.cmsFile.Name = "cmsFile";
             this.cmsFile.ShowImageMargin = false;
-            this.cmsFile.Size = new System.Drawing.Size(125, 48);
+            this.cmsFile.Size = new System.Drawing.Size(128, 48);
             // 
             // tsmExportUserData
             // 
             this.tsmExportUserData.Name = "tsmExportUserData";
-            this.tsmExportUserData.Size = new System.Drawing.Size(124, 22);
-            this.tsmExportUserData.Text = "Export Config";
+            this.tsmExportUserData.Size = new System.Drawing.Size(127, 22);
+            this.tsmExportUserData.Text = "Export Backup";
             this.tsmExportUserData.Click += new System.EventHandler(this.tsmExportUserData_Click);
             // 
             // tsmImportUserData
             // 
             this.tsmImportUserData.Name = "tsmImportUserData";
-            this.tsmImportUserData.Size = new System.Drawing.Size(124, 22);
-            this.tsmImportUserData.Text = "Import Config";
+            this.tsmImportUserData.Size = new System.Drawing.Size(127, 22);
+            this.tsmImportUserData.Text = "Import Backup";
             this.tsmImportUserData.Click += new System.EventHandler(this.tsmImportUserData_Click);
             // 
             // cmsQDrive

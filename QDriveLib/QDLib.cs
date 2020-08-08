@@ -93,12 +93,19 @@ namespace QDriveLib
         {
             if (File.Exists(QDInfo.ConfigFile))
             {
-                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+                try
                 {
-                    object result = sqlite.ExecuteScalarACon("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.SetupSuccess);
+                    using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+                    {
+                        object result = sqlite.ExecuteScalarACon("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.SetupSuccess);
 
-                    if (result != null && Convert.ToBoolean(Convert.ToInt16(result))) return true;
-                    else return false;
+                        if (result != null && Convert.ToBoolean(Convert.ToInt16(result))) return true;
+                        else return false;
+                    }
+                }
+                catch
+                {
+                    return false;
                 }
             }
             else return false;

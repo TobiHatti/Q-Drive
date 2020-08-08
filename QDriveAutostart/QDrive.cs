@@ -66,10 +66,8 @@ namespace QDriveAutostart
 
         #region Login, Load and connect drives ==================================================================[RF]=
 
-        private void QDrive_Shown(object sender, EventArgs e)
+        private void QDrive_Load(object sender, EventArgs e)
         {
-            Thread.Sleep(1000);
-
             // Check if the setup has been completed yet
             if (!QDLib.IsQDConfigured())
             {
@@ -94,11 +92,11 @@ namespace QDriveAutostart
 
             if (localConnection) QDLib.ConnectQDDrives("", "", dbData, true, driveList);
             else QDLib.ConnectQDDrives(UserID, Password, dbData, true, driveList);
-
-            Thread.Sleep(1000);
-
-            Hide(); 
         }
+
+        private void QDrive_Shown(object sender, EventArgs e) => tmrQDSplash.Start();
+
+        private void tmrQDSplash_Tick(object sender, EventArgs e) => Hide();
 
         private int LoadQDData()
         {
@@ -186,6 +184,9 @@ namespace QDriveAutostart
             this.Close();
         }
 
+
         #endregion
+
+        
     }
 }

@@ -220,7 +220,13 @@ namespace QDriveManager
             if (QDLib.RunQDriveSetup()) this.Close();
         }
 
-        private void btnNotConfigured_Click(object sender, EventArgs e) => ImportQDConfig();
+        private void btnNotConfigured_Click(object sender, EventArgs e)
+        {
+            ImportQDConfig();
+
+            Process.Start("QDriveManager.exe");
+            this.Close();
+        }
 
         #endregion
 
@@ -537,9 +543,9 @@ namespace QDriveManager
 
         private void tsbQDrive_Click(object sender, EventArgs e) => cmsQDrive.Show(tseToolstrip, 0, tseToolstrip.Size.Height);
 
-        private void tsbFile_Click(object sender, EventArgs e) => cmsFile.Show(tseToolstrip, 0, tseToolstrip.Size.Height);
+        private void tsbFile_Click(object sender, EventArgs e) => cmsFile.Show(tseToolstrip, 52, tseToolstrip.Size.Height);
 
-        private void tsbSettings_Click(object sender, EventArgs e) => cmsSettings.Show(tseToolstrip, 0, tseToolstrip.Size.Height);
+        private void tsbSettings_Click(object sender, EventArgs e) => cmsSettings.Show(tseToolstrip, 80, tseToolstrip.Size.Height);
 
         private void tsmAddDrive_Click(object sender, EventArgs e) => ShowAddDriveDialog();
 
@@ -701,7 +707,12 @@ namespace QDriveManager
             }
         }
 
-        private void tsmImportUserData_Click(object sender, EventArgs e) => ImportQDConfig();
+        private void tsmImportUserData_Click(object sender, EventArgs e)
+        {
+            ImportQDConfig();
+            Process.Start("QDriveManager.exe");
+            this.Close();
+        }
 
         private void ImportQDConfig()
         {
@@ -728,70 +739,71 @@ namespace QDriveManager
 
 
                             // Create settings
-                            sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?",
-                                backup.ExecuteScalar("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked),
-                                QDInfo.DBL.IsOnlineLinked
+                            sqlite.ExecuteNonQuery($@"INSERT INTO qd_info(QDKey, QDValue) VALUES(?, ?)",
+                                QDInfo.DBL.IsOnlineLinked,
+                                backup.ExecuteScalar("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked)
                             );
 
-                            sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?",
-                                backup.ExecuteScalar("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.AlwaysPromptPassword),
-                                QDInfo.DBL.AlwaysPromptPassword
+
+                            sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)",
+                                QDInfo.DBL.AlwaysPromptPassword,
+                                backup.ExecuteScalar("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.AlwaysPromptPassword)
                             );
 
-                            sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?",
-                                backup.ExecuteScalar("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.SetupSuccess),
-                                QDInfo.DBL.SetupSuccess
-                            );
-
-                            try
-                            {
-                                sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?",
-                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey),
-                                    QDInfo.DBL.DBHost
-                                );
-                            }
-                            catch { sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", DBNull.Value, QDInfo.DBL.DefaultPassword); }
-
-                            try
-                            {
-                                sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?",
-                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBName), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey),
-                                    QDInfo.DBL.DBName
-                                );
-                            }
-                            catch { sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", DBNull.Value, QDInfo.DBL.DefaultPassword); }
-
-                            try
-                            {
-                                sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?",
-                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey),
-                                    QDInfo.DBL.DBUsername
-                                );
-                            }
-                            catch { sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", DBNull.Value, QDInfo.DBL.DefaultPassword); }
-
-                            try
-                            {
-                                sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?",
-                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBPassword), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey),
-                                    QDInfo.DBL.DBPassword
-                                );
-                            }
-                            catch { sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", DBNull.Value, QDInfo.DBL.DefaultPassword); }
-
-                            sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?",
-                                Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername), QDInfo.GlobalCipherKey),
-                                QDInfo.DBL.DefaultUsername
+                            sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)",
+                                QDInfo.DBL.SetupSuccess,
+                                backup.ExecuteScalar("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.SetupSuccess)    
                             );
 
                             try
                             {
-                                sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?",
-                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey),
-                                    QDInfo.DBL.DefaultPassword
+                                sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)",
+                                    QDInfo.DBL.DBHost,
+                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey)
                                 );
                             }
-                            catch { sqlite.ExecuteNonQuery($@"UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", DBNull.Value, QDInfo.DBL.DefaultPassword); }
+                            catch { sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBHost, DBNull.Value); }
+
+                            try
+                            {
+                                sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)",
+                                    QDInfo.DBL.DBName,
+                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>($@"SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBName), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey)
+                                );
+                            }
+                            catch { sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBName, DBNull.Value); }
+
+                            try
+                            {
+                                sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)",
+                                    QDInfo.DBL.DBUsername,
+                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey)
+                                );
+                            }
+                            catch { sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBUsername, DBNull.Value); }
+
+                            try
+                            {
+                                sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)",
+                                    QDInfo.DBL.DBPassword,
+                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBPassword), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey)
+                                );
+                            }
+                            catch { sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DBPassword, DBNull.Value); }
+
+                            sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)",
+                                QDInfo.DBL.DefaultUsername,
+                                Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername), QDInfo.GlobalCipherKey)
+                            );
+
+                            try
+                            {
+                                sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)",
+                                    QDInfo.DBL.DefaultPassword,
+                                    Cipher.Encrypt(Cipher.Decrypt(backup.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword), QDInfo.GlobalCipherKey), QDInfo.LocalCipherKey)
+                                );
+                            }
+                            catch { sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DefaultPassword, DBNull.Value); }
 
                             using (SQLiteDataReader reader = backup.ExecuteQuery("SELECT * FROM qd_drives"))
                             {
