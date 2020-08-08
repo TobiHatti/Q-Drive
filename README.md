@@ -83,5 +83,5 @@ Get the current version [here](https://github.com/TobiHatti/Q-Drive/releases/lat
 
 Version: 1.0.0
 
-MD5: PENDING
+MD5: 6702B02A9C0F66ED91914916410398CA
 
