@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WrapSQL;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger
@@ -36,7 +37,7 @@ namespace QDriveAdminConsole
         public string Username = "";
         public string Password = "";
 
-        public WrapMySQLConDat DBData = null;
+        public WrapMySQLData DBData = null;
 
         public QDAddUser()
         {

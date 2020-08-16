@@ -93,6 +93,15 @@
     <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
+    <Reference Include="WrapMySQL, Version=0.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Endev.WrapSQL.WrapMySQL.0.0.2.1\lib\netstandard2.0\WrapMySQL.dll</HintPath>
+    </Reference>
+    <Reference Include="WrapSQLBase, Version=0.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Endev.WrapSQL.WrapSQLBase.0.0.2\lib\netstandard2.0\WrapSQLBase.dll</HintPath>
+    </Reference>
+    <Reference Include="WrapSQLite, Version=0.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Endev.WrapSQL.WrapSQLite.0.0.2\lib\netstandard2.0\WrapSQLite.dll</HintPath>
+    </Reference>
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\Zstandard.Net.dll</HintPath>
     </Reference>
@@ -102,9 +111,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QDInfo.cs" />
     <Compile Include="QDLib.cs" />
-    <Compile Include="WrapMySQL.cs" />
-    <Compile Include="WrapSQL.cs" />
-    <Compile Include="WrapSQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

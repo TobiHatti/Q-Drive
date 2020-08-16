@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WrapSQL;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger
@@ -34,7 +35,7 @@ namespace QDriveManager
         // Reserved for editing entry
         public string DBEntryID = null;
 
-        public WrapMySQLConDat DBData;
+        public WrapMySQLData DBData;
 
         public string DriveID;
         public string CustomDriveName;
@@ -69,7 +70,7 @@ namespace QDriveManager
             {
                 sql.Open();
 
-                using (MySqlDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_drives WHERE IsPublic = 1 ORDER BY DefaultDriveLetter ASC"))
+                using (MySqlDataReader reader = (MySqlDataReader)sql.ExecuteQuery("SELECT * FROM qd_drives WHERE IsPublic = 1 ORDER BY DefaultDriveLetter ASC"))
                 {
                     while(reader.Read())
                     {

@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using WrapSQL;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger
@@ -56,7 +57,7 @@ namespace QDriveManager
 
         public string userID = "";
 
-        private readonly WrapMySQLConDat dbData = new WrapMySQLConDat();
+        private readonly WrapMySQLData dbData = new WrapMySQLData();
 
         private WrapSQLite sqlite = null;
         private WrapMySQL mysql = null;
@@ -114,7 +115,7 @@ namespace QDriveManager
 
         private void QDriveManager_Load(object sender, EventArgs e)
         {
-            sqlite = new WrapSQLite(QDInfo.ConfigFile, true);
+            sqlite = new WrapSQLite(QDInfo.ConfigFile);
 
             pnlLoading.BringToFront();
 
@@ -594,7 +595,7 @@ namespace QDriveManager
             {
                 if (File.Exists(sfdSaveConfig.FileName)) File.Delete(sfdSaveConfig.FileName);
 
-                using (WrapSQLite backup = new WrapSQLite(sfdSaveConfig.FileName, true))
+                using (WrapSQLite backup = new WrapSQLite(sfdSaveConfig.FileName))
                 {
                     backup.Open();
                     sqlite.Open();
@@ -672,7 +673,7 @@ namespace QDriveManager
                         }
                         catch { backup.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DefaultPassword, DBNull.Value); }
 
-                        using(SQLiteDataReader reader = sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
+                        using(SQLiteDataReader reader = (SQLiteDataReader)sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
                         {
                             while(reader.Read())
                             {
@@ -719,7 +720,7 @@ namespace QDriveManager
             bool success = false;
             if (ofdOpenConfig.ShowDialog() == DialogResult.OK)
             {
-                using (WrapSQLite backup = new WrapSQLite(ofdOpenConfig.FileName, true))
+                using (WrapSQLite backup = new WrapSQLite(ofdOpenConfig.FileName))
                 {
                     try
                     {
@@ -805,7 +806,7 @@ namespace QDriveManager
                             }
                             catch { sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DefaultPassword, DBNull.Value); }
 
-                            using (SQLiteDataReader reader = backup.ExecuteQuery("SELECT * FROM qd_drives"))
+                            using (SQLiteDataReader reader = (SQLiteDataReader)backup.ExecuteQuery("SELECT * FROM qd_drives"))
                             {
                                 while (reader.Read())
                                 {

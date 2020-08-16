@@ -9,6 +9,7 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using WrapSQL;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger
@@ -55,7 +56,7 @@ namespace QDriveLib
             return passwordsValid;
         }
 
-        public static bool VerifyMasterPassword(string pPassword, WrapMySQLConDat pDBData)
+        public static bool VerifyMasterPassword(string pPassword, WrapMySQLData pDBData)
         {
             bool masterPasswordValid = false;
 
@@ -95,7 +96,7 @@ namespace QDriveLib
             {
                 try
                 {
-                    using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+                    using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
                     {
                         object result = sqlite.ExecuteScalarACon("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.SetupSuccess);
 
@@ -111,14 +112,14 @@ namespace QDriveLib
             else return false;
         }
 
-        public static List<DriveViewItem> CreateDriveList(bool pIsLocalConnection, string pUserID, string pUserPassword, WrapMySQLConDat pDBConDat)
+        public static List<DriveViewItem> CreateDriveList(bool pIsLocalConnection, string pUserID, string pUserPassword, WrapMySQLData pDBConDat)
         {
             List<DriveViewItem> driveList = new List<DriveViewItem>();
 
-            using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+            using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
             {
                 sqlite.Open();
-                using (SQLiteDataReader reader = sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
+                using (SQLiteDataReader reader = (SQLiteDataReader)sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
                 {
                     while (reader.Read())
                     {
@@ -143,7 +144,7 @@ namespace QDriveLib
                 using (WrapMySQL mysql = new WrapMySQL(pDBConDat))
                 {
                     mysql.Open();
-                    using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT *, qd_assigns.ID as AID, qd_drives.ID AS DID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", pUserID))
+                    using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery("SELECT *, qd_assigns.ID as AID, qd_drives.ID AS DID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", pUserID))
                     {
                         while (reader.Read())
                         {
@@ -203,7 +204,7 @@ namespace QDriveLib
             }
         }
 
-        public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLConDat pDBData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null)
+        public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLData pDBData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null)
         {
             // Disconnect all current drives
             if (pDisconnectFirst) DisconnectAllDrives(drives);
@@ -217,7 +218,7 @@ namespace QDriveLib
                     {
                         sql.Open();
                         // Connect local network drives
-                        using (MySqlDataReader reader = sql.ExecuteQuery("SELECT * FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID INNER JOIN qd_users ON qd_assigns.UserID = qd_users.ID WHERE qd_assigns.UserID = ?", pUserID))
+                        using (MySqlDataReader reader = (MySqlDataReader)sql.ExecuteQuery("SELECT * FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID INNER JOIN qd_users ON qd_assigns.UserID = qd_users.ID WHERE qd_assigns.UserID = ?", pUserID))
                         {
                             while(reader.Read())
                             {
@@ -257,11 +258,11 @@ namespace QDriveLib
             {
                 if (!File.Exists(QDInfo.ConfigFile)) return 1;
 
-                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
                 {
                     sqlite.Open();
                     // Connect local network drives
-                    using (SQLiteDataReader reader = sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
+                    using (SQLiteDataReader reader = (SQLiteDataReader)sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
                     {
                         while (reader.Read())
                         {
@@ -296,7 +297,7 @@ namespace QDriveLib
             return 0;
         }
 
-        public static bool TestConnection(WrapMySQLConDat pOnlineDBConDat, bool messageOnSuccess = true)
+        public static bool TestConnection(WrapMySQLData pOnlineDBConDat, bool messageOnSuccess = true)
         {
             bool success = false;
 
@@ -320,7 +321,7 @@ namespace QDriveLib
             return success;
         }
 
-        public static bool VerifyPassword(bool pIsLocalConnection, string pUsername, string pPassword, out string pUserID, WrapMySQLConDat pDBData)
+        public static bool VerifyPassword(bool pIsLocalConnection, string pUsername, string pPassword, out string pUserID, WrapMySQLData pDBData)
         {
             pUserID = "";
 
@@ -329,7 +330,7 @@ namespace QDriveLib
             if (pIsLocalConnection)
             {
                 bool errorEncountered = false;
-                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
                 {
                     sqlite.Open();
                     try
@@ -354,7 +355,7 @@ namespace QDriveLib
                 using (WrapMySQL mysql = new WrapMySQL(pDBData))
                 {
                     mysql.Open();
-                    using (MySqlDataReader reader = mysql.ExecuteQuery("SELECT * FROM qd_users WHERE Username = ? AND Password = ?", pUsername, QDLib.HashPassword(pPassword)))
+                    using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery("SELECT * FROM qd_users WHERE Username = ? AND Password = ?", pUsername, QDLib.HashPassword(pPassword)))
                     {
                         while (reader.Read())
                         {

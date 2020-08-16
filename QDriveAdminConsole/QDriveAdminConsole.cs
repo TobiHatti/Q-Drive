@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WrapSQL;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger
@@ -42,7 +43,7 @@ namespace QDriveAdminConsole
         private string masterPassword = "";
 
 
-        private readonly WrapMySQLConDat dbData = new WrapMySQLConDat();
+        private readonly WrapMySQLData dbData = new WrapMySQLData();
         private WrapMySQL mysql = null;
 
         #region Page Layout and Initial Loading =================================================================[RF]=
@@ -82,7 +83,7 @@ namespace QDriveAdminConsole
             {
                 try
                 {
-                    using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+                    using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
                     {
 
                         bool localConnection = !Convert.ToBoolean(sqlite.ExecuteScalarACon<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked));
@@ -253,7 +254,7 @@ namespace QDriveAdminConsole
 
         private void btnTestDBConnection_Click(object sender, EventArgs e)
         {
-            QDLib.TestConnection(new WrapMySQLConDat() { 
+            QDLib.TestConnection(new WrapMySQLData() { 
                 Hostname = txbDBHostname.Text,
                 Database = txbDBDatabase.Text,
                 Username = txbDBUsername.Text,
@@ -459,7 +460,7 @@ namespace QDriveAdminConsole
 
             lbxUserList.DisplayMember = "UserDisplay";
             lbxUserList.ValueMember = "ID";
-            lbxUserList.DataSource = mysql.FillDataTable("SELECT CONCAT(Name, ' (', Username, ')') AS UserDisplay, ID FROM qd_users ORDER BY Name ASC");
+            lbxUserList.DataSource = mysql.CreateDataTable("SELECT CONCAT(Name, ' (', Username, ')') AS UserDisplay, ID FROM qd_users ORDER BY Name ASC");
         }
 
         private void UpdateMySQLSettings()
@@ -477,7 +478,7 @@ namespace QDriveAdminConsole
 
             lbxOnlineDrives.DisplayMember = "DriveDisplay";
             lbxOnlineDrives.ValueMember = "ID";
-            lbxOnlineDrives.DataSource = mysql.FillDataTable(@"SELECT CONCAT('(', DefaultDriveLetter, ':\\) ', DefaultName, ' (', LocalPath, ')') AS DriveDisplay, ID FROM qd_drives WHERE IsPublic = 1 ORDER BY DefaultDriveLetter ASC");
+            lbxOnlineDrives.DataSource = mysql.CreateDataTable(@"SELECT CONCAT('(', DefaultDriveLetter, ':\\) ', DefaultName, ' (', LocalPath, ')') AS DriveDisplay, ID FROM qd_drives WHERE IsPublic = 1 ORDER BY DefaultDriveLetter ASC");
         }
 
         private bool SaveChanges()
@@ -507,7 +508,7 @@ namespace QDriveAdminConsole
 
             mysql.Close();
 
-            WrapMySQLConDat newDBConnection = new WrapMySQLConDat()
+            WrapMySQLData newDBConnection = new WrapMySQLData()
             {
                 Hostname = txbDBHostname.Text,
                 Database = txbDBDatabase.Text,
@@ -515,7 +516,7 @@ namespace QDriveAdminConsole
                 Password = txbDBPassword.Text
             };
 
-            using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+            using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
             {
                 if(QDLib.TestConnection(newDBConnection, false))
                 {

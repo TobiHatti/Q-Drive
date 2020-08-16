@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WrapSQL;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger
@@ -30,7 +31,7 @@ namespace QDrive
 {
     public partial class VerifyMasterPW : SfForm
     {
-        public WrapMySQLConDat DBData;
+        public WrapMySQLData DBData;
 
         public VerifyMasterPW()
         {

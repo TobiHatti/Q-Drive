@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WrapSQL;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger
@@ -30,7 +31,7 @@ namespace QDriveManager
 {
     public partial class QDDatabaseConnection : SfForm
     {
-        public WrapMySQLConDat dbConDat = null;
+        public WrapMySQLData dbConDat = null;
 
         public QDDatabaseConnection()
         {
@@ -48,7 +49,7 @@ namespace QDriveManager
             }
         }
 
-        private void btnTestConnection_Click(object sender, EventArgs e) => QDLib.TestConnection(new WrapMySQLConDat()
+        private void btnTestConnection_Click(object sender, EventArgs e) => QDLib.TestConnection(new WrapMySQLData()
         {
             Hostname = txbHostname.Text,
             Database = txbName.Text,
@@ -72,7 +73,7 @@ namespace QDriveManager
 
         private void Submit()
         {
-            dbConDat = new WrapMySQLConDat()
+            dbConDat = new WrapMySQLData()
             {
                 Hostname = txbHostname.Text,
                 Database = txbName.Text,

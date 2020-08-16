@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WrapSQL;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger
@@ -40,7 +41,7 @@ namespace QDrive
         private bool alwaysPromptPassword = false;
         private string localPassword = string.Empty;
 
-        private WrapMySQLConDat onlineDBConDat = new WrapMySQLConDat();
+        private WrapMySQLData onlineDBConDat = new WrapMySQLData();
 
         private bool onlineAlreadyConfigured;
 
@@ -157,7 +158,7 @@ namespace QDrive
 
         #region Step 2B1: Global connection 1/2 =================================================================[RF]=
 
-        private void btnSB2TestConnection_Click(object sender, EventArgs e) => QDLib.TestConnection(new WrapMySQLConDat(){
+        private void btnSB2TestConnection_Click(object sender, EventArgs e) => QDLib.TestConnection(new WrapMySQLData(){
             Hostname = txbSB2DBHostname.Text,
             Database = txbSB2DBName.Text,
             Username = txbSB2DBUsername.Text,
@@ -176,7 +177,7 @@ namespace QDrive
 
         private void SubmitSB2A()
         {
-            onlineDBConDat = new WrapMySQLConDat()
+            onlineDBConDat = new WrapMySQLData()
             {
                 Hostname = txbSB2DBHostname.Text,
                 Database = txbSB2DBName.Text,
@@ -374,7 +375,7 @@ namespace QDrive
         {
             try
             {
-                using (WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile, true))
+                using (WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile))
                 {
                     sql.Open();
                     sql.TransactionBegin();

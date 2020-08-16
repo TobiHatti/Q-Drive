@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WrapSQL;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger
@@ -40,7 +41,7 @@ namespace QDriveAutostart
         private string Password;
         private string UserID;
 
-        private WrapMySQLConDat dbData = new WrapMySQLConDat();
+        private WrapMySQLData dbData = new WrapMySQLData();
 
         private List<DriveViewItem> driveList = new List<DriveViewItem>();
 
@@ -102,7 +103,7 @@ namespace QDriveAutostart
         {
             // Load local Data
 
-            using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+            using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
             {
 
                 sqlite.Open();
@@ -125,7 +126,7 @@ namespace QDriveAutostart
 
             try
             {
-                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile, true))
+                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
                 {
                     sqlite.Open();
 
