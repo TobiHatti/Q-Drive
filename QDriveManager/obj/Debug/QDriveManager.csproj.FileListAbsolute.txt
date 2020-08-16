@@ -73,9 +73,9 @@ F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\K4os.Hash.xxHash.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\MySql.Data.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\QDriveLib.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Renci.SshNet.dll
-F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Core.WinForms.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Data.WinForms.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Grid.Windows.dll
+F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Licensing.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Shared.Base.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Shared.Windows.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Tools.Base.dll
@@ -86,6 +86,9 @@ F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\System.Memory.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\System.Numerics.Vectors.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Ubiety.Dns.Core.dll
+F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\WrapMySQL.dll
+F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\WrapSQLBase.dll
+F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\WrapSQLite.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Zstandard.Net.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Grid.Base.dll
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.SpellChecker.Base.dll
@@ -99,7 +102,6 @@ F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\K4os.Compression.LZ4.Streams.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\K4os.Hash.xxHash.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\MySql.Data.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Renci.SshNet.xml
-F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Core.WinForms.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Data.WinForms.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Grid.Windows.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Shared.Base.xml
@@ -112,6 +114,9 @@ F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\System.Data.SQLite.dll.config
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\System.Memory.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\System.Numerics.Vectors.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\WrapMySQL.xml
+F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\WrapSQLBase.xml
+F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\WrapSQLite.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Grid.Base.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.SpellChecker.Base.xml
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Grid.Windows.XmlSerializers.dll
@@ -119,14 +124,13 @@ F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.csprojAssemblyRefere
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDAddDriveSelector.resources
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDAddPrivateDrive.resources
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDAddPublicDrive.resources
+F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDChangePassword.resources
+F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDDatabaseConnection.resources
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDriveManager.resources
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.Properties.Resources.resources
+F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDVersionInfo.resources
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.csproj.GenerateResource.cache
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.csproj.CoreCompileInputs.cache
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.exe
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.pdb
-F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Syncfusion.Licensing.dll
-F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDChangePassword.resources
-F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDVersionInfo.resources
-F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.QDDatabaseConnection.resources

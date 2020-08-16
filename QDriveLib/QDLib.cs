@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -172,21 +173,23 @@ namespace QDriveLib
         }
 
 
-        private static string macAddress = null;
+        private static string uniqueID = null;
 
-        public static string GetMachineMac()
+        public static string GetUniqueDeviceID()
         {
-            if (macAddress == null)
+            if (uniqueID == null)
             {
-                macAddress =
-                (
-                    from nic in NetworkInterface.GetAllNetworkInterfaces()
-                    where nic.OperationalStatus == OperationalStatus.Up
-                    select nic.GetPhysicalAddress().ToString()
-                ).FirstOrDefault();
+                if(Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\QDrive", "QDSysID", null) == null)
+                {
+                    RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE", true).CreateSubKey("QDrive");
+                    key.SetValue("QDSysID", Guid.NewGuid());
+                    key.Close();
+                }
+
+                uniqueID = Registry.CurrentUser.OpenSubKey("SOFTWARE", true).OpenSubKey("QDrive", true).GetValue("QDSysID").ToString();
             }
 
-            return macAddress;
+            return uniqueID;
         }
 
         public static string HashPassword(string pPassword)

@@ -71,3 +71,10 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.CopyComplete
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.pdb
+F:\Desktop\QDriveTemp\QDriveLib\bin\Release\WrapMySQL.dll
+F:\Desktop\QDriveTemp\QDriveLib\bin\Release\WrapSQLBase.dll
+F:\Desktop\QDriveTemp\QDriveLib\bin\Release\WrapSQLite.dll
+F:\Desktop\QDriveTemp\QDriveLib\bin\Release\WrapMySQL.xml
+F:\Desktop\QDriveTemp\QDriveLib\bin\Release\WrapSQLBase.xml
+F:\Desktop\QDriveTemp\QDriveLib\bin\Release\WrapSQLite.xml
+F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.csprojAssemblyReference.cache

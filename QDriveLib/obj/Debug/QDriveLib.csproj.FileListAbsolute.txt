@@ -48,6 +48,9 @@ F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Memory.dll
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Numerics.Vectors.dll
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\Ubiety.Dns.Core.dll
+F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\WrapMySQL.dll
+F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\WrapSQLBase.dll
+F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\WrapSQLite.dll
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\Zstandard.Net.dll
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\Google.Protobuf.xml
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\K4os.Compression.LZ4.xml
@@ -61,8 +64,10 @@ F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Data.SQLite.dll.config
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Memory.xml
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Numerics.Vectors.xml
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\WrapMySQL.xml
+F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\WrapSQLBase.xml
+F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\WrapSQLite.xml
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csproj.CoreCompileInputs.cache
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.dll
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.pdb
-F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csprojAssemblyReference.cache

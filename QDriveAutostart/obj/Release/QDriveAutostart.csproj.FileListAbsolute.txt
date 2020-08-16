@@ -126,3 +126,9 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Release\QDri
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Release\QDriveAutostart.csproj.CopyComplete
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Release\QDriveAutostart.exe
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Release\QDriveAutostart.pdb
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Release\WrapMySQL.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Release\WrapSQLBase.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Release\WrapSQLite.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Release\WrapMySQL.xml
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Release\WrapSQLBase.xml
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Release\WrapSQLite.xml

@@ -132,3 +132,9 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Release\QDriveSe
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Release\QDriveSetup.csproj.CopyComplete
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Release\QDriveSetup.exe
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Release\QDriveSetup.pdb
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Release\WrapMySQL.dll
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Release\WrapSQLBase.dll
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Release\WrapSQLite.dll
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Release\WrapMySQL.xml
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Release\WrapSQLBase.xml
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Release\WrapSQLite.xml

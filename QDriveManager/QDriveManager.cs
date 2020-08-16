@@ -111,6 +111,17 @@ namespace QDriveManager
             imgList.Images.Add("OnlinePublicDown", Properties.Resources.QDriveOnlinePublicDown);
 
             grvConnectedDrives.SmallImageList = imgList;
+
+            // Check if QD-Autostart is running, if not, start it
+            bool qdAutostartRunning = false;
+            foreach (Process process in Process.GetProcesses())
+                if (process.ProcessName.Contains("QDriveAutostart")) qdAutostartRunning = true;
+
+            if (!qdAutostartRunning)
+            {
+                try { Process.Start("QDriveAutostart.exe"); }
+                catch { }
+            }
         }
 
         private void QDriveManager_Load(object sender, EventArgs e)

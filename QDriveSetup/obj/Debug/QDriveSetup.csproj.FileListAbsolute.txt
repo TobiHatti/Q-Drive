@@ -123,6 +123,9 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Debug\QDriveSetu
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Debug\QDrive.exe
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\obj\Debug\QDrive.pdb
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\bin\Debug\QDriveLib.dll.config
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\QDriveSetup.exe.config
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\QDriveSetup.exe
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\QDriveSetup.pdb
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\BouncyCastle.Crypto.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Google.Protobuf.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\K4os.Compression.LZ4.dll
@@ -134,6 +137,7 @@ F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\QDriveManager.exe
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Renci.SshNet.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.Data.WinForms.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.Grid.Windows.dll
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.Licensing.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.Shared.Base.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.Shared.Windows.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.Tools.Base.dll
@@ -144,6 +148,9 @@ F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\System.Memory.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\System.Numerics.Vectors.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Ubiety.Dns.Core.dll
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\WrapMySQL.dll
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\WrapSQLBase.dll
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\WrapSQLite.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Zstandard.Net.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.Grid.Base.dll
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.SpellChecker.Base.dll
@@ -171,18 +178,18 @@ F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\System.Data.SQLite.dll.config
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\System.Memory.xml
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\System.Numerics.Vectors.xml
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\WrapMySQL.xml
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\WrapSQLBase.xml
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\WrapSQLite.xml
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.Grid.Base.xml
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.SpellChecker.Base.xml
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Syncfusion.Grid.Windows.XmlSerializers.dll
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.csprojAssemblyReference.cache
+F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.Properties.Resources.resources
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDrive.QDriveSetup.resources
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDrive.VerifyMasterPW.resources
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.csproj.GenerateResource.cache
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.csproj.CoreCompileInputs.cache
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.csproj.CopyComplete
-F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\QDriveSetup.exe.config
-F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\QDriveSetup.exe
-F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\QDriveSetup.pdb
-F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.Properties.Resources.resources
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.exe
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.pdb

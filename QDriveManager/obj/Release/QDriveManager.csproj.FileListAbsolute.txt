@@ -136,3 +136,9 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Release\QDrive
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Release\QDriveManager.csproj.CopyComplete
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Release\QDriveManager.exe
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Release\QDriveManager.pdb
+F:\Desktop\QDriveTemp\QDriveManager\bin\Release\WrapMySQL.dll
+F:\Desktop\QDriveTemp\QDriveManager\bin\Release\WrapSQLBase.dll
+F:\Desktop\QDriveTemp\QDriveManager\bin\Release\WrapSQLite.dll
+F:\Desktop\QDriveTemp\QDriveManager\bin\Release\WrapMySQL.xml
+F:\Desktop\QDriveTemp\QDriveManager\bin\Release\WrapSQLBase.xml
+F:\Desktop\QDriveTemp\QDriveManager\bin\Release\WrapSQLite.xml

@@ -27,7 +27,7 @@ namespace QDriveLib
     {
         public static string LocalCipherKey
         {
-            get => $"Endev{QDLib.GetMachineMac()}QDSystem";
+            get => $"Endev{QDLib.GetUniqueDeviceID()}QDSystem";
         }
 
         public static string GlobalCipherKey
