@@ -54,6 +54,8 @@ namespace QDriveManager
         private bool userCanAddPrivateDrive = true;
         private bool userCanAddPublicDrive = true;
         private bool userCanSelfRegister = true;
+        private bool logUserActions = false;
+        private bool userCanChangeManagerSettings = false;
 
         public string userID = "";
 
@@ -234,6 +236,7 @@ namespace QDriveManager
         private void btnNotConfigured_Click(object sender, EventArgs e)
         {
             ImportQDConfig();
+            if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserLoadedBackup, dbData, logUserActions);
 
             Process.Start("QDriveManager.exe");
             this.Close();
@@ -319,14 +322,16 @@ namespace QDriveManager
 
             if (AutostartLogin)
             {
+                if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserLoggedInAutoStart, dbData, logUserActions);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
+                if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserLoggedIn, dbData, logUserActions);
                 UpdateManagerData();
                 pnlManager.BringToFront();
-            }
+            }            
         }
 
         #endregion
@@ -349,13 +354,15 @@ namespace QDriveManager
         {
             bool signupSuccess = false;
 
+            string newUserID = Guid.NewGuid().ToString();
+
             if (!QDLib.ValidatePasswords(txbRegPassword.Text, txbRegConfirmPassword.Text)) return;
 
             if (mysql.ExecuteScalarACon<int>("SELECT COUNT(*) FROM qd_users WHERE Username = ?", txbRegUsername.Text) == 0)
             {
                 try
                 {
-                    mysql.ExecuteNonQueryACon("INSERT INTO qd_users (ID, Name, Username, Password) VALUES (?,?,?,?)", Guid.NewGuid(), txbRegName.Text, txbRegUsername.Text, QDLib.HashPassword(txbRegPassword.Text));
+                    mysql.ExecuteNonQueryACon("INSERT INTO qd_users (ID, Name, Username, Password) VALUES (?,?,?,?)", newUserID, txbRegName.Text, txbRegUsername.Text, QDLib.HashPassword(txbRegPassword.Text));
 
                     MessageBox.Show("User signed up successfully! Please log in with your username and password.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     signupSuccess = true;
@@ -369,6 +376,8 @@ namespace QDriveManager
 
             if (signupSuccess)
             {
+                if (!localConnection) QDLib.LogUserConnection(newUserID, QDLogAction.UserRegistered, dbData, logUserActions);
+
                 txbUsername.Text = txbRegUsername.Text;
                 pnlLogin.BringToFront();
                 txbUsername.Focus();
@@ -381,12 +390,15 @@ namespace QDriveManager
 
         private void btnReconnect_Click(object sender, EventArgs e)
         {
+            if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserDrivelistUpdated, dbData, logUserActions);
             UpdateManagerData();
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
             QDLib.DisconnectAllDrives(drives);
+            if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.QDDrivesDisconnect, dbData, logUserActions);
+            
             pnlLogin.BringToFront();
         }
 
@@ -443,6 +455,8 @@ namespace QDriveManager
                 if (drive.IsLocalDrive) sqlite.ExecuteNonQueryACon("DELETE FROM qd_drives WHERE ID = ?", drive.ID);
                 else mysql.ExecuteNonQueryACon("DELETE FROM qd_assigns WHERE ID = ?", drive.ID);
 
+                if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.DriveRemoved, dbData, logUserActions);
+
                 UpdateManagerData();
 
                 pbxEditDriveBtn.Enabled = false;
@@ -486,6 +500,7 @@ namespace QDriveManager
                         editPublic.DBEntryID
                     );
 
+                    if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.DrivePublicEdited, dbData, logUserActions);
                     UpdateManagerData();
                 }
             }
@@ -544,6 +559,7 @@ namespace QDriveManager
                         mysql.Close();
                     }
 
+                    if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.DrivePrivateEdited, dbData, logUserActions);
                     UpdateManagerData();
                 }
             }
@@ -564,6 +580,8 @@ namespace QDriveManager
         private void tsmLogOffDisconnect_Click(object sender, EventArgs e)
         {
             QDLib.DisconnectAllDrives(drives);
+            if(!localConnection) QDLib.LogUserConnection(userID, QDLogAction.QDDrivesDisconnect, dbData, logUserActions);
+
             pnlLogin.BringToFront();
         }
 
@@ -583,6 +601,8 @@ namespace QDriveManager
                     else mysql.ExecuteNonQueryACon("UPDATE qd_users SET Password = ? WHERE ID = ?", QDLib.HashPassword(changePW.NewPassword), userID);
 
                     MessageBox.Show("Password sucessfully changed! Please restart the program for the changes to take effect.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserChangedPassword, dbData, logUserActions);
                 }
                 catch
                 {
@@ -714,7 +734,11 @@ namespace QDriveManager
                     backup.Close();
                 }
 
-                if (success) MessageBox.Show("Backup created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (success)
+                {
+                    MessageBox.Show("Backup created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserCreactedBackup, dbData, logUserActions);
+                }
                 else MessageBox.Show("An error occured trying to create the backup. please try again later", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -722,6 +746,7 @@ namespace QDriveManager
         private void tsmImportUserData_Click(object sender, EventArgs e)
         {
             ImportQDConfig();
+            if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserLoadedBackup, dbData, logUserActions);
             Process.Start("QDriveManager.exe");
             this.Close();
         }
@@ -864,6 +889,8 @@ namespace QDriveManager
             if(File.Exists("Q-Drive.lnk"))
                 File.Copy("Q-Drive.lnk", autoStartLinkFile);
             MessageBox.Show("Added Q-Drive to your Autostart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserEnabledAutostart, dbData, logUserActions);
         }
 
         private void tsmDisableAutostart_Click(object sender, EventArgs e)
@@ -872,6 +899,8 @@ namespace QDriveManager
             if(File.Exists(autoStartLinkFile))
                 File.Delete(autoStartLinkFile);
             MessageBox.Show("Removed Q-Drive to your Autostart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserDisabledAutostart, dbData, logUserActions);
         }
 
         private void tsmRunQDriveSetup_Click(object sender, EventArgs e)
@@ -920,6 +949,8 @@ namespace QDriveManager
                 {
                     sqlite.ExecuteNonQueryACon("DELETE FROM qd_drives");
                     MessageBox.Show("Sucessfully deleted drive-info for local drives.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserResetLocalDatabase, dbData, logUserActions);
                 }
                 catch
                 {
@@ -927,6 +958,12 @@ namespace QDriveManager
                 }
             }
 
+            UpdateManagerData();
+        }
+
+        private void tsmUpdateReconnectDrives_Click(object sender, EventArgs e)
+        {
+            if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserDrivelistUpdated, dbData, logUserActions);
             UpdateManagerData();
         }
 
@@ -974,6 +1011,7 @@ namespace QDriveManager
                         Cipher.Encrypt(addPublic.Domain, uPassword)
                     );
 
+                    if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.DrivePublicAdded, dbData, logUserActions);
                     UpdateManagerData();
                 }
             }
@@ -1056,6 +1094,7 @@ namespace QDriveManager
                         }
                     }
 
+                    if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.DrivePrivateAdded, dbData, logUserActions);
                     UpdateManagerData();
                 }
             }
@@ -1063,8 +1102,8 @@ namespace QDriveManager
         
         private void UpdateManagerData()
         {
-            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, true, drives);
-            else QDLib.ConnectQDDrives(userID, uPassword, dbData, true, drives);
+            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, logUserActions, true, drives);
+            else QDLib.ConnectQDDrives(userID, uPassword, dbData, logUserActions, true, drives);
 
             UpdateDriveListView();
 
@@ -1113,8 +1152,14 @@ namespace QDriveManager
                     userCanSelfRegister = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanSelfRegister));
                     useLoginAsDriveAuth = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UseLoginAsDriveAuthentication));
                     forceLoginDriveAuth = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.ForceLoginAsDriveAuthentication));
-                    
+                    logUserActions = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.LogUserActions));
+                    userCanChangeManagerSettings = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanChangeManagerSettings));
+
+
                     if (useLoginAsDriveAuth) ndDefaultDomain = mysql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.DefaultDomain);
+
+                    if (userCanChangeManagerSettings) cmsSettings.Enabled = true;
+                    else cmsSettings.Enabled = false;
 
                     mysql.Close();
                 }
@@ -1170,6 +1215,8 @@ namespace QDriveManager
                     )
                 );
             }
+
+            if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.QDDrivelistUpdated, dbData, logUserActions);
         }
 
         #endregion
@@ -1184,7 +1231,9 @@ namespace QDriveManager
                 //UpdateDriveListView();
             }
             catch { }
-        } 
+        }
+
+        
     }
 
     public class GroupViewItemEx : Syncfusion.Windows.Forms.Tools.GroupViewItem

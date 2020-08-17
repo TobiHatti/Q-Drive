@@ -100,6 +100,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QDrive";
             this.TransparencyKey = System.Drawing.Color.Magenta;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QDrive_FormClosing);
             this.Load += new System.EventHandler(this.QDrive_Load);
             this.Shown += new System.EventHandler(this.QDrive_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDriveSplash)).EndInit();

@@ -332,12 +332,16 @@ namespace QDrive
                             sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_drives`");
                             sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_users`");
                             sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_assigns`");
+                            sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_conlog`");
+                            sql.ExecuteNonQuery("DROP TABLE IF EXISTS `qd_devices`");
 
                             // Create new tables
                             sql.ExecuteNonQuery("CREATE TABLE `qd_info` ( `QDKey` VARCHAR(255) NOT NULL , `QDValue` VARCHAR(255) NOT NULL , PRIMARY KEY (`QDKey`))");
                             sql.ExecuteNonQuery("CREATE TABLE `qd_drives` ( `ID` VARCHAR(50) NOT NULL , `DefaultName` VARCHAR(50) NOT NULL , `DefaultDriveLetter` VARCHAR(1) NOT NULL , `LocalPath` VARCHAR(255) NOT NULL , `RemotePath` VARCHAR(255) NOT NULL , `IsPublic` BOOLEAN NOT NULL , `IsDeployable` BOOLEAN NOT NULL , PRIMARY KEY (`ID`))");
                             sql.ExecuteNonQuery("CREATE TABLE `qd_users` ( `ID` varchar(50) NOT NULL, `Name` varchar(100) NOT NULL, `Username` varchar(100) NOT NULL, `Password` varchar(100) NOT NULL, PRIMARY KEY(`ID`), UNIQUE KEY `Username` (`Username`))");
                             sql.ExecuteNonQuery("CREATE TABLE `qd_assigns` ( `ID` varchar(50) NOT NULL, `UserID` varchar(50) NOT NULL, `DriveID` varchar(50) NOT NULL, `CustomDriveName` varchar(50) NOT NULL, `CustomDriveLetter` varchar(1) NOT NULL, `DUsername` varchar(200) NOT NULL, `DPassword` varchar(200) NOT NULL, `DDomain` varchar(200) NOT NULL, PRIMARY KEY(`ID`))");
+                            sql.ExecuteNonQuery("CREATE TABLE `qd_conlog` ( `ID` varchar(50) COLLATE utf8_unicode_ci NOT NULL, `UserID` varchar(50) COLLATE utf8_unicode_ci NOT NULL, `DeviceID` varchar(50) COLLATE utf8_unicode_ci NOT NULL, `LogTime` datetime NOT NULL, `LogAction` int(11) NOT NULL, PRIMARY KEY(`ID`))");
+                            sql.ExecuteNonQuery("CREATE TABLE `qd_devices` ( `ID` varchar(50) COLLATE utf8_unicode_ci NOT NULL, `MacAddress` varchar(50) COLLATE utf8_unicode_ci NOT NULL, `LogonName` varchar(150) COLLATE utf8_unicode_ci NOT NULL, `DeviceName` varchar(150) COLLATE utf8_unicode_ci NOT NULL, PRIMARY KEY(`ID`)) ");
 
                             // Create pre-defined settings
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.UserCanToggleKeepLoggedIn,  false);
@@ -348,6 +352,9 @@ namespace QDrive
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.DefaultDomain,              "");
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.UseLoginAsDriveAuthentication, false);
                             sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.ForceLoginAsDriveAuthentication, false);
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.DisconnectDrivesAtShutdown, false);
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.LogUserActions, false);
+                            sql.ExecuteNonQuery($"INSERT INTO `qd_info` (`QDKey`, `QDValue`) VALUES (?, ?)", QDInfo.DBO.UserCanChangeManagerSettings, true);
 
                             sql.TransactionCommit();
                         }

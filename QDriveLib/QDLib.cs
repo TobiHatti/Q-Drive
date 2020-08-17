@@ -213,10 +213,14 @@ namespace QDriveLib
             }
         }
 
-        public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLData pDBData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null, bool ConnectOnlyIfNotAvailable = false)
+        public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLData pDBData, bool pLogUserData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null, bool ConnectOnlyIfNotAvailable = false)
         {
             // Disconnect all current drives
-            if (pDisconnectFirst) DisconnectAllDrives(drives);
+            if (pDisconnectFirst)
+            {
+                DisconnectAllDrives(drives);
+                if(!string.IsNullOrEmpty(pUserID)) LogUserConnection(pUserID, QDLogAction.QDDrivesDisconnect, pDBData, pLogUserData);
+            }
 
             // Connect online-drives (online-synced)
             if (!string.IsNullOrEmpty(pUserID))
@@ -312,6 +316,8 @@ namespace QDriveLib
             {
                 return 2;
             }
+
+            if (!string.IsNullOrEmpty(pUserID)) LogUserConnection(pUserID, QDLogAction.QDDrivesConnect, pDBData, pLogUserData);
 
             return 0;
         }
@@ -452,8 +458,98 @@ namespace QDriveLib
             Process.Start(psi);
         }
 
-        
+        private static string GetMACAddress()
+        {
+            return (
+                from nic in NetworkInterface.GetAllNetworkInterfaces()
+                where nic.OperationalStatus == OperationalStatus.Up
+                select nic.GetPhysicalAddress().ToString()
+            ).FirstOrDefault();
+        }
 
+        public static void LogUserConnection(string pUserID, QDLogAction pLogAction, WrapMySQLData pDBData, bool pLogUserActionAllowed)
+        {
+            if (!pLogUserActionAllowed) return;
+
+            try
+            {
+                using (WrapMySQL mysql = new WrapMySQL(pDBData))
+                {
+                    string deviceID;
+                    string deviceMac = GetMACAddress();
+
+                    mysql.Open();
+                    mysql.TransactionBegin();
+
+                    try
+                    {
+                        // Add device to DB if it doesn't exist. Get device ID
+                        if (mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM qd_devices WHERE MacAddress = ? AND LogonName = ? AND DeviceName = ?", deviceMac, Environment.UserName, Environment.MachineName) == 0)
+                        {
+                            deviceID = Guid.NewGuid().ToString();
+                            mysql.ExecuteNonQuery("INSERT INTO qd_devices (ID, MacAddress, LogonName, DeviceName) VALUES (?,?,?,?)",
+                                deviceID,
+                                deviceMac,
+                                Environment.UserName,
+                                Environment.MachineName
+                            );
+                        }
+                        else
+                        {
+                            deviceID = mysql.ExecuteScalar<string>("SELECT ID FROM qd_devices WHERE MacAddress = ? AND LogonName = ? AND DeviceName = ?", deviceMac, Environment.UserName, Environment.MachineName);
+                        }
+
+                        mysql.ExecuteNonQuery("INSERT INTO qd_conlog (ID, UserID, DeviceID, LogTime, LogAction) VALUES (?,?,?, NOW() ,?)",
+                            Guid.NewGuid(),
+                            pUserID,
+                            deviceID,
+                            pLogAction
+                        );
+
+                        mysql.TransactionCommit();
+                    }
+                    catch
+                    {
+                        mysql.TransactionRollback();
+                    }
+
+                    mysql.Close();
+                }
+            }
+            catch { }
+        }
+
+    }
+
+    public enum QDLogAction
+    {
+        UserRegistered,             // -> User registers
+        UserLoggedIn,               // -> User loggs into manager
+        UserLoggedInAutoStart,      // -> User loggs in via autostart
+        UserLoggedOut,              // -> User loggs out via manager
+        UserDrivelistUpdated,       // -> User manually updates manager drivelist
+
+        UserChangedPassword,        // -> User changed password
+        UserCreactedBackup,         // -> User created backup file
+        UserLoadedBackup,           // -> User loaded backup file
+        UserDisabledAutostart,      // -> User disabled QD-Autostart
+        UserEnabledAutostart,       // -> User enabled QD-Autostart
+        UserResetLocalDatabase,     // -> User reset local database
+
+        DrivePrivateAdded,          // -> User added a private drive
+        DrivePublicAdded,           // -> User added a public drive
+        DrivePrivateEdited,         // -> User edited a private drive
+        DrivePublicEdited,          // -> User edited a public drive
+        DriveRemoved,               // -> User removed a drive
+
+        QDDrivesDisconnect,         // -> QD Disconnected all netdrives 
+        QDDrivesConnect,            // -> QD Connected all netdrives
+        QDDrivelistUpdated,         // -> QD updated drivelist in manager
+
+        QDSystemAutostartFinished,  // -> QD-Autostart has finished
+        QDSystemAppClosed,          // -> QD-Autostart app has been closed by user
+        QDSystemDeviceShutdown      // x-> QD-Autostart app has been closed by system (shutdown)
+        
     }
 
     public class DriveViewItem : IComparable
@@ -491,4 +587,6 @@ namespace QDriveLib
             else return 1;
         }
     }
+
+   
 }

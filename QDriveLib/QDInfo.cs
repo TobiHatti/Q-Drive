@@ -55,6 +55,9 @@ namespace QDriveLib
             public const string DefaultDomain = "DefaultDomain";
             public const string UseLoginAsDriveAuthentication = "UseLoginAsDriveAuthentication";
             public const string ForceLoginAsDriveAuthentication = "ForceLoginAsDriveAuthentication";
+            public const string DisconnectDrivesAtShutdown = "DisconnectDrivesAtShutdown";
+            public const string LogUserActions = "LogUserActions";
+            public const string UserCanChangeManagerSettings = "UserCanChangeManagerSettings";
         }
 
         /// <summary>

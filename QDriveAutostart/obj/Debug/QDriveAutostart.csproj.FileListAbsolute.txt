@@ -7,29 +7,29 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDrive
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.CoreCompileInputs.cache
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.exe
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.pdb
-F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveAutostart.exe.config
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveAutostart.exe
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\MySql.Data.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveLib.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveManager.exe
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Renci.SshNet.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\System.Data.SQLite.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\WrapMySQL.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\WrapSQLBase.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\WrapSQLite.dll
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveAutostart.exe.config
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveAutostart.pdb
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\BouncyCastle.Crypto.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Google.Protobuf.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\K4os.Compression.LZ4.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\K4os.Compression.LZ4.Streams.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\K4os.Hash.xxHash.dll
-F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\MySql.Data.dll
-F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveLib.dll
-F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveManager.exe
-F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Renci.SshNet.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Syncfusion.Licensing.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Syncfusion.Shared.Base.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\System.Buffers.dll
-F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\System.Data.SQLite.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\System.Memory.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\System.Numerics.Vectors.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Ubiety.Dns.Core.dll
-F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\WrapMySQL.dll
-F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\WrapSQLBase.dll
-F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\WrapSQLite.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Zstandard.Net.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Syncfusion.Tools.Windows.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Syncfusion.SpellChecker.Base.dll

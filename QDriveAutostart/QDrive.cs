@@ -37,6 +37,9 @@ namespace QDriveAutostart
         private bool localConnection;
         private bool promptPassword;
 
+        private bool disconnectAtShutdown = false;
+        private bool logUserActions = false;
+
         private string Username;
         private string Password;
         private string UserID;
@@ -98,12 +101,14 @@ namespace QDriveAutostart
             if (localConnection)
             {
                 pbxQDriveSplash.Image = Properties.Resources.QDSplashLocal;
-                QDLib.ConnectQDDrives("", "", dbData, true, driveList);
+                QDLib.ConnectQDDrives("", "", dbData, logUserActions, true, driveList);
             }
             else
             {
                 pbxQDriveSplash.Image = Properties.Resources.QDSplashOnline;
-                QDLib.ConnectQDDrives(UserID, Password, dbData, true, driveList);
+                QDLib.ConnectQDDrives(UserID, Password, dbData, logUserActions, true, driveList);
+
+                if(!localConnection) QDLib.LogUserConnection(UserID, QDLogAction.QDSystemAutostartFinished, dbData, logUserActions);
             }
         }
 
@@ -147,7 +152,7 @@ namespace QDriveAutostart
             }
             catch { return 3; }
 
-            // Load Online Drives
+            // Load Online Data
             if (!localConnection)
             {
                 try
@@ -155,6 +160,9 @@ namespace QDriveAutostart
                     using (WrapMySQL mysql = new WrapMySQL(dbData))
                     {
                         mysql.Open();
+
+                        disconnectAtShutdown = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.DisconnectDrivesAtShutdown));
+                        logUserActions = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.LogUserActions));
 
                         mysql.Close();
                     }
@@ -183,13 +191,18 @@ namespace QDriveAutostart
 
         private void nfiQDriveMenu_Reconnect_Click(object sender, EventArgs e)
         {
-            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, true);
-            else QDLib.ConnectQDDrives(UserID, Password, dbData, true);
+            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, logUserActions, true);
+            else QDLib.ConnectQDDrives(UserID, Password, dbData, logUserActions, true);
         }
 
         private void nfiQDriveMenu_LogOff_Click(object sender, EventArgs e)
         {
             QDLib.DisconnectAllDrives(driveList);
+            if (!localConnection)
+            {
+                QDLib.LogUserConnection(UserID, QDLogAction.UserLoggedOut, dbData, logUserActions);
+                QDLib.LogUserConnection(UserID, QDLogAction.QDDrivesDisconnect, dbData, logUserActions);
+            }
         }
 
         private void nfiQDriveMenu_Close_Click(object sender, EventArgs e)
@@ -203,11 +216,24 @@ namespace QDriveAutostart
 
         private void tmrDriveCheck_Tick(object sender, EventArgs e)
         {
-            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, false, null, true);
+            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, logUserActions, false, null, true);
             else
             {
                 if(string.IsNullOrEmpty(UserID)) LoadQDData();
-                QDLib.ConnectQDDrives(UserID, Password, dbData, false, null, true);
+                QDLib.ConnectQDDrives(UserID, Password, dbData, logUserActions, false, null, true);
+            }
+        }
+
+        private void QDrive_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!localConnection && disconnectAtShutdown)
+            {
+                QDLib.DisconnectAllDrives();
+                if (!localConnection)
+                {
+                    QDLib.LogUserConnection(UserID, QDLogAction.QDDrivesDisconnect, dbData, logUserActions);
+                    QDLib.LogUserConnection(UserID, QDLogAction.QDSystemAppClosed, dbData, logUserActions);
+                }
             }
         }
     }

@@ -807,7 +807,7 @@
             this.tsmCloseQDrive});
             this.cmsQDrive.Name = "cmsQDrive";
             this.cmsQDrive.ShowImageMargin = false;
-            this.cmsQDrive.Size = new System.Drawing.Size(189, 142);
+            this.cmsQDrive.Size = new System.Drawing.Size(189, 164);
             // 
             // tsmAddDrive
             // 
@@ -821,6 +821,7 @@
             this.tsmUpdateReconnectDrives.Name = "tsmUpdateReconnectDrives";
             this.tsmUpdateReconnectDrives.Size = new System.Drawing.Size(188, 22);
             this.tsmUpdateReconnectDrives.Text = "Update / Reconnect drives";
+            this.tsmUpdateReconnectDrives.Click += new System.EventHandler(this.tsmUpdateReconnectDrives_Click);
             // 
             // tsmLogOffDisconnect
             // 
