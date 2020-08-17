@@ -30,35 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDrive));
-            this.pbxQDriveSplash = new System.Windows.Forms.PictureBox();
             this.lblVersionInfo = new System.Windows.Forms.Label();
             this.nfiQDriveMenu = new System.Windows.Forms.NotifyIcon(this.components);
             this.tmrQDSplash = new System.Windows.Forms.Timer(this.components);
+            this.tmrDriveCheck = new System.Windows.Forms.Timer(this.components);
+            this.pbxQDriveSplash = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDriveSplash)).BeginInit();
             this.SuspendLayout();
             // 
-            // pbxQDriveSplash
-            // 
-            this.pbxQDriveSplash.BackColor = System.Drawing.Color.Transparent;
-            this.pbxQDriveSplash.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbxQDriveSplash.Location = new System.Drawing.Point(0, 0);
-            this.pbxQDriveSplash.Name = "pbxQDriveSplash";
-            this.pbxQDriveSplash.Size = new System.Drawing.Size(650, 195);
-            this.pbxQDriveSplash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxQDriveSplash.TabIndex = 0;
-            this.pbxQDriveSplash.TabStop = false;
-            // 
             // lblVersionInfo
             // 
+            this.lblVersionInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersionInfo.AutoSize = true;
-            this.lblVersionInfo.BackColor = System.Drawing.Color.White;
-            this.lblVersionInfo.Font = new System.Drawing.Font("Calibri Light", 12F);
-            this.lblVersionInfo.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lblVersionInfo.Location = new System.Drawing.Point(568, 168);
+            this.lblVersionInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(204)))), ((int)(((byte)(242)))));
+            this.lblVersionInfo.Font = new System.Drawing.Font("Calibri Light", 13F);
+            this.lblVersionInfo.ForeColor = System.Drawing.Color.White;
+            this.lblVersionInfo.Location = new System.Drawing.Point(221, 136);
             this.lblVersionInfo.Name = "lblVersionInfo";
-            this.lblVersionInfo.Size = new System.Drawing.Size(41, 19);
+            this.lblVersionInfo.Size = new System.Drawing.Size(58, 22);
             this.lblVersionInfo.TabIndex = 2;
-            this.lblVersionInfo.Text = "1.0.0";
+            this.lblVersionInfo.Text = "9.9.9.9";
             // 
             // nfiQDriveMenu
             // 
@@ -72,12 +63,31 @@
             this.tmrQDSplash.Interval = 2000;
             this.tmrQDSplash.Tick += new System.EventHandler(this.tmrQDSplash_Tick);
             // 
+            // tmrDriveCheck
+            // 
+            this.tmrDriveCheck.Enabled = true;
+            this.tmrDriveCheck.Interval = 60000;
+            this.tmrDriveCheck.Tick += new System.EventHandler(this.tmrDriveCheck_Tick);
+            // 
+            // pbxQDriveSplash
+            // 
+            this.pbxQDriveSplash.BackColor = System.Drawing.Color.Transparent;
+            this.pbxQDriveSplash.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbxQDriveSplash.Image = global::QDriveAutostart.Properties.Resources.QDSplashBase;
+            this.pbxQDriveSplash.InitialImage = global::QDriveAutostart.Properties.Resources.QDSplashBase;
+            this.pbxQDriveSplash.Location = new System.Drawing.Point(0, 0);
+            this.pbxQDriveSplash.Name = "pbxQDriveSplash";
+            this.pbxQDriveSplash.Size = new System.Drawing.Size(300, 160);
+            this.pbxQDriveSplash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxQDriveSplash.TabIndex = 0;
+            this.pbxQDriveSplash.TabStop = false;
+            // 
             // QDrive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(650, 195);
+            this.BackColor = System.Drawing.Color.Magenta;
+            this.ClientSize = new System.Drawing.Size(300, 160);
             this.Controls.Add(this.lblVersionInfo);
             this.Controls.Add(this.pbxQDriveSplash);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -89,7 +99,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QDrive";
-            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.TransparencyKey = System.Drawing.Color.Magenta;
             this.Load += new System.EventHandler(this.QDrive_Load);
             this.Shown += new System.EventHandler(this.QDrive_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDriveSplash)).EndInit();
@@ -104,6 +114,7 @@
         private System.Windows.Forms.Label lblVersionInfo;
         private System.Windows.Forms.NotifyIcon nfiQDriveMenu;
         private System.Windows.Forms.Timer tmrQDSplash;
+        private System.Windows.Forms.Timer tmrDriveCheck;
     }
 }
 

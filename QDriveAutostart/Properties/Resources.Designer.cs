@@ -63,9 +63,29 @@ namespace QDriveAutostart.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap QDriveSplash {
+        internal static System.Drawing.Bitmap QDSplashBase {
             get {
-                object obj = ResourceManager.GetObject("QDriveSplash", resourceCulture);
+                object obj = ResourceManager.GetObject("QDSplashBase", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDSplashLocal {
+            get {
+                object obj = ResourceManager.GetObject("QDSplashLocal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QDSplashOnline {
+            get {
+                object obj = ResourceManager.GetObject("QDSplashOnline", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

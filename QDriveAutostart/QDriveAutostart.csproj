@@ -159,6 +159,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QDriveLogo.ico" />
+    <None Include="Resources\QDSplashOnline.png" />
+    <None Include="Resources\QDSplashLocal.png" />
+    <None Include="Resources\QDSplashBase.png" />
+    <None Include="Resources\QDSplashDiscrete.png" />
     <None Include="Resources\QDriveSplash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -50,7 +50,6 @@ namespace QDriveAutostart
         public QDrive()
         {
             InitializeComponent();
-            pbxQDriveSplash.Image = Properties.Resources.QDriveSplash;
             lblVersionInfo.Text = QDInfo.QDVersion;
 
             ContextMenu ctmQDriveMenu = new ContextMenu();
@@ -61,6 +60,11 @@ namespace QDriveAutostart
 
             nfiQDriveMenu.Visible = true;
             nfiQDriveMenu.ContextMenu = ctmQDriveMenu;
+
+            this.Location = new Point(
+                Screen.FromControl(this).Bounds.Width - this.Width,
+                Screen.FromControl(this).Bounds.Height - this.Height - 50
+            );
         }
 
         #endregion
@@ -91,8 +95,16 @@ namespace QDriveAutostart
 
             driveList = QDLib.CreateDriveList(localConnection, UserID, Password, dbData);
 
-            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, true, driveList);
-            else QDLib.ConnectQDDrives(UserID, Password, dbData, true, driveList);
+            if (localConnection)
+            {
+                pbxQDriveSplash.Image = Properties.Resources.QDSplashLocal;
+                QDLib.ConnectQDDrives("", "", dbData, true, driveList);
+            }
+            else
+            {
+                pbxQDriveSplash.Image = Properties.Resources.QDSplashOnline;
+                QDLib.ConnectQDDrives(UserID, Password, dbData, true, driveList);
+            }
         }
 
         private void QDrive_Shown(object sender, EventArgs e) => tmrQDSplash.Start();
@@ -186,8 +198,17 @@ namespace QDriveAutostart
         }
 
 
+
         #endregion
 
-        
+        private void tmrDriveCheck_Tick(object sender, EventArgs e)
+        {
+            if (localConnection) QDLib.ConnectQDDrives("", "", dbData, false, null, true);
+            else
+            {
+                if(string.IsNullOrEmpty(UserID)) LoadQDData();
+                QDLib.ConnectQDDrives(UserID, Password, dbData, false, null, true);
+            }
+        }
     }
 }

@@ -57,6 +57,8 @@ namespace QDriveLib
             return passwordsValid;
         }
 
+        
+
         public static bool VerifyMasterPassword(string pPassword, WrapMySQLData pDBData)
         {
             bool masterPasswordValid = false;
@@ -142,29 +144,33 @@ namespace QDriveLib
 
             if (!pIsLocalConnection)
             {
-                using (WrapMySQL mysql = new WrapMySQL(pDBConDat))
+                try
                 {
-                    mysql.Open();
-                    using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery("SELECT *, qd_assigns.ID as AID, qd_drives.ID AS DID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", pUserID))
+                    using (WrapMySQL mysql = new WrapMySQL(pDBConDat))
                     {
-                        while (reader.Read())
+                        mysql.Open();
+                        using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery("SELECT *, qd_assigns.ID as AID, qd_drives.ID AS DID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", pUserID))
                         {
-                            driveList.Add(new DriveViewItem(
-                            Convert.ToString(reader["AID"]),
-                            Convert.ToString(reader["CustomDriveName"]),
-                            Convert.ToString(reader["LocalPath"]),
-                            Convert.ToString(reader["CustomDriveLetter"]),
-                            false,
-                            Convert.ToBoolean(Convert.ToInt16(reader["IsPublic"])),
-                            Cipher.Decrypt(Convert.ToString(reader["DUsername"]), pUserPassword),
-                            Cipher.Decrypt(Convert.ToString(reader["DPassword"]), pUserPassword),
-                            Cipher.Decrypt(Convert.ToString(reader["DDomain"]), pUserPassword),
-                            Convert.ToString(reader["DID"])
-                        ));
+                            while (reader.Read())
+                            {
+                                driveList.Add(new DriveViewItem(
+                                Convert.ToString(reader["AID"]),
+                                Convert.ToString(reader["CustomDriveName"]),
+                                Convert.ToString(reader["LocalPath"]),
+                                Convert.ToString(reader["CustomDriveLetter"]),
+                                false,
+                                Convert.ToBoolean(Convert.ToInt16(reader["IsPublic"])),
+                                Cipher.Decrypt(Convert.ToString(reader["DUsername"]), pUserPassword),
+                                Cipher.Decrypt(Convert.ToString(reader["DPassword"]), pUserPassword),
+                                Cipher.Decrypt(Convert.ToString(reader["DDomain"]), pUserPassword),
+                                Convert.ToString(reader["DID"])
+                            ));
+                            }
                         }
+                        mysql.Close();
                     }
-                    mysql.Close();
                 }
+                catch { }
             }
 
             driveList.Sort();
@@ -207,7 +213,7 @@ namespace QDriveLib
             }
         }
 
-        public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLData pDBData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null)
+        public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLData pDBData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null, bool ConnectOnlyIfNotAvailable = false)
         {
             // Disconnect all current drives
             if (pDisconnectFirst) DisconnectAllDrives(drives);
@@ -227,14 +233,19 @@ namespace QDriveLib
                             {
                                 try
                                 {
-                                    ConnectDrive(
-                                        Convert.ToChar(reader["CustomDriveLetter"]),
-                                        Convert.ToString(reader["LocalPath"]),
-                                        Cipher.Decrypt(Convert.ToString(reader["DUsername"]), pUserPassword),
-                                        Cipher.Decrypt(Convert.ToString(reader["DPassword"]), pUserPassword),
-                                        Convert.ToString(reader["CustomDriveName"]),
-                                        Cipher.Decrypt(Convert.ToString(reader["DDomain"]), pUserPassword)
-                                    );
+                                    if(!ConnectOnlyIfNotAvailable || (ConnectOnlyIfNotAvailable && !Directory.Exists($@"{Convert.ToChar(reader["CustomDriveLetter"])}:\")))
+                                    {
+                                        //MessageBox.Show("Try to connect " + Convert.ToString(reader["CustomDriveName"]));
+                                        
+                                        ConnectDrive(
+                                            Convert.ToChar(reader["CustomDriveLetter"]),
+                                            Convert.ToString(reader["LocalPath"]),
+                                            Cipher.Decrypt(Convert.ToString(reader["DUsername"]), pUserPassword),
+                                            Cipher.Decrypt(Convert.ToString(reader["DPassword"]), pUserPassword),
+                                            Convert.ToString(reader["CustomDriveName"]),
+                                            Cipher.Decrypt(Convert.ToString(reader["DDomain"]), pUserPassword)
+                                        );
+                                    }
                                 }
                                 catch
                                 {
@@ -271,14 +282,19 @@ namespace QDriveLib
                         {
                             try
                             {
-                                ConnectDrive(
-                                    Convert.ToChar(reader["DriveLetter"]),
-                                    Convert.ToString(reader["LocalPath"]),
-                                    Cipher.Decrypt(Convert.ToString(reader["Username"]), QDInfo.LocalCipherKey),
-                                    Cipher.Decrypt(Convert.ToString(reader["Password"]), QDInfo.LocalCipherKey),
-                                    Convert.ToString(reader["DriveName"]),
-                                    Cipher.Decrypt(Convert.ToString(reader["Domain"]), QDInfo.LocalCipherKey)
-                                );
+                                if (!ConnectOnlyIfNotAvailable || (ConnectOnlyIfNotAvailable && Directory.Exists($@"{Convert.ToChar(reader["CustomDriveLetter"])}:\")))
+                                {
+                                    //MessageBox.Show("Try to connect " + Convert.ToString(reader["CustomDriveName"]));
+
+                                    ConnectDrive(
+                                        Convert.ToChar(reader["DriveLetter"]),
+                                        Convert.ToString(reader["LocalPath"]),
+                                        Cipher.Decrypt(Convert.ToString(reader["Username"]), QDInfo.LocalCipherKey),
+                                        Cipher.Decrypt(Convert.ToString(reader["Password"]), QDInfo.LocalCipherKey),
+                                        Convert.ToString(reader["DriveName"]),
+                                        Cipher.Decrypt(Convert.ToString(reader["Domain"]), QDInfo.LocalCipherKey)
+                                    );
+                                }
                             }
                             catch
                             {
