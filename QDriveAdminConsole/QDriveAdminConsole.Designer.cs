@@ -40,13 +40,22 @@
             Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection5 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection6 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
             Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection6 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection7 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection7 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection8 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection8 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection9 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection9 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDriveAdminConsole));
             this.pnlSettings = new System.Windows.Forms.Panel();
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabSettings = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.txbDefaultDomain = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -57,7 +66,10 @@
             this.tglUserCanSelfRegister = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.tglUserCanAddPublicDrives = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.tglUserCanAddPrivateDrives = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.tglUserCanChangeManagerSettings = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.tglLogUserActions = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.tglForceLoginAsDriveAuthentication = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.tglDisconnectDrivesAtShutdown = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.tglUseLoginAsDriveAuthentication = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.tabUsers = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.lbxUserList = new System.Windows.Forms.ListBox();
@@ -65,6 +77,19 @@
             this.btnEditUserAccount = new System.Windows.Forms.Button();
             this.btnRegisterNewUser = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.tabDevices = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.btnDeviceShowActions = new System.Windows.Forms.Button();
+            this.btnDeviceShowUsers = new System.Windows.Forms.Button();
+            this.txbDeviceName = new System.Windows.Forms.TextBox();
+            this.txbLogonName = new System.Windows.Forms.TextBox();
+            this.txbDeviceMac = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.lblDeviceActionLoggingNote = new System.Windows.Forms.Label();
+            this.lblDeviceUserCount = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.lbxDevices = new System.Windows.Forms.ListBox();
             this.tabMySQL = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.label22 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -83,6 +108,7 @@
             this.btnRemoveOnlineDrive = new System.Windows.Forms.Button();
             this.btnEditOnlineDrive = new System.Windows.Forms.Button();
             this.btnAddOnlineDrive = new System.Windows.Forms.Button();
+            this.tabActionLog = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tabInfoAndMore = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.lnkReleases = new System.Windows.Forms.LinkLabel();
             this.lblVersion = new System.Windows.Forms.Label();
@@ -92,6 +118,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.pbxQDLogo = new System.Windows.Forms.PictureBox();
@@ -117,9 +144,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tglUserCanSelfRegister)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tglUserCanAddPublicDrives)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tglUserCanAddPrivateDrives)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanChangeManagerSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglLogUserActions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tglForceLoginAsDriveAuthentication)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglDisconnectDrivesAtShutdown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tglUseLoginAsDriveAuthentication)).BeginInit();
             this.tabUsers.SuspendLayout();
+            this.tabDevices.SuspendLayout();
             this.tabMySQL.SuspendLayout();
             this.tabOnlineDrives.SuspendLayout();
             this.tabInfoAndMore.SuspendLayout();
@@ -139,6 +170,7 @@
             this.pnlSettings.Controls.Add(this.tabControlAdv1);
             this.pnlSettings.Controls.Add(this.btnClose);
             this.pnlSettings.Controls.Add(this.btnApply);
+            this.pnlSettings.Controls.Add(this.btnUpdate);
             this.pnlSettings.Controls.Add(this.btnSubmit);
             this.pnlSettings.Location = new System.Drawing.Point(6, 6);
             this.pnlSettings.Name = "pnlSettings";
@@ -151,8 +183,10 @@
             this.tabControlAdv1.BeforeTouchSize = new System.Drawing.Size(694, 350);
             this.tabControlAdv1.Controls.Add(this.tabSettings);
             this.tabControlAdv1.Controls.Add(this.tabUsers);
+            this.tabControlAdv1.Controls.Add(this.tabDevices);
             this.tabControlAdv1.Controls.Add(this.tabMySQL);
             this.tabControlAdv1.Controls.Add(this.tabOnlineDrives);
+            this.tabControlAdv1.Controls.Add(this.tabActionLog);
             this.tabControlAdv1.Controls.Add(this.tabInfoAndMore);
             this.tabControlAdv1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControlAdv1.FocusOnTabClick = false;
@@ -169,7 +203,10 @@
             this.tabSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabSettings.Controls.Add(this.txbDefaultDomain);
             this.tabSettings.Controls.Add(this.label14);
+            this.tabSettings.Controls.Add(this.label26);
+            this.tabSettings.Controls.Add(this.label25);
             this.tabSettings.Controls.Add(this.label13);
+            this.tabSettings.Controls.Add(this.label24);
             this.tabSettings.Controls.Add(this.label12);
             this.tabSettings.Controls.Add(this.label11);
             this.tabSettings.Controls.Add(this.label10);
@@ -180,7 +217,10 @@
             this.tabSettings.Controls.Add(this.tglUserCanSelfRegister);
             this.tabSettings.Controls.Add(this.tglUserCanAddPublicDrives);
             this.tabSettings.Controls.Add(this.tglUserCanAddPrivateDrives);
+            this.tabSettings.Controls.Add(this.tglUserCanChangeManagerSettings);
+            this.tabSettings.Controls.Add(this.tglLogUserActions);
             this.tabSettings.Controls.Add(this.tglForceLoginAsDriveAuthentication);
+            this.tabSettings.Controls.Add(this.tglDisconnectDrivesAtShutdown);
             this.tabSettings.Controls.Add(this.tglUseLoginAsDriveAuthentication);
             this.tabSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tabSettings.Image = null;
@@ -211,19 +251,46 @@
             this.label14.TabIndex = 5;
             this.label14.Text = "Default domain:";
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(79, 116);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(252, 21);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Users can change manager settings";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(79, 151);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(121, 21);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "Log user actions";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(195, 237);
+            this.label13.Location = new System.Drawing.Point(79, 241);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(316, 21);
             this.label13.TabIndex = 2;
             this.label13.Text = "Force User-Login as Net-Drive authentication";
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(452, 116);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(219, 21);
+            this.label24.TabIndex = 2;
+            this.label24.Text = "Disconnect drives at shutdown";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(195, 203);
+            this.label12.Location = new System.Drawing.Point(79, 207);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(329, 21);
             this.label12.TabIndex = 2;
@@ -232,7 +299,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(195, 151);
+            this.label11.Location = new System.Drawing.Point(452, 81);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(200, 21);
             this.label11.TabIndex = 2;
@@ -241,7 +308,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(195, 117);
+            this.label10.Location = new System.Drawing.Point(452, 47);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(196, 21);
             this.label10.TabIndex = 2;
@@ -250,7 +317,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(195, 83);
+            this.label9.Location = new System.Drawing.Point(79, 81);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(243, 21);
             this.label9.TabIndex = 2;
@@ -259,7 +326,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(195, 49);
+            this.label8.Location = new System.Drawing.Point(79, 47);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(291, 21);
             this.label8.TabIndex = 2;
@@ -282,7 +349,7 @@
             this.tglUserCanToggleKeepLoggedIn.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
             this.tglUserCanToggleKeepLoggedIn.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tglUserCanToggleKeepLoggedIn.ForeColor = System.Drawing.Color.Black;
-            this.tglUserCanToggleKeepLoggedIn.Location = new System.Drawing.Point(137, 46);
+            this.tglUserCanToggleKeepLoggedIn.Location = new System.Drawing.Point(21, 44);
             this.tglUserCanToggleKeepLoggedIn.MinimumSize = new System.Drawing.Size(52, 20);
             this.tglUserCanToggleKeepLoggedIn.Name = "tglUserCanToggleKeepLoggedIn";
             this.tglUserCanToggleKeepLoggedIn.Size = new System.Drawing.Size(52, 29);
@@ -300,7 +367,7 @@
             this.tglUserCanSelfRegister.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
             this.tglUserCanSelfRegister.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tglUserCanSelfRegister.ForeColor = System.Drawing.Color.Black;
-            this.tglUserCanSelfRegister.Location = new System.Drawing.Point(137, 80);
+            this.tglUserCanSelfRegister.Location = new System.Drawing.Point(21, 78);
             this.tglUserCanSelfRegister.MinimumSize = new System.Drawing.Size(52, 20);
             this.tglUserCanSelfRegister.Name = "tglUserCanSelfRegister";
             this.tglUserCanSelfRegister.Size = new System.Drawing.Size(52, 29);
@@ -318,7 +385,7 @@
             this.tglUserCanAddPublicDrives.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
             this.tglUserCanAddPublicDrives.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tglUserCanAddPublicDrives.ForeColor = System.Drawing.Color.Black;
-            this.tglUserCanAddPublicDrives.Location = new System.Drawing.Point(137, 114);
+            this.tglUserCanAddPublicDrives.Location = new System.Drawing.Point(394, 44);
             this.tglUserCanAddPublicDrives.MinimumSize = new System.Drawing.Size(52, 20);
             this.tglUserCanAddPublicDrives.Name = "tglUserCanAddPublicDrives";
             this.tglUserCanAddPublicDrives.Size = new System.Drawing.Size(52, 29);
@@ -336,7 +403,7 @@
             this.tglUserCanAddPrivateDrives.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
             this.tglUserCanAddPrivateDrives.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tglUserCanAddPrivateDrives.ForeColor = System.Drawing.Color.Black;
-            this.tglUserCanAddPrivateDrives.Location = new System.Drawing.Point(137, 148);
+            this.tglUserCanAddPrivateDrives.Location = new System.Drawing.Point(394, 78);
             this.tglUserCanAddPrivateDrives.MinimumSize = new System.Drawing.Size(52, 20);
             this.tglUserCanAddPrivateDrives.Name = "tglUserCanAddPrivateDrives";
             this.tglUserCanAddPrivateDrives.Size = new System.Drawing.Size(52, 29);
@@ -347,36 +414,90 @@
             this.tglUserCanAddPrivateDrives.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
             this.tglUserCanAddPrivateDrives.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
             // 
-            // tglForceLoginAsDriveAuthentication
+            // tglUserCanChangeManagerSettings
             // 
             activeStateCollection5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            this.tglForceLoginAsDriveAuthentication.ActiveState = activeStateCollection5;
+            this.tglUserCanChangeManagerSettings.ActiveState = activeStateCollection5;
+            this.tglUserCanChangeManagerSettings.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
+            this.tglUserCanChangeManagerSettings.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tglUserCanChangeManagerSettings.ForeColor = System.Drawing.Color.Black;
+            this.tglUserCanChangeManagerSettings.Location = new System.Drawing.Point(21, 113);
+            this.tglUserCanChangeManagerSettings.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tglUserCanChangeManagerSettings.Name = "tglUserCanChangeManagerSettings";
+            this.tglUserCanChangeManagerSettings.Size = new System.Drawing.Size(52, 29);
+            this.tglUserCanChangeManagerSettings.Slider = sliderCollection5;
+            this.tglUserCanChangeManagerSettings.TabIndex = 6;
+            this.tglUserCanChangeManagerSettings.Text = "toggleButton1";
+            this.tglUserCanChangeManagerSettings.ThemeName = "Office2016Black";
+            this.tglUserCanChangeManagerSettings.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.tglUserCanChangeManagerSettings.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            // 
+            // tglLogUserActions
+            // 
+            activeStateCollection6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.tglLogUserActions.ActiveState = activeStateCollection6;
+            this.tglLogUserActions.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
+            this.tglLogUserActions.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tglLogUserActions.ForeColor = System.Drawing.Color.Black;
+            this.tglLogUserActions.Location = new System.Drawing.Point(21, 148);
+            this.tglLogUserActions.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tglLogUserActions.Name = "tglLogUserActions";
+            this.tglLogUserActions.Size = new System.Drawing.Size(52, 29);
+            this.tglLogUserActions.Slider = sliderCollection6;
+            this.tglLogUserActions.TabIndex = 6;
+            this.tglLogUserActions.Text = "toggleButton1";
+            this.tglLogUserActions.ThemeName = "Office2016Black";
+            this.tglLogUserActions.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.tglLogUserActions.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            // 
+            // tglForceLoginAsDriveAuthentication
+            // 
+            activeStateCollection7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.tglForceLoginAsDriveAuthentication.ActiveState = activeStateCollection7;
             this.tglForceLoginAsDriveAuthentication.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
             this.tglForceLoginAsDriveAuthentication.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tglForceLoginAsDriveAuthentication.ForeColor = System.Drawing.Color.Black;
-            this.tglForceLoginAsDriveAuthentication.Location = new System.Drawing.Point(137, 234);
+            this.tglForceLoginAsDriveAuthentication.Location = new System.Drawing.Point(21, 238);
             this.tglForceLoginAsDriveAuthentication.MinimumSize = new System.Drawing.Size(52, 20);
             this.tglForceLoginAsDriveAuthentication.Name = "tglForceLoginAsDriveAuthentication";
             this.tglForceLoginAsDriveAuthentication.Size = new System.Drawing.Size(52, 29);
-            this.tglForceLoginAsDriveAuthentication.Slider = sliderCollection5;
+            this.tglForceLoginAsDriveAuthentication.Slider = sliderCollection7;
             this.tglForceLoginAsDriveAuthentication.TabIndex = 6;
             this.tglForceLoginAsDriveAuthentication.Text = "toggleButton1";
             this.tglForceLoginAsDriveAuthentication.ThemeName = "Office2016Black";
             this.tglForceLoginAsDriveAuthentication.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
             this.tglForceLoginAsDriveAuthentication.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
             // 
+            // tglDisconnectDrivesAtShutdown
+            // 
+            activeStateCollection8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.tglDisconnectDrivesAtShutdown.ActiveState = activeStateCollection8;
+            this.tglDisconnectDrivesAtShutdown.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
+            this.tglDisconnectDrivesAtShutdown.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tglDisconnectDrivesAtShutdown.ForeColor = System.Drawing.Color.Black;
+            this.tglDisconnectDrivesAtShutdown.Location = new System.Drawing.Point(394, 113);
+            this.tglDisconnectDrivesAtShutdown.MinimumSize = new System.Drawing.Size(52, 20);
+            this.tglDisconnectDrivesAtShutdown.Name = "tglDisconnectDrivesAtShutdown";
+            this.tglDisconnectDrivesAtShutdown.Size = new System.Drawing.Size(52, 29);
+            this.tglDisconnectDrivesAtShutdown.Slider = sliderCollection8;
+            this.tglDisconnectDrivesAtShutdown.TabIndex = 5;
+            this.tglDisconnectDrivesAtShutdown.Text = "toggleButton1";
+            this.tglDisconnectDrivesAtShutdown.ThemeName = "Office2016Black";
+            this.tglDisconnectDrivesAtShutdown.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
+            this.tglDisconnectDrivesAtShutdown.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Black;
+            // 
             // tglUseLoginAsDriveAuthentication
             // 
-            activeStateCollection6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
-            this.tglUseLoginAsDriveAuthentication.ActiveState = activeStateCollection6;
+            activeStateCollection9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199)))));
+            this.tglUseLoginAsDriveAuthentication.ActiveState = activeStateCollection9;
             this.tglUseLoginAsDriveAuthentication.DisplayMode = Syncfusion.Windows.Forms.Tools.DisplayType.Image;
             this.tglUseLoginAsDriveAuthentication.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tglUseLoginAsDriveAuthentication.ForeColor = System.Drawing.Color.Black;
-            this.tglUseLoginAsDriveAuthentication.Location = new System.Drawing.Point(137, 200);
+            this.tglUseLoginAsDriveAuthentication.Location = new System.Drawing.Point(21, 204);
             this.tglUseLoginAsDriveAuthentication.MinimumSize = new System.Drawing.Size(52, 20);
             this.tglUseLoginAsDriveAuthentication.Name = "tglUseLoginAsDriveAuthentication";
             this.tglUseLoginAsDriveAuthentication.Size = new System.Drawing.Size(52, 29);
-            this.tglUseLoginAsDriveAuthentication.Slider = sliderCollection6;
+            this.tglUseLoginAsDriveAuthentication.Slider = sliderCollection9;
             this.tglUseLoginAsDriveAuthentication.TabIndex = 5;
             this.tglUseLoginAsDriveAuthentication.Text = "toggleButton1";
             this.tglUseLoginAsDriveAuthentication.ThemeName = "Office2016Black";
@@ -459,6 +580,156 @@
             this.label5.Size = new System.Drawing.Size(303, 28);
             this.label5.TabIndex = 2;
             this.label5.Text = "Q-Drive User and Account settings";
+            // 
+            // tabDevices
+            // 
+            this.tabDevices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabDevices.Controls.Add(this.btnDeviceShowActions);
+            this.tabDevices.Controls.Add(this.btnDeviceShowUsers);
+            this.tabDevices.Controls.Add(this.txbDeviceName);
+            this.tabDevices.Controls.Add(this.txbLogonName);
+            this.tabDevices.Controls.Add(this.txbDeviceMac);
+            this.tabDevices.Controls.Add(this.label31);
+            this.tabDevices.Controls.Add(this.label30);
+            this.tabDevices.Controls.Add(this.lblDeviceActionLoggingNote);
+            this.tabDevices.Controls.Add(this.lblDeviceUserCount);
+            this.tabDevices.Controls.Add(this.label29);
+            this.tabDevices.Controls.Add(this.label27);
+            this.tabDevices.Controls.Add(this.lbxDevices);
+            this.tabDevices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabDevices.Image = null;
+            this.tabDevices.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabDevices.Location = new System.Drawing.Point(1, 30);
+            this.tabDevices.Name = "tabDevices";
+            this.tabDevices.ShowCloseButton = true;
+            this.tabDevices.Size = new System.Drawing.Size(691, 318);
+            this.tabDevices.TabIndex = 6;
+            this.tabDevices.Text = " Devices ";
+            this.tabDevices.ThemesEnabled = false;
+            // 
+            // btnDeviceShowActions
+            // 
+            this.btnDeviceShowActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeviceShowActions.ForeColor = System.Drawing.Color.Black;
+            this.btnDeviceShowActions.Location = new System.Drawing.Point(172, 278);
+            this.btnDeviceShowActions.Name = "btnDeviceShowActions";
+            this.btnDeviceShowActions.Size = new System.Drawing.Size(109, 36);
+            this.btnDeviceShowActions.TabIndex = 7;
+            this.btnDeviceShowActions.Text = "Show actions";
+            this.btnDeviceShowActions.UseVisualStyleBackColor = true;
+            this.btnDeviceShowActions.Click += new System.EventHandler(this.btnDeviceShowActions_Click);
+            // 
+            // btnDeviceShowUsers
+            // 
+            this.btnDeviceShowUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeviceShowUsers.ForeColor = System.Drawing.Color.Black;
+            this.btnDeviceShowUsers.Location = new System.Drawing.Point(287, 278);
+            this.btnDeviceShowUsers.Name = "btnDeviceShowUsers";
+            this.btnDeviceShowUsers.Size = new System.Drawing.Size(109, 36);
+            this.btnDeviceShowUsers.TabIndex = 7;
+            this.btnDeviceShowUsers.Text = "Show users";
+            this.btnDeviceShowUsers.UseVisualStyleBackColor = true;
+            this.btnDeviceShowUsers.Click += new System.EventHandler(this.btnDeviceShowUsers_Click);
+            // 
+            // txbDeviceName
+            // 
+            this.txbDeviceName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDeviceName.Location = new System.Drawing.Point(402, 194);
+            this.txbDeviceName.Name = "txbDeviceName";
+            this.txbDeviceName.ReadOnly = true;
+            this.txbDeviceName.Size = new System.Drawing.Size(286, 29);
+            this.txbDeviceName.TabIndex = 6;
+            // 
+            // txbLogonName
+            // 
+            this.txbLogonName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbLogonName.Location = new System.Drawing.Point(402, 138);
+            this.txbLogonName.Name = "txbLogonName";
+            this.txbLogonName.ReadOnly = true;
+            this.txbLogonName.Size = new System.Drawing.Size(286, 29);
+            this.txbLogonName.TabIndex = 6;
+            // 
+            // txbDeviceMac
+            // 
+            this.txbDeviceMac.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDeviceMac.Location = new System.Drawing.Point(402, 82);
+            this.txbDeviceMac.Name = "txbDeviceMac";
+            this.txbDeviceMac.ReadOnly = true;
+            this.txbDeviceMac.Size = new System.Drawing.Size(286, 29);
+            this.txbDeviceMac.TabIndex = 6;
+            // 
+            // label31
+            // 
+            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(402, 170);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(100, 21);
+            this.label31.TabIndex = 5;
+            this.label31.Text = "Device Name";
+            // 
+            // label30
+            // 
+            this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(402, 114);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(98, 21);
+            this.label30.TabIndex = 5;
+            this.label30.Text = "Logon Name";
+            // 
+            // lblDeviceActionLoggingNote
+            // 
+            this.lblDeviceActionLoggingNote.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDeviceActionLoggingNote.AutoSize = true;
+            this.lblDeviceActionLoggingNote.ForeColor = System.Drawing.Color.LightSalmon;
+            this.lblDeviceActionLoggingNote.Location = new System.Drawing.Point(402, 272);
+            this.lblDeviceActionLoggingNote.Name = "lblDeviceActionLoggingNote";
+            this.lblDeviceActionLoggingNote.Size = new System.Drawing.Size(282, 21);
+            this.lblDeviceActionLoggingNote.TabIndex = 5;
+            this.lblDeviceActionLoggingNote.Text = "Enable Action-Logging for more details!";
+            // 
+            // lblDeviceUserCount
+            // 
+            this.lblDeviceUserCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDeviceUserCount.AutoSize = true;
+            this.lblDeviceUserCount.Location = new System.Drawing.Point(402, 230);
+            this.lblDeviceUserCount.Name = "lblDeviceUserCount";
+            this.lblDeviceUserCount.Size = new System.Drawing.Size(269, 42);
+            this.lblDeviceUserCount.TabIndex = 5;
+            this.lblDeviceUserCount.Text = "N User(s) logged into Q-Drive on this \r\nmachine / account";
+            // 
+            // label29
+            // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(402, 58);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(105, 21);
+            this.label29.TabIndex = 5;
+            this.label29.Text = "MAC-Address";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label27.Location = new System.Drawing.Point(16, 13);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(287, 28);
+            this.label27.TabIndex = 3;
+            this.label27.Text = "Q-Drive Devices and Deploy Info";
+            // 
+            // lbxDevices
+            // 
+            this.lbxDevices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbxDevices.FormattingEnabled = true;
+            this.lbxDevices.ItemHeight = 21;
+            this.lbxDevices.Location = new System.Drawing.Point(2, 58);
+            this.lbxDevices.Name = "lbxDevices";
+            this.lbxDevices.Size = new System.Drawing.Size(394, 214);
+            this.lbxDevices.TabIndex = 2;
+            this.lbxDevices.SelectedIndexChanged += new System.EventHandler(this.lbxDevices_SelectedIndexChanged);
             // 
             // tabMySQL
             // 
@@ -669,6 +940,20 @@
             this.btnAddOnlineDrive.UseVisualStyleBackColor = true;
             this.btnAddOnlineDrive.Click += new System.EventHandler(this.btnAddOnlineDrive_Click);
             // 
+            // tabActionLog
+            // 
+            this.tabActionLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabActionLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabActionLog.Image = null;
+            this.tabActionLog.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabActionLog.Location = new System.Drawing.Point(1, 30);
+            this.tabActionLog.Name = "tabActionLog";
+            this.tabActionLog.ShowCloseButton = true;
+            this.tabActionLog.Size = new System.Drawing.Size(691, 318);
+            this.tabActionLog.TabIndex = 7;
+            this.tabActionLog.Text = " Action Log ";
+            this.tabActionLog.ThemesEnabled = false;
+            // 
             // tabInfoAndMore
             // 
             this.tabInfoAndMore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
@@ -686,7 +971,7 @@
             this.tabInfoAndMore.ShowCloseButton = true;
             this.tabInfoAndMore.Size = new System.Drawing.Size(691, 318);
             this.tabInfoAndMore.TabIndex = 3;
-            this.tabInfoAndMore.Text = " Info and More  ";
+            this.tabInfoAndMore.Text = " Info ";
             this.tabInfoAndMore.ThemesEnabled = false;
             // 
             // lnkReleases
@@ -785,6 +1070,18 @@
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdate.Location = new System.Drawing.Point(310, 356);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 36);
+            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSubmit
             // 
@@ -1029,10 +1326,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.tglUserCanSelfRegister)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tglUserCanAddPublicDrives)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tglUserCanAddPrivateDrives)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglUserCanChangeManagerSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglLogUserActions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tglForceLoginAsDriveAuthentication)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglDisconnectDrivesAtShutdown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tglUseLoginAsDriveAuthentication)).EndInit();
             this.tabUsers.ResumeLayout(false);
             this.tabUsers.PerformLayout();
+            this.tabDevices.ResumeLayout(false);
+            this.tabDevices.PerformLayout();
             this.tabMySQL.ResumeLayout(false);
             this.tabMySQL.PerformLayout();
             this.tabOnlineDrives.ResumeLayout(false);
@@ -1122,6 +1424,27 @@
         private System.Windows.Forms.Button btnRemoveOnlineDrive;
         private System.Windows.Forms.Button btnEditOnlineDrive;
         private System.Windows.Forms.Button btnAddOnlineDrive;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton tglUserCanChangeManagerSettings;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton tglLogUserActions;
+        private Syncfusion.Windows.Forms.Tools.ToggleButton tglDisconnectDrivesAtShutdown;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabDevices;
+        private Syncfusion.Windows.Forms.Tools.TabPageAdv tabActionLog;
+        private System.Windows.Forms.Button btnDeviceShowActions;
+        private System.Windows.Forms.Button btnDeviceShowUsers;
+        private System.Windows.Forms.TextBox txbDeviceName;
+        private System.Windows.Forms.TextBox txbLogonName;
+        private System.Windows.Forms.TextBox txbDeviceMac;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label lblDeviceActionLoggingNote;
+        private System.Windows.Forms.Label lblDeviceUserCount;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ListBox lbxDevices;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 

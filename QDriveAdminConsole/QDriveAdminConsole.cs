@@ -39,6 +39,9 @@ namespace QDriveAdminConsole
         private bool userCanSelfRegister = false;
         private bool useLoginAsDriveAuth = false;
         private bool forceLoginDriveAuth = false;
+        private bool disconnectDrivesAtShutdown = false;
+        private bool logUserActions = false;
+        private bool userCanChangeManagerSettings = false;
         private string defaultDomain = "";
         private string masterPassword = "";
 
@@ -81,46 +84,7 @@ namespace QDriveAdminConsole
             if (!QDLib.IsQDConfigured()) pnlNotConfigured.BringToFront();
             else
             {
-                try
-                {
-                    using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
-                    {
-
-                        bool localConnection = !Convert.ToBoolean(sqlite.ExecuteScalarACon<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked));
-
-                        if (localConnection)
-                        {
-                            pnlLocal.BringToFront();
-                            return;
-                        }
-
-                        sqlite.Open();
-                        dbData.Hostname = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost), QDInfo.LocalCipherKey);
-                        dbData.Username = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername), QDInfo.LocalCipherKey);
-                        dbData.Password = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBPassword), QDInfo.LocalCipherKey);
-                        dbData.Database = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBName), QDInfo.LocalCipherKey);
-                        sqlite.Close();
-                    }
-
-                    mysql = new WrapMySQL(dbData);
-
-                    mysql.Open();
-                    userCanToggleKeepLoggedIn = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanToggleKeepLoggedIn));
-                    userCanAddPrivateDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPrivateDrive));
-                    userCanAddPublicDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPublicDrive));
-                    userCanSelfRegister = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanSelfRegister));
-                    useLoginAsDriveAuth = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UseLoginAsDriveAuthentication));
-                    forceLoginDriveAuth = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.ForceLoginAsDriveAuthentication));
-                    defaultDomain = mysql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.DefaultDomain);
-                    masterPassword = mysql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.MasterPassword);
-                    mysql.Close();
-                }
-                catch
-                {
-                    MessageBox.Show("An error occured whilst trying to connect to the online-database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.Close();
-                }
-
+                LoadAllData();
                 UpdateAll();
 
                 pnlLogin.BringToFront();
@@ -128,6 +92,8 @@ namespace QDriveAdminConsole
                 txbMasterPassword.Focus();
             }
         }
+
+        
 
         #endregion
 
@@ -141,7 +107,13 @@ namespace QDriveAdminConsole
 
         private void btnApply_Click(object sender, EventArgs e) => SaveChanges();
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            LoadAllData(); 
+            UpdateAll();
+        }
+
+            private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (SaveChanges()) this.Close();
         }
@@ -246,6 +218,46 @@ namespace QDriveAdminConsole
                     UpdateUsersSettings();
                 }
             }
+        }
+
+        #endregion
+
+        #region Settings: Devices ===============================================================================[RF]=
+
+        private void lbxDevices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mysql.Open();
+
+            txbDeviceMac.Text = mysql.ExecuteScalar<string>("SELECT MacAddress FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
+            txbDeviceName.Text = mysql.ExecuteScalar<string>("SELECT DeviceName FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
+            txbLogonName.Text = mysql.ExecuteScalar<string>("SELECT LogonName FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
+
+            int userCount = mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM (SELECT * FROM qd_conlog WHERE DeviceID = ? GROUP BY UserID) AS A", lbxDevices.SelectedValue);
+
+            if (userCount == 1) lblDeviceUserCount.Text = $"{userCount} User logged into Q-Drive on this{Environment.NewLine}machine / account";
+            else lblDeviceUserCount.Text = $"{userCount} Users logged into Q-Drive on this{Environment.NewLine}machine / account";
+
+            mysql.Close();
+        }
+
+        private void btnDeviceShowActions_Click(object sender, EventArgs e)
+        {
+            QDActionBrowser actBrowser = new QDActionBrowser()
+            {
+                SelectedObjectID = lbxDevices.SelectedValue.ToString(),
+                DBData = dbData
+            };
+            actBrowser.ShowDialog();
+        }
+
+        private void btnDeviceShowUsers_Click(object sender, EventArgs e)
+        {
+            QDDeviceUsers deviceUser = new QDDeviceUsers() 
+            { 
+                DeviceID = lbxDevices.SelectedValue.ToString(),
+                DBData = dbData
+            };
+            deviceUser.ShowDialog();
         }
 
         #endregion
@@ -438,8 +450,10 @@ namespace QDriveAdminConsole
         {
             UpdateQDSettings();
             UpdateUsersSettings();
+            UpdateDeviceSettings();
             UpdateMySQLSettings();
             UpdateOnlineDrives();
+            UpdateActionLog();
         }
 
         private void UpdateQDSettings()
@@ -450,7 +464,13 @@ namespace QDriveAdminConsole
             tglUserCanAddPrivateDrives.ToggleState = userCanAddPrivateDrive ? ToggleButtonState.Active : ToggleButtonState.Inactive;
             tglUseLoginAsDriveAuthentication.ToggleState = useLoginAsDriveAuth ? ToggleButtonState.Active : ToggleButtonState.Inactive;
             tglForceLoginAsDriveAuthentication.ToggleState = forceLoginDriveAuth ? ToggleButtonState.Active : ToggleButtonState.Inactive;
+            tglDisconnectDrivesAtShutdown.ToggleState = disconnectDrivesAtShutdown ? ToggleButtonState.Active : ToggleButtonState.Inactive;
+            tglLogUserActions.ToggleState = logUserActions ? ToggleButtonState.Active : ToggleButtonState.Inactive;
+            tglUserCanChangeManagerSettings.ToggleState = userCanChangeManagerSettings ? ToggleButtonState.Active : ToggleButtonState.Inactive;
             txbDefaultDomain.Text = defaultDomain;
+
+            if (tglLogUserActions.ToggleState == ToggleButtonState.Active) lblDeviceActionLoggingNote.Visible = false;
+            else lblDeviceActionLoggingNote.Visible = true;
         }
 
         private void UpdateUsersSettings()
@@ -461,6 +481,16 @@ namespace QDriveAdminConsole
             lbxUserList.DisplayMember = "UserDisplay";
             lbxUserList.ValueMember = "ID";
             lbxUserList.DataSource = mysql.CreateDataTable("SELECT CONCAT(Name, ' (', Username, ')') AS UserDisplay, ID FROM qd_users ORDER BY Name ASC");
+        }
+
+        private void UpdateDeviceSettings()
+        {
+            lbxDevices.DataSource = null;
+            lbxDevices.Items.Clear();
+
+            lbxDevices.DisplayMember = "DeviceDisplay";
+            lbxDevices.ValueMember = "ID";
+            lbxDevices.DataSource = mysql.CreateDataTable("SELECT CONCAT(DeviceName, ' (User: ', LogonName, ', MAC: ', MacAddress, ')') AS DeviceDisplay, ID FROM qd_devices ORDER BY DeviceName ASC");
         }
 
         private void UpdateMySQLSettings()
@@ -481,6 +511,11 @@ namespace QDriveAdminConsole
             lbxOnlineDrives.DataSource = mysql.CreateDataTable(@"SELECT CONCAT('(', DefaultDriveLetter, ':\\) ', DefaultName, ' (', LocalPath, ')') AS DriveDisplay, ID FROM qd_drives WHERE IsPublic = 1 ORDER BY DefaultDriveLetter ASC");
         }
 
+        private void UpdateActionLog()
+        {
+
+        }
+
         private bool SaveChanges()
         {
             bool successOnline = false;
@@ -496,6 +531,9 @@ namespace QDriveAdminConsole
                 mysql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", tglUserCanAddPrivateDrives.ToggleState == ToggleButtonState.Active, QDInfo.DBO.UserCanAddPrivateDrive);
                 mysql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", tglUseLoginAsDriveAuthentication.ToggleState == ToggleButtonState.Active, QDInfo.DBO.UseLoginAsDriveAuthentication);
                 mysql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", tglForceLoginAsDriveAuthentication.ToggleState == ToggleButtonState.Active, QDInfo.DBO.ForceLoginAsDriveAuthentication);
+                mysql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", tglDisconnectDrivesAtShutdown.ToggleState == ToggleButtonState.Active, QDInfo.DBO.DisconnectDrivesAtShutdown);
+                mysql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", tglLogUserActions.ToggleState == ToggleButtonState.Active, QDInfo.DBO.LogUserActions);
+                mysql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", tglUserCanChangeManagerSettings.ToggleState == ToggleButtonState.Active, QDInfo.DBO.UserCanChangeManagerSettings);
                 mysql.ExecuteNonQuery("UPDATE qd_info SET QDValue = ? WHERE QDKey = ?", txbDefaultDomain.Text, QDInfo.DBO.DefaultDomain);
 
                 mysql.TransactionCommit();
@@ -548,6 +586,52 @@ namespace QDriveAdminConsole
             }
 
             return successOnline && successLocal;
+        }
+
+        private void LoadAllData()
+        {
+            try
+            {
+                using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
+                {
+
+                    bool localConnection = !Convert.ToBoolean(sqlite.ExecuteScalarACon<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked));
+
+                    if (localConnection)
+                    {
+                        pnlLocal.BringToFront();
+                        return;
+                    }
+
+                    sqlite.Open();
+                    dbData.Hostname = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost), QDInfo.LocalCipherKey);
+                    dbData.Username = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername), QDInfo.LocalCipherKey);
+                    dbData.Password = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBPassword), QDInfo.LocalCipherKey);
+                    dbData.Database = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBName), QDInfo.LocalCipherKey);
+                    sqlite.Close();
+                }
+
+                mysql = new WrapMySQL(dbData);
+
+                mysql.Open();
+                userCanToggleKeepLoggedIn = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanToggleKeepLoggedIn));
+                userCanAddPrivateDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPrivateDrive));
+                userCanAddPublicDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPublicDrive));
+                userCanSelfRegister = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanSelfRegister));
+                useLoginAsDriveAuth = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UseLoginAsDriveAuthentication));
+                forceLoginDriveAuth = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.ForceLoginAsDriveAuthentication));
+                disconnectDrivesAtShutdown = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.DisconnectDrivesAtShutdown));
+                logUserActions = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.LogUserActions));
+                userCanChangeManagerSettings = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanChangeManagerSettings));
+                defaultDomain = mysql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.DefaultDomain);
+                masterPassword = mysql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.MasterPassword);
+                mysql.Close();
+            }
+            catch
+            {
+                MessageBox.Show("An error occured whilst trying to connect to the online-database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         #endregion

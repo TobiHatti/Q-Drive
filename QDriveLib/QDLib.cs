@@ -469,7 +469,9 @@ namespace QDriveLib
 
         public static void LogUserConnection(string pUserID, QDLogAction pLogAction, WrapMySQLData pDBData, bool pLogUserActionAllowed)
         {
-            if (!pLogUserActionAllowed) return;
+            
+
+            if (pUserID == null) pUserID = string.Empty;
 
             try
             {
@@ -499,12 +501,16 @@ namespace QDriveLib
                             deviceID = mysql.ExecuteScalar<string>("SELECT ID FROM qd_devices WHERE MacAddress = ? AND LogonName = ? AND DeviceName = ?", deviceMac, Environment.UserName, Environment.MachineName);
                         }
 
-                        mysql.ExecuteNonQuery("INSERT INTO qd_conlog (ID, UserID, DeviceID, LogTime, LogAction) VALUES (?,?,?, NOW() ,?)",
-                            Guid.NewGuid(),
-                            pUserID,
-                            deviceID,
-                            pLogAction
-                        );
+                        // Log device action.
+                        if (pLogUserActionAllowed)
+                        {
+                            mysql.ExecuteNonQuery("INSERT INTO qd_conlog (ID, UserID, DeviceID, LogTime, LogAction) VALUES (?,?,?, NOW() ,?)",
+                                Guid.NewGuid(),
+                                pUserID,
+                                deviceID,
+                                pLogAction
+                            );
+                        }
 
                         mysql.TransactionCommit();
                     }
@@ -517,6 +523,59 @@ namespace QDriveLib
                 }
             }
             catch { }
+        }
+
+        public static string GetLogDescriptionFromAction(QDLogAction action)
+        {
+            switch(action)
+            {
+                case QDLogAction.UserRegistered:
+                    return "User registered";
+                case QDLogAction.UserLoggedIn:
+                    return "User logged into manager";
+                case QDLogAction.UserLoggedInAutoStart:
+                    return "User logged in via autostart";
+                case QDLogAction.UserLoggedOut:
+                    return "User logged out via manager";
+                case QDLogAction.UserDrivelistUpdated:
+                    return "User manually updated manager drivelist";
+                case QDLogAction.UserChangedPassword:
+                    return "User changed password";
+                case QDLogAction.UserCreactedBackup:
+                    return "User created backup file";
+                case QDLogAction.UserLoadedBackup:
+                    return "User loaded backup file";
+                case QDLogAction.UserDisabledAutostart:
+                    return "User disabled QD-Autostart";
+                case QDLogAction.UserEnabledAutostart:
+                    return "User enabled QD-Autostart";
+                case QDLogAction.UserResetLocalDatabase:
+                    return "User reset local database";
+                case QDLogAction.DrivePrivateAdded:
+                    return "User added a private drive";
+                case QDLogAction.DrivePublicAdded:
+                    return "User added a public drive";
+                case QDLogAction.DrivePrivateEdited:
+                    return "User edited a private drive";
+                case QDLogAction.DrivePublicEdited:
+                    return "User edited a public drive";
+                case QDLogAction.DriveRemoved:
+                    return "User removed a drive";
+                case QDLogAction.QDDrivesDisconnect:
+                    return "Q-Drive Disconnected all netdrives";
+                case QDLogAction.QDDrivesConnect:
+                    return "Q-Drive Connected all netdrives";
+                case QDLogAction.QDDrivelistUpdated:
+                    return "Q-Drive updated drivelist in manager";
+                case QDLogAction.QDSystemAutostartFinished:
+                    return "Q-Drive Autostart has finished";
+                case QDLogAction.QDSystemAppClosed:
+                    return "Q-Drive Autostart app has been closed by user";
+                case QDLogAction.QDSystemDeviceShutdown:
+                    return "Q-Drive Autostart app has been closed by system (shutdown)";
+            }
+
+            return "No description available.";
         }
 
     }

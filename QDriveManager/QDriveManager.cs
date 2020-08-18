@@ -1173,6 +1173,8 @@ namespace QDriveManager
                 userCanSelfRegister = false;
                 useLoginAsDriveAuth = false;
                 forceLoginDriveAuth = false;
+                logUserActions = false;
+                userCanChangeManagerSettings = true;
             }
 
             if (!promptPassword)

@@ -114,6 +114,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QDActionBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDActionBrowser.Designer.cs">
+      <DependentUpon>QDActionBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="QDAddPublicDrive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,12 @@
     </Compile>
     <Compile Include="QDChangeMasterPassword.Designer.cs">
       <DependentUpon>QDChangeMasterPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QDDeviceUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDDeviceUsers.Designer.cs">
+      <DependentUpon>QDDeviceUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="QDriveAdminConsole.cs">
       <SubType>Form</SubType>
@@ -150,6 +162,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QDActionBrowser.resx">
+      <DependentUpon>QDActionBrowser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QDAddPublicDrive.resx">
       <DependentUpon>QDAddPublicDrive.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QDChangeMasterPassword.resx">
       <DependentUpon>QDChangeMasterPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QDDeviceUsers.resx">
+      <DependentUpon>QDDeviceUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QDriveAdminConsole.resx">
       <DependentUpon>QDriveAdminConsole.cs</DependentUpon>
