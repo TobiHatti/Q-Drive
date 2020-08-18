@@ -458,6 +458,35 @@ namespace QDriveLib
             Process.Start(psi);
         }
 
+        public static void AddToAutostart()
+        {
+            string autostartPath = Path.Combine(Application.StartupPath, "QDriveAutostart.exe"); 
+
+            try
+            {
+                RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                rk.SetValue("Q-Drive", autostartPath);
+            }
+            catch
+            {
+                MessageBox.Show("Could not add Q-Drive to autostart. Try running the program with elevated privilages or as administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void RemoveFromAutostart()
+        {
+            try
+            {
+                RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                rk.DeleteValue("Q-Drive", false);
+            }
+            catch
+            {
+                MessageBox.Show("Could not remove Q-Drive from autostart. Try running the program with elevated privilages or as administrator.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
         private static string GetMACAddress()
         {
             return (

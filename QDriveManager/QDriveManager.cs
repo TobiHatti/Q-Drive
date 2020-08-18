@@ -885,9 +885,11 @@ namespace QDriveManager
 
         private void tsmEnableAutostart_Click(object sender, EventArgs e)
         {
-            string autoStartLinkFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Q-Drive.lnk");
-            if(File.Exists("Q-Drive.lnk"))
-                File.Copy("Q-Drive.lnk", autoStartLinkFile);
+            //string autoStartLinkFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Q-Drive.lnk");
+            //if(File.Exists("Q-Drive.lnk"))
+            //    File.Copy("Q-Drive.lnk", autoStartLinkFile);
+
+            QDLib.AddToAutostart();
             MessageBox.Show("Added Q-Drive to your Autostart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserEnabledAutostart, dbData, logUserActions);
@@ -895,9 +897,11 @@ namespace QDriveManager
 
         private void tsmDisableAutostart_Click(object sender, EventArgs e)
         {
-            string autoStartLinkFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Q-Drive.lnk");
-            if(File.Exists(autoStartLinkFile))
-                File.Delete(autoStartLinkFile);
+            //string autoStartLinkFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "Q-Drive.lnk");
+            //if(File.Exists(autoStartLinkFile))
+            //    File.Delete(autoStartLinkFile);
+
+            QDLib.RemoveFromAutostart();
             MessageBox.Show("Removed Q-Drive to your Autostart.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserDisabledAutostart, dbData, logUserActions);

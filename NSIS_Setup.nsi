@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Q-Drive"
-!define PRODUCT_VERSION "1.0.0"
+!define PRODUCT_VERSION "1.1.0"
 !define PRODUCT_PUBLISHER "Endev"
 !define PRODUCT_WEB_SITE "https://endev.at/p/q-drive"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\QDriveAutostart.exe"
@@ -91,6 +91,9 @@ Section "Q-Drive Base" SEC01
   File "QDriveManager\bin\Release\System.Numerics.Vectors.dll"
   File "QDriveManager\bin\Release\System.Runtime.CompilerServices.Unsafe.dll"
   File "QDriveManager\bin\Release\Ubiety.Dns.Core.dll"
+  File "QDriveManager\bin\Release\WrapMySQL.dll"
+  File "QDriveManager\bin\Release\WrapSQLBase.dll"
+  File "QDriveManager\bin\Release\WrapSQLite.dll"
   SetOutPath "$INSTDIR\x64"
   File "QDriveManager\bin\Release\x64\SQLite.Interop.dll"
   SetOutPath "$INSTDIR\x86"
@@ -111,7 +114,7 @@ Section "Q-Drive Base" SEC01
   CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Q-Drive Manager.lnk" "$INSTDIR\QDriveManager.exe"
   CreateShortCut "$DESKTOP\Q-Drive Manager.lnk" "$INSTDIR\QDriveManager.exe"
   CreateShortCut "$SMPROGRAMS\$ICONS_GROUP\Q-Drive Setup.lnk" "$INSTDIR\QDriveSetup.exe"
-  CreateShortCut "$SMSTARTUP\Q-Drive.lnk" "$INSTDIR\QDriveAutostart.exe"
+;  CreateShortCut "$SMSTARTUP\Q-Drive.lnk" "$INSTDIR\QDriveAutostart.exe"
   !insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
 
@@ -200,6 +203,9 @@ Section Uninstall
   Delete "$INSTDIR\Google.Protobuf.dll"
   Delete "$INSTDIR\EnvDTE.dll"
   Delete "$INSTDIR\BouncyCastle.Crypto.dll"
+  Delete "$INSTDIR\WrapMySQL.dll"
+  Delete "$INSTDIR\WrapSQLBase.dll"
+  Delete "$INSTDIR\WrapSQLite.dll"
 
   Delete "$SMPROGRAMS\$ICONS_GROUP\Uninstall.lnk"
   Delete "$SMPROGRAMS\$ICONS_GROUP\Website.lnk"
@@ -210,7 +216,7 @@ Section Uninstall
   Delete "$SMPROGRAMS\$ICONS_GROUP\Q-Drive Manager.lnk"
   Delete "$INSTDIR\Q-Drive.lnk"
   Delete "$SMPROGRAMS\$ICONS_GROUP\Q-Drive.lnk"
-  Delete "$SMSTARTUP\Q-Drive.lnk"
+;  Delete "$SMSTARTUP\Q-Drive.lnk"
 
   RMDir "$SMPROGRAMS\$ICONS_GROUP"
   RMDir "$INSTDIR\x86"

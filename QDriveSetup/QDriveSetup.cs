@@ -71,7 +71,11 @@ namespace QDrive
             this.Style.InactiveBorder = new Pen(Color.FromArgb(77, 216, 255), 2);
         }
 
-        private void QDriveSetup_Load(object sender, EventArgs e) => pnlS0Welcome.BringToFront();
+        private void QDriveSetup_Load(object sender, EventArgs e)
+        {
+            QDLib.AddToAutostart();
+            pnlS0Welcome.BringToFront();
+        }
 
         #endregion
 
