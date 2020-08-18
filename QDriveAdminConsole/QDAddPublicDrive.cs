@@ -70,7 +70,10 @@ namespace QDriveAdminConsole
         private void SubmitForm(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 Submit();
+                e.Handled = e.SuppressKeyPress = true;
+            }
         }
 
         private void Submit()

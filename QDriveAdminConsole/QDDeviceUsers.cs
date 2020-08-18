@@ -41,12 +41,25 @@ namespace QDriveAdminConsole
 
         private void btnActionLogUser_Click(object sender, EventArgs e)
         {
-
+            if (lbxDeviceUsers.SelectedIndex != -1)
+            {
+                QDActionBrowser actBrowser = new QDActionBrowser()
+                {
+                    SelectedObjectID = lbxDeviceUsers.SelectedValue.ToString(),
+                    DBData = this.DBData
+                };
+                actBrowser.ShowDialog();
+            }
         }
 
         private void btnActionLogDevice_Click(object sender, EventArgs e)
         {
-
+            QDActionBrowser actBrowser = new QDActionBrowser()
+            {
+                SelectedObjectID = DeviceID,
+                DBData = this.DBData
+            };
+            actBrowser.ShowDialog();
         }
     }
 }

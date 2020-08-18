@@ -153,25 +153,28 @@ namespace QDriveAdminConsole
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you really want to delete the selected user?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (lbxUserList.SelectedIndex != -1)
             {
-                mysql.Open();
-                mysql.TransactionBegin();
-
-                try
+                if (MessageBox.Show("Do you really want to delete the selected user?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    mysql.ExecuteNonQuery("DELETE FROM qd_users WHERE ID = ?", lbxUserList.SelectedValue.ToString());
-                    mysql.ExecuteNonQuery("DELETE FROM qd_assigns WHERE UserID = ?", lbxUserList.SelectedValue.ToString());
-                    mysql.TransactionCommit();
-                }
-                catch
-                {
-                    mysql.TransactionRollback();
-                }
+                    mysql.Open();
+                    mysql.TransactionBegin();
 
-                mysql.Close();
+                    try
+                    {
+                        mysql.ExecuteNonQuery("DELETE FROM qd_users WHERE ID = ?", lbxUserList.SelectedValue.ToString());
+                        mysql.ExecuteNonQuery("DELETE FROM qd_assigns WHERE UserID = ?", lbxUserList.SelectedValue.ToString());
+                        mysql.TransactionCommit();
+                    }
+                    catch
+                    {
+                        mysql.TransactionRollback();
+                    }
 
-                UpdateUsersSettings();
+                    mysql.Close();
+
+                    UpdateUsersSettings();
+                }
             }
         }
 
@@ -218,6 +221,16 @@ namespace QDriveAdminConsole
                     UpdateUsersSettings();
                 }
             }
+        }
+
+        private void btnUsersShowActions_Click(object sender, EventArgs e)
+        {
+            QDActionBrowser actBrowser = new QDActionBrowser()
+            {
+                SelectedObjectID = lbxUserList.SelectedValue.ToString(),
+                DBData = dbData
+            };
+            actBrowser.ShowDialog();
         }
 
         #endregion
@@ -309,29 +322,32 @@ namespace QDriveAdminConsole
 
         private void btnRemoveOnlineDrive_Click(object sender, EventArgs e)
         {
-            bool success = false;
-            if (MessageBox.Show("Do you really want to remove the selected drive?", "Remove Drive", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (lbxOnlineDrives.SelectedIndex != -1)
             {
-                mysql.Open();
-                mysql.TransactionBegin();
-
-                try
+                bool success = false;
+                if (MessageBox.Show("Do you really want to remove the selected drive?", "Remove Drive", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    mysql.ExecuteNonQuery("DELETE FROM qd_drives WHERE ID = ?", lbxOnlineDrives.SelectedValue.ToString());
-                    mysql.ExecuteNonQuery("DELETE FROM qd_assigns WHERE DriveID = ?", lbxOnlineDrives.SelectedValue.ToString());
-                    success = true;
-                    mysql.TransactionCommit();
+                    mysql.Open();
+                    mysql.TransactionBegin();
+
+                    try
+                    {
+                        mysql.ExecuteNonQuery("DELETE FROM qd_drives WHERE ID = ?", lbxOnlineDrives.SelectedValue.ToString());
+                        mysql.ExecuteNonQuery("DELETE FROM qd_assigns WHERE DriveID = ?", lbxOnlineDrives.SelectedValue.ToString());
+                        success = true;
+                        mysql.TransactionCommit();
+                    }
+                    catch
+                    {
+                        mysql.TransactionRollback();
+                    }
+
+                    mysql.Close();
+
+                    if (!success) MessageBox.Show("Could not remove drive. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    UpdateOnlineDrives();
                 }
-                catch
-                {
-                    mysql.TransactionRollback();
-                }
-
-                mysql.Close();
-
-                if(!success) MessageBox.Show("Could not remove drive. Please try again later.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                UpdateOnlineDrives();
             }
         }
 
@@ -339,7 +355,7 @@ namespace QDriveAdminConsole
 
         private void EditSelectedDrive()
         {
-            if (lbxUserList.SelectedIndex != -1)
+            if (lbxOnlineDrives.SelectedIndex != -1)
             {
                 mysql.Open();
                 string driveID = lbxOnlineDrives.SelectedValue.ToString();
@@ -384,6 +400,20 @@ namespace QDriveAdminConsole
 
         #endregion
 
+        #region Settings: Action Logger =========================================================================[RF]=
+
+        private void btnOpenActionLog_Click(object sender, EventArgs e)
+        {
+            QDActionBrowser actBrowser = new QDActionBrowser()
+            {
+                SelectedObjectID = "",
+                DBData = dbData
+            };
+            actBrowser.ShowDialog();
+        }
+
+        #endregion
+
         #region Settings: Info and More =========================================================================[RF]=
 
         private void lnkReleases_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -418,7 +448,10 @@ namespace QDriveAdminConsole
         private void SubmitForm(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 Submit();
+                e.Handled = e.SuppressKeyPress = true;
+            }   
         }
 
         private void Submit()
@@ -633,6 +666,7 @@ namespace QDriveAdminConsole
                 this.Close();
             }
         }
+
 
         #endregion
     }

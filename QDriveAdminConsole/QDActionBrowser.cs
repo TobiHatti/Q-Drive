@@ -45,14 +45,15 @@ namespace QDriveAdminConsole
             dgvActionBrowser.Columns[3].Width = 200;
             dgvActionBrowser.Columns[4].Width = 200;
 
-
+            
         }
 
         private void QDActionBrowser_Load(object sender, EventArgs e)
         {
             mysql = new WrapMySQL(DBData);
 
-            UpdateDatagrid();
+            // Automatically causes Datagrid-Update
+            cbxEntryLimit.SelectedIndex = 1;
         }
 
         private void UpdateDatagrid()
@@ -64,6 +65,32 @@ namespace QDriveAdminConsole
             else if (mysql.ExecuteScalarACon<int>("SELECT COUNT(*) FROM qd_users WHERE ID = ?", SelectedObjectID) != 0) sort = BrowserSort.SortedByUsers;
             else if (mysql.ExecuteScalarACon<int>("SELECT COUNT(*) FROM qd_devices WHERE ID = ?", SelectedObjectID) != 0) sort = BrowserSort.SortedByDevice;
             else return;
+
+            string limitString = "";
+            switch(cbxEntryLimit.SelectedIndex)
+            {
+                case 0:
+                    limitString = "LIMIT 50";
+                    break;
+                case 1:
+                    limitString = "LIMIT 100";
+                    break;
+                case 2:
+                    limitString = "LIMIT 250";
+                    break;
+                case 3:
+                    limitString = "LIMIT 500";
+                    break;
+                case 4:
+                    limitString = "LIMIT 1000";
+                    break;
+                case 5:
+                    limitString = "LIMIT 5000";
+                    break;
+                default:
+                    limitString = "";
+                    break;
+            }
 
             string sqlQuery = "";
 
@@ -78,7 +105,8 @@ namespace QDriveAdminConsole
                         $"FROM qd_conlog " +
                         $"INNER JOIN qd_users ON qd_conlog.UserID = qd_users.ID " +
                         $"INNER JOIN qd_devices ON qd_conlog.DeviceID = qd_devices.ID " +
-                        $"ORDER BY LogTime DESC";
+                        $"ORDER BY LogTime DESC " + limitString;
+                    lblActionDescriptor.Text = "Showing all recorded actions.";
                     break;
                 case BrowserSort.SortedByActionType:
                     sqlQuery = $"SELECT " +
@@ -90,7 +118,8 @@ namespace QDriveAdminConsole
                         $"INNER JOIN qd_users ON qd_conlog.UserID = qd_users.ID " +
                         $"INNER JOIN qd_devices ON qd_conlog.DeviceID = qd_devices.ID " +
                         $"WHERE qd_conlog.LogAction = ? " +
-                        $"ORDER BY LogTime DESC";
+                        $"ORDER BY LogTime DESC " + limitString;
+                    lblActionDescriptor.Text = $"Showing all recorded actions of type \"{(QDLogAction)Convert.ToInt32(SelectedObjectID.Replace("ACT=", ""))}\".";
                     break;
                 case BrowserSort.SortedByDevice:
                     sqlQuery = $"SELECT " +
@@ -102,7 +131,8 @@ namespace QDriveAdminConsole
                         $"INNER JOIN qd_users ON qd_conlog.UserID = qd_users.ID " +
                         $"INNER JOIN qd_devices ON qd_conlog.DeviceID = qd_devices.ID " +
                         $"WHERE qd_devices.ID = ? " +
-                        $"ORDER BY LogTime DESC";
+                        $"ORDER BY LogTime DESC " + limitString;
+                    lblActionDescriptor.Text = $"Showing all recorded actions of device \"{mysql.ExecuteScalarACon<string>("SELECT CONCAT(LogonName, ' @ ', DeviceName) FROM qd_devices WHERE ID = ?", SelectedObjectID)}\".";
                     break;
                 case BrowserSort.SortedByUsers:
                     sqlQuery = $"SELECT " +
@@ -114,14 +144,15 @@ namespace QDriveAdminConsole
                         $"INNER JOIN qd_users ON qd_conlog.UserID = qd_users.ID " +
                         $"INNER JOIN qd_devices ON qd_conlog.DeviceID = qd_devices.ID " +
                         $"WHERE qd_users.ID = ? " +
-                        $"ORDER BY LogTime DESC";
+                        $"ORDER BY LogTime DESC " + limitString;
+                    lblActionDescriptor.Text = $"Showing all recorded actions of user \"{mysql.ExecuteScalarACon<string>("SELECT CONCAT(Name, ' (', Username, ')') FROM qd_users WHERE ID = ?", SelectedObjectID)}\".";
                     break;
             }
 
             dgvActionBrowser.Rows.Clear();
 
             mysql.Open();
-            using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery(sqlQuery, SelectedObjectID))
+            using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery(sqlQuery, SelectedObjectID.Replace("ACT=", "")))
             {
                 while (reader.Read())
                 {
@@ -139,9 +170,14 @@ namespace QDriveAdminConsole
 
         private void UpdateInfoData()
         {
+            if (dgvActionBrowser.Rows.Count <= 0) return;
+            if (dgvActionBrowser.SelectedRows.Count <= 0) return;
+
             string conlogID = dgvActionBrowser.SelectedRows[0].Cells["ID"].Value.ToString();
 
-            string sqlQuery = $"SELECT * " +
+            string sqlQuery = $"SELECT *, " +
+                $"(SELECT COUNT(*) FROM qd_assigns WHERE qd_assigns.UserID = qd_conlog.UserID) AS AssignedDriveCount, " +
+                $"(SELECT COUNT(*) FROM (SELECT * FROM qd_conlog GROUP BY qd_conlog.UserID) AS TMP WHERE TMP.DeviceID = qd_devices.ID) AS UserCount " +
                 $"FROM qd_conlog " +
                 $"INNER JOIN qd_users ON qd_conlog.UserID = qd_users.ID " +
                 $"INNER JOIN qd_devices ON qd_conlog.DeviceID = qd_devices.ID " +
@@ -161,21 +197,92 @@ namespace QDriveAdminConsole
 
                         lblDisplayName.Text = Convert.ToString(reader["Name"]);
                         lblUsername.Text = Convert.ToString(reader["Username"]);
-                        //lblAssignedDrives.Text = Convert.ToString(reader[""]);
+                        lblAssignedDrives.Text = Convert.ToString(reader["AssignedDriveCount"]);
 
                         lblDeviceName.Text = Convert.ToString(reader["DeviceName"]);
                         lblLogonName.Text = Convert.ToString(reader["LogonName"]);
                         lblMacAddress.Text = Convert.ToString(reader["MacAddress"]);
-                        //lblUserCount.Text = Convert.ToString(reader[""]);
+                        lblUserCount.Text = Convert.ToString(reader["UserCount"]);
                     }
                 }
                 mysql.Close();
             }
         }
 
-        private void dgvActionBrowser_SelectionChanged(object sender, EventArgs e)
+        private void dgvActionBrowser_SelectionChanged(object sender, EventArgs e) => UpdateInfoData();
+
+        private void btnRefresh_Click(object sender, EventArgs e) => UpdateDatagrid();
+
+        private void btnClose_Click(object sender, EventArgs e) => this.Close();
+
+        private void btnShowAllActions_Click(object sender, EventArgs e)
         {
-            UpdateInfoData();
+            SelectedObjectID = "";
+            UpdateDatagrid();
         }
+
+        private void btnShowActionsCurrentType_Click(object sender, EventArgs e)
+        {
+            if (dgvActionBrowser.SelectedRows.Count > 0)
+            {
+                SelectedObjectID = "ACT=" + mysql.ExecuteScalarACon<string>("SELECT LogAction FROM qd_conlog WHERE ID = ?", dgvActionBrowser.SelectedRows[0].Cells["ID"].Value.ToString());
+                UpdateDatagrid();
+            }
+        }
+
+        private void btnShowActionsCurrentUser_Click(object sender, EventArgs e)
+        {
+            if (dgvActionBrowser.SelectedRows.Count > 0)
+            {
+                SelectedObjectID = mysql.ExecuteScalarACon<string>("SELECT UserID FROM qd_conlog WHERE ID = ?", dgvActionBrowser.SelectedRows[0].Cells["ID"].Value.ToString());
+                UpdateDatagrid();
+            }
+        }
+
+        private void btnShowActionsCurrentDevice_Click(object sender, EventArgs e)
+        {
+            if (dgvActionBrowser.SelectedRows.Count > 0)
+            {
+                SelectedObjectID = mysql.ExecuteScalarACon<string>("SELECT DeviceID FROM qd_conlog WHERE ID = ?", dgvActionBrowser.SelectedRows[0].Cells["ID"].Value.ToString());
+                UpdateDatagrid();
+            }
+        }
+
+        private void tmrSearchCooldown_Tick(object sender, EventArgs e)
+        {
+            string searchQuery = txbSearchbox.Text;
+
+            tmrSearchCooldown.Stop();
+
+            lbxSearchresult.DataSource = null;
+            lbxSearchresult.Items.Clear();
+
+            string sqlQuery = "SELECT CONCAT('User: ', qd_users.Name, ' (', qd_users.Username,')') AS Display, ID " +
+                "FROM qd_users HAVING Display LIKE CONCAT('%', ?, '%') " +
+                "UNION ALL " +
+                "SELECT CONCAT('Device: ', qd_devices.LogonName, ' @ ', qd_devices.DeviceName) AS Display, ID " +
+                "FROM qd_devices HAVING Display LIKE CONCAT('%', ?, '%')";
+
+            lbxSearchresult.DisplayMember = "Display";
+            lbxSearchresult.ValueMember = "ID";
+            lbxSearchresult.DataSource = mysql.CreateDataTable(sqlQuery, searchQuery, searchQuery);
+        }
+
+        private void txbSearchbox_TextChanged(object sender, EventArgs e)
+        {
+            tmrSearchCooldown.Stop();
+            tmrSearchCooldown.Start();
+        }
+
+        private void lbxSearchresult_DoubleClick(object sender, EventArgs e)
+        {
+            if(lbxSearchresult.SelectedIndex != -1)
+            {
+                SelectedObjectID = lbxSearchresult.SelectedValue.ToString();
+                UpdateDatagrid();
+            }
+        }
+
+        private void cbxEntryLimit_SelectedIndexChanged(object sender, EventArgs e) => UpdateDatagrid();
     }
 }

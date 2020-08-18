@@ -57,10 +57,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbxDeviceUsers.FormattingEnabled = true;
             this.lbxDeviceUsers.ItemHeight = 21;
-            this.lbxDeviceUsers.Location = new System.Drawing.Point(5, 59);
+            this.lbxDeviceUsers.Location = new System.Drawing.Point(5, 80);
             this.lbxDeviceUsers.Name = "lbxDeviceUsers";
-            this.lbxDeviceUsers.Size = new System.Drawing.Size(578, 256);
-            this.lbxDeviceUsers.TabIndex = 19;
+            this.lbxDeviceUsers.Size = new System.Drawing.Size(578, 235);
+            this.lbxDeviceUsers.TabIndex = 1;
             // 
             // btnClose
             // 
@@ -68,7 +68,7 @@
             this.btnClose.Location = new System.Drawing.Point(5, 322);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(79, 34);
-            this.btnClose.TabIndex = 20;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -79,7 +79,7 @@
             this.btnActionLogDevice.Location = new System.Drawing.Point(429, 322);
             this.btnActionLogDevice.Name = "btnActionLogDevice";
             this.btnActionLogDevice.Size = new System.Drawing.Size(154, 34);
-            this.btnActionLogDevice.TabIndex = 20;
+            this.btnActionLogDevice.TabIndex = 2;
             this.btnActionLogDevice.Text = "Action log (Device)";
             this.btnActionLogDevice.UseVisualStyleBackColor = true;
             this.btnActionLogDevice.Click += new System.EventHandler(this.btnActionLogDevice_Click);
@@ -90,13 +90,14 @@
             this.btnActionLogUser.Location = new System.Drawing.Point(269, 322);
             this.btnActionLogUser.Name = "btnActionLogUser";
             this.btnActionLogUser.Size = new System.Drawing.Size(154, 34);
-            this.btnActionLogUser.TabIndex = 20;
+            this.btnActionLogUser.TabIndex = 3;
             this.btnActionLogUser.Text = "Action log (User)";
             this.btnActionLogUser.UseVisualStyleBackColor = true;
             this.btnActionLogUser.Click += new System.EventHandler(this.btnActionLogUser_Click);
             // 
             // lblDeviceInfo
             // 
+            this.lblDeviceInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDeviceInfo.ForeColor = System.Drawing.Color.White;
             this.lblDeviceInfo.Location = new System.Drawing.Point(149, 14);
             this.lblDeviceInfo.Name = "lblDeviceInfo";
@@ -108,7 +109,7 @@
             // label1
             // 
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1, 35);
+            this.label1.Location = new System.Drawing.Point(1, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(582, 21);
             this.label1.TabIndex = 29;

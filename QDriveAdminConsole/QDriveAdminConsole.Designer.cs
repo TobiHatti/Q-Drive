@@ -121,21 +121,24 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.pnlLogin = new System.Windows.Forms.Panel();
-            this.pbxQDLogo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txbMasterPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pnlLocal = new System.Windows.Forms.Panel();
-            this.pbxQDLogoLocal = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLocalClose = new System.Windows.Forms.Button();
             this.pnlLoading = new System.Windows.Forms.Panel();
-            this.pbxQDLogoLoading = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlNotConfigured = new System.Windows.Forms.Panel();
-            this.pbxLogoNotConfigured = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.btnRunSetup = new System.Windows.Forms.Button();
+            this.pbxQDLogoLoading = new System.Windows.Forms.PictureBox();
+            this.pbxLogoNotConfigured = new System.Windows.Forms.PictureBox();
+            this.pbxQDLogoLocal = new System.Windows.Forms.PictureBox();
+            this.pbxQDLogo = new System.Windows.Forms.PictureBox();
+            this.btnUsersShowActions = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.btnOpenActionLog = new System.Windows.Forms.Button();
             this.pnlSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
@@ -153,15 +156,16 @@
             this.tabDevices.SuspendLayout();
             this.tabMySQL.SuspendLayout();
             this.tabOnlineDrives.SuspendLayout();
+            this.tabActionLog.SuspendLayout();
             this.tabInfoAndMore.SuspendLayout();
             this.pnlLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogo)).BeginInit();
             this.pnlLocal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLocal)).BeginInit();
             this.pnlLoading.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLoading)).BeginInit();
             this.pnlNotConfigured.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoNotConfigured)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLocal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSettings
@@ -240,7 +244,7 @@
             this.txbDefaultDomain.Location = new System.Drawing.Point(254, 275);
             this.txbDefaultDomain.Name = "txbDefaultDomain";
             this.txbDefaultDomain.Size = new System.Drawing.Size(293, 29);
-            this.txbDefaultDomain.TabIndex = 7;
+            this.txbDefaultDomain.TabIndex = 10;
             // 
             // label14
             // 
@@ -390,7 +394,7 @@
             this.tglUserCanAddPublicDrives.Name = "tglUserCanAddPublicDrives";
             this.tglUserCanAddPublicDrives.Size = new System.Drawing.Size(52, 29);
             this.tglUserCanAddPublicDrives.Slider = sliderCollection3;
-            this.tglUserCanAddPublicDrives.TabIndex = 3;
+            this.tglUserCanAddPublicDrives.TabIndex = 5;
             this.tglUserCanAddPublicDrives.Text = "toggleButton1";
             this.tglUserCanAddPublicDrives.ThemeName = "Office2016Black";
             this.tglUserCanAddPublicDrives.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -408,7 +412,7 @@
             this.tglUserCanAddPrivateDrives.Name = "tglUserCanAddPrivateDrives";
             this.tglUserCanAddPrivateDrives.Size = new System.Drawing.Size(52, 29);
             this.tglUserCanAddPrivateDrives.Slider = sliderCollection4;
-            this.tglUserCanAddPrivateDrives.TabIndex = 4;
+            this.tglUserCanAddPrivateDrives.TabIndex = 6;
             this.tglUserCanAddPrivateDrives.Text = "toggleButton1";
             this.tglUserCanAddPrivateDrives.ThemeName = "Office2016Black";
             this.tglUserCanAddPrivateDrives.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -426,7 +430,7 @@
             this.tglUserCanChangeManagerSettings.Name = "tglUserCanChangeManagerSettings";
             this.tglUserCanChangeManagerSettings.Size = new System.Drawing.Size(52, 29);
             this.tglUserCanChangeManagerSettings.Slider = sliderCollection5;
-            this.tglUserCanChangeManagerSettings.TabIndex = 6;
+            this.tglUserCanChangeManagerSettings.TabIndex = 3;
             this.tglUserCanChangeManagerSettings.Text = "toggleButton1";
             this.tglUserCanChangeManagerSettings.ThemeName = "Office2016Black";
             this.tglUserCanChangeManagerSettings.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -444,7 +448,7 @@
             this.tglLogUserActions.Name = "tglLogUserActions";
             this.tglLogUserActions.Size = new System.Drawing.Size(52, 29);
             this.tglLogUserActions.Slider = sliderCollection6;
-            this.tglLogUserActions.TabIndex = 6;
+            this.tglLogUserActions.TabIndex = 4;
             this.tglLogUserActions.Text = "toggleButton1";
             this.tglLogUserActions.ThemeName = "Office2016Black";
             this.tglLogUserActions.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -462,7 +466,7 @@
             this.tglForceLoginAsDriveAuthentication.Name = "tglForceLoginAsDriveAuthentication";
             this.tglForceLoginAsDriveAuthentication.Size = new System.Drawing.Size(52, 29);
             this.tglForceLoginAsDriveAuthentication.Slider = sliderCollection7;
-            this.tglForceLoginAsDriveAuthentication.TabIndex = 6;
+            this.tglForceLoginAsDriveAuthentication.TabIndex = 9;
             this.tglForceLoginAsDriveAuthentication.Text = "toggleButton1";
             this.tglForceLoginAsDriveAuthentication.ThemeName = "Office2016Black";
             this.tglForceLoginAsDriveAuthentication.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -480,7 +484,7 @@
             this.tglDisconnectDrivesAtShutdown.Name = "tglDisconnectDrivesAtShutdown";
             this.tglDisconnectDrivesAtShutdown.Size = new System.Drawing.Size(52, 29);
             this.tglDisconnectDrivesAtShutdown.Slider = sliderCollection8;
-            this.tglDisconnectDrivesAtShutdown.TabIndex = 5;
+            this.tglDisconnectDrivesAtShutdown.TabIndex = 7;
             this.tglDisconnectDrivesAtShutdown.Text = "toggleButton1";
             this.tglDisconnectDrivesAtShutdown.ThemeName = "Office2016Black";
             this.tglDisconnectDrivesAtShutdown.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -498,7 +502,7 @@
             this.tglUseLoginAsDriveAuthentication.Name = "tglUseLoginAsDriveAuthentication";
             this.tglUseLoginAsDriveAuthentication.Size = new System.Drawing.Size(52, 29);
             this.tglUseLoginAsDriveAuthentication.Slider = sliderCollection9;
-            this.tglUseLoginAsDriveAuthentication.TabIndex = 5;
+            this.tglUseLoginAsDriveAuthentication.TabIndex = 8;
             this.tglUseLoginAsDriveAuthentication.Text = "toggleButton1";
             this.tglUseLoginAsDriveAuthentication.ThemeName = "Office2016Black";
             this.tglUseLoginAsDriveAuthentication.ToggleState = Syncfusion.Windows.Forms.Tools.ToggleButtonState.Active;
@@ -507,6 +511,7 @@
             // tabUsers
             // 
             this.tabUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabUsers.Controls.Add(this.btnUsersShowActions);
             this.tabUsers.Controls.Add(this.lbxUserList);
             this.tabUsers.Controls.Add(this.btnDeleteAccount);
             this.tabUsers.Controls.Add(this.btnEditUserAccount);
@@ -614,7 +619,7 @@
             this.btnDeviceShowActions.Location = new System.Drawing.Point(172, 278);
             this.btnDeviceShowActions.Name = "btnDeviceShowActions";
             this.btnDeviceShowActions.Size = new System.Drawing.Size(109, 36);
-            this.btnDeviceShowActions.TabIndex = 7;
+            this.btnDeviceShowActions.TabIndex = 2;
             this.btnDeviceShowActions.Text = "Show actions";
             this.btnDeviceShowActions.UseVisualStyleBackColor = true;
             this.btnDeviceShowActions.Click += new System.EventHandler(this.btnDeviceShowActions_Click);
@@ -626,7 +631,7 @@
             this.btnDeviceShowUsers.Location = new System.Drawing.Point(287, 278);
             this.btnDeviceShowUsers.Name = "btnDeviceShowUsers";
             this.btnDeviceShowUsers.Size = new System.Drawing.Size(109, 36);
-            this.btnDeviceShowUsers.TabIndex = 7;
+            this.btnDeviceShowUsers.TabIndex = 3;
             this.btnDeviceShowUsers.Text = "Show users";
             this.btnDeviceShowUsers.UseVisualStyleBackColor = true;
             this.btnDeviceShowUsers.Click += new System.EventHandler(this.btnDeviceShowUsers_Click);
@@ -728,7 +733,7 @@
             this.lbxDevices.Location = new System.Drawing.Point(2, 58);
             this.lbxDevices.Name = "lbxDevices";
             this.lbxDevices.Size = new System.Drawing.Size(394, 214);
-            this.lbxDevices.TabIndex = 2;
+            this.lbxDevices.TabIndex = 1;
             this.lbxDevices.SelectedIndexChanged += new System.EventHandler(this.lbxDevices_SelectedIndexChanged);
             // 
             // tabMySQL
@@ -943,6 +948,8 @@
             // tabActionLog
             // 
             this.tabActionLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.tabActionLog.Controls.Add(this.btnOpenActionLog);
+            this.tabActionLog.Controls.Add(this.label28);
             this.tabActionLog.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tabActionLog.Image = null;
             this.tabActionLog.ImageSize = new System.Drawing.Size(16, 16);
@@ -1054,7 +1061,7 @@
             this.btnClose.Location = new System.Drawing.Point(3, 356);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(102, 36);
-            this.btnClose.TabIndex = 10;
+            this.btnClose.TabIndex = 14;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -1066,7 +1073,7 @@
             this.btnApply.Location = new System.Drawing.Point(481, 356);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(102, 36);
-            this.btnApply.TabIndex = 9;
+            this.btnApply.TabIndex = 12;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
@@ -1078,7 +1085,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(310, 356);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 36);
-            this.btnUpdate.TabIndex = 8;
+            this.btnUpdate.TabIndex = 13;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -1090,7 +1097,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(589, 356);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(102, 36);
-            this.btnSubmit.TabIndex = 8;
+            this.btnSubmit.TabIndex = 11;
             this.btnSubmit.Text = "OK";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -1105,17 +1112,6 @@
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(694, 395);
             this.pnlLogin.TabIndex = 1;
-            // 
-            // pbxQDLogo
-            // 
-            this.pbxQDLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxQDLogo.Location = new System.Drawing.Point(247, 19);
-            this.pbxQDLogo.Name = "pbxQDLogo";
-            this.pbxQDLogo.Size = new System.Drawing.Size(200, 200);
-            this.pbxQDLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxQDLogo.TabIndex = 2;
-            this.pbxQDLogo.TabStop = false;
             // 
             // label1
             // 
@@ -1165,17 +1161,6 @@
             this.pnlLocal.Size = new System.Drawing.Size(694, 395);
             this.pnlLocal.TabIndex = 1;
             // 
-            // pbxQDLogoLocal
-            // 
-            this.pbxQDLogoLocal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxQDLogoLocal.Location = new System.Drawing.Point(247, 19);
-            this.pbxQDLogoLocal.Name = "pbxQDLogoLocal";
-            this.pbxQDLogoLocal.Size = new System.Drawing.Size(200, 200);
-            this.pbxQDLogoLocal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxQDLogoLocal.TabIndex = 2;
-            this.pbxQDLogoLocal.TabStop = false;
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1213,17 +1198,6 @@
             this.pnlLoading.Size = new System.Drawing.Size(694, 395);
             this.pnlLoading.TabIndex = 1;
             // 
-            // pbxQDLogoLoading
-            // 
-            this.pbxQDLogoLoading.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxQDLogoLoading.Location = new System.Drawing.Point(247, 19);
-            this.pbxQDLogoLoading.Name = "pbxQDLogoLoading";
-            this.pbxQDLogoLoading.Size = new System.Drawing.Size(200, 200);
-            this.pbxQDLogoLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxQDLogoLoading.TabIndex = 2;
-            this.pbxQDLogoLoading.TabStop = false;
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1246,17 +1220,6 @@
             this.pnlNotConfigured.Name = "pnlNotConfigured";
             this.pnlNotConfigured.Size = new System.Drawing.Size(694, 395);
             this.pnlNotConfigured.TabIndex = 1;
-            // 
-            // pbxLogoNotConfigured
-            // 
-            this.pbxLogoNotConfigured.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxLogoNotConfigured.Location = new System.Drawing.Point(247, 19);
-            this.pbxLogoNotConfigured.Name = "pbxLogoNotConfigured";
-            this.pbxLogoNotConfigured.Size = new System.Drawing.Size(200, 200);
-            this.pbxLogoNotConfigured.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbxLogoNotConfigured.TabIndex = 2;
-            this.pbxLogoNotConfigured.TabStop = false;
             // 
             // label21
             // 
@@ -1286,6 +1249,84 @@
             this.btnRunSetup.Text = "Run Setup";
             this.btnRunSetup.UseVisualStyleBackColor = true;
             this.btnRunSetup.Click += new System.EventHandler(this.btnRunSetup_Click);
+            // 
+            // pbxQDLogoLoading
+            // 
+            this.pbxQDLogoLoading.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxQDLogoLoading.Location = new System.Drawing.Point(247, 19);
+            this.pbxQDLogoLoading.Name = "pbxQDLogoLoading";
+            this.pbxQDLogoLoading.Size = new System.Drawing.Size(200, 200);
+            this.pbxQDLogoLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxQDLogoLoading.TabIndex = 2;
+            this.pbxQDLogoLoading.TabStop = false;
+            // 
+            // pbxLogoNotConfigured
+            // 
+            this.pbxLogoNotConfigured.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxLogoNotConfigured.Location = new System.Drawing.Point(247, 19);
+            this.pbxLogoNotConfigured.Name = "pbxLogoNotConfigured";
+            this.pbxLogoNotConfigured.Size = new System.Drawing.Size(200, 200);
+            this.pbxLogoNotConfigured.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxLogoNotConfigured.TabIndex = 2;
+            this.pbxLogoNotConfigured.TabStop = false;
+            // 
+            // pbxQDLogoLocal
+            // 
+            this.pbxQDLogoLocal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxQDLogoLocal.Location = new System.Drawing.Point(247, 19);
+            this.pbxQDLogoLocal.Name = "pbxQDLogoLocal";
+            this.pbxQDLogoLocal.Size = new System.Drawing.Size(200, 200);
+            this.pbxQDLogoLocal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxQDLogoLocal.TabIndex = 2;
+            this.pbxQDLogoLocal.TabStop = false;
+            // 
+            // pbxQDLogo
+            // 
+            this.pbxQDLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbxQDLogo.Location = new System.Drawing.Point(247, 19);
+            this.pbxQDLogo.Name = "pbxQDLogo";
+            this.pbxQDLogo.Size = new System.Drawing.Size(200, 200);
+            this.pbxQDLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxQDLogo.TabIndex = 2;
+            this.pbxQDLogo.TabStop = false;
+            // 
+            // btnUsersShowActions
+            // 
+            this.btnUsersShowActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUsersShowActions.ForeColor = System.Drawing.Color.Black;
+            this.btnUsersShowActions.Location = new System.Drawing.Point(210, 278);
+            this.btnUsersShowActions.Name = "btnUsersShowActions";
+            this.btnUsersShowActions.Size = new System.Drawing.Size(109, 36);
+            this.btnUsersShowActions.TabIndex = 5;
+            this.btnUsersShowActions.Text = "Show actions";
+            this.btnUsersShowActions.UseVisualStyleBackColor = true;
+            this.btnUsersShowActions.Click += new System.EventHandler(this.btnUsersShowActions_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI Semilight", 15F);
+            this.label28.Location = new System.Drawing.Point(16, 13);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(202, 28);
+            this.label28.TabIndex = 3;
+            this.label28.Text = "Q-Drive Action Logger";
+            // 
+            // btnOpenActionLog
+            // 
+            this.btnOpenActionLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenActionLog.ForeColor = System.Drawing.Color.Black;
+            this.btnOpenActionLog.Location = new System.Drawing.Point(246, 127);
+            this.btnOpenActionLog.Name = "btnOpenActionLog";
+            this.btnOpenActionLog.Size = new System.Drawing.Size(200, 62);
+            this.btnOpenActionLog.TabIndex = 1;
+            this.btnOpenActionLog.Text = "Open Q-Drive Action Logger";
+            this.btnOpenActionLog.UseVisualStyleBackColor = true;
+            this.btnOpenActionLog.Click += new System.EventHandler(this.btnOpenActionLog_Click);
             // 
             // QDriveAdminConsole
             // 
@@ -1339,17 +1380,19 @@
             this.tabMySQL.PerformLayout();
             this.tabOnlineDrives.ResumeLayout(false);
             this.tabOnlineDrives.PerformLayout();
+            this.tabActionLog.ResumeLayout(false);
+            this.tabActionLog.PerformLayout();
             this.tabInfoAndMore.ResumeLayout(false);
             this.tabInfoAndMore.PerformLayout();
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogo)).EndInit();
             this.pnlLocal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLocal)).EndInit();
             this.pnlLoading.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLoading)).EndInit();
             this.pnlNotConfigured.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogoNotConfigured)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogoLocal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxQDLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1445,6 +1488,9 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ListBox lbxDevices;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnUsersShowActions;
+        private System.Windows.Forms.Button btnOpenActionLog;
+        private System.Windows.Forms.Label label28;
     }
 }
 
