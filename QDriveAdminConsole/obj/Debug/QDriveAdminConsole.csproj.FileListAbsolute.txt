@@ -67,3 +67,4 @@ F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.exe
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.pdb
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDActionBrowser.resources
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDDeviceUsers.resources
+F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Debug\Google.Protobuf.pdb

@@ -1,15 +1,10 @@
-﻿using MySql.Data.MySqlClient;
-using QDriveLib;
+﻿using QDriveLib;
 using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.Controls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using WrapSQL;
 
@@ -93,7 +88,7 @@ namespace QDriveAdminConsole
             }
         }
 
-        
+
 
         #endregion
 
@@ -109,11 +104,11 @@ namespace QDriveAdminConsole
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            LoadAllData(); 
+            LoadAllData();
             UpdateAll();
         }
 
-            private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (SaveChanges()) this.Close();
         }
@@ -128,8 +123,8 @@ namespace QDriveAdminConsole
             {
                 DBData = dbData
             };
-            
-            if(addUser.ShowDialog() == DialogResult.OK)
+
+            if (addUser.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
@@ -245,7 +240,7 @@ namespace QDriveAdminConsole
             txbDeviceName.Text = mysql.ExecuteScalar<string>("SELECT DeviceName FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
             txbLogonName.Text = mysql.ExecuteScalar<string>("SELECT LogonName FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
 
-            int userCount = mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM (SELECT * FROM qd_conlog WHERE DeviceID = ? GROUP BY UserID) AS A", lbxDevices.SelectedValue);
+            int userCount = QDLib.UserCountAtDevice(lbxDevices.SelectedValue.ToString(), dbData);
 
             if (userCount == 1) lblDeviceUserCount.Text = $"{userCount} User logged into Q-Drive on this{Environment.NewLine}machine / account";
             else lblDeviceUserCount.Text = $"{userCount} Users logged into Q-Drive on this{Environment.NewLine}machine / account";
@@ -265,8 +260,8 @@ namespace QDriveAdminConsole
 
         private void btnDeviceShowUsers_Click(object sender, EventArgs e)
         {
-            QDDeviceUsers deviceUser = new QDDeviceUsers() 
-            { 
+            QDDeviceUsers deviceUser = new QDDeviceUsers()
+            {
                 DeviceID = lbxDevices.SelectedValue.ToString(),
                 DBData = dbData
             };
@@ -279,7 +274,8 @@ namespace QDriveAdminConsole
 
         private void btnTestDBConnection_Click(object sender, EventArgs e)
         {
-            QDLib.TestConnection(new WrapMySQLData() { 
+            QDLib.TestConnection(new WrapMySQLData()
+            {
                 Hostname = txbDBHostname.Text,
                 Database = txbDBDatabase.Text,
                 Username = txbDBUsername.Text,
@@ -295,12 +291,12 @@ namespace QDriveAdminConsole
         {
             QDAddPublicDrive addDrive = new QDAddPublicDrive();
 
-            if(addDrive.ShowDialog() == DialogResult.OK)
+            if (addDrive.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     mysql.ExecuteNonQueryACon("INSERT INTO qd_drives (ID, DefaultName, DefaultDriveLetter, LocalPath, IsPublic, IsDeployable) VALUES (?,?,?,?,?,?)",
-    
+
                         Guid.NewGuid(),
                         addDrive.DriveName,
                         addDrive.DriveLetter,
@@ -425,7 +421,7 @@ namespace QDriveAdminConsole
         {
             QDChangeMasterPassword changeMasterPassword = new QDChangeMasterPassword() { MasterPassword = masterPassword };
 
-            if(changeMasterPassword.ShowDialog() == DialogResult.OK)
+            if (changeMasterPassword.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
@@ -451,7 +447,7 @@ namespace QDriveAdminConsole
             {
                 Submit();
                 e.Handled = e.SuppressKeyPress = true;
-            }   
+            }
         }
 
         private void Submit()
@@ -589,7 +585,7 @@ namespace QDriveAdminConsole
 
             using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
             {
-                if(QDLib.TestConnection(newDBConnection, false))
+                if (QDLib.TestConnection(newDBConnection, false))
                 {
                     sqlite.Open();
                     sqlite.TransactionBegin();

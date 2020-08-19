@@ -78,4 +78,3 @@ F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.dll
 F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.pdb
 F:\Desktop\QDriveTemp\QDriveLib\bin\Release\Google.Protobuf.pdb
-F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.csprojAssemblyReference.cache

@@ -74,3 +74,4 @@ F:\Desktop\QDriveTemp\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.CoreCompi
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Debug\QDriveAutostart.exe
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Debug\QDriveAutostart.pdb
+F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Google.Protobuf.pdb

@@ -193,3 +193,4 @@ F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.csproj.CoreCompileInputs
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.exe
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Debug\QDriveSetup.pdb
+F:\Desktop\QDriveTemp\QDriveSetup\bin\Debug\Google.Protobuf.pdb

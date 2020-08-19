@@ -215,6 +215,8 @@ namespace QDriveLib
 
         public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLData pDBData, bool pLogUserData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null, bool ConnectOnlyIfNotAvailable = false)
         {
+            int connectCtr = 0;
+                
             // Disconnect all current drives
             if (pDisconnectFirst)
             {
@@ -249,6 +251,8 @@ namespace QDriveLib
                                             Convert.ToString(reader["CustomDriveName"]),
                                             Cipher.Decrypt(Convert.ToString(reader["DDomain"]), pUserPassword)
                                         );
+
+                                        connectCtr++;
                                     }
                                 }
                                 catch
@@ -298,6 +302,8 @@ namespace QDriveLib
                                         Convert.ToString(reader["DriveName"]),
                                         Cipher.Decrypt(Convert.ToString(reader["Domain"]), QDInfo.LocalCipherKey)
                                     );
+
+                                    connectCtr++;
                                 }
                             }
                             catch
@@ -317,7 +323,8 @@ namespace QDriveLib
                 return 2;
             }
 
-            if (!string.IsNullOrEmpty(pUserID)) LogUserConnection(pUserID, QDLogAction.QDDrivesConnect, pDBData, pLogUserData);
+            // Log only if not local. Do not log if no drives connected
+            if (!string.IsNullOrEmpty(pUserID) && connectCtr > 0) LogUserConnection(pUserID, QDLogAction.QDDrivesConnect, pDBData, pLogUserData);
 
             return 0;
         }
@@ -424,38 +431,42 @@ namespace QDriveLib
 
         public static void ConnectDrive(char pDriveLetter, string pPath, string pUsername, string pPassword, string pName, string pDomain = null)
         {
-            ProcessStartInfo psi = new ProcessStartInfo()
+            try
             {
-                FileName = "cmd.exe",
-                Arguments = $@"/c reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2\{pPath.Replace('\\', '#')} /v _LabelFromReg /t REG_SZ /f /d ""{pName}""",
-                CreateNoWindow = true,
-                WindowStyle = ProcessWindowStyle.Hidden
-            };
-            Process.Start(psi);
-
-            if (pDomain == null)
-            {
-                psi = new ProcessStartInfo()
+                ProcessStartInfo psi = new ProcessStartInfo()
                 {
                     FileName = "cmd.exe",
-                    Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pUsername} {pPassword}",
+                    Arguments = $@"/c reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2\{pPath.Replace('\\', '#')} /v _LabelFromReg /t REG_SZ /f /d ""{pName}""",
                     CreateNoWindow = true,
                     WindowStyle = ProcessWindowStyle.Hidden
                 };
-            }
-            else
-            {
-                psi = new ProcessStartInfo()
+                Process.Start(psi);
+
+                if (pDomain == null)
                 {
-                    FileName = "cmd.exe",
-                    Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pDomain}\{pUsername} {pPassword}",
-                    CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden
-                };
+                    psi = new ProcessStartInfo()
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pUsername} {pPassword}",
+                        CreateNoWindow = true,
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    };
+                }
+                else
+                {
+                    psi = new ProcessStartInfo()
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pDomain}\{pUsername} {pPassword}",
+                        CreateNoWindow = true,
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    };
+                }
+
+
+                Process.Start(psi);
             }
-
-
-            Process.Start(psi);
+            catch { }
         }
 
         public static void AddToAutostart()
@@ -486,21 +497,38 @@ namespace QDriveLib
             }
         }
 
+        public static int UserCountAtDevice(string pDeviceID, WrapMySQLData dbData)
+        {
+            try
+            {
+                using (WrapMySQL mysql = new WrapMySQL(dbData))
+                {
+                    return mysql.ExecuteScalarACon<int>("SELECT COUNT(*) FROM (SELECT * FROM qd_conlog WHERE qd_conlog.DeviceID = ? GROUP BY UserID) AS TMP", pDeviceID);
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
 
         private static string GetMACAddress()
         {
-            return (
-                from nic in NetworkInterface.GetAllNetworkInterfaces()
-                where nic.OperationalStatus == OperationalStatus.Up
-                select nic.GetPhysicalAddress().ToString()
-            ).FirstOrDefault();
+            try
+            {
+                return (
+                    from nic in NetworkInterface.GetAllNetworkInterfaces()
+                    where nic.OperationalStatus == OperationalStatus.Up
+                    select nic.GetPhysicalAddress().ToString()
+                ).FirstOrDefault();
+            }
+            catch { return ""; }
         }
 
         public static void LogUserConnection(string pUserID, QDLogAction pLogAction, WrapMySQLData pDBData, bool pLogUserActionAllowed)
         {
-            
-
-            if (pUserID == null) pUserID = string.Empty;
+            if (string.IsNullOrEmpty(pUserID)) return;
 
             try
             {
