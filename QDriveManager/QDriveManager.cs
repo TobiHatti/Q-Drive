@@ -1134,14 +1134,14 @@ namespace QDriveManager
             uUsername = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
             uPassword = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
 
-            if (!string.IsNullOrEmpty(uPassword)) uPassword = Cipher.Decrypt(uPassword, QDInfo.LocalCipherKey);
-
             dbData.Hostname = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost), QDInfo.LocalCipherKey);
             dbData.Username = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername), QDInfo.LocalCipherKey);
             dbData.Password = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBPassword), QDInfo.LocalCipherKey);
             dbData.Database = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBName), QDInfo.LocalCipherKey);
 
             sqlite.Close();
+
+            if (!string.IsNullOrEmpty(uPassword)) uPassword = Cipher.Decrypt(uPassword, QDInfo.LocalCipherKey);
 
             if (!localConnection)
             {
@@ -1162,10 +1162,12 @@ namespace QDriveManager
 
                     if (useLoginAsDriveAuth) ndDefaultDomain = mysql.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.DefaultDomain);
 
+                    mysql.Close();
+
                     if (userCanChangeManagerSettings) cmsSettings.Enabled = true;
                     else cmsSettings.Enabled = false;
 
-                    mysql.Close();
+                    
                 }
                 catch { return 2; }
             }

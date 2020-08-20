@@ -51,14 +51,14 @@ namespace QDriveAdminConsole
                 using(WrapMySQL mysql = new WrapMySQL(DBData))
                 {
                     mysql.Open();
-
                     Username = mysql.ExecuteScalar<string>("SELECT Username FROM qd_users WHERE ID = ?", EditID);
                     DisplayName = mysql.ExecuteScalar<string>("SELECT Name FROM qd_users WHERE ID = ?", EditID);
+                    mysql.Close();
 
                     txbUsername.Text = Username;
                     txbDisplayName.Text = DisplayName;
 
-                    mysql.Close();
+                   
                 }
 
                 this.Text = "Edit User";

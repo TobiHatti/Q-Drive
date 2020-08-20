@@ -364,11 +364,12 @@ namespace QDriveLib
                 bool errorEncountered = false;
                 using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
                 {
-                    sqlite.Open();
                     try
                     {
+                        sqlite.Open();
                         string dbUsername = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
                         string dbCipher = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
+                        sqlite.Close();
 
                         string pwDecrypt = Cipher.Decrypt(dbCipher, QDInfo.LocalCipherKey);
                         if (dbUsername == pUsername && pwDecrypt == pPassword) passwordValid = true;
@@ -377,7 +378,6 @@ namespace QDriveLib
                     {
                         errorEncountered = true;
                     }
-                    sqlite.Close();
                 }
 
                 if (errorEncountered) MessageBox.Show("An error occured whilst trying to authenticate the user.", "Authentication error", MessageBoxButtons.OK, MessageBoxIcon.Error);

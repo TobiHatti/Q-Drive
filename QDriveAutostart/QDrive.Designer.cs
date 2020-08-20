@@ -32,9 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDrive));
             this.lblVersionInfo = new System.Windows.Forms.Label();
             this.nfiQDriveMenu = new System.Windows.Forms.NotifyIcon(this.components);
-            this.tmrQDSplash = new System.Windows.Forms.Timer(this.components);
             this.tmrDriveCheck = new System.Windows.Forms.Timer(this.components);
             this.pbxQDriveSplash = new System.Windows.Forms.PictureBox();
+            this.tmrFade = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxQDriveSplash)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,11 +58,6 @@
             this.nfiQDriveMenu.Visible = true;
             this.nfiQDriveMenu.DoubleClick += new System.EventHandler(this.nfiQDriveMenu_DoubleClick);
             // 
-            // tmrQDSplash
-            // 
-            this.tmrQDSplash.Interval = 2000;
-            this.tmrQDSplash.Tick += new System.EventHandler(this.tmrQDSplash_Tick);
-            // 
             // tmrDriveCheck
             // 
             this.tmrDriveCheck.Enabled = true;
@@ -82,6 +77,12 @@
             this.pbxQDriveSplash.TabIndex = 0;
             this.pbxQDriveSplash.TabStop = false;
             // 
+            // tmrFade
+            // 
+            this.tmrFade.Enabled = true;
+            this.tmrFade.Interval = 1;
+            this.tmrFade.Tick += new System.EventHandler(this.tmrFade_Tick);
+            // 
             // QDrive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -93,12 +94,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QDrive";
+            this.Opacity = 0D;
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.RightToLeftLayout = true;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QDrive";
+            this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Magenta;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QDrive_FormClosing);
             this.Load += new System.EventHandler(this.QDrive_Load);
@@ -114,8 +117,8 @@
         private System.Windows.Forms.PictureBox pbxQDriveSplash;
         private System.Windows.Forms.Label lblVersionInfo;
         private System.Windows.Forms.NotifyIcon nfiQDriveMenu;
-        private System.Windows.Forms.Timer tmrQDSplash;
         private System.Windows.Forms.Timer tmrDriveCheck;
+        private System.Windows.Forms.Timer tmrFade;
     }
 }
 

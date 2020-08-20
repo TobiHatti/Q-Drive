@@ -112,9 +112,7 @@ namespace QDriveAutostart
             }
         }
 
-        private void QDrive_Shown(object sender, EventArgs e) => tmrQDSplash.Start();
-
-        private void tmrQDSplash_Tick(object sender, EventArgs e) => Hide();
+        private void QDrive_Shown(object sender, EventArgs e) => tmrFade.Start();
 
         private int LoadQDData()
         {
@@ -131,14 +129,14 @@ namespace QDriveAutostart
                 Username = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
                 Password = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
 
-                if (!string.IsNullOrEmpty(Password)) Password = Cipher.Decrypt(Password, QDInfo.LocalCipherKey);
-
                 dbData.Hostname = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost), QDInfo.LocalCipherKey);
                 dbData.Username = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername), QDInfo.LocalCipherKey);
                 dbData.Password = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBPassword), QDInfo.LocalCipherKey);
                 dbData.Database = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBName), QDInfo.LocalCipherKey);
 
                 sqlite.Close();
+
+                if (!string.IsNullOrEmpty(Password)) Password = Cipher.Decrypt(Password, QDInfo.LocalCipherKey);
             }
 
             try
@@ -234,6 +232,32 @@ namespace QDriveAutostart
                     QDLib.LogUserConnection(UserID, QDLogAction.QDDrivesDisconnect, dbData, logUserActions);
                     QDLib.LogUserConnection(UserID, QDLogAction.QDSystemAppClosed, dbData, logUserActions);
                 }
+            }
+        }
+
+        short fadeStep = 0;
+        short fadeCtr = 0;
+        private void tmrFade_Tick(object sender, EventArgs e)
+        {
+            if(fadeStep == 0)
+            {
+                this.Opacity += 0.02f;
+                if (this.Opacity >= 1) fadeStep++;
+            }
+            else if(fadeStep == 1)
+            {
+                fadeCtr++;
+                if (fadeCtr == 150) fadeStep++;
+            }
+            else if(fadeStep == 2)
+            {
+                this.Opacity -= 0.05f;
+                if (this.Opacity <= 0) fadeStep++;
+            }
+            else if(fadeStep == 3)
+            {
+                this.Hide();
+                tmrFade.Stop();
             }
         }
     }

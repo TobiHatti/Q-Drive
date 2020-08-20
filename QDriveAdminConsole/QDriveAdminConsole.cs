@@ -235,17 +235,17 @@ namespace QDriveAdminConsole
         private void lbxDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
             mysql.Open();
-
             txbDeviceMac.Text = mysql.ExecuteScalar<string>("SELECT MacAddress FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
             txbDeviceName.Text = mysql.ExecuteScalar<string>("SELECT DeviceName FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
             txbLogonName.Text = mysql.ExecuteScalar<string>("SELECT LogonName FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
+            mysql.Close();
 
             int userCount = QDLib.UserCountAtDevice(lbxDevices.SelectedValue.ToString(), dbData);
 
             if (userCount == 1) lblDeviceUserCount.Text = $"{userCount} User logged into Q-Drive on this{Environment.NewLine}machine / account";
             else lblDeviceUserCount.Text = $"{userCount} Users logged into Q-Drive on this{Environment.NewLine}machine / account";
 
-            mysql.Close();
+            
         }
 
         private void btnDeviceShowActions_Click(object sender, EventArgs e)
@@ -353,14 +353,14 @@ namespace QDriveAdminConsole
         {
             if (lbxOnlineDrives.SelectedIndex != -1)
             {
-                mysql.Open();
+                
                 string driveID = lbxOnlineDrives.SelectedValue.ToString();
 
+                mysql.Open();
                 string drivePath = mysql.ExecuteScalar<string>("SELECT LocalPath FROM qd_drives WHERE ID = ?", driveID);
                 string defaultName = mysql.ExecuteScalar<string>("SELECT DefaultName FROM qd_drives WHERE ID = ?", driveID);
                 string defaultLetter = mysql.ExecuteScalar<string>("SELECT DefaultDriveLetter FROM qd_drives WHERE ID = ?", driveID);
                 bool canBeDeployed = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT IsDeployable FROM qd_drives WHERE ID = ?", driveID));
-
                 mysql.Close();
 
                 QDAddPublicDrive editDrive = new QDAddPublicDrive
