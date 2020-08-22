@@ -135,3 +135,5 @@ F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Release\QDriveAdminConsole.csproj.C
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Release\QDriveAdminConsole.exe
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Release\QDriveAdminConsole.pdb
 F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Release\Google.Protobuf.pdb
+F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Release\Syncfusion.Core.WinForms.dll
+F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Release\Syncfusion.Core.WinForms.xml

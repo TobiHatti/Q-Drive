@@ -69,7 +69,15 @@
             this.lblActionDescriptor = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxEntryLimit = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblResultRange = new System.Windows.Forms.Label();
+            this.btnJumpBack = new System.Windows.Forms.Button();
+            this.btnJumpToFirst = new System.Windows.Forms.Button();
+            this.btnJumpToNext = new System.Windows.Forms.Button();
+            this.btnJumpToLast = new System.Windows.Forms.Button();
+            this.lblPageCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActionBrowser)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -105,7 +113,7 @@
             this.dgvActionBrowser.ShowCellErrors = false;
             this.dgvActionBrowser.ShowCellToolTips = false;
             this.dgvActionBrowser.ShowEditingIcon = false;
-            this.dgvActionBrowser.Size = new System.Drawing.Size(753, 688);
+            this.dgvActionBrowser.Size = new System.Drawing.Size(1092, 688);
             this.dgvActionBrowser.TabIndex = 1;
             this.dgvActionBrowser.SelectionChanged += new System.EventHandler(this.dgvActionBrowser_SelectionChanged);
             // 
@@ -126,7 +134,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(764, 38);
+            this.label1.Location = new System.Drawing.Point(1103, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(226, 25);
             this.label1.TabIndex = 30;
@@ -136,7 +144,7 @@
             // txbSearchbox
             // 
             this.txbSearchbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbSearchbox.Location = new System.Drawing.Point(764, 66);
+            this.txbSearchbox.Location = new System.Drawing.Point(1103, 66);
             this.txbSearchbox.Name = "txbSearchbox";
             this.txbSearchbox.Size = new System.Drawing.Size(396, 29);
             this.txbSearchbox.TabIndex = 2;
@@ -147,7 +155,7 @@
             this.lbxSearchresult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbxSearchresult.FormattingEnabled = true;
             this.lbxSearchresult.ItemHeight = 21;
-            this.lbxSearchresult.Location = new System.Drawing.Point(764, 101);
+            this.lbxSearchresult.Location = new System.Drawing.Point(1103, 101);
             this.lbxSearchresult.Name = "lbxSearchresult";
             this.lbxSearchresult.Size = new System.Drawing.Size(396, 88);
             this.lbxSearchresult.TabIndex = 3;
@@ -155,11 +163,10 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(764, 203);
+            this.label2.Location = new System.Drawing.Point(-5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(176, 25);
             this.label2.TabIndex = 30;
@@ -168,20 +175,18 @@
             // 
             // lblDateTime
             // 
-            this.lblDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDateTime.ForeColor = System.Drawing.Color.White;
-            this.lblDateTime.Location = new System.Drawing.Point(898, 229);
+            this.lblDateTime.Location = new System.Drawing.Point(129, 26);
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(262, 21);
+            this.lblDateTime.Size = new System.Drawing.Size(241, 21);
             this.lblDateTime.TabIndex = 30;
             this.lblDateTime.Text = "---";
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(779, 229);
+            this.label5.Location = new System.Drawing.Point(10, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(113, 21);
             this.label5.TabIndex = 30;
@@ -190,20 +195,18 @@
             // 
             // lblActionType
             // 
-            this.lblActionType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblActionType.ForeColor = System.Drawing.Color.White;
-            this.lblActionType.Location = new System.Drawing.Point(898, 250);
+            this.lblActionType.Location = new System.Drawing.Point(129, 47);
             this.lblActionType.Name = "lblActionType";
-            this.lblActionType.Size = new System.Drawing.Size(262, 21);
+            this.lblActionType.Size = new System.Drawing.Size(241, 21);
             this.lblActionType.TabIndex = 30;
             this.lblActionType.Text = "---";
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(799, 250);
+            this.label6.Location = new System.Drawing.Point(30, 47);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(93, 21);
             this.label6.TabIndex = 30;
@@ -212,10 +215,9 @@
             // 
             // lblActionDescription
             // 
-            this.lblActionDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblActionDescription.AutoSize = true;
             this.lblActionDescription.ForeColor = System.Drawing.Color.White;
-            this.lblActionDescription.Location = new System.Drawing.Point(898, 271);
+            this.lblActionDescription.Location = new System.Drawing.Point(129, 68);
             this.lblActionDescription.MaximumSize = new System.Drawing.Size(262, 68);
             this.lblActionDescription.Name = "lblActionDescription";
             this.lblActionDescription.Size = new System.Drawing.Size(28, 63);
@@ -224,10 +226,9 @@
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(765, 271);
+            this.label8.Location = new System.Drawing.Point(-4, 68);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(127, 21);
             this.label8.TabIndex = 30;
@@ -236,11 +237,10 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(764, 349);
+            this.label9.Location = new System.Drawing.Point(-5, 146);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(158, 25);
             this.label9.TabIndex = 30;
@@ -249,30 +249,27 @@
             // 
             // lblDisplayName
             // 
-            this.lblDisplayName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDisplayName.ForeColor = System.Drawing.Color.White;
-            this.lblDisplayName.Location = new System.Drawing.Point(898, 375);
+            this.lblDisplayName.Location = new System.Drawing.Point(129, 172);
             this.lblDisplayName.Name = "lblDisplayName";
-            this.lblDisplayName.Size = new System.Drawing.Size(262, 21);
+            this.lblDisplayName.Size = new System.Drawing.Size(241, 21);
             this.lblDisplayName.TabIndex = 30;
             this.lblDisplayName.Text = "---";
             // 
             // lblUsername
             // 
-            this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(898, 396);
+            this.lblUsername.Location = new System.Drawing.Point(129, 193);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(262, 21);
+            this.lblUsername.Size = new System.Drawing.Size(241, 21);
             this.lblUsername.TabIndex = 30;
             this.lblUsername.Text = "---";
             // 
             // label13
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(837, 375);
+            this.label13.Location = new System.Drawing.Point(68, 172);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 21);
             this.label13.TabIndex = 30;
@@ -281,10 +278,9 @@
             // 
             // label14
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(809, 396);
+            this.label14.Location = new System.Drawing.Point(40, 193);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(83, 21);
             this.label14.TabIndex = 30;
@@ -293,11 +289,10 @@
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(764, 448);
+            this.label12.Location = new System.Drawing.Point(-5, 245);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(178, 25);
             this.label12.TabIndex = 30;
@@ -306,30 +301,27 @@
             // 
             // lblDeviceName
             // 
-            this.lblDeviceName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDeviceName.ForeColor = System.Drawing.Color.White;
-            this.lblDeviceName.Location = new System.Drawing.Point(898, 474);
+            this.lblDeviceName.Location = new System.Drawing.Point(129, 271);
             this.lblDeviceName.Name = "lblDeviceName";
-            this.lblDeviceName.Size = new System.Drawing.Size(262, 21);
+            this.lblDeviceName.Size = new System.Drawing.Size(241, 21);
             this.lblDeviceName.TabIndex = 30;
             this.lblDeviceName.Text = "---";
             // 
             // lblLogonName
             // 
-            this.lblLogonName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLogonName.ForeColor = System.Drawing.Color.White;
-            this.lblLogonName.Location = new System.Drawing.Point(898, 495);
+            this.lblLogonName.Location = new System.Drawing.Point(129, 292);
             this.lblLogonName.Name = "lblLogonName";
-            this.lblLogonName.Size = new System.Drawing.Size(262, 21);
+            this.lblLogonName.Size = new System.Drawing.Size(241, 21);
             this.lblLogonName.TabIndex = 30;
             this.lblLogonName.Text = "---";
             // 
             // label17
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(788, 474);
+            this.label17.Location = new System.Drawing.Point(19, 271);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(104, 21);
             this.label17.TabIndex = 30;
@@ -338,10 +330,9 @@
             // 
             // label18
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(790, 495);
+            this.label18.Location = new System.Drawing.Point(21, 292);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(102, 21);
             this.label18.TabIndex = 30;
@@ -350,20 +341,18 @@
             // 
             // lblAssignedDrives
             // 
-            this.lblAssignedDrives.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAssignedDrives.ForeColor = System.Drawing.Color.White;
-            this.lblAssignedDrives.Location = new System.Drawing.Point(898, 417);
+            this.lblAssignedDrives.Location = new System.Drawing.Point(129, 214);
             this.lblAssignedDrives.Name = "lblAssignedDrives";
-            this.lblAssignedDrives.Size = new System.Drawing.Size(262, 21);
+            this.lblAssignedDrives.Size = new System.Drawing.Size(241, 21);
             this.lblAssignedDrives.TabIndex = 30;
             this.lblAssignedDrives.Text = "---";
             // 
             // label20
             // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(769, 417);
+            this.label20.Location = new System.Drawing.Point(0, 214);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(123, 21);
             this.label20.TabIndex = 30;
@@ -372,20 +361,18 @@
             // 
             // lblMacAddress
             // 
-            this.lblMacAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMacAddress.ForeColor = System.Drawing.Color.White;
-            this.lblMacAddress.Location = new System.Drawing.Point(898, 517);
+            this.lblMacAddress.Location = new System.Drawing.Point(129, 314);
             this.lblMacAddress.Name = "lblMacAddress";
-            this.lblMacAddress.Size = new System.Drawing.Size(262, 21);
+            this.lblMacAddress.Size = new System.Drawing.Size(241, 21);
             this.lblMacAddress.TabIndex = 30;
             this.lblMacAddress.Text = "---";
             // 
             // label22
             // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(785, 517);
+            this.label22.Location = new System.Drawing.Point(16, 314);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(107, 21);
             this.label22.TabIndex = 30;
@@ -394,20 +381,18 @@
             // 
             // lblUserCount
             // 
-            this.lblUserCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUserCount.ForeColor = System.Drawing.Color.White;
-            this.lblUserCount.Location = new System.Drawing.Point(898, 538);
+            this.lblUserCount.Location = new System.Drawing.Point(129, 335);
             this.lblUserCount.Name = "lblUserCount";
-            this.lblUserCount.Size = new System.Drawing.Size(262, 21);
+            this.lblUserCount.Size = new System.Drawing.Size(241, 21);
             this.lblUserCount.TabIndex = 30;
             this.lblUserCount.Text = "---";
             // 
             // label24
             // 
-            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(801, 538);
+            this.label24.Location = new System.Drawing.Point(32, 335);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(91, 21);
             this.label24.TabIndex = 30;
@@ -417,7 +402,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(902, 732);
+            this.btnRefresh.Location = new System.Drawing.Point(1241, 732);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(120, 34);
             this.btnRefresh.TabIndex = 9;
@@ -428,7 +413,7 @@
             // btnShowAllActions
             // 
             this.btnShowAllActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShowAllActions.Location = new System.Drawing.Point(764, 652);
+            this.btnShowAllActions.Location = new System.Drawing.Point(1103, 652);
             this.btnShowAllActions.Name = "btnShowAllActions";
             this.btnShowAllActions.Size = new System.Drawing.Size(195, 34);
             this.btnShowAllActions.TabIndex = 5;
@@ -442,7 +427,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(764, 624);
+            this.label25.Location = new System.Drawing.Point(1103, 624);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(107, 25);
             this.label25.TabIndex = 30;
@@ -452,7 +437,7 @@
             // btnShowActionsCurrentUser
             // 
             this.btnShowActionsCurrentUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShowActionsCurrentUser.Location = new System.Drawing.Point(764, 692);
+            this.btnShowActionsCurrentUser.Location = new System.Drawing.Point(1103, 692);
             this.btnShowActionsCurrentUser.Name = "btnShowActionsCurrentUser";
             this.btnShowActionsCurrentUser.Size = new System.Drawing.Size(195, 34);
             this.btnShowActionsCurrentUser.TabIndex = 7;
@@ -463,7 +448,7 @@
             // btnShowActionsCurrentDevice
             // 
             this.btnShowActionsCurrentDevice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShowActionsCurrentDevice.Location = new System.Drawing.Point(965, 692);
+            this.btnShowActionsCurrentDevice.Location = new System.Drawing.Point(1304, 692);
             this.btnShowActionsCurrentDevice.Name = "btnShowActionsCurrentDevice";
             this.btnShowActionsCurrentDevice.Size = new System.Drawing.Size(195, 34);
             this.btnShowActionsCurrentDevice.TabIndex = 8;
@@ -474,7 +459,7 @@
             // btnShowActionsCurrentType
             // 
             this.btnShowActionsCurrentType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnShowActionsCurrentType.Location = new System.Drawing.Point(965, 652);
+            this.btnShowActionsCurrentType.Location = new System.Drawing.Point(1304, 652);
             this.btnShowActionsCurrentType.Name = "btnShowActionsCurrentType";
             this.btnShowActionsCurrentType.Size = new System.Drawing.Size(195, 34);
             this.btnShowActionsCurrentType.TabIndex = 6;
@@ -503,7 +488,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(884, 585);
+            this.label3.Location = new System.Drawing.Point(1113, 560);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 21);
             this.label3.TabIndex = 30;
@@ -523,47 +508,127 @@
             "1000 Entries",
             "5000 Entries",
             "No Limit"});
-            this.cbxEntryLimit.Location = new System.Drawing.Point(983, 582);
+            this.cbxEntryLimit.Location = new System.Drawing.Point(1212, 557);
             this.cbxEntryLimit.Name = "cbxEntryLimit";
             this.cbxEntryLimit.Size = new System.Drawing.Size(177, 29);
             this.cbxEntryLimit.TabIndex = 4;
             this.cbxEntryLimit.SelectedIndexChanged += new System.EventHandler(this.cbxEntryLimit_SelectedIndexChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.lblDateTime);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.lblDisplayName);
+            this.panel1.Controls.Add(this.lblDeviceName);
+            this.panel1.Controls.Add(this.label24);
+            this.panel1.Controls.Add(this.lblActionType);
+            this.panel1.Controls.Add(this.label22);
+            this.panel1.Controls.Add(this.lblUsername);
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.lblLogonName);
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.lblAssignedDrives);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.lblMacAddress);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.lblActionDescription);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.lblUserCount);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(1103, 195);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(396, 328);
+            this.panel1.TabIndex = 31;
+            // 
+            // lblResultRange
+            // 
+            this.lblResultRange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblResultRange.AutoSize = true;
+            this.lblResultRange.ForeColor = System.Drawing.Color.White;
+            this.lblResultRange.Location = new System.Drawing.Point(1113, 530);
+            this.lblResultRange.Name = "lblResultRange";
+            this.lblResultRange.Size = new System.Drawing.Size(259, 21);
+            this.lblResultRange.TabIndex = 30;
+            this.lblResultRange.Text = "Showing entries N to N (NN in total)";
+            this.lblResultRange.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // btnJumpBack
+            // 
+            this.btnJumpBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJumpBack.Location = new System.Drawing.Point(1258, 592);
+            this.btnJumpBack.Name = "btnJumpBack";
+            this.btnJumpBack.Size = new System.Drawing.Size(40, 34);
+            this.btnJumpBack.TabIndex = 32;
+            this.btnJumpBack.Text = "<";
+            this.btnJumpBack.UseVisualStyleBackColor = true;
+            // 
+            // btnJumpToFirst
+            // 
+            this.btnJumpToFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJumpToFirst.Location = new System.Drawing.Point(1212, 592);
+            this.btnJumpToFirst.Name = "btnJumpToFirst";
+            this.btnJumpToFirst.Size = new System.Drawing.Size(40, 34);
+            this.btnJumpToFirst.TabIndex = 32;
+            this.btnJumpToFirst.Text = "|<";
+            this.btnJumpToFirst.UseVisualStyleBackColor = true;
+            // 
+            // btnJumpToNext
+            // 
+            this.btnJumpToNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJumpToNext.Location = new System.Drawing.Point(1304, 592);
+            this.btnJumpToNext.Name = "btnJumpToNext";
+            this.btnJumpToNext.Size = new System.Drawing.Size(40, 34);
+            this.btnJumpToNext.TabIndex = 32;
+            this.btnJumpToNext.Text = ">";
+            this.btnJumpToNext.UseVisualStyleBackColor = true;
+            // 
+            // btnJumpToLast
+            // 
+            this.btnJumpToLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJumpToLast.Location = new System.Drawing.Point(1350, 592);
+            this.btnJumpToLast.Name = "btnJumpToLast";
+            this.btnJumpToLast.Size = new System.Drawing.Size(40, 34);
+            this.btnJumpToLast.TabIndex = 32;
+            this.btnJumpToLast.Text = ">|";
+            this.btnJumpToLast.UseVisualStyleBackColor = true;
+            // 
+            // lblPageCounter
+            // 
+            this.lblPageCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPageCounter.ForeColor = System.Drawing.Color.White;
+            this.lblPageCounter.Location = new System.Drawing.Point(1113, 599);
+            this.lblPageCounter.Name = "lblPageCounter";
+            this.lblPageCounter.Size = new System.Drawing.Size(93, 21);
+            this.lblPageCounter.TabIndex = 33;
+            this.lblPageCounter.Text = "Page N";
+            this.lblPageCounter.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // QDActionBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(1165, 771);
+            this.ClientSize = new System.Drawing.Size(1504, 771);
+            this.Controls.Add(this.lblPageCounter);
+            this.Controls.Add(this.btnJumpToFirst);
+            this.Controls.Add(this.btnJumpToLast);
+            this.Controls.Add(this.btnJumpToNext);
+            this.Controls.Add(this.btnJumpBack);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.cbxEntryLimit);
             this.Controls.Add(this.lbxSearchresult);
             this.Controls.Add(this.txbSearchbox);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblResultRange);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.lblActionDescriptor);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblUserCount);
-            this.Controls.Add(this.lblActionDescription);
-            this.Controls.Add(this.lblMacAddress);
-            this.Controls.Add(this.lblAssignedDrives);
-            this.Controls.Add(this.lblLogonName);
-            this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.lblActionType);
-            this.Controls.Add(this.lblDeviceName);
-            this.Controls.Add(this.lblDisplayName);
-            this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnShowActionsCurrentType);
             this.Controls.Add(this.btnShowActionsCurrentDevice);
@@ -592,6 +657,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.QDActionBrowser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvActionBrowser)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -638,5 +705,12 @@
         private System.Windows.Forms.Label lblActionDescriptor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbxEntryLimit;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblResultRange;
+        private System.Windows.Forms.Button btnJumpBack;
+        private System.Windows.Forms.Button btnJumpToFirst;
+        private System.Windows.Forms.Button btnJumpToNext;
+        private System.Windows.Forms.Button btnJumpToLast;
+        private System.Windows.Forms.Label lblPageCounter;
     }
 }

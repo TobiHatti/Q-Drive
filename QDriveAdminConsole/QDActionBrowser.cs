@@ -72,6 +72,9 @@ namespace QDriveAdminConsole
             cbxEntryLimit.SelectedIndex = 1;
         }
 
+        private int listOffset = 0;
+        private int listLimitSize = 0;
+
         private void UpdateDatagrid()
         {
             BrowserSort sort;
@@ -87,24 +90,31 @@ namespace QDriveAdminConsole
             {
                 case 0:
                     limitString = "LIMIT 50";
+                    listLimitSize = 50;
                     break;
                 case 1:
                     limitString = "LIMIT 100";
+                    listLimitSize = 100;
                     break;
                 case 2:
                     limitString = "LIMIT 250";
+                    listLimitSize = 250;
                     break;
                 case 3:
                     limitString = "LIMIT 500";
+                    listLimitSize = 500;
                     break;
                 case 4:
                     limitString = "LIMIT 1000";
+                    listLimitSize = 1000;
                     break;
                 case 5:
                     limitString = "LIMIT 5000";
+                    listLimitSize = 5000;
                     break;
                 default:
                     limitString = "";
+                    listLimitSize = -1;
                     break;
             }
 
@@ -167,6 +177,8 @@ namespace QDriveAdminConsole
 
             dgvActionBrowser.Rows.Clear();
 
+            int totalEntryCount = 0;
+
             mysql.Open();
             using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery(sqlQuery, SelectedObjectID.Replace("ACT=", "")))
             {
@@ -181,7 +193,12 @@ namespace QDriveAdminConsole
                     });
                 }
             }
+
+            totalEntryCount = mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM qd_conlog");
+
             mysql.Close();
+
+            lblResultRange.Text = $"Showing entries {listOffset + 1} to {listOffset + dgvActionBrowser.Rows.Count} ({totalEntryCount} entries in total)";
         }
 
         private void UpdateInfoData()
