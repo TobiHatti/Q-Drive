@@ -15,7 +15,6 @@ namespace QDriveManager
         {
             try
             {  
-                Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzAwODQzQDMxMzgyZTMyMmUzMEorcUU5VnUwTldFTGdoMkNaR0xJeW9CR0huRXhsQnZZWlVaWWkxaVBsOFE9");
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new QDriveManager());

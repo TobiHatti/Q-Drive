@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace QDriveAdminConsole
+namespace QDrive
 {
     static class Program
     {
@@ -14,10 +14,10 @@ namespace QDriveAdminConsole
         static void Main()
         {
             try
-            { 
+            {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new QDriveAdminConsole());
+                Application.Run(new QDriveSetup());
             }
             catch
             {
