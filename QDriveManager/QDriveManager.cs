@@ -59,7 +59,7 @@ namespace QDriveManager
 
         public string userID = "";
 
-        private readonly WrapMySQLData dbData = new WrapMySQLData();
+        private readonly WrapMySQLData dbData = new WrapMySQLData() { Pooling = false };
 
         private WrapSQLite sqlite = null;
         private WrapMySQL mysql = null;
@@ -283,7 +283,7 @@ namespace QDriveManager
                 return;
             }
 
-            sqlite.Open();
+            if (!QDLib.ManagedDBOpen(sql)) { QDLib.DBOpenFailed(); return; }
             sqlite.TransactionBegin();
             try
             {
@@ -536,7 +536,7 @@ namespace QDriveManager
                     // Private drive (user linked)
                     else
                     {
-                        mysql.Open();
+                        if (!QDLib.ManagedDBOpen(sql)) { QDLib.DBOpenFailed(); return; }
 
                         string qdDriveID = mysql.ExecuteScalar<string>("SELECT DriveID FROM qd_assigns WHERE ID = ?", editPrivate.DBEntryID);
 
@@ -628,8 +628,8 @@ namespace QDriveManager
 
                 using (WrapSQLite backup = new WrapSQLite(sfdSaveConfig.FileName))
                 {
-                    backup.Open();
-                    sqlite.Open();
+                    if (!QDLib.ManagedDBOpen(backup)) { QDLib.DBOpenFailed(); return; }
+                    if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return; }
                     backup.TransactionBegin();
 
                     try
@@ -760,8 +760,8 @@ namespace QDriveManager
                 {
                     try
                     {
-                        backup.Open();
-                        sqlite.Open();
+                        if (!QDLib.ManagedDBOpen(backup)) { QDLib.DBOpenFailed(); return; }
+                        if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return; }
                         sqlite.TransactionBegin();
 
                         try
@@ -921,7 +921,7 @@ namespace QDriveManager
 
             if(dbConForm.ShowDialog() == DialogResult.OK)
             {
-                sqlite.Open();
+                if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return; }
                 sqlite.TransactionBegin();
 
                 try
@@ -1035,7 +1035,7 @@ namespace QDriveManager
                     {
                         int mboxMessage;
 
-                        mysql.Open();
+                        if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
                         mysql.TransactionBegin();
                         try
                         {
@@ -1126,7 +1126,7 @@ namespace QDriveManager
         {
             // Load local Data
 
-            sqlite.Open();
+            if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return -1; }
 
             localConnection = !Convert.ToBoolean(sqlite.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked));
             promptPassword = Convert.ToBoolean(sqlite.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.AlwaysPromptPassword));
@@ -1149,7 +1149,7 @@ namespace QDriveManager
                 {
                     mysql = new WrapMySQL(dbData);
 
-                    mysql.Open();
+                    if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
                     userCanToggleKeepLoggedIn = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanToggleKeepLoggedIn));
                     userCanAddPrivateDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPrivateDrive));
                     userCanAddPublicDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPublicDrive));

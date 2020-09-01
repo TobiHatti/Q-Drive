@@ -41,7 +41,7 @@ namespace QDriveAdminConsole
         private string masterPassword = "";
 
 
-        private readonly WrapMySQLData dbData = new WrapMySQLData();
+        private readonly WrapMySQLData dbData = new WrapMySQLData() { Pooling = false };
         private WrapMySQL mysql = null;
 
         #region Page Layout and Initial Loading =================================================================[RF]=
@@ -152,7 +152,7 @@ namespace QDriveAdminConsole
             {
                 if (MessageBox.Show("Do you really want to delete the selected user?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    mysql.Open();
+                    if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
                     mysql.TransactionBegin();
 
                     try
@@ -234,7 +234,7 @@ namespace QDriveAdminConsole
 
         private void lbxDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
-            mysql.Open();
+            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
             txbDeviceMac.Text = mysql.ExecuteScalar<string>("SELECT MacAddress FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
             txbDeviceName.Text = mysql.ExecuteScalar<string>("SELECT DeviceName FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
             txbLogonName.Text = mysql.ExecuteScalar<string>("SELECT LogonName FROM qd_devices WHERE ID = ?", lbxDevices.SelectedValue);
@@ -279,7 +279,8 @@ namespace QDriveAdminConsole
                 Hostname = txbDBHostname.Text,
                 Database = txbDBDatabase.Text,
                 Username = txbDBUsername.Text,
-                Password = txbDBPassword.Text
+                Password = txbDBPassword.Text,
+                Pooling = false
             });
         }
 
@@ -323,7 +324,7 @@ namespace QDriveAdminConsole
                 bool success = false;
                 if (MessageBox.Show("Do you really want to remove the selected drive?", "Remove Drive", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    mysql.Open();
+                    if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
                     mysql.TransactionBegin();
 
                     try
@@ -356,7 +357,7 @@ namespace QDriveAdminConsole
                 
                 string driveID = lbxOnlineDrives.SelectedValue.ToString();
 
-                mysql.Open();
+                if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
                 string drivePath = mysql.ExecuteScalar<string>("SELECT LocalPath FROM qd_drives WHERE ID = ?", driveID);
                 string defaultName = mysql.ExecuteScalar<string>("SELECT DefaultName FROM qd_drives WHERE ID = ?", driveID);
                 string defaultLetter = mysql.ExecuteScalar<string>("SELECT DefaultDriveLetter FROM qd_drives WHERE ID = ?", driveID);
@@ -550,7 +551,7 @@ namespace QDriveAdminConsole
             bool successOnline = false;
             bool successLocal = false;
 
-            mysql.Open();
+            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
             mysql.TransactionBegin();
             try
             {
@@ -580,14 +581,15 @@ namespace QDriveAdminConsole
                 Hostname = txbDBHostname.Text,
                 Database = txbDBDatabase.Text,
                 Username = txbDBUsername.Text,
-                Password = txbDBPassword.Text
+                Password = txbDBPassword.Text,
+                Pooling = false
             };
 
             using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
             {
                 if (QDLib.TestConnection(newDBConnection, false))
                 {
-                    sqlite.Open();
+                    if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return false; }
                     sqlite.TransactionBegin();
 
                     try
@@ -632,7 +634,7 @@ namespace QDriveAdminConsole
                         return;
                     }
 
-                    sqlite.Open();
+                    if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return; }
                     dbData.Hostname = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBHost), QDInfo.LocalCipherKey);
                     dbData.Username = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBUsername), QDInfo.LocalCipherKey);
                     dbData.Password = Cipher.Decrypt(sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DBPassword), QDInfo.LocalCipherKey);
@@ -642,7 +644,7 @@ namespace QDriveAdminConsole
 
                 mysql = new WrapMySQL(dbData);
 
-                mysql.Open();
+                if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
                 userCanToggleKeepLoggedIn = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanToggleKeepLoggedIn));
                 userCanAddPrivateDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPrivateDrive));
                 userCanAddPublicDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPublicDrive));

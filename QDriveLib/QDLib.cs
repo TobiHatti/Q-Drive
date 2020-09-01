@@ -32,6 +32,32 @@ namespace QDriveLib
 {
     public static class QDLib
     {
+        public static bool ManagedDBOpen(WrapSQLBase sqlHandler)
+        {
+            int tryCount = 0;
+            int maxTryCount = 10;
+
+            do
+            {
+                try 
+                { 
+                    sqlHandler.Open();
+                    tryCount++;
+                }
+                catch { }
+            }
+            while (sqlHandler.Connection.State == System.Data.ConnectionState.Closed && tryCount < maxTryCount);
+
+            if (sqlHandler.Connection.State == System.Data.ConnectionState.Open) return true;
+            else return false;
+        }
+
+        public static void DBOpenFailed()
+        {
+            MessageBox.Show("Could not connect to Database. Please try again later.\r\n\r\nA connection to the database could not be established. This can happen due to the database beeing busy, or the authentication-data beeing invalid.\r\n\r\nIf this probllem persists, please contact your network administrator.", "DB-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            throw new ApplicationException("A data-error occured and Q-Drive must be shut down. If this problem persists, please contact your network administrator"); 
+        }
+
         public static void AlignPanels(Form form, List<Panel> panels, int width, int height)
         {
             form.Width = width;
@@ -121,7 +147,7 @@ namespace QDriveLib
 
             using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
             {
-                sqlite.Open();
+                if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return null; }
                 using (SQLiteDataReader reader = (SQLiteDataReader)sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
                 {
                     while (reader.Read())
@@ -148,7 +174,7 @@ namespace QDriveLib
                 {
                     using (WrapMySQL mysql = new WrapMySQL(pDBConDat))
                     {
-                        mysql.Open();
+                        if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return null; }
                         using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery("SELECT *, qd_assigns.ID as AID, qd_drives.ID AS DID FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID WHERE qd_assigns.UserID = ?", pUserID))
                         {
                             while (reader.Read())
@@ -231,7 +257,7 @@ namespace QDriveLib
                 {
                     using(WrapMySQL sql = new WrapMySQL(pDBData))
                     {
-                        sql.Open();
+                        if (!QDLib.ManagedDBOpen(sql)) { QDLib.DBOpenFailed(); return -1; }
                         // Connect local network drives
                         using (MySqlDataReader reader = (MySqlDataReader)sql.ExecuteQuery("SELECT * FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID INNER JOIN qd_users ON qd_assigns.UserID = qd_users.ID WHERE qd_assigns.UserID = ?", pUserID))
                         {
@@ -282,7 +308,7 @@ namespace QDriveLib
 
                 using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
                 {
-                    sqlite.Open();
+                    if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return -1; }
                     // Connect local network drives
                     using (SQLiteDataReader reader = (SQLiteDataReader)sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
                     {
@@ -366,7 +392,7 @@ namespace QDriveLib
                 {
                     try
                     {
-                        sqlite.Open();
+                        if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return false; }
                         string dbUsername = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultUsername);
                         string dbCipher = sqlite.ExecuteScalar<string>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.DefaultPassword);
                         sqlite.Close();
@@ -386,7 +412,7 @@ namespace QDriveLib
             {
                 using (WrapMySQL mysql = new WrapMySQL(pDBData))
                 {
-                    mysql.Open();
+                    if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return false; }
                     using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery("SELECT * FROM qd_users WHERE Username = ? AND Password = ?", pUsername, QDLib.HashPassword(pPassword)))
                     {
                         while (reader.Read())
@@ -404,6 +430,7 @@ namespace QDriveLib
 
         public static void DisconnectAllDrives(List<DriveViewItem> drives = null)
         {
+#if !DEBUG
             if (drives != null)
             {
                 foreach (DriveViewItem drive in drives)
@@ -427,10 +454,12 @@ namespace QDriveLib
                 WindowStyle = ProcessWindowStyle.Hidden
             };
             Process.Start(psi);
+#endif
         }
 
         public static void ConnectDrive(char pDriveLetter, string pPath, string pUsername, string pPassword, string pName, string pDomain = null)
         {
+#if !DEBUG
             try
             {
                 ProcessStartInfo psi = new ProcessStartInfo()
@@ -467,6 +496,7 @@ namespace QDriveLib
                 Process.Start(psi);
             }
             catch { }
+#endif
         }
 
         public static void AddToAutostart()
@@ -537,7 +567,7 @@ namespace QDriveLib
                     string deviceID;
                     string deviceMac = GetMACAddress();
 
-                    mysql.Open();
+                    if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
                     mysql.TransactionBegin();
 
                     try

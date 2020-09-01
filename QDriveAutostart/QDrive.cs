@@ -44,7 +44,7 @@ namespace QDriveAutostart
         private string Password;
         private string UserID;
 
-        private WrapMySQLData dbData = new WrapMySQLData();
+        private WrapMySQLData dbData = new WrapMySQLData() { Pooling = false };
 
         private List<DriveViewItem> driveList = new List<DriveViewItem>();
 
@@ -120,8 +120,7 @@ namespace QDriveAutostart
 
             using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
             {
-
-                sqlite.Open();
+                if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return -1; }
 
                 localConnection = !Convert.ToBoolean(sqlite.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked));
                 promptPassword = Convert.ToBoolean(sqlite.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.AlwaysPromptPassword));
@@ -157,7 +156,7 @@ namespace QDriveAutostart
                 {
                     using (WrapMySQL mysql = new WrapMySQL(dbData))
                     {
-                        mysql.Open();
+                        if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return -1; }
 
                         disconnectAtShutdown = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.DisconnectDrivesAtShutdown));
                         logUserActions = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.LogUserActions));

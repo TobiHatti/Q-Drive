@@ -54,7 +54,8 @@ namespace QDriveManager
             Hostname = txbHostname.Text,
             Database = txbName.Text,
             Username = txbUsername.Text,
-            Password = txbPassword.Text
+            Password = txbPassword.Text,
+            Pooling = false
         });
 
         private void btnSubmit_Click(object sender, EventArgs e) => Submit();
@@ -81,7 +82,8 @@ namespace QDriveManager
                 Hostname = txbHostname.Text,
                 Database = txbName.Text,
                 Username = txbUsername.Text,
-                Password = txbPassword.Text
+                Password = txbPassword.Text,
+                Pooling = false
             };
 
             if (QDLib.TestConnection(dbConDat, false))

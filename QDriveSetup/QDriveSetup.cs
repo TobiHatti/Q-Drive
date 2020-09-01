@@ -41,7 +41,7 @@ namespace QDrive
         private bool alwaysPromptPassword = false;
         private string localPassword = string.Empty;
 
-        private WrapMySQLData onlineDBConDat = new WrapMySQLData();
+        private WrapMySQLData onlineDBConDat = new WrapMySQLData() { Pooling = false };
 
         private bool onlineAlreadyConfigured;
 
@@ -166,7 +166,8 @@ namespace QDrive
             Hostname = txbSB2DBHostname.Text,
             Database = txbSB2DBName.Text,
             Username = txbSB2DBUsername.Text,
-            Password = txbSB2DBPassword.Text 
+            Password = txbSB2DBPassword.Text,
+            Pooling = false
         });
 
         private void btnSB2APrev_Click(object sender, EventArgs e) => pnlS1ConnectionType.BringToFront();
@@ -186,7 +187,8 @@ namespace QDrive
                 Hostname = txbSB2DBHostname.Text,
                 Database = txbSB2DBName.Text,
                 Username = txbSB2DBUsername.Text,
-                Password = txbSB2DBPassword.Text
+                Password = txbSB2DBPassword.Text,
+                Pooling = false
             };
 
 
@@ -327,7 +329,7 @@ namespace QDrive
                 {
                     if (onlineConfigureAsNewDB)
                     {
-                        sql.Open();
+                        if (!QDLib.ManagedDBOpen(sql)) { QDLib.DBOpenFailed(); return; }
                         sql.TransactionBegin();
                         try
                         {
@@ -388,7 +390,7 @@ namespace QDrive
             {
                 using (WrapSQLite sql = new WrapSQLite(QDInfo.ConfigFile))
                 {
-                    sql.Open();
+                    if (!QDLib.ManagedDBOpen(sql)) { QDLib.DBOpenFailed(); return; }
                     sql.TransactionBegin();
                     try
                     {
