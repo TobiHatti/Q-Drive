@@ -507,10 +507,10 @@
             "500 Entries",
             "1000 Entries",
             "5000 Entries",
-            "No Limit"});
+            "No Limit (Performance Warning!)"});
             this.cbxEntryLimit.Location = new System.Drawing.Point(1212, 557);
             this.cbxEntryLimit.Name = "cbxEntryLimit";
-            this.cbxEntryLimit.Size = new System.Drawing.Size(177, 29);
+            this.cbxEntryLimit.Size = new System.Drawing.Size(287, 29);
             this.cbxEntryLimit.TabIndex = 4;
             this.cbxEntryLimit.SelectedIndexChanged += new System.EventHandler(this.cbxEntryLimit_SelectedIndexChanged);
             // 
@@ -562,42 +562,50 @@
             // btnJumpBack
             // 
             this.btnJumpBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJumpBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJumpBack.Location = new System.Drawing.Point(1258, 592);
             this.btnJumpBack.Name = "btnJumpBack";
             this.btnJumpBack.Size = new System.Drawing.Size(40, 34);
             this.btnJumpBack.TabIndex = 32;
             this.btnJumpBack.Text = "<";
             this.btnJumpBack.UseVisualStyleBackColor = true;
+            this.btnJumpBack.Click += new System.EventHandler(this.btnJumpBack_Click);
             // 
             // btnJumpToFirst
             // 
             this.btnJumpToFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJumpToFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJumpToFirst.Location = new System.Drawing.Point(1212, 592);
             this.btnJumpToFirst.Name = "btnJumpToFirst";
             this.btnJumpToFirst.Size = new System.Drawing.Size(40, 34);
             this.btnJumpToFirst.TabIndex = 32;
             this.btnJumpToFirst.Text = "|<";
             this.btnJumpToFirst.UseVisualStyleBackColor = true;
+            this.btnJumpToFirst.Click += new System.EventHandler(this.btnJumpToFirst_Click);
             // 
             // btnJumpToNext
             // 
             this.btnJumpToNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJumpToNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJumpToNext.Location = new System.Drawing.Point(1304, 592);
             this.btnJumpToNext.Name = "btnJumpToNext";
             this.btnJumpToNext.Size = new System.Drawing.Size(40, 34);
             this.btnJumpToNext.TabIndex = 32;
             this.btnJumpToNext.Text = ">";
             this.btnJumpToNext.UseVisualStyleBackColor = true;
+            this.btnJumpToNext.Click += new System.EventHandler(this.btnJumpToNext_Click);
             // 
             // btnJumpToLast
             // 
             this.btnJumpToLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnJumpToLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJumpToLast.Location = new System.Drawing.Point(1350, 592);
             this.btnJumpToLast.Name = "btnJumpToLast";
             this.btnJumpToLast.Size = new System.Drawing.Size(40, 34);
             this.btnJumpToLast.TabIndex = 32;
             this.btnJumpToLast.Text = ">|";
             this.btnJumpToLast.UseVisualStyleBackColor = true;
+            this.btnJumpToLast.Click += new System.EventHandler(this.btnJumpToLast_Click);
             // 
             // lblPageCounter
             // 

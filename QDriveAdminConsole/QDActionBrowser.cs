@@ -2,14 +2,7 @@
 using QDriveLib;
 using Syncfusion.WinForms.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using WrapSQL;
 
 // Q-Drive Network-Drive Manager
@@ -32,13 +25,14 @@ namespace QDriveAdminConsole
 {
     public enum BrowserSort
     {
+        None,
         AllEntries,
         SortedByDevice,
         SortedByUsers,
         SortedByActionType
     }
 
-    public partial class QDActionBrowser :SfForm
+    public partial class QDActionBrowser : SfForm
     {
         public string SelectedObjectID = string.Empty;
         public WrapMySQLData DBData = null;
@@ -61,7 +55,7 @@ namespace QDriveAdminConsole
             dgvActionBrowser.Columns[3].Width = 200;
             dgvActionBrowser.Columns[4].Width = 200;
 
-            
+
         }
 
         private void QDActionBrowser_Load(object sender, EventArgs e)
@@ -74,53 +68,62 @@ namespace QDriveAdminConsole
 
         private int listOffset = 0;
         private int listLimitSize = 0;
+        private int totalEntryCount = 0;
+        private int maxOffset = 0;
 
         private void UpdateDatagrid()
         {
-            BrowserSort sort;
+            BrowserSort sort = BrowserSort.None;
 
+            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
+
+            totalEntryCount = mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM qd_conlog");
+
+            bool abort = false;
             if (string.IsNullOrEmpty(SelectedObjectID)) sort = BrowserSort.AllEntries;
             else if (SelectedObjectID.StartsWith("ACT=")) sort = BrowserSort.SortedByActionType;
-            else if (mysql.ExecuteScalarACon<int>("SELECT COUNT(*) FROM qd_users WHERE ID = ?", SelectedObjectID) != 0) sort = BrowserSort.SortedByUsers;
-            else if (mysql.ExecuteScalarACon<int>("SELECT COUNT(*) FROM qd_devices WHERE ID = ?", SelectedObjectID) != 0) sort = BrowserSort.SortedByDevice;
-            else return;
+            else if (mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM qd_users WHERE ID = ?", SelectedObjectID) != 0) sort = BrowserSort.SortedByUsers;
+            else if (mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM qd_devices WHERE ID = ?", SelectedObjectID) != 0) sort = BrowserSort.SortedByDevice;
+            else abort = true;
 
-            string limitString = "";
-            switch(cbxEntryLimit.SelectedIndex)
+            mysql.Close();
+
+            if (abort) return;
+
+            switch (cbxEntryLimit.SelectedIndex)
             {
-                case 0:
-                    limitString = "LIMIT 50";
-                    listLimitSize = 50;
-                    break;
-                case 1:
-                    limitString = "LIMIT 100";
-                    listLimitSize = 100;
-                    break;
-                case 2:
-                    limitString = "LIMIT 250";
-                    listLimitSize = 250;
-                    break;
-                case 3:
-                    limitString = "LIMIT 500";
-                    listLimitSize = 500;
-                    break;
-                case 4:
-                    limitString = "LIMIT 1000";
-                    listLimitSize = 1000;
-                    break;
-                case 5:
-                    limitString = "LIMIT 5000";
-                    listLimitSize = 5000;
-                    break;
-                default:
-                    limitString = "";
-                    listLimitSize = -1;
-                    break;
+                case 0: listLimitSize = 50; break;
+                case 1: listLimitSize = 100; break;
+                case 2: listLimitSize = 250; break;
+                case 3: listLimitSize = 500; break;
+                case 4: listLimitSize = 1000; break;
+                case 5: listLimitSize = 5000; break;
+                default: listLimitSize = -1; break;
             }
+
+            if (listOffset <= 0 || listLimitSize == -1) { btnJumpToFirst.Enabled = false; btnJumpToFirst.BackColor = Color.DarkGray; }
+            else { btnJumpToFirst.Enabled = true; btnJumpToFirst.BackColor = Color.Gainsboro; }
+
+            if (listOffset <= 0 || listLimitSize == -1) { btnJumpBack.Enabled = false; btnJumpBack.BackColor = Color.DarkGray; }
+            else { btnJumpBack.Enabled = true; btnJumpBack.BackColor = Color.Gainsboro; }
+
+            if (listOffset + listLimitSize > totalEntryCount || listLimitSize == -1) { btnJumpToNext.Enabled = false; btnJumpToNext.BackColor = Color.DarkGray; }
+            else { btnJumpToNext.Enabled = true; btnJumpToNext.BackColor = Color.Gainsboro; }
+
+            maxOffset = 0;
+            while (listLimitSize + maxOffset < totalEntryCount) maxOffset += listLimitSize;
+
+            if (listOffset >= maxOffset) { btnJumpToLast.Enabled = false; btnJumpToLast.BackColor = Color.DarkGray; }
+            else { btnJumpToLast.Enabled = true; btnJumpToLast.BackColor = Color.Gainsboro; }
+
+            string limitString;
+
+            if (listLimitSize == -1) limitString = "";
+            else limitString = $"LIMIT {listOffset},{listLimitSize}";
 
             string sqlQuery = "";
 
-            switch(sort)
+            switch (sort)
             {
                 case BrowserSort.AllEntries:
                     sqlQuery = $"SELECT " +
@@ -177,8 +180,6 @@ namespace QDriveAdminConsole
 
             dgvActionBrowser.Rows.Clear();
 
-            int totalEntryCount = 0;
-
             if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
 
             using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery(sqlQuery, SelectedObjectID.Replace("ACT=", "")))
@@ -194,8 +195,6 @@ namespace QDriveAdminConsole
                     });
                 }
             }
-
-            totalEntryCount = mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM qd_conlog");
 
             mysql.Close();
 
@@ -217,7 +216,7 @@ namespace QDriveAdminConsole
                 $"INNER JOIN qd_devices ON qd_conlog.DeviceID = qd_devices.ID " +
                 $"WHERE qd_conlog.ID = ?";
 
-            
+
             using (WrapMySQL mysql = new WrapMySQL(DBData))
             {
                 if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
@@ -311,13 +310,41 @@ namespace QDriveAdminConsole
 
         private void lbxSearchresult_DoubleClick(object sender, EventArgs e)
         {
-            if(lbxSearchresult.SelectedIndex != -1)
+            if (lbxSearchresult.SelectedIndex != -1)
             {
                 SelectedObjectID = lbxSearchresult.SelectedValue.ToString();
                 UpdateDatagrid();
             }
         }
 
-        private void cbxEntryLimit_SelectedIndexChanged(object sender, EventArgs e) => UpdateDatagrid();
+        private void cbxEntryLimit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listOffset = 0;
+            UpdateDatagrid();
+        }
+
+        private void btnJumpToFirst_Click(object sender, EventArgs e)
+        {
+            listOffset = 0;
+            UpdateDatagrid();
+        }
+
+        private void btnJumpBack_Click(object sender, EventArgs e)
+        {
+            listOffset -= listLimitSize;
+            UpdateDatagrid();
+        }
+
+        private void btnJumpToNext_Click(object sender, EventArgs e)
+        {
+            listOffset += listLimitSize;
+            UpdateDatagrid();
+        }
+
+        private void btnJumpToLast_Click(object sender, EventArgs e)
+        {
+            listOffset = maxOffset;
+            UpdateDatagrid();
+        }
     }
 }
