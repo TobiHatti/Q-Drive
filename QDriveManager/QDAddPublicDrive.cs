@@ -68,7 +68,7 @@ namespace QDriveManager
 
             using (WrapMySQL sql = new WrapMySQL(DBData))
             {
-                sql.Open();
+                if (!QDLib.ManagedDBOpen(sql)) { QDLib.DBOpenFailed(); return; }
 
                 using (MySqlDataReader reader = (MySqlDataReader)sql.ExecuteQuery("SELECT * FROM qd_drives WHERE IsPublic = 1 ORDER BY DefaultDriveLetter ASC"))
                 {

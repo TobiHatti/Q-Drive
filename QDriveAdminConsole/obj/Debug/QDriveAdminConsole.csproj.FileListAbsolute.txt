@@ -68,3 +68,15 @@ F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.pdb
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDActionBrowser.resources
 F:\Desktop\QDriveTemp\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDDeviceUsers.resources
 F:\Desktop\QDriveTemp\QDriveAdminConsole\bin\Debug\Google.Protobuf.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.csprojAssemblyReference.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.Properties.Resources.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDActionBrowser.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDAddPublicDrive.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDAddUser.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDChangeMasterPassword.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDDeviceUsers.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.QDriveAdminConsole.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.csproj.GenerateResource.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.csproj.CoreCompileInputs.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.exe
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAdminConsole\obj\Debug\QDriveAdminConsole.pdb

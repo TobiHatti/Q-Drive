@@ -551,7 +551,7 @@ namespace QDriveAdminConsole
             bool successOnline = false;
             bool successLocal = false;
 
-            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
+            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return false; }
             mysql.TransactionBegin();
             try
             {

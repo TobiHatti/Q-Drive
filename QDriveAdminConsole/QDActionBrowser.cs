@@ -179,7 +179,8 @@ namespace QDriveAdminConsole
 
             int totalEntryCount = 0;
 
-            mysql.Open();
+            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
+
             using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery(sqlQuery, SelectedObjectID.Replace("ACT=", "")))
             {
                 while (reader.Read())
@@ -219,7 +220,8 @@ namespace QDriveAdminConsole
             
             using (WrapMySQL mysql = new WrapMySQL(DBData))
             {
-                mysql.Open();
+                if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
+
                 using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery(sqlQuery, conlogID))
                 {
                     while (reader.Read())

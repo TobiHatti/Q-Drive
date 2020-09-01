@@ -72,3 +72,10 @@ F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.dll
 F:\Desktop\QDriveTemp\QDriveLib\obj\Debug\QDriveLib.pdb
 F:\Desktop\QDriveTemp\QDriveLib\bin\Debug\Google.Protobuf.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\WrapMySQL.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\WrapSQLBase.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\WrapSQLite.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\Google.Protobuf.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\WrapMySQL.xml
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\WrapSQLBase.xml
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\WrapSQLite.xml

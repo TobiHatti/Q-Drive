@@ -50,7 +50,8 @@ namespace QDriveAdminConsole
             {
                 using(WrapMySQL mysql = new WrapMySQL(DBData))
                 {
-                    mysql.Open();
+                    if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
+
                     Username = mysql.ExecuteScalar<string>("SELECT Username FROM qd_users WHERE ID = ?", EditID);
                     DisplayName = mysql.ExecuteScalar<string>("SELECT Name FROM qd_users WHERE ID = ?", EditID);
                     mysql.Close();

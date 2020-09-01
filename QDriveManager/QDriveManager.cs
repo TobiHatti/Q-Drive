@@ -283,7 +283,7 @@ namespace QDriveManager
                 return;
             }
 
-            if (!QDLib.ManagedDBOpen(sql)) { QDLib.DBOpenFailed(); return; }
+            if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return; }
             sqlite.TransactionBegin();
             try
             {
@@ -536,7 +536,7 @@ namespace QDriveManager
                     // Private drive (user linked)
                     else
                     {
-                        if (!QDLib.ManagedDBOpen(sql)) { QDLib.DBOpenFailed(); return; }
+                        if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
 
                         string qdDriveID = mysql.ExecuteScalar<string>("SELECT DriveID FROM qd_assigns WHERE ID = ?", editPrivate.DBEntryID);
 
@@ -1149,7 +1149,7 @@ namespace QDriveManager
                 {
                     mysql = new WrapMySQL(dbData);
 
-                    if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
+                    if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return -1; }
                     userCanToggleKeepLoggedIn = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanToggleKeepLoggedIn));
                     userCanAddPrivateDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPrivateDrive));
                     userCanAddPublicDrive = Convert.ToBoolean(mysql.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBO.UserCanAddPublicDrive));
