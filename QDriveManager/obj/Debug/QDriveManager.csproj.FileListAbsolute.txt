@@ -25,9 +25,7 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Debug\QDriveMa
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Debug\QDriveManager.csproj.CopyComplete
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Debug\QDriveManager.exe
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Debug\QDriveManager.pdb
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\Syncfusion.Core.WinForms.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\Syncfusion.Data.WinForms.dll
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\Syncfusion.Core.WinForms.xml
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\Syncfusion.Data.WinForms.xml
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\QDriveLib.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\QDriveLib.pdb
@@ -135,3 +133,14 @@ F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.exe
 F:\Desktop\QDriveTemp\QDriveManager\obj\Debug\QDriveManager.pdb
 F:\Desktop\QDriveTemp\QDriveManager\bin\Debug\Google.Protobuf.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\Syncfusion.Licensing.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\WrapMySQL.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\WrapSQLBase.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\WrapSQLite.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\Google.Protobuf.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\WrapMySQL.xml
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\WrapSQLBase.xml
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Debug\WrapSQLite.xml
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Debug\QDriveManager.QDChangePassword.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Debug\QDriveManager.QDDatabaseConnection.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\obj\Debug\QDriveManager.QDVersionInfo.resources

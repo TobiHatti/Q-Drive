@@ -626,7 +626,11 @@ namespace QDriveAdminConsole
                 using (WrapSQLite sqlite = new WrapSQLite(QDInfo.ConfigFile))
                 {
 
-                    bool localConnection = !Convert.ToBoolean(sqlite.ExecuteScalarACon<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked));
+                    if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return; }
+
+                    bool localConnection = !Convert.ToBoolean(sqlite.ExecuteScalar<short>("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.IsOnlineLinked));
+
+                    sqlite.Close();
 
                     if (localConnection)
                     {

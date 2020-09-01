@@ -14,8 +14,8 @@ namespace QDriveAutostart
         [STAThread]
         static void Main()
         {
-            try 
-            { 
+            try
+            {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new QDrive());

@@ -139,3 +139,4 @@ F:\Desktop\QDriveTemp\QDriveSetup\obj\Release\QDriveSetup.csproj.CopyComplete
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Release\QDriveSetup.exe
 F:\Desktop\QDriveTemp\QDriveSetup\obj\Release\QDriveSetup.pdb
 F:\Desktop\QDriveTemp\QDriveSetup\bin\Release\Google.Protobuf.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveSetup\bin\Release\Google.Protobuf.pdb

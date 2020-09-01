@@ -33,7 +33,6 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Release\System.Run
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Release\WrapMySQL.xml
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Release\WrapSQLBase.xml
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Release\WrapSQLite.xml
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.csprojAssemblyReference.cache
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.CoreCompileInputs.cache
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.CopyComplete
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.dll
@@ -79,3 +78,4 @@ F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.dll
 F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.pdb
 F:\Desktop\QDriveTemp\QDriveLib\bin\Release\Google.Protobuf.pdb
 F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.csprojAssemblyReference.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Release\Google.Protobuf.pdb

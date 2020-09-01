@@ -133,3 +133,4 @@ F:\Desktop\QDriveTemp\QDriveAutostart\obj\Release\QDriveAutostart.csproj.CopyCom
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Release\QDriveAutostart.exe
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Release\QDriveAutostart.pdb
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Release\Google.Protobuf.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Release\Google.Protobuf.pdb

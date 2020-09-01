@@ -143,3 +143,4 @@ F:\Desktop\QDriveTemp\QDriveManager\obj\Release\QDriveManager.csproj.CopyComplet
 F:\Desktop\QDriveTemp\QDriveManager\obj\Release\QDriveManager.exe
 F:\Desktop\QDriveTemp\QDriveManager\obj\Release\QDriveManager.pdb
 F:\Desktop\QDriveTemp\QDriveManager\bin\Release\Google.Protobuf.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveManager\bin\Release\Google.Protobuf.pdb
