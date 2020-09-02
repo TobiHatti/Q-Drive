@@ -32,6 +32,12 @@ namespace QDriveLib
 {
     public static class QDLib
     {
+        /// <summary>
+        /// Attempts to open the DB connection,
+        /// retries n-times, then throws an exception
+        /// </summary>
+        /// <param name="sqlHandler">WrapSQL object</param>
+        /// <returns>Returns true if the connection could be opened</returns>
         public static bool ManagedDBOpen(WrapSQLBase sqlHandler)
         {
             int tryCount = 0;
@@ -52,12 +58,22 @@ namespace QDriveLib
             else return false;
         }
 
+        /// <summary>
+        /// Gets called when the ManagedDBOpen()-method fails
+        /// </summary>
         public static void DBOpenFailed()
         {
             MessageBox.Show("Could not connect to Database. Please try again later.\r\n\r\nA connection to the database could not be established. This can happen due to the database beeing busy, or the authentication-data beeing invalid.\r\n\r\nIf this probllem persists, please contact your network administrator.", "DB-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             throw new ApplicationException("A data-error occured and Q-Drive must be shut down. If this problem persists, please contact your network administrator"); 
         }
 
+        /// <summary>
+        /// Aligns all panels inside of an form and resizes the form to the set size
+        /// </summary>
+        /// <param name="form">Target form</param>
+        /// <param name="panels">List of panels inside of the form</param>
+        /// <param name="width">Window width</param>
+        /// <param name="height">Window height</param>
         public static void AlignPanels(Form form, List<Panel> panels, int width, int height)
         {
             form.Width = width;
@@ -65,6 +81,12 @@ namespace QDriveLib
             foreach (Panel panel in panels) panel.Dock = DockStyle.Fill;
         }
 
+        /// <summary>
+        /// Checks if 2 entered passwords are the same
+        /// </summary>
+        /// <param name="pPW1">Password 1</param>
+        /// <param name="pPW2">Password 2 ("Confirm password")</param>
+        /// <returns>True if both passwords are valid</returns>
         public static bool ValidatePasswords(string pPW1, string pPW2)
         {
             bool passwordsValid = true;
@@ -83,8 +105,12 @@ namespace QDriveLib
             return passwordsValid;
         }
 
-        
-
+        /// <summary>
+        /// Checks if the Q-Drive master-password is valid
+        /// </summary>
+        /// <param name="pPassword">Master-Password</param>
+        /// <param name="pDBData">DB connection data</param>
+        /// <returns>True if the Master-Password is correct</returns>
         public static bool VerifyMasterPassword(string pPassword, WrapMySQLData pDBData)
         {
             bool masterPasswordValid = false;
