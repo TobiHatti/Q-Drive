@@ -81,7 +81,7 @@ __NOTE: The Q-Drive backup-files (`*.qdbackup`) are only weakly encrypted. Use t
 
 Get the current version [here](https://github.com/TobiHatti/Q-Drive/releases/latest)
 
-Version: 1.0.0
+Version: 1.1.0
 
-MD5: 6702B02A9C0F66ED91914916410398CA
+MD5: TBD
 
