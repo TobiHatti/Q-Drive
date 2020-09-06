@@ -104,8 +104,13 @@ namespace QDriveAdminConsole
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             LoadAllData();
             UpdateAll();
+
+            qdLoader.Close();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -453,8 +458,13 @@ namespace QDriveAdminConsole
 
         private void Submit()
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             if (masterPassword == QDLib.HashPassword(txbMasterPassword.Text)) pnlSettings.BringToFront();
             else MessageBox.Show("Password not valid.", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            qdLoader.Close();
         }
 
         #endregion
@@ -548,6 +558,9 @@ namespace QDriveAdminConsole
 
         private bool SaveChanges()
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             bool successOnline = false;
             bool successLocal = false;
 
@@ -615,6 +628,8 @@ namespace QDriveAdminConsole
             {
                 if (MessageBox.Show("Could not save the changes made. Please check your MySQL-Connection and try again. \r\n\r\nDo you want to close the admin-console anyway?", "Could not save settins", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes) successOnline = true;
             }
+
+            qdLoader.Close();
 
             return successOnline && successLocal;
         }

@@ -73,9 +73,12 @@ namespace QDriveAdminConsole
 
         private void UpdateDatagrid()
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             BrowserSort sort = BrowserSort.None;
 
-            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
+            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); qdLoader.Close(); return; }
 
             totalEntryCount = mysql.ExecuteScalar<int>("SELECT COUNT(*) FROM qd_conlog");
 
@@ -88,7 +91,11 @@ namespace QDriveAdminConsole
 
             mysql.Close();
 
-            if (abort) return;
+            if (abort)
+            {
+                qdLoader.Close();
+                return;
+            }
 
             switch (cbxEntryLimit.SelectedIndex)
             {
@@ -180,7 +187,7 @@ namespace QDriveAdminConsole
 
             dgvActionBrowser.Rows.Clear();
 
-            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); return; }
+            if (!QDLib.ManagedDBOpen(mysql)) { QDLib.DBOpenFailed(); qdLoader.Close(); return; }
 
             using (MySqlDataReader reader = (MySqlDataReader)mysql.ExecuteQuery(sqlQuery, SelectedObjectID.Replace("ACT=", "")))
             {
@@ -199,6 +206,8 @@ namespace QDriveAdminConsole
             mysql.Close();
 
             lblResultRange.Text = $"Showing entries {listOffset + 1} to {listOffset + dgvActionBrowser.Rows.Count} ({totalEntryCount} entries in total)";
+
+            qdLoader.Close();
         }
 
         private void UpdateInfoData()

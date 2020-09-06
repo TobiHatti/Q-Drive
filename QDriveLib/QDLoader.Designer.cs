@@ -28,36 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblWait = new System.Windows.Forms.Label();
+            this.lblLoading = new System.Windows.Forms.Label();
             this.pbxLoader = new System.Windows.Forms.PictureBox();
             this.pbxBackground = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBackground)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
+            // lblWait
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
-            this.label2.Location = new System.Drawing.Point(112, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 21);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Please wait...";
+            this.lblWait.AutoSize = true;
+            this.lblWait.BackColor = System.Drawing.Color.Transparent;
+            this.lblWait.Font = new System.Drawing.Font("Segoe UI Semilight", 12F);
+            this.lblWait.Location = new System.Drawing.Point(112, 41);
+            this.lblWait.Name = "lblWait";
+            this.lblWait.Size = new System.Drawing.Size(98, 21);
+            this.lblWait.TabIndex = 4;
+            this.lblWait.Text = "Please wait...";
             // 
-            // label1
+            // lblLoading
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 18F);
-            this.label1.Location = new System.Drawing.Point(110, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 32);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Loading...";
+            this.lblLoading.AutoSize = true;
+            this.lblLoading.BackColor = System.Drawing.Color.Transparent;
+            this.lblLoading.Font = new System.Drawing.Font("Segoe UI Semilight", 18F);
+            this.lblLoading.Location = new System.Drawing.Point(110, 9);
+            this.lblLoading.Name = "lblLoading";
+            this.lblLoading.Size = new System.Drawing.Size(113, 32);
+            this.lblLoading.TabIndex = 5;
+            this.lblLoading.Text = "Loading...";
             // 
             // pbxLoader
             // 
+            this.pbxLoader.BackColor = System.Drawing.Color.Transparent;
             this.pbxLoader.Location = new System.Drawing.Point(2, 2);
             this.pbxLoader.Name = "pbxLoader";
             this.pbxLoader.Size = new System.Drawing.Size(80, 80);
@@ -81,8 +84,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(260, 84);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblWait);
+            this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.pbxLoader);
             this.Controls.Add(this.pbxBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -101,8 +104,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblWait;
+        private System.Windows.Forms.Label lblLoading;
         private System.Windows.Forms.PictureBox pbxLoader;
         private System.Windows.Forms.PictureBox pbxBackground;
     }

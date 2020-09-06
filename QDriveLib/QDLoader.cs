@@ -12,9 +12,11 @@ namespace QDriveLib
 {
     public partial class QDLoader : Form
     {
+
         public QDLoader()
         {
             InitializeComponent();
+
             pbxBackground.BackColor = Color.FromArgb(77, 216, 255);
             pbxLoader.Image = Properties.Resources.Load;
         }
