@@ -132,6 +132,10 @@ namespace QDriveLib
             return masterPasswordValid;
         }
 
+        /// <summary>
+        /// Runs the Q-Drive setup tool
+        /// </summary>
+        /// <returns>Success of the execution</returns>
         public static bool RunQDriveSetup()
         {
             string qdSetupProgram = "QDriveSetup.exe";
@@ -145,6 +149,10 @@ namespace QDriveLib
             return false;
         }
 
+        /// <summary>
+        /// Checks if the database has already been configured by Q-Drive
+        /// </summary>
+        /// <returns>True if the DB is already configured</returns>
         public static bool IsQDConfigured()
         {
             if (File.Exists(QDInfo.ConfigFile))
@@ -167,6 +175,14 @@ namespace QDriveLib
             else return false;
         }
 
+        /// <summary>
+        /// Creates a list with all drives of a specified user
+        /// </summary>
+        /// <param name="pIsLocalConnection">Determines if the connection is a local connection</param>
+        /// <param name="pUserID">User-ID of the target user. Blank if local connection</param>
+        /// <param name="pUserPassword">Password of the user</param>
+        /// <param name="pDBConDat">DB connection data</param>
+        /// <returns>Drive-List</returns>
         public static List<DriveViewItem> CreateDriveList(bool pIsLocalConnection, string pUserID, string pUserPassword, WrapMySQLData pDBConDat)
         {
             List<DriveViewItem> driveList = new List<DriveViewItem>();
@@ -233,6 +249,10 @@ namespace QDriveLib
 
         private static string uniqueID = null;
 
+        /// <summary>
+        /// Creates or fetches the unique Q-Drive id from the system
+        /// </summary>
+        /// <returns>QD-ID</returns>
         public static string GetUniqueDeviceID()
         {
             if (uniqueID == null)
@@ -250,6 +270,11 @@ namespace QDriveLib
             return uniqueID;
         }
 
+        /// <summary>
+        /// Hashes a string using the SHA256 algorithm
+        /// </summary>
+        /// <param name="pPassword">Password to hash</param>
+        /// <returns>Hashed password string</returns>
         public static string HashPassword(string pPassword)
         {
             using (SHA256 sha256Hash = SHA256.Create())
@@ -265,6 +290,17 @@ namespace QDriveLib
             }
         }
 
+        /// <summary>
+        /// Connect to all Network drives of a specified QD-User
+        /// </summary>
+        /// <param name="pUserID">User-ID of the user</param>
+        /// <param name="pUserPassword">User-password</param>
+        /// <param name="pDBData">DB connection data</param>
+        /// <param name="pLogUserData">Log user data</param>
+        /// <param name="pDisconnectFirst">Disconnect all drives before reconecting</param>
+        /// <param name="drives">Drive-List</param>
+        /// <param name="ConnectOnlyIfNotAvailable">Only reconnect to a drive if it isn't already connected</param>
+        /// <returns></returns>
         public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLData pDBData, bool pLogUserData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null, bool ConnectOnlyIfNotAvailable = false)
         {
             int connectCtr = 0;
@@ -381,6 +417,12 @@ namespace QDriveLib
             return 0;
         }
 
+        /// <summary>
+        /// Tests the DB-Connection
+        /// </summary>
+        /// <param name="pOnlineDBConDat">DB connection data</param>
+        /// <param name="messageOnSuccess">Show a messagebox when the connection is successfull</param>
+        /// <returns></returns>
         public static bool TestConnection(WrapMySQLData pOnlineDBConDat, bool messageOnSuccess = true)
         {
             bool success = false;
@@ -405,6 +447,15 @@ namespace QDriveLib
             return success;
         }
 
+        /// <summary>
+        /// Verifies if the password entered is correct
+        /// </summary>
+        /// <param name="pIsLocalConnection">Local connection flag</param>
+        /// <param name="pUsername">Username</param>
+        /// <param name="pPassword">Password</param>
+        /// <param name="pUserID">Returns the user-ID</param>
+        /// <param name="pDBData">DB connection data</param>
+        /// <returns>True if the authentication was successfull</returns>
         public static bool VerifyPassword(bool pIsLocalConnection, string pUsername, string pPassword, out string pUserID, WrapMySQLData pDBData)
         {
             pUserID = "";
@@ -454,6 +505,10 @@ namespace QDriveLib
             return passwordValid;
         }
 
+        /// <summary>
+        /// Disconnect all network drives
+        /// </summary>
+        /// <param name="drives">Drive list. Optional to also remove registry entries</param>
         public static void DisconnectAllDrives(List<DriveViewItem> drives = null)
         {
 #if !DEBUG
@@ -483,6 +538,15 @@ namespace QDriveLib
 #endif
         }
 
+        /// <summary>
+        /// Connect Network-Drive
+        /// </summary>
+        /// <param name="pDriveLetter">Drive letter</param>
+        /// <param name="pPath">Drive path</param>
+        /// <param name="pUsername">Username</param>
+        /// <param name="pPassword">Password</param>
+        /// <param name="pName">Display-Name</param>
+        /// <param name="pDomain">Domain</param>
         public static void ConnectDrive(char pDriveLetter, string pPath, string pUsername, string pPassword, string pName, string pDomain = null)
         {
 #if !DEBUG
@@ -525,6 +589,9 @@ namespace QDriveLib
 #endif
         }
 
+        /// <summary>
+        /// Adds Q-Drive to autostart
+        /// </summary>
         public static void AddToAutostart()
         {
             string autostartPath = Path.Combine(Application.StartupPath, "QDriveAutostart.exe"); 
@@ -540,6 +607,9 @@ namespace QDriveLib
             }
         }
 
+        /// <summary>
+        /// Remove Q-Drive from autostart
+        /// </summary>
         public static void RemoveFromAutostart()
         {
             try
@@ -553,6 +623,12 @@ namespace QDriveLib
             }
         }
 
+        /// <summary>
+        /// Checks how many users have logged onto a specific device
+        /// </summary>
+        /// <param name="pDeviceID">Device-ID</param>
+        /// <param name="dbData">DB connection data</param>
+        /// <returns>User-Count</returns>
         public static int UserCountAtDevice(string pDeviceID, WrapMySQLData dbData)
         {
             try
@@ -568,7 +644,10 @@ namespace QDriveLib
             }
         }
 
-
+        /// <summary>
+        /// Gets the MAC-Address of the current device
+        /// </summary>
+        /// <returns>MAC-Address</returns>
         private static string GetMACAddress()
         {
             try
@@ -582,6 +661,13 @@ namespace QDriveLib
             catch { return ""; }
         }
 
+        /// <summary>
+        /// Loggs user-actions to the online log
+        /// </summary>
+        /// <param name="pUserID">User-ID</param>
+        /// <param name="pLogAction">Log Action</param>
+        /// <param name="pDBData">DB connection data</param>
+        /// <param name="pLogUserActionAllowed">Global flag to allow or deny the logging of data</param>
         public static void LogUserConnection(string pUserID, QDLogAction pLogAction, WrapMySQLData pDBData, bool pLogUserActionAllowed)
         {
             if (string.IsNullOrEmpty(pUserID)) return;
@@ -638,6 +724,11 @@ namespace QDriveLib
             catch { }
         }
 
+        /// <summary>
+        /// Gets the description of a log-type from an enum
+        /// </summary>
+        /// <param name="action">Log-Action</param>
+        /// <returns>Action-Description</returns>
         public static string GetLogDescriptionFromAction(QDLogAction action)
         {
             switch(action)
