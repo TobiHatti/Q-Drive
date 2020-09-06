@@ -133,13 +133,20 @@ namespace QDrive
 
         private void SubmitSA2()
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             alwaysPromptPassword = chbSA2PromptPassword.Checked;
 
             if (alwaysPromptPassword)
             {
                 // Check if both passwords are valid
                 if (QDLib.ValidatePasswords(txbSA2Password.Text, txbSA2ConfirmPassword.Text)) localPassword = txbSA2Password.Text;
-                else return;
+                else
+                {
+                    qdLoader.Close();
+                    return;
+                }
             }
 
             // (Try to) save the QD-Config and create DBs 
@@ -156,6 +163,8 @@ namespace QDrive
                 pnlS3Error.BringToFront();
                 btnS3ErrorClose.Focus();
             }
+
+            qdLoader.Close();
         }
 
         #endregion
@@ -182,6 +191,9 @@ namespace QDrive
 
         private void SubmitSB2A()
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             onlineDBConDat = new WrapMySQLData()
             {
                 Hostname = txbSB2DBHostname.Text,
@@ -205,9 +217,14 @@ namespace QDrive
 
                 pnlS2OnlineConnectionB.BringToFront();
             }
-            else return;
+            else
+            {
+                qdLoader.Close();
+                return;
+            }
 
             rbnSB2ExistingDB.Focus();
+            qdLoader.Close();
         }
 
         #endregion
@@ -239,10 +256,14 @@ namespace QDrive
 
         private void SubmitSB2B()
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             if (rbnSB2ExistingDB.Checked)
             {
                 if (!QDLib.VerifyMasterPassword(txbSB2ExistingDBPassword.Text, onlineDBConDat))
                 {
+                    qdLoader.Close();
                     MessageBox.Show("Master-Password is not valid. Please enter the corrent Master-Password, which has been set when the database was first initialised.", "Invalid Master-Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -251,7 +272,11 @@ namespace QDrive
             else
             {
                 if (QDLib.ValidatePasswords(txbSB2NewDBPassword.Text, txbSB2NewDBConfirmPassword.Text)) onlineMasterPassword = txbSB2NewDBPassword.Text;
-                else return;
+                else
+                {
+                    qdLoader.Close();
+                    return;
+                }
 
                 if (onlineAlreadyConfigured)
                 {
@@ -259,10 +284,20 @@ namespace QDrive
                     {
                         VerifyMasterPW verify = new VerifyMasterPW() { DBData = onlineDBConDat };
 
-                        if (verify.ShowDialog() != DialogResult.OK) return;
+                        if (verify.ShowDialog() != DialogResult.OK)
+                        {
+                            qdLoader.Close();
+                            return;
+                        }
                     }
-                    else return;
+                    else
+                    {
+                        qdLoader.Close();
+                        return;
+                    }
                 }
+
+                qdLoader.Close();
             }
 
             alwaysPromptPassword = chbS2B2PromptUserPassword.Checked;
