@@ -156,7 +156,6 @@ namespace QDrive
             if (!errorEncountered)
             {
                 pnlS3Finish.BringToFront();
-                chbS3LaunchManager.Focus();
             }
             else
             {
@@ -308,7 +307,6 @@ namespace QDrive
             if (!errorEncountered)
             {
                 pnlS3Finish.BringToFront();
-                chbS3LaunchManager.Focus();
             }
             else
             {
@@ -325,8 +323,11 @@ namespace QDrive
 
         private void btnS3Finish_Click(object sender, EventArgs e)
         {
-            string qdManager = "QDriveManager.exe";
-            if (chbS3LaunchManager.Checked && File.Exists(qdManager)) Process.Start(qdManager);
+            if (MessageBox.Show("To complete the setup, you'll need to restart your computer.\r\n\r\nDo you want to restart your computer now?", "Restart your computer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Process.Start("shutdown.exe", "-r -t 0");
+            }
+
             this.Close();   
         }
 

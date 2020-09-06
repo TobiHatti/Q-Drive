@@ -1,4 +1,3 @@
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Debug\QDriveLib.csprojAssemblyReference.cache
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Debug\QDriveLib.csproj.CoreCompileInputs.cache
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\QDriveLib.dll.config
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Debug\QDriveLib.dll

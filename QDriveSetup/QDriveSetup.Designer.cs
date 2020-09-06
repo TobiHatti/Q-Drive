@@ -78,7 +78,6 @@
             this.pnlS3Finish = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.chbS3LaunchManager = new System.Windows.Forms.CheckBox();
             this.btnS3Finish = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.pnlS0Welcome = new System.Windows.Forms.Panel();
@@ -629,7 +628,6 @@
             // 
             this.pnlS3Finish.Controls.Add(this.label23);
             this.pnlS3Finish.Controls.Add(this.label20);
-            this.pnlS3Finish.Controls.Add(this.chbS3LaunchManager);
             this.pnlS3Finish.Controls.Add(this.btnS3Finish);
             this.pnlS3Finish.Controls.Add(this.label22);
             this.pnlS3Finish.Location = new System.Drawing.Point(1336, 8);
@@ -643,10 +641,9 @@
             this.label23.ForeColor = System.Drawing.Color.DimGray;
             this.label23.Location = new System.Drawing.Point(19, 84);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(357, 84);
+            this.label23.Size = new System.Drawing.Size(417, 168);
             this.label23.TabIndex = 2;
-            this.label23.Text = "The setup-wizard has been completed successfully.\r\n\r\nYou can now add users and as" +
-    "sign network-drives\r\nin the Q-Drive manager.";
+            this.label23.Text = resources.GetString("label23.Text");
             // 
             // label20
             // 
@@ -656,18 +653,6 @@
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(0, 21);
             this.label20.TabIndex = 2;
-            // 
-            // chbS3LaunchManager
-            // 
-            this.chbS3LaunchManager.AutoSize = true;
-            this.chbS3LaunchManager.Checked = true;
-            this.chbS3LaunchManager.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbS3LaunchManager.Location = new System.Drawing.Point(23, 211);
-            this.chbS3LaunchManager.Name = "chbS3LaunchManager";
-            this.chbS3LaunchManager.Size = new System.Drawing.Size(368, 25);
-            this.chbS3LaunchManager.TabIndex = 1;
-            this.chbS3LaunchManager.Text = "Launch Q-Drive Manager after setup is completed";
-            this.chbS3LaunchManager.UseVisualStyleBackColor = true;
             // 
             // btnS3Finish
             // 
@@ -918,7 +903,6 @@
         private System.Windows.Forms.Panel pnlS3Finish;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.CheckBox chbS3LaunchManager;
         private System.Windows.Forms.Button btnS3Finish;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Panel pnlS0Welcome;

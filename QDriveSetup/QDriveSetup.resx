@@ -125,6 +125,16 @@ Information and login-credentials will be saved on an online-database (MySQL).
 Login-credentials are encrypted in the online-database and can only be 
 decrypted using a master-password, saved on this machine.</value>
   </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>The setup-wizard has been completed successfully.
+
+You can now add users and assign network-drives
+in the Q-Drive manager.
+
+Note:
+To complete the setup, you'll need to restart your computer, 
+otherwise some features might not work properly.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

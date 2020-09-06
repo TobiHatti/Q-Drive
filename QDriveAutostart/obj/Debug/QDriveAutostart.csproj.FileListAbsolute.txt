@@ -1,12 +1,3 @@
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\QDriveAutostart.exe.config
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\QDriveAutostart.exe
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\QDriveAutostart.pdb
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.Properties.Resources.resources
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.QDrive.resources
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.GenerateResource.cache
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.CoreCompileInputs.cache
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.exe
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.pdb
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveAutostart.exe
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\MySql.Data.dll
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\QDriveLib.dll
@@ -75,6 +66,10 @@ F:\Desktop\QDriveTemp\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.CopyCompl
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Debug\QDriveAutostart.exe
 F:\Desktop\QDriveTemp\QDriveAutostart\obj\Debug\QDriveAutostart.pdb
 F:\Desktop\QDriveTemp\QDriveAutostart\bin\Debug\Google.Protobuf.pdb
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\WrapSQLBase.dll
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\QDriveAutostart.exe.config
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\QDriveAutostart.exe
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\QDriveAutostart.pdb
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\BouncyCastle.Crypto.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\Google.Protobuf.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\K4os.Compression.LZ4.dll
@@ -93,7 +88,6 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\System
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\Ubiety.Dns.Core.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\WrapMySQL.dll
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\WrapSQLBase.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\WrapSQLite.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\Zstandard.Net.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\Syncfusion.Tools.Windows.dll
@@ -133,4 +127,10 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\Syncfu
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\Syncfusion.Tools.Base.xml
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\bin\Debug\Syncfusion.Grid.Windows.XmlSerializers.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.csprojAssemblyReference.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.Properties.Resources.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.QDrive.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.GenerateResource.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.CoreCompileInputs.cache
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.csproj.CopyComplete
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.exe
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveAutostart\obj\Debug\QDriveAutostart.pdb
