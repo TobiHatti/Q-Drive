@@ -251,6 +251,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QDriveLogo.ico" />
+    <None Include="Resources\Load.gif" />
     <None Include="Resources\QDriveUpdate.png" />
     <None Include="Resources\QDriveLogOff.png" />
     <None Include="Resources\QDriveEditDriveDisabled.png" />

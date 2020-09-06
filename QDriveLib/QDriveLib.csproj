@@ -109,8 +109,19 @@
   <ItemGroup>
     <Compile Include="Cipher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="QDInfo.cs" />
     <Compile Include="QDLib.cs" />
+    <Compile Include="QDLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QDLoader.Designer.cs">
+      <DependentUpon>QDLoader.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -118,6 +129,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="QDriveLogo.ico" />
+    <None Include="Resources\Load.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QDLoader.resx">
+      <DependentUpon>QDLoader.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.113.1\build\net46\System.Data.SQLite.Core.targets')" />

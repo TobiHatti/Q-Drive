@@ -8,6 +8,7 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using WrapSQL;
 
@@ -128,6 +129,9 @@ namespace QDriveManager
 
         private void QDriveManager_Load(object sender, EventArgs e)
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             sqlite = new WrapSQLite(QDInfo.ConfigFile);
 
             pnlLoading.BringToFront();
@@ -152,18 +156,22 @@ namespace QDriveManager
                 switch (loadStatusCode)
                 {
                     case 1:
+                        qdLoader.Close();
                         MessageBox.Show("Could not load local database (Error E001).\r\n\r\nPlease try again later. If this problem remains, please contact your system administrator.", "Could not start Q-Drive", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         break;
                     case 2:
+                        qdLoader.Close();
                         MessageBox.Show("Could not connect to the online database (Error E002).\r\n\r\nPlease try again later. If this problem remains, please contact your system administrator.", "Could not start Q-Drive", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         break;
                     case 3:
+                        qdLoader.Close();
                         MessageBox.Show("Could not load data from online database (Error E003).\r\n\r\nPlease try again later. If this problem remains, please contact your system administrator.", "Could not start Q-Drive", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         break;
                     case 99:
+                        qdLoader.Close();
                         MessageBox.Show("A fatal error occured (Error E099).\r\n\r\nPlease try again later. If this problem remains, please contact your system administrator or try to re-install the program.", "Could not start Q-Drive", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                         break;
@@ -222,6 +230,8 @@ namespace QDriveManager
                     pnlManager.BringToFront();
                 }
             }
+
+            qdLoader.Close();
         }
 
         #endregion
@@ -262,10 +272,14 @@ namespace QDriveManager
 
         private void SubmitLogin()
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             if (localUserNoPassword)
             {
                 if (AutostartLogin)
                 {
+                    qdLoader.Close();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -273,12 +287,14 @@ namespace QDriveManager
                 {
                     pnlManager.BringToFront();
                     UpdateManagerData();
+                    qdLoader.Close();
                     return;
                 }
             }
 
             if (!QDLib.VerifyPassword(localConnection, txbUsername.Text, txbPassword.Text, out userID, dbData))
             {
+                qdLoader.Close();
                 MessageBox.Show("Username or password are invalid!", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -324,6 +340,7 @@ namespace QDriveManager
             {
                 if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserLoggedInAutoStart, dbData, logUserActions);
                 this.DialogResult = DialogResult.OK;
+                qdLoader.Close();
                 this.Close();
             }
             else
@@ -331,7 +348,9 @@ namespace QDriveManager
                 if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserLoggedIn, dbData, logUserActions);
                 UpdateManagerData();
                 pnlManager.BringToFront();
-            }            
+            }
+
+            qdLoader.Close();
         }
 
         #endregion
@@ -352,11 +371,18 @@ namespace QDriveManager
 
         private void SubmitRegister()
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
+
             bool signupSuccess = false;
 
             string newUserID = Guid.NewGuid().ToString();
 
-            if (!QDLib.ValidatePasswords(txbRegPassword.Text, txbRegConfirmPassword.Text)) return;
+            if (!QDLib.ValidatePasswords(txbRegPassword.Text, txbRegConfirmPassword.Text))
+            {
+                qdLoader.Close();
+                return;
+            }
 
             if (mysql.ExecuteScalarACon<int>("SELECT COUNT(*) FROM qd_users WHERE Username = ?", txbRegUsername.Text) == 0)
             {
@@ -382,6 +408,8 @@ namespace QDriveManager
                 pnlLogin.BringToFront();
                 txbUsername.Focus();
             }
+
+            qdLoader.Close();
         }
 
         #endregion
@@ -390,8 +418,11 @@ namespace QDriveManager
 
         private void btnReconnect_Click(object sender, EventArgs e)
         {
+            QDLoader qdLoader = new QDLoader();
+            qdLoader.Show();
             if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserDrivelistUpdated, dbData, logUserActions);
             UpdateManagerData();
+            qdLoader.Close();
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -1240,8 +1271,6 @@ namespace QDriveManager
             }
             catch { }
         }
-
-        
     }
 
     public class GroupViewItemEx : Syncfusion.Windows.Forms.Tools.GroupViewItem
