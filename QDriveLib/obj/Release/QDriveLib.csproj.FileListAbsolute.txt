@@ -79,4 +79,6 @@ F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.pdb
 F:\Desktop\QDriveTemp\QDriveLib\bin\Release\Google.Protobuf.pdb
 F:\Desktop\QDriveTemp\QDriveLib\obj\Release\QDriveLib.csprojAssemblyReference.cache
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Release\Google.Protobuf.pdb
-U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.csprojAssemblyReference.cache
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.Properties.Resources.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.QDLoader.resources
+U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.GenerateResource.cache

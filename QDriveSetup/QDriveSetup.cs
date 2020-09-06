@@ -295,8 +295,6 @@ namespace QDrive
                         return;
                     }
                 }
-
-                qdLoader.Close();
             }
 
             alwaysPromptPassword = chbS2B2PromptUserPassword.Checked;
@@ -313,6 +311,8 @@ namespace QDrive
                 pnlS3Error.BringToFront();
                 btnS3ErrorClose.Focus();
             }
+
+            qdLoader.Close();
         }
 
         private void btnSB2BPrev_Click(object sender, EventArgs e) => pnlS2OnlineConnectionA.BringToFront();
