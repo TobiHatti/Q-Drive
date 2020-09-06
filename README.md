@@ -10,6 +10,8 @@
 
 ![image](https://endev.at/content/projects/Q-Drive/QDriveBanner300.svg)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/7pio7mrkhysxycnj?svg=true)](https://ci.appveyor.com/project/TobiHatti/q-drive)
+
 Q-Drive allows you to quickly connect to network-drives, either linked to a PC or linked to a user account. It can automatically reconnect network-drives after a system restart,
 or prompt the user for a password to connect to network drives in the first place.
 
