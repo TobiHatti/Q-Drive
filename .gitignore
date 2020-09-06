@@ -1,2 +1,6 @@
 .vs
 Illustrator/
+QDriveAdminConsole/Program.cs
+QDriveAutostart/Program.cs
+QDriveManager/Program.cs
+QDriveSetup/Program.cs
