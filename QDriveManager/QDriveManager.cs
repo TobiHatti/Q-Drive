@@ -115,16 +115,7 @@ namespace QDriveManager
 
             grvConnectedDrives.SmallImageList = imgList;
 
-            // Check if QD-Autostart is running, if not, start it
-            bool qdAutostartRunning = false;
-            foreach (Process process in Process.GetProcesses())
-                if (process.ProcessName.Contains("QDriveAutostart")) qdAutostartRunning = true;
-
-            if (!qdAutostartRunning)
-            {
-                try { Process.Start("QDriveAutostart.exe"); }
-                catch { }
-            }
+            
         }
 
         private void QDriveManager_Load(object sender, EventArgs e)
@@ -140,6 +131,7 @@ namespace QDriveManager
             if (!QDLib.IsQDConfigured()) pnlNotConfigured.BringToFront();
             else
             {
+                // Load QD-Data
                 int loadStatusCode = LoadQDData();
 
                 Image statusImage;
@@ -221,13 +213,17 @@ namespace QDriveManager
 
                 if (AutostartLogin || (!localUserNoPassword && (promptPassword || string.IsNullOrEmpty(uUsername) || string.IsNullOrEmpty(uPassword))))
                 {
+                    // If the user is not logged in yet, show login page
                     pnlLogin.BringToFront();
                     txbUsername.Focus();
                 }
                 else
                 {
+                    // If the user is already logged in, and the autostart is not running, start it now
                     UpdateManagerData();
                     pnlManager.BringToFront();
+
+                    QDLib.StartQDBackgroundWorker();
                 }
             }
 
@@ -348,6 +344,8 @@ namespace QDriveManager
                 if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.UserLoggedIn, dbData, logUserActions);
                 UpdateManagerData();
                 pnlManager.BringToFront();
+
+                QDLib.StartQDBackgroundWorker();
             }
 
             qdLoader.Close();

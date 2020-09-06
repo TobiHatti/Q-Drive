@@ -150,6 +150,24 @@ namespace QDriveLib
         }
 
         /// <summary>
+        /// If the Q-Drive autostart (background-worker) process is not started,
+        /// attempt to start it.
+        /// </summary>
+        public static void StartQDBackgroundWorker()
+        {
+            // Check if QD-Autostart is running, if not, start it
+            bool qdAutostartRunning = false;
+            foreach (Process process in Process.GetProcesses())
+                if (process.ProcessName.Contains("QDriveAutostart")) qdAutostartRunning = true;
+
+            if (!qdAutostartRunning)
+            {
+                try { Process.Start("QDriveAutostart.exe"); }
+                catch { }
+            }
+        }
+
+        /// <summary>
         /// Checks if the database has already been configured by Q-Drive
         /// </summary>
         /// <returns>True if the DB is already configured</returns>

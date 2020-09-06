@@ -83,8 +83,10 @@ namespace QDriveAutostart
                 this.Close();
             }
 
+            // Load QD-Data
             LoadQDData();
 
+            // If always-prompt-password is set 
             if (promptPassword)
             {
                 QDriveManager.QDriveManager managerLogin = new QDriveManager.QDriveManager() { AutostartLogin = true };
