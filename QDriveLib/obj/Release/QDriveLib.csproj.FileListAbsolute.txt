@@ -82,3 +82,45 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\bin\Release\Google.Pro
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.Properties.Resources.resources
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.QDLoader.resources
 U:\(06) Code\(01) C#\(01) Projects [GIT]\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.GenerateResource.cache
+F:\Projects\QDrive\QDriveLib\bin\Release\QDriveLib.dll.config
+F:\Projects\QDrive\QDriveLib\bin\Release\QDriveLib.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\QDriveLib.pdb
+F:\Projects\QDrive\QDriveLib\bin\Release\BouncyCastle.Crypto.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\Google.Protobuf.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\K4os.Compression.LZ4.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\K4os.Compression.LZ4.Streams.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\K4os.Hash.xxHash.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\MySql.Data.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\Renci.SshNet.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Buffers.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Data.SQLite.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Memory.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Numerics.Vectors.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\Ubiety.Dns.Core.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\WrapMySQL.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\WrapSQLBase.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\WrapSQLite.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\ZstdNet.dll
+F:\Projects\QDrive\QDriveLib\bin\Release\Google.Protobuf.pdb
+F:\Projects\QDrive\QDriveLib\bin\Release\Google.Protobuf.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\K4os.Compression.LZ4.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\K4os.Compression.LZ4.Streams.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\K4os.Hash.xxHash.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\MySql.Data.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\Renci.SshNet.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Buffers.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Data.SQLite.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Memory.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Numerics.Vectors.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\WrapMySQL.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\WrapSQLBase.xml
+F:\Projects\QDrive\QDriveLib\bin\Release\WrapSQLite.xml
+F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.Properties.Resources.resources
+F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.QDLoader.resources
+F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.GenerateResource.cache
+F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.CoreCompileInputs.cache
+F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.CopyComplete
+F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.dll
+F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.pdb

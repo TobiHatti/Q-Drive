@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Q-Drive"
-!define PRODUCT_VERSION "1.1.0"
+!define PRODUCT_VERSION "1.2.0"
 !define PRODUCT_PUBLISHER "Endev"
 !define PRODUCT_WEB_SITE "https://endev.at/p/q-drive"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\QDriveAutostart.exe"
@@ -62,7 +62,7 @@ ShowUnInstDetails show
 
 Section "Q-Drive Base" SEC01
   SetOutPath "$INSTDIR"
-  SetOverwrite try
+  SetOverwrite ifnewer
   File "QDriveManager\bin\Release\BouncyCastle.Crypto.dll"
   File "QDriveManager\bin\Release\EnvDTE.dll"
   File "QDriveManager\bin\Release\Google.Protobuf.dll"
@@ -86,7 +86,6 @@ Section "Q-Drive Base" SEC01
   File "QDriveManager\bin\Release\Syncfusion.Tools.Windows.dll"
   File "QDriveManager\bin\Release\System.Buffers.dll"
   File "QDriveManager\bin\Release\System.Data.SQLite.dll"
-  File "QDriveManager\bin\Release\System.Data.SQLite.dll.config"
   File "QDriveManager\bin\Release\System.Memory.dll"
   File "QDriveManager\bin\Release\System.Numerics.Vectors.dll"
   File "QDriveManager\bin\Release\System.Runtime.CompilerServices.Unsafe.dll"
@@ -99,11 +98,14 @@ Section "Q-Drive Base" SEC01
   SetOutPath "$INSTDIR\x86"
   File "QDriveManager\bin\Release\x86\SQLite.Interop.dll"
   SetOutPath "$INSTDIR"
-  File "QDriveManager\bin\Release\Zstandard.Net.dll"
+  File "QDriveManager\bin\Release\ZstdNet.dll"
   SetOverwrite ifnewer
   File "QDriveAutostart\bin\Release\QDriveAutostart.exe"
+  File "QDriveAutostart\bin\Release\QDriveAutostart.exe.config"
   File "QDriveManager\bin\Release\QDriveManager.exe"
+  File "QDriveManager\bin\Release\QDriveManager.exe.config"
   File "QDriveSetup\bin\Release\QDriveSetup.exe"
+  File "QDriveSetup\bin\Release\QDriveSetup.exe.config"
 
 ; Shortcuts
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
@@ -120,6 +122,7 @@ SectionEnd
 
 Section "Q-Drive Admin Console" SEC02
   File "QDriveAdminConsole\bin\Release\QDriveAdminConsole.exe"
+  File "QDriveAdminConsole\bin\Release\QDriveAdminConsole.exe.config"
 
 ; Shortcuts
   !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
@@ -169,17 +172,20 @@ Section Uninstall
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\QDriveAdminConsole.exe"
+  Delete "$INSTDIR\QDriveAdminConsole.exe.config"
   Delete "$INSTDIR\QDriveSetup.exe"
+  Delete "$INSTDIR\QDriveSetup.exe.config"
   Delete "$INSTDIR\QDriveManager.exe"
+  Delete "$INSTDIR\QDriveManager.exe.config"
   Delete "$INSTDIR\QDriveAutostart.exe"
-  Delete "$INSTDIR\Zstandard.Net.dll"
+  Delete "$INSTDIR\QDriveAutostart.exe.config"
+  Delete "$INSTDIR\ZstdNet.dll"
   Delete "$INSTDIR\x86\SQLite.Interop.dll"
   Delete "$INSTDIR\x64\SQLite.Interop.dll"
   Delete "$INSTDIR\Ubiety.Dns.Core.dll"
   Delete "$INSTDIR\System.Runtime.CompilerServices.Unsafe.dll"
   Delete "$INSTDIR\System.Numerics.Vectors.dll"
   Delete "$INSTDIR\System.Memory.dll"
-  Delete "$INSTDIR\System.Data.SQLite.dll.config"
   Delete "$INSTDIR\System.Data.SQLite.dll"
   Delete "$INSTDIR\System.Buffers.dll"
   Delete "$INSTDIR\Syncfusion.Tools.Windows.dll"

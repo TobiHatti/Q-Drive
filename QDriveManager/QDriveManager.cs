@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using QDriveLib;
+﻿using QDriveLib;
 using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.Controls;
 using System;
@@ -8,7 +7,6 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 using WrapSQL;
 
@@ -115,7 +113,7 @@ namespace QDriveManager
 
             grvConnectedDrives.SmallImageList = imgList;
 
-            
+
         }
 
         private void QDriveManager_Load(object sender, EventArgs e)
@@ -427,7 +425,7 @@ namespace QDriveManager
         {
             QDLib.DisconnectAllDrives(drives);
             if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.QDDrivesDisconnect, dbData, logUserActions);
-            
+
             pnlLogin.BringToFront();
         }
 
@@ -438,7 +436,7 @@ namespace QDriveManager
 
         private void pbxButtons_MouseOver(object sender, EventArgs e)
         {
-            if((sender as PictureBox).Enabled)
+            if ((sender as PictureBox).Enabled)
                 (sender as PictureBox).BackColor = Color.FromArgb(229, 243, 255);
         }
 
@@ -609,7 +607,7 @@ namespace QDriveManager
         private void tsmLogOffDisconnect_Click(object sender, EventArgs e)
         {
             QDLib.DisconnectAllDrives(drives);
-            if(!localConnection) QDLib.LogUserConnection(userID, QDLogAction.QDDrivesDisconnect, dbData, logUserActions);
+            if (!localConnection) QDLib.LogUserConnection(userID, QDLogAction.QDDrivesDisconnect, dbData, logUserActions);
 
             pnlLogin.BringToFront();
         }
@@ -622,7 +620,7 @@ namespace QDriveManager
                 NoOldPassword = localUserNoPassword
             };
 
-            if(changePW.ShowDialog() == DialogResult.OK)
+            if (changePW.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
@@ -733,9 +731,9 @@ namespace QDriveManager
                         }
                         catch { backup.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)", QDInfo.DBL.DefaultPassword, DBNull.Value); }
 
-                        using(SQLiteDataReader reader = (SQLiteDataReader)sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
+                        using (SQLiteDataReader reader = (SQLiteDataReader)sqlite.ExecuteQuery("SELECT * FROM qd_drives"))
                         {
-                            while(reader.Read())
+                            while (reader.Read())
                             {
                                 backup.ExecuteNonQuery("INSERT INTO qd_drives (ID, LocalPath, RemotePath, Username, Password, Domain, DriveLetter, DriveName) VALUES (?,?,?,?,?,?,?,?)",
                                     Guid.NewGuid(),
@@ -818,7 +816,7 @@ namespace QDriveManager
 
                             sqlite.ExecuteNonQuery($@"INSERT INTO qd_info (QDKey, QDValue) VALUES (?, ?)",
                                 QDInfo.DBL.SetupSuccess,
-                                backup.ExecuteScalar("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.SetupSuccess)    
+                                backup.ExecuteScalar("SELECT QDValue FROM qd_info WHERE QDKey = ?", QDInfo.DBL.SetupSuccess)
                             );
 
                             try
@@ -948,7 +946,7 @@ namespace QDriveManager
 
             bool success = false;
 
-            if(dbConForm.ShowDialog() == DialogResult.OK)
+            if (dbConForm.ShowDialog() == DialogResult.OK)
             {
                 if (!QDLib.ManagedDBOpen(sqlite)) { QDLib.DBOpenFailed(); return; }
                 sqlite.TransactionBegin();
@@ -1022,8 +1020,8 @@ namespace QDriveManager
 
             if (connectionOption == 1)
             {
-                QDAddPublicDrive addPublic = new QDAddPublicDrive() 
-                { 
+                QDAddPublicDrive addPublic = new QDAddPublicDrive()
+                {
                     DBData = dbData,
                     Username = ndUsername,
                     Password = ndPassword,
@@ -1132,7 +1130,7 @@ namespace QDriveManager
                 }
             }
         }
-        
+
         private void UpdateManagerData()
         {
             if (localConnection) QDLib.ConnectQDDrives("", "", dbData, logUserActions, true, drives);
@@ -1144,10 +1142,10 @@ namespace QDriveManager
             else pbxNoDrivesConnected.Visible = false;
 
 
-            lblQDriveManagerInfo.Text = 
-            "Q-Drive Version " + QDInfo.QDVersion + Environment.NewLine + 
-            Environment.NewLine + 
-            "Connected Drives: " + grvConnectedDrives.GroupViewItems.Count + Environment.NewLine + 
+            lblQDriveManagerInfo.Text =
+            "Q-Drive Version " + QDInfo.QDVersion + Environment.NewLine +
+            Environment.NewLine +
+            "Connected Drives: " + grvConnectedDrives.GroupViewItems.Count + Environment.NewLine +
             "Last updated: " + DateTime.Now.ToShortTimeString();
         }
 
@@ -1196,7 +1194,7 @@ namespace QDriveManager
                     if (userCanChangeManagerSettings) cmsSettings.Enabled = true;
                     else cmsSettings.Enabled = false;
 
-                    
+
                 }
                 catch { return 2; }
             }
@@ -1216,7 +1214,7 @@ namespace QDriveManager
             {
                 QDLib.VerifyPassword(localConnection, uUsername, uPassword, out userID, dbData);
 
-                if(useLoginAsDriveAuth)
+                if (useLoginAsDriveAuth)
                 {
                     ndUsername = uUsername;
                     ndPassword = uPassword;
@@ -1268,6 +1266,12 @@ namespace QDriveManager
                 //UpdateDriveListView();
             }
             catch { }
+        }
+
+        private void btnOpenLog_Click(object sender, EventArgs e)
+        {
+            QDSystemLog slog = new QDSystemLog();
+            slog.Show();
         }
     }
 

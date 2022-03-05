@@ -45,8 +45,8 @@ namespace QDriveLib
 
             do
             {
-                try 
-                { 
+                try
+                {
                     sqlHandler.Open();
                     tryCount++;
                 }
@@ -64,7 +64,7 @@ namespace QDriveLib
         public static void DBOpenFailed()
         {
             MessageBox.Show("Could not connect to Database. Please try again later.\r\n\r\nA connection to the database could not be established. This can happen due to the database beeing busy, or the authentication-data beeing invalid.\r\n\r\nIf this probllem persists, please contact your network administrator.", "DB-Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            throw new ApplicationException("A data-error occured and Q-Drive must be shut down. If this problem persists, please contact your network administrator"); 
+            throw new ApplicationException("A data-error occured and Q-Drive must be shut down. If this problem persists, please contact your network administrator");
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace QDriveLib
         {
             if (uniqueID == null)
             {
-                if(Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\QDrive", "QDSysID", null) == null)
+                if (Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\QDrive", "QDSysID", null) == null)
                 {
                     RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE", true).CreateSubKey("QDrive");
                     key.SetValue("QDSysID", Guid.NewGuid());
@@ -322,12 +322,12 @@ namespace QDriveLib
         public static int ConnectQDDrives(string pUserID, string pUserPassword, WrapMySQLData pDBData, bool pLogUserData, bool pDisconnectFirst = true, List<DriveViewItem> drives = null, bool ConnectOnlyIfNotAvailable = false)
         {
             int connectCtr = 0;
-                
+
             // Disconnect all current drives
             if (pDisconnectFirst)
             {
                 DisconnectAllDrives(drives);
-                if(!string.IsNullOrEmpty(pUserID)) LogUserConnection(pUserID, QDLogAction.QDDrivesDisconnect, pDBData, pLogUserData);
+                if (!string.IsNullOrEmpty(pUserID)) LogUserConnection(pUserID, QDLogAction.QDDrivesDisconnect, pDBData, pLogUserData);
             }
 
             // Connect online-drives (online-synced)
@@ -335,20 +335,20 @@ namespace QDriveLib
             {
                 try
                 {
-                    using(WrapMySQL sql = new WrapMySQL(pDBData))
+                    using (WrapMySQL sql = new WrapMySQL(pDBData))
                     {
                         if (!QDLib.ManagedDBOpen(sql)) { QDLib.DBOpenFailed(); return -1; }
                         // Connect local network drives
                         using (MySqlDataReader reader = (MySqlDataReader)sql.ExecuteQuery("SELECT * FROM qd_drives INNER JOIN qd_assigns ON qd_drives.ID = qd_assigns.DriveID INNER JOIN qd_users ON qd_assigns.UserID = qd_users.ID WHERE qd_assigns.UserID = ?", pUserID))
                         {
-                            while(reader.Read())
+                            while (reader.Read())
                             {
                                 try
                                 {
-                                    if(!ConnectOnlyIfNotAvailable || (ConnectOnlyIfNotAvailable && !Directory.Exists($@"{Convert.ToChar(reader["CustomDriveLetter"])}:\")))
+                                    if (!ConnectOnlyIfNotAvailable || (ConnectOnlyIfNotAvailable && !Directory.Exists($@"{Convert.ToChar(reader["CustomDriveLetter"])}:\")))
                                     {
                                         //MessageBox.Show("Try to connect " + Convert.ToString(reader["CustomDriveName"]));
-                                        
+
                                         ConnectDrive(
                                             Convert.ToChar(reader["CustomDriveLetter"]),
                                             Convert.ToString(reader["LocalPath"]),
@@ -458,7 +458,7 @@ namespace QDriveLib
 
             if (success)
             {
-                if(messageOnSuccess) MessageBox.Show("Connection to the database established successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (messageOnSuccess) MessageBox.Show("Connection to the database established successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else MessageBox.Show("Could not connect to the database.", "Connection failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -567,17 +567,34 @@ namespace QDriveLib
         /// <param name="pDomain">Domain</param>
         public static void ConnectDrive(char pDriveLetter, string pPath, string pUsername, string pPassword, string pName, string pDomain = null)
         {
-#if !DEBUG
+            if (pDomain == string.Empty) pDomain = null;
+
+            QDLog.Log($"Connecting Drive {pDriveLetter} ({pPath})...", false);
+
             try
             {
+                QDLog.Log($"Setting Registry Name to {pName}...", false);
+
                 ProcessStartInfo psi = new ProcessStartInfo()
                 {
                     FileName = "cmd.exe",
                     Arguments = $@"/c reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2\{pPath.Replace('\\', '#')} /v _LabelFromReg /t REG_SZ /f /d ""{pName}""",
                     CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false
                 };
-                Process.Start(psi);
+
+
+                Process prreg = new Process();
+                prreg.StartInfo = psi;
+                prreg.Start();
+                prreg.WaitForExit();
+                QDLog.Log(prreg.StandardOutput.ReadToEnd(), false);
+                QDLog.Log(prreg.StandardError.ReadToEnd(), true);
+
+                QDLog.Log($"Connecting Drive {pDriveLetter} (Attempt 1)...", false);
 
                 if (pDomain == null)
                 {
@@ -586,7 +603,10 @@ namespace QDriveLib
                         FileName = "cmd.exe",
                         Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pUsername} {pPassword}",
                         CreateNoWindow = true,
-                        WindowStyle = ProcessWindowStyle.Hidden
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false
                     };
                 }
                 else
@@ -596,15 +616,46 @@ namespace QDriveLib
                         FileName = "cmd.exe",
                         Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pDomain}\{pUsername} {pPassword}",
                         CreateNoWindow = true,
-                        WindowStyle = ProcessWindowStyle.Hidden
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false
                     };
                 }
 
 
-                Process.Start(psi);
+                Process prdrv = new Process();
+                prdrv.StartInfo = psi;
+                prdrv.Start();
+                prdrv.WaitForExit();
+                QDLog.Log(prdrv.StandardOutput.ReadToEnd(), false);
+                QDLog.Log(prdrv.StandardError.ReadToEnd(), true);
+
+                // Try connecting without username if the other method fails
+
+                QDLog.Log($"Connecting Drive {pDriveLetter} (Attempt 2)...", false);
+
+                psi = new ProcessStartInfo()
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $@"/c net use {pDriveLetter}: {pPath}",
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false
+                };
+
+                Process prdrv2 = new Process();
+                prdrv2.StartInfo = psi;
+                prdrv2.Start();
+                prdrv2.WaitForExit();
+                QDLog.Log(prdrv2.StandardOutput.ReadToEnd(), false);
+                QDLog.Log(prdrv2.StandardError.ReadToEnd(), true);
             }
             catch { }
-#endif
+
+            QDLog.Log($"Done.", false);
         }
 
         /// <summary>
@@ -612,7 +663,7 @@ namespace QDriveLib
         /// </summary>
         public static void AddToAutostart()
         {
-            string autostartPath = Path.Combine(Application.StartupPath, "QDriveAutostart.exe"); 
+            string autostartPath = Path.Combine(Application.StartupPath, "QDriveAutostart.exe");
 
             try
             {
@@ -749,7 +800,7 @@ namespace QDriveLib
         /// <returns>Action-Description</returns>
         public static string GetLogDescriptionFromAction(QDLogAction action)
         {
-            switch(action)
+            switch (action)
             {
                 case QDLogAction.UserRegistered:
                     return "User registered";
@@ -830,7 +881,7 @@ namespace QDriveLib
         QDSystemAutostartFinished,  // -> QD-Autostart has finished
         QDSystemAppClosed,          // -> QD-Autostart app has been closed by user
         QDSystemDeviceShutdown      // x-> QD-Autostart app has been closed by system (shutdown)
-        
+
     }
 
     public class DriveViewItem : IComparable
@@ -869,5 +920,5 @@ namespace QDriveLib
         }
     }
 
-   
+
 }
