@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Q-Drive"
-!define PRODUCT_VERSION "1.2.0"
+!define PRODUCT_VERSION "1.2.1"
 !define PRODUCT_PUBLISHER "Endev"
 !define PRODUCT_WEB_SITE "https://endev.at/p/q-drive"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\QDriveAutostart.exe"

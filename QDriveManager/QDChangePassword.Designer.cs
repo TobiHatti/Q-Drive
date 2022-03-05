@@ -47,7 +47,7 @@
             this.label7.Location = new System.Drawing.Point(17, 24);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(253, 32);
+            this.label7.Size = new System.Drawing.Size(252, 32);
             this.label7.TabIndex = 4;
             this.label7.Text = "Change your password";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

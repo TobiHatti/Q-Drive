@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-
-using System.Text;
-using System.Windows.Forms;
-using QDriveLib;
+﻿using QDriveLib;
 using Syncfusion.WinForms.Controls;
+using System;
+using System.Windows.Forms;
 
 // Q-Drive Network-Drive Manager
 // Copyright(C) 2020 Tobias Hattinger

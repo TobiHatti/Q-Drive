@@ -124,3 +124,4 @@ F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.CoreCompileInputs.cach
 F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.CopyComplete
 F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.dll
 F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.pdb
+F:\Projects\QDrive\QDriveLib\obj\Release\QDriveLib.csproj.AssemblyReference.cache

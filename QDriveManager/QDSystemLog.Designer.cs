@@ -29,19 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QDSystemLog));
             this.txbLog = new System.Windows.Forms.TextBox();
             this.tmrUpdate = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // txbLog
             // 
+            this.txbLog.Cursor = System.Windows.Forms.Cursors.Default;
             this.txbLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txbLog.Location = new System.Drawing.Point(0, 0);
+            this.txbLog.Location = new System.Drawing.Point(2, 2);
             this.txbLog.Multiline = true;
             this.txbLog.Name = "txbLog";
             this.txbLog.ReadOnly = true;
-            this.txbLog.Size = new System.Drawing.Size(621, 473);
+            this.txbLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txbLog.Size = new System.Drawing.Size(617, 469);
             this.txbLog.TabIndex = 0;
+            this.txbLog.TabStop = false;
             // 
             // tmrUpdate
             // 
@@ -54,8 +58,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(621, 473);
             this.Controls.Add(this.txbLog);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconSize = new System.Drawing.Size(32, 32);
             this.Name = "QDSystemLog";
-            this.Text = "QDSystemLog";
+            this.Style.InactiveShadowOpacity = ((byte)(20));
+            this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
+            this.Style.ShadowOpacity = ((byte)(30));
+            this.Style.TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
+            this.Style.TitleBar.BottomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(216)))), ((int)(((byte)(255)))));
+            this.Text = "System Log";
             this.Load += new System.EventHandler(this.QDSystemLog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
