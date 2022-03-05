@@ -646,19 +646,25 @@ namespace QDriveLib
                     UseShellExecute = false
                 };
 
+                /*
+                
+                // DISABLED - Causes crashes on failed login attempts
+
                 Process prdrv2 = new Process();
                 prdrv2.StartInfo = psi;
                 prdrv2.Start();
                 // If the process requests user input, kill it
                 foreach (ProcessThread thread in prdrv2.Threads)
-                    if (thread.ThreadState == ThreadState.Wait && (thread.WaitReason == ThreadWaitReason.LpcReply || thread.WaitReason == ThreadWaitReason.UserRequest))
-                    {
-                        QDLog.Log($"Process is awaiting User-Input. Aborting.", true);
-                        prdrv2.Kill();
-                    }
+                {
+                    MessageBox.Show("State: " + thread.ThreadState.ToString() + " Waitstate " + thread.WaitReason.ToString());
+
+                    QDLog.Log($"Process is awaiting User-Input. Aborting.", true);
+                    prdrv2.Kill();
+                }
                 prdrv2.WaitForExit();
                 QDLog.Log(prdrv2.StandardOutput.ReadToEnd(), false);
                 QDLog.Log(prdrv2.StandardError.ReadToEnd(), true);
+                */
             }
             catch { }
 
