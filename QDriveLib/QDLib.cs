@@ -601,7 +601,7 @@ namespace QDriveLib
                     psi = new ProcessStartInfo()
                     {
                         FileName = "cmd.exe",
-                        Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pUsername} {pPassword}",
+                        Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pUsername} {pPassword} /persistent:yes",
                         CreateNoWindow = true,
                         WindowStyle = ProcessWindowStyle.Hidden,
                         RedirectStandardOutput = true,
@@ -614,7 +614,7 @@ namespace QDriveLib
                     psi = new ProcessStartInfo()
                     {
                         FileName = "cmd.exe",
-                        Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pDomain}\{pUsername} {pPassword}",
+                        Arguments = $@"/c net use {pDriveLetter}: {pPath} /user:{pDomain}\{pUsername} {pPassword} /persistent:yes",
                         CreateNoWindow = true,
                         WindowStyle = ProcessWindowStyle.Hidden,
                         RedirectStandardOutput = true,
